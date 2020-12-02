@@ -15,7 +15,6 @@ public class PlayerAnimation1 : MonoBehaviour
     }
 
     public void SetDirection(Vector2 _direction){
-        Debug.Log(_direction);
 
         string[] directionArray = null;
 
