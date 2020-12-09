@@ -5,26 +5,62 @@ using UnityEngine;
 public class PaletteController : MonoBehaviour
 {
 
- public int i;
+ public int i = 0;
+
  public GameObject board;
  public GameObject board2;
  public GameObject board3;
  public GameObject board4;
  public GameObject board5;
+ public GameObject paper;
+ public GameObject pen;
+ public GameObject pen_paper;
+ public int IspickPen = 0;
+ public int IspickPaper = 0;
+
+ void Awake(){
+    paper.SetActive(false);
+    pen.SetActive(false);
+ }
+
 
  private void OnTriggerStay2D(Collider2D collision){
      if(i < 2){
-   if(collision.tag == "palette" && Input.GetKeyDown("space")){
+   if(collision.tag == "pen" && Input.GetKeyDown("space")){
              Destroy(collision.gameObject);
+             IspickPen = 1;
              i++;
+             Debug.Log("pen");
          }
+    if(collision.tag == "paper" && Input.GetKeyDown("space")){
+             Destroy(collision.gameObject);
+             IspickPaper = 1;
+             i++;
+             Debug.Log("paper");
+         }
+
+    if(collision.tag == "trigger" && Input.GetKeyDown("space")){
+        if(IspickPaper==1){
+             pen_paper.SetActive(false);
+             pen.SetActive(true);
+             Debug.Log("givepaper");
+        }else{
+            pen_paper.SetActive(false);
+             paper.SetActive(true);
+             Debug.Log("givepen");
+        }              
   }
+     }
+    
+
+
   if(i == 2){
    if(collision.tag == "trigger" && Input.GetKeyDown("space")){
              i ++;
+             
          }
   }
-    }
+ }
 
   void Update(){
         if(i == 3){
