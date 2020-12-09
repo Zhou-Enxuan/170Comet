@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PaletteController : MonoBehaviour
 {
 
  public int i = 0;
-
- public GameObject board;
- public GameObject board2;
- public GameObject board3;
- public GameObject board4;
- public GameObject board5;
+ public float timerout = 0.0f;
+ public float timerin = 0.0f;
+ public float wait = 1.0f;
+ public bool fadeout = false;
+ public bool fadein = false;
+ public Image board;
+ public Image board2;
+ public Image board3;
+ public Image board4;
+ public Image board5;
  public GameObject paper;
  public GameObject pen;
  public GameObject pen_paper;
@@ -65,38 +70,117 @@ public class PaletteController : MonoBehaviour
   void Update(){
         if(i == 3){
             if(Input.GetKeyDown("space")){
-                board.SetActive(true);
-                i++;
+                fadein = true;
+            }
+            if(fadein == true && timerin >= 0 && timerin < wait){
+                timerin += Time.deltaTime;
+                board.color = new Color(255,255,255,timerin/wait);
+                if(timerin/wait >= 1){
+                    fadein = false;
+                    timerin = 0;
+                    i++;
+                }
             }
         }else if(i == 4){
-            if(Input.GetKeyDown("space")){
-                board.SetActive(false);
-                board2.SetActive(true);
-                i++;
+            if(fadein == false && Input.GetKeyDown("space")){
+                fadeout = true;
+            }
+            if(fadeout == true && timerout >= 0 && timerout < wait){
+                fadein = true;
+                timerout += Time.deltaTime;
+                board.color = new Color(1,1,1,1-(timerout/wait));
+                if(timerout/wait >= 1){
+                    fadeout = false;
+                    timerout = 0;
+                }
+            }
+            if(fadein == true && timerin >= 0 && timerin < wait){
+                timerin += Time.deltaTime;
+                board2.color = new Color(255,255,255,timerin/wait);
+                if(timerin/wait >= 1){
+                    fadein = false;
+                    timerin = 0;
+                    i++;
+                }
             }
         }else if(i == 5){
-            if(Input.GetKeyDown("space")){
-                board2.SetActive(false);
-                board3.SetActive(true);
-                i++;
+            if(fadein == false && Input.GetKeyDown("space")){
+                fadeout = true;
+            }
+            if(fadeout == true && timerout >= 0 && timerout < wait){
+                fadein = true;
+                timerout += Time.deltaTime;
+                board2.color = new Color(1,1,1,1-(timerout/wait));
+                if(timerout/wait >= 1){
+                    fadeout = false;
+                    timerout = 0;
+                }
+            }
+            if(fadein == true && timerin >= 0 && timerin < wait){
+                timerin += Time.deltaTime;
+                board3.color = new Color(255,255,255,timerin/wait);
+                if(timerin/wait >= 1){
+                    fadein = false;
+                    timerin = 0;
+                    i++;
+                }
             }
         }else if(i == 6){
-            if(Input.GetKeyDown("space")){
-                board3.SetActive(false);
-                board4.SetActive(true);
-                i++;
+            if(fadein == false && Input.GetKeyDown("space")){
+                fadeout = true;
+            }
+            if(fadeout == true && timerout >= 0 && timerout < wait){
+                fadein = true;
+                timerout += Time.deltaTime;
+                board3.color = new Color(1,1,1,1-(timerout/wait));
+                if(timerout/wait >= 1){
+                    fadeout = false;
+                    timerout = 0;
+                }
+            }
+            if(fadein == true && timerin >= 0 && timerin < wait){
+                timerin += Time.deltaTime;
+                board4.color = new Color(255,255,255,timerin/wait);
+                if(timerin/wait >= 1){
+                    fadein = false;
+                    timerin = 0;
+                    i++;
+                }
             }
         }else if(i == 7){
-            if(Input.GetKeyDown("space")){
-                board4.SetActive(false);
-                board5.SetActive(true);
-                i++;
+            if(fadein == false && Input.GetKeyDown("space")){
+                fadeout = true;
+            }
+            if(fadeout == true && timerout >= 0 && timerout < wait){
+                fadein = true;
+                timerout += Time.deltaTime;
+                board4.color = new Color(1,1,1,1-(timerout/wait));
+                if(timerout/wait >= 1){
+                    fadeout = false;
+                    timerout = 0;
+                }
+            }
+            if(fadein == true && timerin >= 0 && timerin < wait){
+                timerin += Time.deltaTime;
+                board5.color = new Color(255,255,255,timerin/wait);
+                if(timerin/wait >= 1){
+                    fadein = false;
+                    timerin = 0;
+                    i++;
+                }
             }
         }else if (i == 8){
-            if(Input.GetKeyDown("space")){
-                board5.SetActive(false);
-                Dialog.PrintDialog("Room1");
-                i++;
+            if(fadein == false && Input.GetKeyDown("space")){
+                fadeout = true;
+            }
+            if(fadeout == true && timerout >= 0 && timerout < wait){
+                timerout += Time.deltaTime;
+                board5.color = new Color(1,1,1,1-(timerout/wait));
+                if(timerout/wait >= 1){
+                    Dialog.PrintDialog("Room1"); 
+                    i++; 
+                    fadeout = false;
+                }
             }
         }
     }
