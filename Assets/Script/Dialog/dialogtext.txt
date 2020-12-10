@@ -1,4 +1,9 @@
-Room1
+Room1 Start
+Nightingale: What's shining outside?
+Girl: I don't know, I can only see a small part of it.
+Girl: I'll draw you what it looks like.
+---
+Room1 End
 Girl: I want to know what this shiny thing is.
 Nightingale: The people in town must know what it is.
 Girl: Don't get caught this time out.

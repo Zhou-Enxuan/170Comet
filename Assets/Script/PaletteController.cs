@@ -23,48 +23,57 @@ public class PaletteController : MonoBehaviour
  public int IspickPen = 0;
  public int IspickPaper = 0;
 
+ private bool IsStart = true;
+
  void Awake(){
+    pen_paper.SetActive(false);
     paper.SetActive(false);
     pen.SetActive(false);
  }
 
 
  private void OnTriggerStay2D(Collider2D collision){
-     if(i < 2){
-   if(collision.tag == "pen" && Input.GetKeyDown("space")){
+    if(i == 0 && IsStart){
+        Dialog.PrintDialog("Room1 Start"); 
+        pen_paper.SetActive(true);
+        IsStart = false;
+    }
+    if(i < 2 && GameObject.Find("Dialog Box") == null){
+        if(collision.tag == "pen" && Input.GetKeyDown("space")){
              Destroy(collision.gameObject);
              IspickPen = 1;
              i++;
              Debug.Log("pen");
          }
-    if(collision.tag == "paper" && Input.GetKeyDown("space")){
+        if(collision.tag == "paper" && Input.GetKeyDown("space")){
              Destroy(collision.gameObject);
              IspickPaper = 1;
              i++;
              Debug.Log("paper");
          }
 
-    if(collision.tag == "trigger" && Input.GetKeyDown("space")){
-        if(IspickPaper==1){
-             pen_paper.SetActive(false);
-             pen.SetActive(true);
-             Debug.Log("givepaper");
-        }else{
-            pen_paper.SetActive(false);
-             paper.SetActive(true);
-             Debug.Log("givepen");
-        }              
-  }
-     }
+        if(collision.tag == "trigger" && Input.GetKeyDown("space")){
+            if(IspickPaper==1){
+                pen_paper.SetActive(false);
+                pen.SetActive(true);
+                Debug.Log("givepaper");
+            }else if (IspickPen==1) {
+                 pen_paper.SetActive(false);
+                 paper.SetActive(true);
+                 Debug.Log("givepen");
+             }              
+        }
+    }
     
 
 
-  if(i == 2){
-   if(collision.tag == "trigger" && Input.GetKeyDown("space")){
-             i ++;
-             
-         }
-  }
+    if(i == 2){
+        if(collision.tag == "trigger" && Input.GetKeyDown("space")){
+            i ++;
+            paper.SetActive(false);
+            pen.SetActive(false);
+        }
+    }
  }
 
   void Update(){
@@ -177,7 +186,7 @@ public class PaletteController : MonoBehaviour
                 timerout += Time.deltaTime;
                 board5.color = new Color(1,1,1,1-(timerout/wait));
                 if(timerout/wait >= 1){
-                    Dialog.PrintDialog("Room1"); 
+                    Dialog.PrintDialog("Room1 End"); 
                     i++; 
                     fadeout = false;
                 }

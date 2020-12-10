@@ -14,7 +14,7 @@ public class Dialog : MonoBehaviour
     public static List<string> dialogList;
     public static bool startTyping;
     public static bool isTyping;
-    public static bool printfull;
+    //public static bool printfull;
     public static string Line;
     public float textspeed;
 
@@ -30,8 +30,10 @@ public class Dialog : MonoBehaviour
 
         dialog = GameObject.Find("Dialog Box");
         dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
+
         dialogList = new List<string>();
-        dialogList.Add("Room1");
+        dialogList.Add("Room1 Start");
+        dialogList.Add("Room1 End");
         dialog.SetActive(false);
 
         isTyping = false;
@@ -96,7 +98,7 @@ public class Dialog : MonoBehaviour
         //dialogText.text = "haha";
         startTyping = true;
         dialog.SetActive(true);
-        // print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
+        //print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
        
     }
 
