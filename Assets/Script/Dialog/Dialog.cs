@@ -8,18 +8,19 @@ public class Dialog : MonoBehaviour
     public static Text dialogText;
     public static GameObject dialog;
     public TextAsset textFile;
+
     public static int index;
     public static List<string> textlist = new List<string>();
     public static List<string> textlist2 = new List<string>();
     public static List<string> dialogList;
     public static bool startTyping;
     public static bool isTyping;
-    //public static bool printfull;
     public static string Line;
     public float textspeed;
+   
+    bool isTimeline = false; //是否开始动画播放
 
-    void Awake() 
-    {
+    void Awake() {
         //print("start" + textFile.text);
         var linetext = textFile.text.Split('\n');
         index = 2;
@@ -27,52 +28,44 @@ public class Dialog : MonoBehaviour
             textlist.Add(line);
          //           print("read " + line );
         }
-
-        dialog = GameObject.Find("Dialog Box");
-        dialogText = GameObject.Find("Dialog Text").GetComponent<Text>();
-
-        dialogList = new List<string>();
-        dialogList.Add("Room1 Start");
-        dialogList.Add("Room1 End");
+        dialog = GameObject.Find("DialogBox");
+        dialogText = GameObject.Find("DialogText").GetComponent<Text>();
         dialog.SetActive(false);
-
         isTyping = false;
     }
 
-    void Update()
-    {
-        if (startTyping){
+    void Update() {
+        if (startTyping) {
             //Stops the previous sentence
             StopAllCoroutines(); 
             StartCoroutine(Typing(Line));
         }
-        // // type full text if click next
-        // if (isTyping && printfull ){
-        //         StopAllCoroutines(); 
-        //         dialogText.text = "";
-        //         dialogText.text = Line;
-        //         isTyping = false;
-        //         printfull = false;
-        //}
+        //检测是否动画播放
+        if (GameObject.Find("GameManager") != null && GameManager.isTimeline == true){
+            isTimeline = true;
+        } else {
+            isTimeline = false;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-        	if (isTyping){
+        if (Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
+        	if (isTyping) {
                 StopAllCoroutines(); 
                 dialogText.text = "";
                 dialogText.text = Line;
                 isTyping = false;
-            } else if(!NextPage()) {
+            } 
+            else if (!NextPage()) {
                 dialogText.text = "";
                 dialog.SetActive(false);
             }
         }
     }
 
+    //check dialog has next sentence or not
     public static bool NextPage() {
     	if (index > textlist2.Count - 1) {
     			index = 2;
-    			Debug.Log("no more tips");
+    			//Debug.Log("no more tips");
                 // dialog.SetActive(false);
                 dialogText.text = "";
                 return false;
@@ -83,12 +76,13 @@ public class Dialog : MonoBehaviour
             return true;
     }
 
-    public static void PrintDialog(string objName){
+    //Call for starting dialog
+    public static void PrintDialog(string objName) {
     	textlist2.Clear();
-        if (textlist.Contains(objName)){
+        if (textlist.Contains(objName)) {
             int j = textlist.IndexOf(objName);
             //int j = i;
-            while(textlist[j].CompareTo("---") != 0 ){
+            while (textlist[j].CompareTo("---") != 0) {
                 textlist2.Add(textlist[j]);
                 // print(textlist[j]);
                 j++;
@@ -99,15 +93,15 @@ public class Dialog : MonoBehaviour
         startTyping = true;
         dialog.SetActive(true);
         //print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
-       
     }
 
+    //Typewriter effect
     IEnumerator Typing(string sentences) {
          startTyping = false;
          isTyping = true;
          dialogText.text = "";
          //print("sentences : " + sentences);
-         foreach(char letter in sentences.ToCharArray()){
+         foreach(char letter in sentences.ToCharArray()) {
             dialogText.text += letter;
             yield return new WaitForSeconds(textspeed);
          }

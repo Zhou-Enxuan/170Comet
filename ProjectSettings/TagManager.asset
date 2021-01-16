@@ -8,6 +8,7 @@ TagManager:
   - trigger
   - paper
   - pen
+  - Timeline
   layers:
   - Default
   - TransparentFX

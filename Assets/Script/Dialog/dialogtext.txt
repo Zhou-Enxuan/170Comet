@@ -1,11 +1,29 @@
-Room1 Start
+Level1 Start
 Nightingale: What's shining outside?
 Girl: I don't know, I can only see a small part of it.
 Girl: I'll draw you what it looks like.
 ---
-Room1 End
+Level1 End
 Girl: I want to know what this shiny thing is.
 Nightingale: The people in town must know what it is.
 Girl: Don't get caught this time out.
 Nightingale: You also need to remember to take your medicine.
+---
+Level2Npc
+Boy: What happened last night?
+Man: You would never guess a comet flew over town last night!
+---
+Villager
+Bearded Man: What happened last night?
+Boy with Green Hair: You would never guess a comet flew over town last night!
+Bearded Man: Oh no! I missed the comet!
+---
+Villager1
+AAAAA
+---
+Villager2
+BBBBB
+---
+Villager3
+CCCC
 ---
