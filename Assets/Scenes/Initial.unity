@@ -385,7 +385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &503775148
 AudioListener:
   m_ObjectHideFlags: 0
@@ -481,7 +481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf89fd07069794656b7363e0f5d15695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: 
   isSceneChanged: 0
 --- !u!114 &758242616
 MonoBehaviour:
@@ -559,7 +558,6 @@ MonoBehaviour:
   pen_paper: {fileID: 0}
   IspickPen: 0
   IspickPaper: 0
-  isLevel1End: 0
 --- !u!61 &901622008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -628,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901622006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.05, y: 0, z: 0}
+  m_LocalPosition: {x: 0.48, y: -1.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 417475798}
@@ -700,7 +698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textFile: {fileID: 4900000, guid: 8f7c7ab33aeec404a96ba4cf65a70ca7, type: 3}
-  isTimeline: 0
   textspeed: 0.01
 --- !u!114 &1348744367
 MonoBehaviour:
@@ -853,7 +850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 681, y: -35}
+  m_AnchoredPosition: {x: 437, y: -45}
   m_SizeDelta: {x: 580, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1594652219
