@@ -281,23 +281,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticDirections:
-  - static N
-  - static NW
-  - static W
-  - static SW
-  - static S
-  - static SE
-  - static E
-  - static NE
+  - Static_N
+  - Static_NW
+  - Static_W
+  - Static_SW
+  - Static_ S
+  - Static_SE
+  - Static_E
+  - Static_NE
   runDirections:
-  - run N
-  - run NW
-  - run W
-  - run SW
-  - run S
-  - run SE
-  - run E
-  - run NE
+  - Run_N
+  - Run_NW
+  - Run_W
+  - Run_SW
+  - Run_S
+  - Run_SE
+  - Run_E
+  - Run_NE
 --- !u!95 &417475800
 Animator:
   serializedVersion: 3
@@ -308,7 +308,7 @@ Animator:
   m_GameObject: {fileID: 417475797}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1cc6c8948f79fdc4784dc78d9a11d805, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7b3cf2896001e14d99264cf2b824c30, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_SortingLayerID: -854769631
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b840bcf1635c24057a03f98cde1e832a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 652d3806e69e8054fa89e1044d2c6cbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

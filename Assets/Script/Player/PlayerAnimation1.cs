@@ -6,8 +6,8 @@ public class PlayerAnimation1 : MonoBehaviour
 {
     private Animator anim;
 
-    public string[] staticDirections = {"static N", "static NW", "static W", "static SW", "static S", "static SE", "static E,", "static NE"};
-    public string[] runDirections = {"run N", "run NW", "run W", "run SW", "run S", "run SE", "run E", "run NE"};
+    public string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E,", "Static_NE"};
+    public string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
 
     int lastDirection;
     private void Awake(){

@@ -20,6 +20,8 @@ public class PaletteController : MonoBehaviour
  public GameObject paper;
  public GameObject pen;
  public GameObject pen_paper;
+ public GameObject Rpaper;
+ public GameObject Rpen;
  public int IspickPen = 0;
  public int IspickPaper = 0;
  public static bool isLevel1End = false;
@@ -36,6 +38,8 @@ public class PaletteController : MonoBehaviour
     pen_paper = GameObject.Find("BubblePenPaper");
     pen =  GameObject.Find("BubblePen");
     paper =  GameObject.Find("BubblePaper");
+    Rpen =  GameObject.Find("Pen");
+    Rpaper =  GameObject.Find("Paper");
     pen_paper.SetActive(false);
     paper.SetActive(false);
     pen.SetActive(false);
@@ -48,15 +52,30 @@ public class PaletteController : MonoBehaviour
         pen_paper.SetActive(true);
         IsStart = false;
     }
+    
     if(i < 2 && GameObject.Find("DialogBox") == null){
         if(collision.tag == "pen" && Input.GetKeyDown("space")){
-             Destroy(collision.gameObject);
+             //Destroy(collision.gameObject);
+             Rpen.active = false;
+             if(IspickPaper==1){
+                Rpaper.active = true;
+                Rpaper.transform.position = Rpen.transform.position;
+                Debug.Log("changetopen");
+                Debug.Log(Rpaper.transform.position);
+             }
              IspickPen = 1;
              i++;
              Debug.Log("pen");
          }
         if(collision.tag == "paper" && Input.GetKeyDown("space")){
-             Destroy(collision.gameObject);
+             //Destroy(collision.gameObject);
+             Debug.Log(Rpaper.transform.position);
+             Rpaper.active = false;
+             if(IspickPen==1){
+                Rpen.active = true;
+                Rpen.transform.position = Rpaper.transform.position;
+                Debug.Log("changetopen");
+             }
              IspickPaper = 1;
              i++;
              Debug.Log("paper");
