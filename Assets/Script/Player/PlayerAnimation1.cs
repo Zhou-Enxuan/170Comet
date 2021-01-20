@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimation1 : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class PlayerAnimation1 : MonoBehaviour
 
     public string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E,", "Static_NE"};
     public string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
+    public string[] FlyAnimation = {"Fly_L", "Fly_R"};
+    public string[] FlyInAirAnimation = {"FlyStatic_L", "FlyStatic_R"}; 
+    private int FaceDirection = 0; //0 right 1 left
+    
 
     int lastDirection;
     private void Awake(){
@@ -15,17 +20,35 @@ public class PlayerAnimation1 : MonoBehaviour
     }
 
     public void SetDirection(Vector2 _direction){
-
         string[] directionArray = null;
+        if(SceneManager.GetActiveScene().name == "Level2"){
 
-        if(_direction.magnitude < 0.01){
-            directionArray = staticDirections;
+            if(_direction.magnitude < 0.01){
+                if(FaceDirection==0){
+                    anim.Play(FlyInAirAnimation[1]);
+                }else{
+                    anim.Play(FlyInAirAnimation[0]); 
+                } 
+            }else{
+                if(_direction.x>0){
+                    anim.Play(FlyAnimation[1]);
+                    FaceDirection = 0;
+                }else if(_direction.x<0){
+                    anim.Play(FlyAnimation[0]); 
+                    FaceDirection = 1;
+                }
+            }
+       
         }else{
-            directionArray = runDirections;
 
-            lastDirection = DirectionToIndex(_direction);
+            if(_direction.magnitude < 0.01){
+                directionArray = staticDirections;
+            }else{
+                directionArray = runDirections;
+                lastDirection = DirectionToIndex(_direction);
         }
         anim.Play(directionArray[lastDirection]);
+        }
     }
 
     public int DirectionToIndex(Vector2 _direction){

@@ -298,6 +298,12 @@ MonoBehaviour:
   - Run_SE
   - Run_E
   - Run_NE
+  FlyAnimation:
+  - Fly_L
+  - Fly_R
+  FlyInAirAnimation:
+  - FlyStatic_L
+  - FlyStatic_R
 --- !u!95 &417475800
 Animator:
   serializedVersion: 3
@@ -556,6 +562,8 @@ MonoBehaviour:
   paper: {fileID: 0}
   pen: {fileID: 0}
   pen_paper: {fileID: 0}
+  Rpaper: {fileID: 0}
+  Rpen: {fileID: 0}
   IspickPen: 0
   IspickPaper: 0
 --- !u!61 &901622008

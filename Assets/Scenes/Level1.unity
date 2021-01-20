@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 462149267}
   - component: {fileID: 462149266}
   - component: {fileID: 462149264}
+  - component: {fileID: 462149265}
   m_Layer: 0
   m_Name: Bed
   m_TagString: trigger
@@ -650,6 +651,27 @@ PolygonCollider2D:
       - {x: -1.09, y: -0.77}
       - {x: -1.1, y: -0.45999998}
       - {x: -1.03, y: -0.47}
+--- !u!50 &462149265
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462149263}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!212 &462149266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -710,7 +732,7 @@ Transform:
   m_GameObject: {fileID: 462149263}
   m_LocalRotation: {x: -0, y: -0, z: -0.01936764, w: 0.9998124}
   m_LocalPosition: {x: -0.17, y: -0.23, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4000001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1760,7 +1782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786241960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29, y: -0.02, z: -1}
+  m_LocalPosition: {x: -0.24, y: -0.02, z: -1}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 1833894845}
@@ -1782,7 +1804,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.6575922, y: 0.478449}
     oldSize: {x: 12.8, y: 7.2}
     newSize: {x: 0.31, y: 0.44}
     adaptiveTilingThreshold: 0.5

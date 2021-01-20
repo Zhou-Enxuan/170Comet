@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
            // Debug.Log("Stop PlayerMovement");
         } else { //normal时
             moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            //Debug.Log(Input.GetAxisRaw("Horizontal"));
             moveV = Input.GetAxisRaw("Vertical") * moveSpeed;
+            //Debug.Log(Input.GetAxisRaw("Vertical"));
             rb.velocity = new Vector2(moveH, moveV);
             direction = new Vector2(moveH, moveV);
 
