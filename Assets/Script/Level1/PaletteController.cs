@@ -62,6 +62,8 @@ public class PaletteController : MonoBehaviour
                 Rpaper.transform.position = Rpen.transform.position;
                 Debug.Log("changetopen");
                 Debug.Log(Rpaper.transform.position);
+                i--;
+                IspickPaper = 0;
              }
              IspickPen = 1;
              i++;
@@ -75,6 +77,8 @@ public class PaletteController : MonoBehaviour
                 Rpen.active = true;
                 Rpen.transform.position = Rpaper.transform.position;
                 Debug.Log("changetopen");
+                i--;
+                IspickPen = 0;
              }
              IspickPaper = 1;
              i++;
@@ -86,10 +90,12 @@ public class PaletteController : MonoBehaviour
                 pen_paper.SetActive(false);
                 pen.SetActive(true);
                 Debug.Log("givepaper");
+                IspickPaper = 0;
             }else if (IspickPen==1) {
                  pen_paper.SetActive(false);
                  paper.SetActive(true);
                  Debug.Log("givepen");
+                 IspickPen = 0;
              }              
         }
     }

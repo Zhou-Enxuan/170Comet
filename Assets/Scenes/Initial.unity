@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 417475801}
   - component: {fileID: 417475800}
   - component: {fileID: 417475799}
+  - component: {fileID: 417475802}
   m_Layer: 0
   m_Name: bird spirte
   m_TagString: Untagged
@@ -263,7 +264,7 @@ Transform:
   m_GameObject: {fileID: 417475797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.419774, y: 2.419774, z: 2.419774}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 901622011}
   m_RootOrder: 0
@@ -374,6 +375,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &417475802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417475797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45947477, y: 0.6780636, z: 0.20000002}
+  m_Center: {x: -0.014248272, y: 0.028507551, z: 0}
 --- !u!1 &503775147
 GameObject:
   m_ObjectHideFlags: 0
