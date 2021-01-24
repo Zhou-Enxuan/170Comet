@@ -9,6 +9,10 @@ TagManager:
   - paper
   - pen
   - Timeline
+  - RhythmGame
+  - Activator
+  - SadFace
+  - EndingLine
   layers:
   - Default
   - TransparentFX
