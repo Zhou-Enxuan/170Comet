@@ -19,17 +19,20 @@ public class PlayerAnimation1 : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+
     public void SetDirection(Vector2 _direction){
         string[] directionArray = null;
         if(SceneManager.GetActiveScene().name == "Level2"){
 
-            if(_direction.magnitude < 0.01){
-                if(FaceDirection==0){
+            if(transform.position.y <= -3.5){
+                Debug.Log("on the grd");
+                if(_direction.x>0){
                     anim.Play(FlyInAirAnimation[1]);
-                }else{
+                }else if(_direction.x<0){
                     anim.Play(FlyInAirAnimation[0]); 
                 } 
             }else{
+                Debug.Log("fly");
                 if(_direction.x>0){
                     anim.Play(FlyAnimation[1]);
                     FaceDirection = 0;
@@ -46,7 +49,7 @@ public class PlayerAnimation1 : MonoBehaviour
             }else{
                 directionArray = runDirections;
                 lastDirection = DirectionToIndex(_direction);
-        }
+            }
         anim.Play(directionArray[lastDirection]);
         }
     }
