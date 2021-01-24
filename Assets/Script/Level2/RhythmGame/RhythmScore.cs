@@ -5,9 +5,9 @@ using UnityEngine;
 public class RhythmScore : MonoBehaviour
 {
 	//score setting
-    public static int currentScore;
+    public static int currentScore = 0;
     private static int scorePerNote = 100;
-    public static int totalScore;
+    public static int totalScore = 0;
     public int totalS = 0;
 
     public static GameObject RhythmGame;
@@ -39,6 +39,8 @@ public class RhythmScore : MonoBehaviour
 	        GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
 	        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
 	        SadFace.SetActive(true);
+            //SadFace.GetComponent<CallStaff>().enabled = true;
+            //Debug.Log("!!!!!!");
 	    }
         
         
