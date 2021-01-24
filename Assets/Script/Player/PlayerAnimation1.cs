@@ -25,14 +25,14 @@ public class PlayerAnimation1 : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Level2"){
 
             if(transform.position.y <= -3.5){
-                Debug.Log("on the grd");
+                //Debug.Log("on the grd");
                 if(_direction.x>0){
                     anim.Play(FlyInAirAnimation[1]);
                 }else if(_direction.x<0){
                     anim.Play(FlyInAirAnimation[0]); 
                 } 
             }else{
-                Debug.Log("fly");
+                //Debug.Log("fly");
                 if(_direction.x>0){
                     anim.Play(FlyAnimation[1]);
                     FaceDirection = 0;

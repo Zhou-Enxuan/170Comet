@@ -9,6 +9,7 @@ public class RhythmScore : MonoBehaviour
     private static int scorePerNote = 100;
     public static int totalScore = 0;
     public int totalS = 0;
+    public bool IsGameEnded = false;
 
     public static GameObject RhythmGame;
     public static GameObject SadFace;
@@ -28,6 +29,8 @@ public class RhythmScore : MonoBehaviour
 	        //continue controlling the bird
 	        GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
 	        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            IsGameEnded = true;
+
 	        //SadFace.SetActive(true);
 	        //SadFace.GetComponent<CallStaff>().enabled = true;
 	    }

@@ -7,8 +7,10 @@ public class GamePlaySystemManager : MonoBehaviour
 {
 	//public string SceneName;
     public bool isLevel1End = false;
+    public bool isLevel2End = false;
     //public bool isDialogShown = false;
     private bool isMissionCompleted;
+    
 
     // Start is called before the first frame update
     void Awake() {
@@ -30,13 +32,21 @@ public class GamePlaySystemManager : MonoBehaviour
                 //     isDialogShown = false;
                 // }
             //if mission one end, destroy missionone's gameobject after loading in level1 scene agian再次进入销毁任务1的东西
-            } else if (isLevel1End) {
-                Destroy(GameObject.Find("MissionOne"));
+            } else if (isLevel1End && isLevel2End){
+                Debug.Log("level2complete");
+                GameObject.Find("Player").GetComponent<PaletteController>().enabled = true;
+                Destroy(GameObject.Find("MissionOne"));  
+                
+            }else if (isLevel1End) {
+                Debug.Log("level2complete");
+                Destroy(GameObject.Find("MissionOne"));  
             }
         }
+
         if (SceneManager.GetActiveScene().name == "Level2") {
             isMissionCompleted = true;
         }
+
 
     }
 }

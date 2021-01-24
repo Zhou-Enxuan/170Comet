@@ -22,6 +22,7 @@ public class PaletteController : MonoBehaviour
  public GameObject pen_paper;
  public GameObject Rpaper;
  public GameObject Rpen;
+ public GameObject Flower;
  public int IspickPen = 0;
  public int IspickPaper = 0;
  public static bool isLevel1End = false;
@@ -40,13 +41,23 @@ public class PaletteController : MonoBehaviour
     paper =  GameObject.Find("BubblePaper");
     Rpen =  GameObject.Find("Pen");
     Rpaper =  GameObject.Find("Paper");
+    Flower = GameObject.Find("Flower");
     pen_paper.SetActive(false);
     paper.SetActive(false);
     pen.SetActive(false);
+    Flower.SetActive(false);
  }
 
 
  private void OnTriggerStay2D(Collider2D collision){
+
+     
+    if(isLevel1End && GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().isLevel2End && Input.GetKeyDown("space")){
+        if(collision.tag == "trigger"){
+            Flower.SetActive(true);
+        }
+    }
+
     if(i == 0 && collision.tag == "trigger" && IsStart){
         Dialog.PrintDialog("Level1 Start"); 
         pen_paper.SetActive(true);
@@ -221,14 +232,14 @@ public class PaletteController : MonoBehaviour
                 timerout += Time.deltaTime;
                 board5.color = new Color(1,1,1,1-(timerout/wait));
                 if(timerout/wait >= 1){
-                    Dialog.PrintDialog("Level1 End"); 
+                    //Dialog.PrintDialog("Level1 End"); 
                     isLevel1End = true;
                     i++; 
                     fadeout = false;
                 }
             }
         }
-    }
 
+    }
 
 }

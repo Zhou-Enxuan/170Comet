@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 417475800}
   - component: {fileID: 417475799}
   - component: {fileID: 417475802}
+  - component: {fileID: 417475803}
   m_Layer: 0
   m_Name: bird spirte
   m_TagString: Untagged
@@ -388,6 +389,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45947477, y: 0.6780636, z: 0.20000002}
   m_Center: {x: -0.014248272, y: 0.028507551, z: 0}
+--- !u!114 &417475803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417475797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad004780e86aa714c995804921b4f7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &503775147
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLevel1End: 0
+  isLevel2End: 0
 --- !u!4 &758242617
 Transform:
   m_ObjectHideFlags: 0
