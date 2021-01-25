@@ -232,7 +232,7 @@ public class PaletteController : MonoBehaviour
                 timerout += Time.deltaTime;
                 board5.color = new Color(1,1,1,1-(timerout/wait));
                 if(timerout/wait >= 1){
-                    //Dialog.PrintDialog("Level1 End"); 
+                    Dialog.PrintDialog("Level1 End"); 
                     isLevel1End = true;
                     i++; 
                     fadeout = false;

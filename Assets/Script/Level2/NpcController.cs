@@ -30,15 +30,15 @@ public class NpcController : MonoBehaviour
         if (NoticeMark.activeSelf) {
             Debug.Log("村民來了");
             VillagerTimeline.SetActive(true);
-            //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
             //完成马的timeline，玩家恢复移动，npc2跌倒+哭
-            //if(GameManager.EndTimeline() && GameObject.Find("DialogBox")==null) {
+            if(GameManager.EndTimeline() && GameObject.Find("DialogBox")==null) {
                 Debug.Log("跌倒");
                 NoticeMark.SetActive(false);
                 this.GetComponent<SpriteRenderer>().enabled = false;
                 NpcTwoFall.SetActive(true);
                 GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-            //}
+            }
         }
 
 
