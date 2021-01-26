@@ -37,7 +37,7 @@ public class AutoMovement : MonoBehaviour
                     // if zoom in 停止上面的工作
                     if (MainCamera.orthographicSize < (2+delta)) {
                         isAIMove = false;
-                        //Dialog.PrintDialog("Villager");
+                        Dialog.PrintDialog("Villager");
                         isDialoged = true;
                     }
         	    }

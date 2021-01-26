@@ -1,28 +1,25 @@
 Level1 Start
-Nightingale: What's shining outside?
-Girl: I don't know, I can only see a small part of it.
-Girl: I'll draw you what it looks like.
+Nightingale: Can you hear people cheering out side? They’re saying:”Comet, Comet!”
+Girl: “Comet?” I’ve only heard of it through books. It said it’s the most beautiful star in the world...
+Nightingale: Can you see it through the window? What does a “comet” look like?
+Girl: The sky was blocked by trees. I could only see a few light. 
+Girl: It’s okay! I’ve heard about it in books, let me draw it for you!
 ---
 Level1 End
-Girl: I want to know what this shiny thing is.
-Nightingale: The people in town must know what it is.
-Girl: Don't get caught this time out.
-Nightingale: You also need to remember to take your medicine.
----
-Level2Npc
-Boy: What happened last night?
-Man: You would never guess a comet flew over town last night!
+Nightingale: Wow!
+GIRL: The book says it’s a star with a trailing tail, but I don’t know if I drew it right.
+Nightingale: Never mind, I’ll go get some evidences to see what it looks like!
 ---
 Villager
-Bearded Man: What happened last night?
-Boy with Green Hair: You would never guess a comet flew over town last night!
-Bearded Man: Oh no! I missed the comet!
+Bearded Man: That’s it, those amazing stars dragged their long tails and traveled cross the sky.
+Boy with Green Hair: Those stars brings happiness. We are so lucky!
+Bearded Man: I’ve heard that if we could go up to the mountain top and touch them close, we could have a wish come true!
 ---
 Villager1
-AAAAA
+Cowboy: Oh my God! The king is dead
 ---
 Villager2
-BBBBB
+Bearded Man: It’s over! Everything is over! The war is coming! My life is over...
 ---
 Villager3
 CCCC
