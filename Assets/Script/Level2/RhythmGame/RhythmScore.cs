@@ -51,7 +51,7 @@ public class RhythmScore : MonoBehaviour
 
     public static void NoteHit() {
         currentScore += scorePerNote;
-        //totalScore += scorePerNote;
+        totalScore += scorePerNote;
     }
 
     public static void NotePass() {
