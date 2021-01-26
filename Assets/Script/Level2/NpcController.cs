@@ -28,23 +28,26 @@ public class NpcController : MonoBehaviour
     void Update() { 
         //if (NoticeMark.activeSelf && !AutoMovement.isDialoged) {
         if (NoticeMark.activeSelf) {
-            Debug.Log("村民來了");
             VillagerTimeline.SetActive(true);
-            //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
             //完成马的timeline，玩家恢复移动，npc2跌倒+哭
-            //if(GameManager.EndTimeline() && GameObject.Find("DialogBox")==null) {
-                Debug.Log("跌倒");
-                NoticeMark.SetActive(false);
-                this.GetComponent<SpriteRenderer>().enabled = false;
-                NpcTwoFall.SetActive(true);
-                GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-            //}
+            if(GameManager.EndTimeline()){
+                Destroy(GameObject.Find("TimelineCamera"));
+                GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
+                if (GameObject.Find("DialogBox")==null) {
+                    NoticeMark.SetActive(false);
+                    this.GetComponent<SpriteRenderer>().enabled = false;
+                    NpcTwoFall.SetActive(true);
+                    GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+                }
+            }
         }
 
 
 
         //黨小游戲完成時，npc2摔倒消失。小花出現。第二關任務完成
-        if(RhythmGame.GetComponent<RhythmScore>().IsGameEnded == true){
+        if(RhythmGame.GetComponent<RhythmScore>().IsGameEnded == true) {
             NpcTwoFall.SetActive(false);
 
 
