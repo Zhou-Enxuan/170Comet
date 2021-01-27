@@ -50,7 +50,7 @@ public class NpcController : MonoBehaviour
         else if (!RhythmGame.GetComponent<RhythmScore>().IsGameEnded) {
             this.GetComponent<SpriteRenderer>().enabled = false;
             NpcTwoFall.SetActive(true);
-            Debug.Log("对话后摔倒");
+            //Debug.Log("对话后摔倒");
         }
 
         //黨小游戲完成時，npc2摔倒消失。小花出現。第二關任務完成

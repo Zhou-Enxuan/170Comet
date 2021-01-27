@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RhythmScore : MonoBehaviour
 {
-	//score setting
+    //score setting
     public static int currentScore;
     private static int scorePerNote = 100;
     public static int totalScore;
@@ -15,7 +15,8 @@ public class RhythmScore : MonoBehaviour
     public static GameObject RhythmGame;
     public static GameObject SadFace;
 
-    void OnEnable() {
+    void OnEnable()
+    {
         RhythmGame = GameObject.FindGameObjectWithTag("RhythmGame");
         SadFace = GameObject.FindGameObjectWithTag("SadFace");
         currentScore = 0;
@@ -23,44 +24,38 @@ public class RhythmScore : MonoBehaviour
         PlayAgain = false;
     }
 
-    void Update() {
-    	totalS = totalScore;
-<<<<<<< Updated upstream
-        //过关 - 得到500分
-        
-	    if (currentScore >= 200 && totalScore >= 500) {
-=======
+    void Update()
+    {
+        totalS = totalScore;
 
         //过关 - 得到200分
-	    if (currentScore >= 200 && totalScore == 500) {
->>>>>>> Stashed changes
-	        //stop rhythm game & 五线谱消失
-	        RhythmGame.SetActive(false); 
-	        //continue controlling the biraad
-	        GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
-	        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+        if (currentScore >= 200 && totalScore == 500)
+        {
+            //stop rhythm game & 五线谱消失
+            SadFace.SetActive(false);
+            RhythmGame.SetActive(false);
+            //continue controlling the bird
+            GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
             IsGameEnded = true;
-<<<<<<< Updated upstream
-            Debug.Log("过关");
-	        //SadFace.SetActive(true);
-	        //SadFace.GetComponent<CallStaff>().enabled = true;
-=======
->>>>>>> Stashed changes
-	    }
-	    //没过关 - 未得到200分
-	    else if (currentScore < 200 && totalScore == 500) {
+        }
+        //没过关 - 未得到200分
+        else if (currentScore < 200 && totalScore == 500)
+        {
             PlayAgain = true;
-	    }
-        
-        
+        }
+
+
     }
 
-    public static void NoteHit() {
+    public static void NoteHit()
+    {
         currentScore += scorePerNote;
         //totalScore += scorePerNote;
     }
 
-    public static void NotePass() {
+    public static void NotePass()
+    {
         totalScore += scorePerNote;
     }
 }
