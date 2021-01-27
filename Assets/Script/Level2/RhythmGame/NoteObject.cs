@@ -7,13 +7,13 @@ public class NoteObject : MonoBehaviour
     public bool CanBePressed;
     public KeyCode KeyToPress;
     private GameObject EndingLine;
+    public SpriteRenderer NotesSR;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyToPress)) {
         	if (CanBePressed) {
-        		gameObject.SetActive(false);
-        		//GameManager.instance.NoteHit();
+        		NotesSR.enabled = false;
                 RhythmScore.NoteHit();
         	}
         }
@@ -36,6 +36,7 @@ public class NoteObject : MonoBehaviour
     	}
         if (other.tag == "EndingLine"){
             RhythmScore.NotePass();
+            NotesSR.enabled = true;
         }
     }
 

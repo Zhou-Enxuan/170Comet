@@ -973,7 +973,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.00000023841858}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -984,7 +984,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.37998915, y: 0.3799882}
   m_EdgeRadius: 0
 --- !u!1 &258068460
 GameObject:
@@ -1291,6 +1291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 32
+  NotesSR: {fileID: 456653853}
 --- !u!1 &457658918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cad9687e0e04acca532d4cb53231d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanHitSadFace: 1
 --- !u!60 &884212472
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2223,7 +2225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224287081}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.6, y: 1.8, z: 3.6312504}
+  m_LocalPosition: {x: -9.03, y: 1.8, z: 3.6312504}
   m_LocalScale: {x: 0.1, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1681599059}
@@ -2523,6 +2525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 32
+  NotesSR: {fileID: 1318794353}
 --- !u!1 &1350817259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,6 +3209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalS: 0
   IsGameEnded: 0
+  PlayAgain: 0
 --- !u!1 &1681599058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 32
+  NotesSR: {fileID: 1761097177}
 --- !u!1 &1843516151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,6 +3743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 32
+  NotesSR: {fileID: 1858918897}
 --- !u!1 &1908506523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,6 +3924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanBePressed: 0
   KeyToPress: 32
+  NotesSR: {fileID: 2007743888}
 --- !u!1 &2043999675
 GameObject:
   m_ObjectHideFlags: 0
