@@ -1409,7 +1409,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 40}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464507830
 MonoBehaviour:
@@ -1444,7 +1444,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[PRESS SPACE]'
+  m_Text: '[PRESS W&S&SPACE]'
 --- !u!222 &464507831
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ GameObject:
   - component: {fileID: 1093815265}
   - component: {fileID: 1093815264}
   m_Layer: 5
-  m_Name: PickUpHint (1)
+  m_Name: Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2067,7 +2067,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -276.83905}
-  m_SizeDelta: {x: 200, y: 40}
+  m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093815264
 MonoBehaviour:
