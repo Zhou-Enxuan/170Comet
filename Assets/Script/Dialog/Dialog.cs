@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Dialog : MonoBehaviour
 {
@@ -10,12 +11,13 @@ public class Dialog : MonoBehaviour
     public TextAsset textFile;
 
     public static int index;
-    public static List<string> textlist = new List<string>();
-    public static List<string> textlist2 = new List<string>();
+    public static List<string> AllTextlist = new List<string>();
+    public static List<string> CurrentTextlist = new List<string>();
     public static List<string> dialogList;
     public static bool startTyping;
     public static bool isTyping;
     public static string Line;
+    public static int j;
     public float textspeed;
    
     bool isTimeline = false; //是否开始动画播放
@@ -25,8 +27,7 @@ public class Dialog : MonoBehaviour
         var linetext = textFile.text.Split('\n');
         index = 2;
         foreach (var line in linetext) {
-            textlist.Add(line);
-         //           print("read " + line );
+            AllTextlist.Add(line);
         }
         dialog = GameObject.Find("DialogBox");
         dialogText = GameObject.Find("DialogText").GetComponent<Text>();
@@ -63,14 +64,14 @@ public class Dialog : MonoBehaviour
 
     //check dialog has next sentence or not
     public static bool NextPage() {
-    	if (index > textlist2.Count - 1) {
+    	if (index > CurrentTextlist.Count - 1) {
     			index = 2;
     			//Debug.Log("no more tips");
                 // dialog.SetActive(false);
                 dialogText.text = "";
                 return false;
             }
-            Line = textlist2[index].Replace("=", "\n");
+            Line = CurrentTextlist[index].Replace("=", "\n");
             startTyping = true;
             index ++;
             return true;
@@ -78,18 +79,29 @@ public class Dialog : MonoBehaviour
 
     //Call for starting dialog
     public static void PrintDialog(string objName) {
-    	textlist2.Clear();
-        if (textlist.Contains(objName)) {
-            int j = textlist.IndexOf(objName);
-            //int j = i;
-            while (textlist[j].CompareTo("---") != 0) {
-                textlist2.Add(textlist[j]);
-                // print(textlist[j]);
+        j = 0;
+    	CurrentTextlist.Clear();
+        //if (AllTextlist.Contains(objName)) {
+            // int j = AllTextlist.IndexOf(objName);
+            //代替IndexOf
+            for (int i  = 0; i < AllTextlist.Count; i++) {
+                if (string.Compare(AllTextlist[i], objName, StringComparison.Ordinal) == 0) {
+                    j = i;
+                    print(j);
+                    break;
+                }
+            }
+            //代替IndexOf
+
+            //while (AllTextlist[j].CompareTo("---") != 0) {
+            //代替.CompareTo
+            while (string.Compare(AllTextlist[j], "---", StringComparison.Ordinal) != 0) {
+            //代替.CompareTo
+                CurrentTextlist.Add(AllTextlist[j]);
                 j++;
             }
-        }
-        Line = textlist2[1].Replace("=", "\n");
-        //dialogText.text = "haha";
+        //}
+        Line = CurrentTextlist[1];
         startTyping = true;
         dialog.SetActive(true);
         //print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
