@@ -5,46 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class GamePlaySystemManager : MonoBehaviour
 {
-	//public string SceneName;
-    public bool isLevel1End = false;
-    public bool isLevel2End = false;
-    //public bool isDialogShown = false;
-    private bool isMissionCompleted;
+    public static bool isLevel1Mission1End = false; //捡东西情节
+    public static bool isLevel2NpcPlot = false; //Npc对话至播放跑马动画的情节
+    public static bool isLevel2WinterEnd = false; //音游情节
+    public static bool isLevel2Flower = false; //有无捡花
+    private bool isLevelExit;
     
-
     // Start is called before the first frame update
     void Awake() {
         DontDestroyOnLoad(this);
-        isMissionCompleted = false;
+        isLevelExit = false;
     }
 
     // Update is called once per frame
     void Update() {
         if (SceneManager.GetActiveScene().name != "Level1") {
-        	GameObject.Find("Player").GetComponent<PaletteController>().enabled = false;
+            if (!isLevel1Mission1End) {
+        	   GameObject.Find("Player").GetComponent<PaletteController>().enabled = false;
+            } 
+            else {
+                Destroy(GameObject.Find("Player").GetComponent<PaletteController>());
+            }
+        //in level1
         } else {
-            if (!isMissionCompleted) {
+            // 首次
+            if (!isLevelExit) {
         	    GameObject.Find("Player").GetComponent<PaletteController>().enabled = true;
-                isLevel1End = PaletteController.isLevel1End;
-                // if (GameObject.Find("DialogBox") == null) {
-                //     isDialogShown = true;
-                // } else {
-                //     isDialogShown = false;
-                // }
+                isLevel1Mission1End = PaletteController.isLevel1End;
             //if mission one end, destroy missionone's gameobject after loading in level1 scene agian再次进入销毁任务1的东西
-            } else if (isLevel1End && isLevel2End){
-                Debug.Log("level2complete");
-                GameObject.Find("Player").GetComponent<PaletteController>().enabled = true;
-                Destroy(GameObject.Find("MissionOne"));  
-                
-            }else if (isLevel1End) {
-                Debug.Log("level2complete");
-                Destroy(GameObject.Find("MissionOne"));  
+            }
+            else {
+                Destroy(GameObject.Find("MissionOne"));
             }
         }
 
         if (SceneManager.GetActiveScene().name == "Level2") {
-            isMissionCompleted = true;
+            isLevelExit = true;
+            isLevel2Flower = FlowerDisappear.isPickFlower;
+            if (isLevel2NpcPlot) {
+                Destroy(GameObject.Find("NpcPlot"));
+                Destroy(GameObject.Find("NpcOne").GetComponent<AutoMovement>());
+                // Debug.Log("删除npc对话");
+            }
         }
 
 

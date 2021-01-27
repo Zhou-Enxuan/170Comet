@@ -21,7 +21,7 @@ public class CallScene : MonoBehaviour
 	}
 
     void OnTriggerEnter2D(Collider2D other) {
-    	if (SceneManager.GetActiveScene().name == "Level1" && other.tag.CompareTo("Player") == 0 && GamePlaySystemManager.isLevel1End && GameObject.Find("DialogBox") == null) {
+    	if (SceneManager.GetActiveScene().name == "Level1" && other.tag.CompareTo("Player") == 0 && GamePlaySystemManager.isLevel1Mission1End && GameObject.Find("DialogBox") == null) {
 			LeaveTip.SetActive(true);
 		}
 		if (SceneManager.GetActiveScene().name == "Level2" && other.tag.CompareTo("Player") == 0) {

@@ -24,3 +24,13 @@ Bearded Man: It’s over! Everything is over! The war is coming! My life is over
 Villager3
 CCCC
 ---
+Lv2P2Room
+Nightingale: It was a shining comet that flew over last night.
+Girl: How can I see the comet?
+Nightingale: I don't know... But I'll find out for you!
+---
+Lv2P2Flower
+Nightingale: Here is a present for you! It was a shining comet that flew over last night.
+Girl: How can I see the comet?
+Nightingale: I don't know... But I'll find out for you!
+---

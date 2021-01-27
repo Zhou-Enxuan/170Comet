@@ -23,14 +23,14 @@ public class RhythmScore : MonoBehaviour
     	totalS = totalScore;
         //过关 - 得到500分
         
-	    if (currentScore == 200 && totalScore == 500) {
+	    if (currentScore >= 200 && totalScore >= 500) {
 	        //stop rhythm game & 五线谱消失
 	        RhythmGame.SetActive(false); 
-	        //continue controlling the bird
+	        //continue controlling the biraad
 	        GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
 	        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
             IsGameEnded = true;
-
+            Debug.Log("过关");
 	        //SadFace.SetActive(true);
 	        //SadFace.GetComponent<CallStaff>().enabled = true;
 	    }
