@@ -9,7 +9,7 @@ public class RhythmScore : MonoBehaviour
     private static int scorePerNote = 100;
     public static int totalScore;
     public int totalS = 0;
-    public bool IsGameEnded = false;
+    public bool IsGameEnded;
     public bool PlayAgain;
 
     public static GameObject RhythmGame;
@@ -17,6 +17,7 @@ public class RhythmScore : MonoBehaviour
 
     void OnEnable()
     {
+        IsGameEnded = false;
         RhythmGame = GameObject.FindGameObjectWithTag("RhythmGame");
         SadFace = GameObject.FindGameObjectWithTag("SadFace");
         currentScore = 0;

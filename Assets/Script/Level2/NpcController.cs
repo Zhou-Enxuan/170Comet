@@ -46,29 +46,31 @@ public class NpcController : MonoBehaviour
                 }
             }
         }
-        //完成情节1 但 没完成音游
-        else if (!RhythmGame.GetComponent<RhythmScore>().IsGameEnded) {
-            this.GetComponent<SpriteRenderer>().enabled = false;
-            NpcTwoFall.SetActive(true);
-            //Debug.Log("对话后摔倒");
+        //完成情节1，未完成情节2
+        else if (!GamePlaySystemManager.isLevel2WinterEnd) {
+            //没完成音游
+            if (!RhythmGame.GetComponent<RhythmScore>().IsGameEnded) {
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                NpcTwoFall.SetActive(true);
+                Debug.Log("对话后摔倒");
+            }
+            // 完成音游 结束情节2
+            else {
+                NpcTwoFall.SetActive(false);
+
+
+                //之後插入拿出花的動畫
+
+                this.GetComponent<SpriteRenderer>().enabled = true;
+                Flower.SetActive(true); 
+                RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
+
+                //第二關冬天任務結束
+                GamePlaySystemManager.isLevel2WinterEnd = true;
+                Debug.Log("任务结束");
+            }
+
         }
-
-        //黨小游戲完成時，npc2摔倒消失。小花出現。第二關任務完成
-        if(RhythmGame.GetComponent<RhythmScore>().IsGameEnded) {
-            NpcTwoFall.SetActive(false);
-
-
-            //之後插入拿出花的動畫
-
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            Flower.SetActive(true); 
-            RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
-
-            //第二關冬天任務結束
-            GamePlaySystemManager.isLevel2WinterEnd = true;
-            Debug.Log("任务结束");
-        }
-
     }
 
 }

@@ -1,9 +1,9 @@
 Level1 Start
-Nightingale: Can you hear people cheering out side? They’re saying:”Comet, Comet!”
+Nightingale: Can you hear people cheering outside? They’re saying:”Comet, Comet!”
 Girl: “Comet?” I’ve only heard of it through books. It said it’s the most beautiful star in the world...
 Nightingale: Can you see it through the window? What does a “comet” look like?
 Girl: The sky was blocked by trees. I could only see a few light. 
-Girl: It’s okay! I’ve heard about it in books, let me draw it for you!
+Girl: It’s okay! I’ve heard about it in books, let me draw it for you! Could you bring me a pen and a paper?
 ---
 Level1 End
 Nightingale: Wow!
@@ -16,7 +16,7 @@ Boy with Green Hair: Those stars brings happiness. We are so lucky!
 Bearded Man: I’ve heard that if we could go up to the mountain top and touch them close, we could have a wish come true!
 ---
 Villager1
-Cowboy: Oh my God! The king is dead
+Cowboy: Big news! The king is dead.
 ---
 Villager2
 Bearded Man: It’s over! Everything is over! The war is coming! My life is over...

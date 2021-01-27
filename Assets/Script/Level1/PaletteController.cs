@@ -50,9 +50,13 @@ public class PaletteController : MonoBehaviour {
 
  void OnTriggerStay2D(Collider2D collision){
     if (collision.tag == "trigger" && IsDialogStart) {
-        Dialog.PrintDialog("Level1 Start"); 
-        QuestionMark.SetActive(false);
-        IsDialogStart = false;
+        PickUpHint.SetActive(true);
+        if (Input.GetKeyDown("space")) {
+            PickUpHint.SetActive(false);
+            Dialog.PrintDialog("Level1 Start"); 
+            QuestionMark.SetActive(false);
+            IsDialogStart = false;
+        }
     }
     if (i < 2 && GameObject.Find("DialogBox") == null) {
         if (collision.tag == "pen") {
