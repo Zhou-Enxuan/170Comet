@@ -16,7 +16,7 @@ public class AutoMovement : MonoBehaviour
     void Start() {
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-		TargetPos = new Vector2(1.2f, -4f);
+		TargetPos = new Vector2(-1f, -2.5f); //小鸟需要到达的位置
 		isAIMove = false;
 		isDialoged = false;
         isPlaCanFly = true;
@@ -31,13 +31,13 @@ public class AutoMovement : MonoBehaviour
 			    //玩家自动移到固定点
     		    Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
     		    GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = -2f;
-        	    MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,3,0.03f);//zoom in 
     	    } else {
-                //Debug.Log("player unmove");
+                MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,3,0.03f);//zoom in z
+                Debug.Log("player unmove");
     		    //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动，！！后续需要修改为可继续播放player。ainmation 
                 GameObject.Find("NpcOne").GetComponent<BoxCollider2D>().enabled = false;
                 // if zoom in 停止上面的工作
-                if (MainCamera.orthographicSize < (3 + delta*3)) {
+                if (MainCamera.orthographicSize < (3 + delta*2)) {
                     MainCamera.orthographicSize = 3;
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
