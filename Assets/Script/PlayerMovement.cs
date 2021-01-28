@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate(){
         //碰撞到npcone的时候
-        if (SceneManager.GetActiveScene().name == "Loading" || (SceneManager.GetActiveScene().name == "Level2" && (AutoMovement.isAIMove || NpcController.isPlayerMove))) {
+        if (SceneManager.GetActiveScene().name == "Loading" || (SceneManager.GetActiveScene().name == "Level2" && (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove))) {
             direction = new Vector2(0, 0);
             rb.velocity = direction;
             Debug.Log("Stop PlayerMovement");

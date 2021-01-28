@@ -10,6 +10,7 @@ public class AutoMovement : MonoBehaviour
     public Vector2 TargetPos;
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
     public static bool isDialoged;
+    public static bool isPlaCanFly; //在playermovement引用
     Camera MainCamera;
 
     void Start() {
@@ -18,6 +19,7 @@ public class AutoMovement : MonoBehaviour
 		TargetPos = new Vector2(1.2f, -4f);
 		isAIMove = false;
 		isDialoged = false;
+        isPlaCanFly = true;
 
     }
 
@@ -52,12 +54,14 @@ public class AutoMovement : MonoBehaviour
     		    MainCamera.orthographicSize = 5;
         	    NpcController.NoticeMark.SetActive(true);
         	    isDialoged = false;
+                isPlaCanFly = true;
     	    }
         }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
 	    if (other.tag.CompareTo("Player") == 0) {
+            isPlaCanFly = false;
 		    isAIMove = true;
             GameObject.Find("QuestionMark").GetComponent<SpriteRenderer>().enabled = false;
 	    }

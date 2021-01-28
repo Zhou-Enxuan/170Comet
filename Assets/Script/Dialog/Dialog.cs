@@ -87,7 +87,6 @@ public class Dialog : MonoBehaviour
             for (int i  = 0; i < AllTextlist.Count; i++) {
                 if (string.Compare(AllTextlist[i], objName, StringComparison.Ordinal) == 0) {
                     j = i;
-                    print(j);
                     break;
                 }
             }
