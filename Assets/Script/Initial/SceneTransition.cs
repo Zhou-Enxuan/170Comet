@@ -30,7 +30,8 @@ public class SceneTransition : MonoBehaviour
 					NextSceneName = "Level1";
 				}
 				if (SceneManager.GetActiveScene().name == "Level1") {
-					PlayerPosition  = new Vector2(-3.5f, -4f);
+					PlayerPosition  = new Vector2(-6.1f, -1.9f);
+					//GameObject.Find("Player").GetComponent<PlayerAnimation1>().Level2DefultAnimation();
 					isSceneChanged = false;
 					if (GameObject.Find("LeaveTip") != null && Input.GetKeyDown("space")) {
 						NextSceneName = "Level2";
@@ -38,7 +39,8 @@ public class SceneTransition : MonoBehaviour
 					}
 				}
 				if (SceneManager.GetActiveScene().name == "Level2") {
-					PlayerPosition  = new Vector2(3f, 1.5f);
+					PlayerPosition  = new Vector2(1.7f, 0.7f);
+					//GameObject.Find("Player").GetComponent<PlayerAnimation1>().Level1DefultAnimation();
 					isSceneChanged = false;
 					if (GameObject.Find("Window") == null) {
 						ActiveScene("Loading");

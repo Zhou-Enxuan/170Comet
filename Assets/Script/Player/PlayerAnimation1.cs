@@ -11,7 +11,7 @@ public class PlayerAnimation1 : MonoBehaviour
     public string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
     public string[] FlyAnimation = {"Fly_L", "Fly_R"};
     public string[] FlyInAirAnimation = {"FlyStatic_L", "FlyStatic_R"}; 
-    private int FaceDirection = 0; //0 right 1 left
+    private int FaceDirection = 0; //1 right 0 left
     
 
     int lastDirection;
@@ -23,22 +23,33 @@ public class PlayerAnimation1 : MonoBehaviour
     public void SetDirection(Vector2 _direction){
         string[] directionArray = null;
         if(SceneManager.GetActiveScene().name == "Level2"){
+            //Debug.Log(_direction);
 
-            if(transform.position.y <= -3.5){
-                //Debug.Log("on the grd");
-                if(_direction.x>0){
-                    anim.Play(FlyInAirAnimation[1]);
-                }else if(_direction.x<0){
-                    anim.Play(FlyInAirAnimation[0]); 
-                } 
+            if(_direction.magnitude < 0.01 || _direction.y != 0){
+                if(transform.position.y <= -4.3){
+                    anim.Play(FlyInAirAnimation[FaceDirection]);
+                }else{
+                    anim.Play(FlyAnimation[FaceDirection]);
+                }
             }else{
-                //Debug.Log("fly");
-                if(_direction.x>0){
-                    anim.Play(FlyAnimation[1]);
-                    FaceDirection = 0;
-                }else if(_direction.x<0){
-                    anim.Play(FlyAnimation[0]); 
-                    FaceDirection = 1;
+                if(transform.position.y <= -4.3){
+                    //Debug.Log("on the grd");
+                    if(_direction.x>0){
+                        anim.Play(FlyInAirAnimation[1]);
+                        FaceDirection = 1;
+                    }else if(_direction.x<0){
+                        anim.Play(FlyInAirAnimation[0]); 
+                        FaceDirection = 0;
+                    }
+                }else{
+                    //Debug.Log("fly");
+                    if(_direction.x>0){
+                        anim.Play(FlyAnimation[1]);
+                        FaceDirection = 1;
+                    }else if(_direction.x<0){
+                        anim.Play(FlyAnimation[0]); 
+                        FaceDirection = 0;
+                    }
                 }
             }
        
@@ -69,6 +80,14 @@ public class PlayerAnimation1 : MonoBehaviour
 
         float stepCount = angle/step;
         return Mathf.FloorToInt(stepCount);
+    }
+
+    public void Level2DefultAnimation(){
+        anim.Play(FlyAnimation[1]);
+    }
+
+    public void Level1DefultAnimation(){
+        anim.Play(staticDirections[4]);
     }
     
 }
