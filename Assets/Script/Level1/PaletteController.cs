@@ -140,7 +140,7 @@ public class PaletteController : MonoBehaviour {
     }
  }
 
- void Update() {
+ void FixedUpdate() {
     if (!IsDialogStart && !IsBubbleShowed && GameObject.Find("DialogBox") == null) {
         pen_paper.SetActive(true);
         IsBubbleShowed = true;
@@ -148,6 +148,8 @@ public class PaletteController : MonoBehaviour {
     if (i == 3) {
         if (Input.GetKeyDown("space")) {
             fadein = true;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);;
         }
         if (fadein == true && timerin >= 0 && timerin < wait) {
             timerin += Time.deltaTime;
@@ -254,6 +256,7 @@ public class PaletteController : MonoBehaviour {
     else if (i == 8) {
         if (fadein == false && Input.GetKeyDown("space")) {
             fadeout = true;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
         }
         if (fadeout == true && timerout >= 0 && timerout < wait) {
             timerout += Time.deltaTime;
