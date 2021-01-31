@@ -27,7 +27,7 @@ public class SceneTransition : MonoBehaviour
 				if (SceneManager.GetActiveScene().name == "Initial") {
 					isSceneChanged = false;
 					ActiveScene("Loading");
-					NextSceneName = "Level1";
+					NextSceneName = "Level2";
 				}
 				if (SceneManager.GetActiveScene().name == "Level1") {
 					PlayerPosition  = new Vector2(-6.1f, -1.9f);
