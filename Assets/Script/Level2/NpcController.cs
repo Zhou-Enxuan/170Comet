@@ -5,12 +5,14 @@ using UnityEngine;
 public class NpcController : MonoBehaviour
 {
     public static GameObject NpcTwoFall;
-    public static GameObject NoticeMark;
+    public static GameObject NoticeMark;    
+   	public static GameObject Flower; //小花
+    public static GameObject RhythmGame; //小花
+    public static GameObject Horse;
     public static GameObject NpcTwoTimeline; //胡子男拿花的timeline
     public static GameObject VillagerTimeline; //骑马过来的timeline
-    public static GameObject Flower; //小花
-    public static GameObject RhythmGame; //小花
     public static bool isPlayerMove = false;
+
 	void Awake() {
         NpcTwoFall = GameObject.Find("NpcTwoFall");
         NoticeMark = GameObject.Find("NoticeMark");
@@ -18,11 +20,13 @@ public class NpcController : MonoBehaviour
         NpcTwoTimeline = GameObject.Find("NpcTwoTimeline");
         RhythmGame = GameObject.Find("RhythmGame");
         Flower = GameObject.Find("Flower");
+        Horse = GameObject.Find("Horse");
         NoticeMark.SetActive(false);
         VillagerTimeline.SetActive(false);
         NpcTwoTimeline.SetActive(false);
         NpcTwoFall.SetActive(false);
         Flower.SetActive(false);
+        Horse.SetActive(false);
     }
 
     void Update() { 
@@ -31,7 +35,8 @@ public class NpcController : MonoBehaviour
             if (NoticeMark.activeSelf) {
                 isPlayerMove = true;
                 //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
-                VillagerTimeline.SetActive(true);
+                Horse.SetActive(true);
+                VillagerTimeline.SetActive(true); //播放cg动画
                 GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
                 //完成马的timeline，玩家恢复移动，npc2跌倒+哭
                 if(GameManager.EndTimeline()){
