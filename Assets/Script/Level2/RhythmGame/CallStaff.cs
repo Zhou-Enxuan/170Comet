@@ -9,6 +9,8 @@ public class CallStaff : MonoBehaviour
     public static GameObject NoteHolder;
     Vector3 originalPos;
     public bool CanHitSadFace = true;
+    public bool IsInFace = false;
+    public static GameObject SpaceHint;
 
     void OnEnable() {
         RhythmGame = GameObject.FindGameObjectWithTag("RhythmGame");
@@ -16,6 +18,8 @@ public class CallStaff : MonoBehaviour
         //五线谱在碰sadFace之前不可见
         RhythmGame.SetActive(false);
         originalPos = new Vector3(NoteHolder.transform.position.x, NoteHolder.transform.position.y, NoteHolder.transform.position.z);
+        SpaceHint = GameObject.Find("SpaceHint");
+        SpaceHint.SetActive(false);
     }
 
 
@@ -30,13 +34,12 @@ public class CallStaff : MonoBehaviour
             Debug.Log("PlayAgain!");
             RhythmGame.GetComponent<RhythmScore>().PlayAgain = false;
         }
-    }
 
-    //当bird撞上sadFace时触发五线谱
-    void OnTriggerStay2D(Collider2D other) {
-    	if (other.tag.CompareTo("Player") == 0 && CanHitSadFace) {
-            //按空格开始
+        if (IsInFace  && CanHitSadFace) {
+            SpaceHint.SetActive(true);
+            //按空格开始 
             if(Input.GetKeyDown("space")){
+                SpaceHint.SetActive(false);
                 CanHitSadFace = false;
                 //notes结束后回到原位
                 NoteHolder.transform.position = originalPos;
@@ -47,6 +50,20 @@ public class CallStaff : MonoBehaviour
                 //出现五线谱
                 RhythmGame.SetActive(true);
             }
+        }else{
+            SpaceHint.SetActive(false);
+        }
+    }
+
+    //当bird撞上sadFace时触发五线谱
+    void OnTriggerEnter2D(Collider2D other) {
+    	if (other.tag.CompareTo("Player") == 0) {
+            IsInFace = true;
     	}
+    }
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.tag.CompareTo("Player") == 0){
+            IsInFace = false;
+        }
     }
 }

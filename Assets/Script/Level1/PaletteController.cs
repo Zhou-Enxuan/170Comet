@@ -29,6 +29,7 @@ public class PaletteController : MonoBehaviour {
  bool IsDialogStart = true;
  bool IsInthePen = false;
  bool IsInthePaper = false;
+ bool IsCollideBed = false;
 
  void OnEnable(){
     board = GameObject.Find("palette1").GetComponent<Image>();
@@ -50,11 +51,9 @@ public class PaletteController : MonoBehaviour {
     QuestionMark.SetActive(true);
  }
 
- void OnTriggerStay2D(Collider2D collision){
-     Debug.Log("trigger stay");
-
-
-    if (collision.tag == "trigger" && IsDialogStart) {
+ void Update() {
+ 	//第一次碰撞床：第一个dialog
+    if (IsCollideBed && IsDialogStart) {
         PickUpHint.SetActive(true);
         if (Input.GetKeyDown(KeyCode.Space)) {
             PickUpHint.SetActive(false);
@@ -63,17 +62,58 @@ public class PaletteController : MonoBehaviour {
             IsDialogStart = false;
         }
     }
+
+    //第一个dialog结束出现气泡
+    Debug.Log(i);
+    if (!IsDialogStart && !IsBubbleShowed && GameObject.Find("DialogBox") == null) {
+        pen_paper.SetActive(true);
+        IsBubbleShowed = true;
+    }
+
+    Debug.Log("in the paper" + IsInthePaper);
+    Debug.Log("in the pen" + IsInthePen);
+    //pick up pen
+    if(IsInthePen && Input.GetKeyDown(KeyCode.Space)){
+        Rpen.SetActive(false);
+            if (IspickPaper == 1) {
+                Rpaper.SetActive(true);
+                Rpaper.transform.position = Rpen.transform.position;
+                // Debug.Log("changetopen");
+                // Debug.Log(Rpaper.transform.position);
+                i--;
+                IspickPaper = 0;
+            }
+        IspickPen = 1;
+        i++;
+        Debug.Log("pen");
+    }
+    //pick up paper
+    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space)){
+        //Debug.Log(Rpaper.transform.position);
+                Rpaper.SetActive(false);
+                if (IspickPen == 1) {
+                    Rpen.SetActive(true);
+                    Rpen.transform.position = Rpaper.transform.position;
+                    //Debug.Log("changetopen");
+                    i--;
+                    IspickPen = 0;
+                }
+                IspickPaper = 1;
+                i++;
+                Debug.Log("paper");
+    }
+
+    //把笔和纸交给女孩
     if (i < 2 && GameObject.Find("DialogBox") == null) {
-        if (collision.tag == "pen") {
+        if (IsInthePen || IsInthePaper) {
             PickUpHint.SetActive(true);
         }
-        if (collision.tag == "paper") {
-            PickUpHint.SetActive(true);
-        }
-        if (collision.tag == "trigger") {
+        //交 笔/纸
+        if (IsCollideBed) {
             if (IspickPaper == 1 || IspickPen == 1) {
                 PickUpHint.SetActive(true);
             }
+
             if (Input.GetKeyDown(KeyCode.Space)) {
                 if (IspickPaper == 1) {
                     pen_paper.SetActive(false);
@@ -96,9 +136,10 @@ public class PaletteController : MonoBehaviour {
             }
         }
     }
-    
+
+    //笔和纸出现在床上
     if (i == 2) {
-        if (collision.tag == "trigger") {
+        if (IsCollideBed) {
             PickUpHint.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space)) {
                 i ++;
@@ -115,49 +156,8 @@ public class PaletteController : MonoBehaviour {
             }
         }
     }
- }
 
- void Update() {
-
-    Debug.Log("in the paper" + IsInthePaper);
-    Debug.Log("in the pen" + IsInthePen);
-
-    if(IsInthePen && Input.GetKeyDown(KeyCode.Space)){
-        Rpen.SetActive(false);
-            if (IspickPaper == 1) {
-                Rpaper.SetActive(true);
-                Rpaper.transform.position = Rpen.transform.position;
-                // Debug.Log("changetopen");
-                // Debug.Log(Rpaper.transform.position);
-                i--;
-                IspickPaper = 0;
-            }
-        IspickPen = 1;
-        i++;
-        Debug.Log("pen");
-    }
-
-    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space)){
-        //Debug.Log(Rpaper.transform.position);
-                Rpaper.SetActive(false);
-                if (IspickPen == 1) {
-                    Rpen.SetActive(true);
-                    Rpen.transform.position = Rpaper.transform.position;
-                    //Debug.Log("changetopen");
-                    i--;
-                    IspickPen = 0;
-                }
-                IspickPaper = 1;
-                i++;
-                Debug.Log("paper");
-
-    }
-
-    Debug.Log(i);
-    if (!IsDialogStart && !IsBubbleShowed && GameObject.Find("DialogBox") == null) {
-        pen_paper.SetActive(true);
-        IsBubbleShowed = true;
-    }
+    //开始画板
     if (i == 3) {
         if (Input.GetKeyDown(KeyCode.Space)) {
             fadein = true;
@@ -266,7 +266,7 @@ public class PaletteController : MonoBehaviour {
             }
         }
     }
-    else if (i == 8) {
+    else if (i >= 8) {
         if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
             fadeout = true;
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
@@ -293,6 +293,10 @@ public class PaletteController : MonoBehaviour {
     if(collision.tag == "paper"){
         IsInthePaper =true;
     }
+
+    if(collision.tag == "trigger"){
+    	IsCollideBed = true;
+    }
  }
 
  void OnTriggerExit2D(Collider2D collision) {
@@ -303,6 +307,10 @@ public class PaletteController : MonoBehaviour {
 
     if(collision.tag == "paper"){
         IsInthePaper =false;
+    }
+
+    if(collision.tag == "trigger"){
+    	IsCollideBed = false;
     }
  }
 

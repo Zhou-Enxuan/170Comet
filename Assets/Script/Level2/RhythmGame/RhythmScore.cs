@@ -29,8 +29,8 @@ public class RhythmScore : MonoBehaviour
     {
         totalS = totalScore;
 
-        //过关 - 得到200分
-        if (currentScore >= 200 && totalScore == 500)
+        //过关 - 得到400分
+        if (currentScore >= 400 && totalScore == 500)
         {
             //stop rhythm game & 五线谱消失
             SadFace.SetActive(false);
@@ -40,8 +40,8 @@ public class RhythmScore : MonoBehaviour
             GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
             IsGameEnded = true;
         }
-        //没过关 - 未得到200分
-        else if (currentScore < 200 && totalScore == 500)
+        //没过关 - 未得到400分
+        else if (currentScore < 400 && totalScore == 500)
         {
             PlayAgain = true;
         }
