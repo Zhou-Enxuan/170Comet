@@ -183,12 +183,12 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board);
                 fadeout = false;
                 timerout = 0;
             }
         }
         if (fadein == true && timerin >= 0 && timerin < wait) {
+            Destroy(board);
             timerin += Time.deltaTime;
             board2.color = new Color(255,255,255,timerin/wait);
             if (timerin/wait >= 1) {
