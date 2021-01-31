@@ -18,6 +18,12 @@ public class CallScene : MonoBehaviour
 		}
 	}
 
+	void OnTriggerExit2D(Collider2D other) {
+    	if (SceneManager.GetActiveScene().name == "Level1" && other.tag.CompareTo("Player") == 0 && GamePlaySystemManager.isLevel1Mission1End && GameObject.Find("DialogBox") == null) {
+			LeaveTip.SetActive(false);
+		}
+	}
+
     void OnTriggerEnter2D(Collider2D other) {
     	if (SceneManager.GetActiveScene().name == "Level1" && other.tag.CompareTo("Player") == 0 && GamePlaySystemManager.isLevel1Mission1End && GameObject.Find("DialogBox") == null) {
 			LeaveTip.SetActive(true);
