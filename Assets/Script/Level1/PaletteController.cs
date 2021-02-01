@@ -89,7 +89,7 @@ public class PaletteController : MonoBehaviour {
     }
     //pick up paper
     if(IsInthePaper && Input.GetKeyDown(KeyCode.Space)){
-        //Debug.Log(Rpaper.transform.position);
+        Debug.Log(Rpaper.transform.position);
                 Rpaper.SetActive(false);
                 if (IspickPen == 1) {
                     Rpen.SetActive(true);
