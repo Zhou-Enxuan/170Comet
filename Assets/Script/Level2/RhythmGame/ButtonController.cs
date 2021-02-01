@@ -24,13 +24,14 @@ public class ButtonController : MonoBehaviour
         	circle.sprite = Pic;
         }
         if (one < 5) {
-        	if (Input.GetKeyDown("s")){
+        	if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow)){
         		transform.position -= new Vector3(0f, 1.05f, 0f);
         		one++;
         	}
         }
         if (one > 1) {
-        	if (Input.GetKeyDown("w")){
+        	if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))
+            {
         		transform.position += new Vector3(0f, 1.05f, 0f);
         		one--;
         	}
