@@ -12,9 +12,13 @@ public class NpcController : MonoBehaviour
     public static GameObject NpcTwoTimeline; //胡子男拿花的timeline
     public static GameObject VillagerTimeline; //骑马过来的timeline
     public static bool isPlayerMove = false;
+    public static Animator Npc02Animator;
+    public static Animator Npc02FallAnimator;
 
 	void Awake() {
+        Npc02Animator = this.GetComponent<Animator>();
         NpcTwoFall = GameObject.Find("NpcTwoFall");
+        Npc02FallAnimator = NpcTwoFall.GetComponent<Animator>();
         NoticeMark = GameObject.Find("NoticeMark");
         VillagerTimeline = GameObject.Find("VillagerTimeline");
         NpcTwoTimeline = GameObject.Find("NpcTwoTimeline");
@@ -27,6 +31,8 @@ public class NpcController : MonoBehaviour
         NpcTwoFall.SetActive(false);
         Flower.SetActive(false);
         Horse.SetActive(false);
+        Npc02Animator.enabled = false;
+        Npc02FallAnimator.enabled = false;
     }
 
     void Update() { 

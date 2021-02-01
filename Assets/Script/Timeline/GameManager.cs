@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     public void ResumeTimeline()
     {
         activeDirector.Resume();
+        Dialog.HideDialog();
         isPaused = false;
     }
 

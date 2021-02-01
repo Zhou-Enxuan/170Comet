@@ -79,6 +79,7 @@ public class Dialog : MonoBehaviour
 
     //Call for starting dialog
     public static void PrintDialog(string objName) {
+        Debug.Log("PrintDialog");
         j = 0;
     	CurrentTextlist.Clear();
         //if (AllTextlist.Contains(objName)) {
@@ -106,6 +107,10 @@ public class Dialog : MonoBehaviour
         //print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
     }
 
+    public static void HideDialog() {
+         dialog.SetActive(false);
+    }
+
     //Typewriter effect
     IEnumerator Typing(string sentences) {
          startTyping = false;
@@ -118,5 +123,6 @@ public class Dialog : MonoBehaviour
          }
          isTyping = false; 
     }
+    
 
 }

@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class AutoMovement : MonoBehaviour
 {
+    public static Animator Npc01Animator;
     public float speed = 2f; //[1] 物体移动速度
     public static Transform Player;  // [2] 目标
-    public float delta = 0.2f; // 误差值
-    public Vector2 TargetPos;
+    public float delta = 0.01f; // 误差值
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
     public static bool isDialoged;
     public static bool isPlaCanFly; //在playermovement引用
     Camera MainCamera;
+    Vector2 TargetPos;
+    Vector2 Direction;
 
     void Start() {
+        Npc01Animator = this.GetComponent<Animator>();
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		TargetPos = new Vector2(-1f, -2.5f); //小鸟需要到达的位置
+        Direction = new Vector2(1f,0f); //向右飞
 		isAIMove = false;
 		isDialoged = false;
         isPlaCanFly = true;
+        Npc01Animator.enabled = false;
 
     }
 
@@ -32,27 +37,32 @@ public class AutoMovement : MonoBehaviour
     		    Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
     		    GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = -2f;
     	    } else {
+                Direction.y = -4.3f;
                 MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,3,0.03f);//zoom in z
-                Debug.Log("player unmove");
-    		    //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动，！！后续需要修改为可继续播放player。ainmation 
+                Debug.Log("Player unmove");
                 GameObject.Find("NpcOne").GetComponent<BoxCollider2D>().enabled = false;
                 // if zoom in 停止上面的工作
-                if (MainCamera.orthographicSize < (3 + delta*2)) {
-                    //地上静止
+                if (MainCamera.orthographicSize < (3 + delta)){
                     MainCamera.orthographicSize = 3;
+                    //地上静止
+                    GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动
+                    FindObjectOfType<PlayerAnimation1>().TimelineAnimation();
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
+                    Npc01Animator.enabled = true;
                     isDialoged = true;
                 }
     	    }
         }
         //if dialog真正结束，恢复镜头
         if(GameObject.Find("DialogBox") == null && isDialoged) {
-            //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            Npc01Animator.Play("Npc01Turn");
+            NpcController.Npc02Animator.enabled = true;
             GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
             MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);
-            if (MainCamera.orthographicSize > (5-delta)) {
+            if (MainCamera.orthographicSize > (5 - delta)) {
                 //恢复动画
+                //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
     		    MainCamera.orthographicSize = 5;
         	    NpcController.NoticeMark.SetActive(true);
         	    isDialoged = false;
@@ -66,6 +76,10 @@ public class AutoMovement : MonoBehaviour
             isPlaCanFly = false;
 		    isAIMove = true;
             GameObject.Find("QuestionMark").GetComponent<SpriteRenderer>().enabled = false;
+            if (Player.position.x > TargetPos.x){
+                Direction.x = -1;
+            }
+            FindObjectOfType<PlayerAnimation1>().SetDirection(Direction);
 	    }
     }
 }

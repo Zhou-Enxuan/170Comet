@@ -24,7 +24,6 @@ public class PlayerAnimation1 : MonoBehaviour
         string[] directionArray = null;
         if(SceneManager.GetActiveScene().name == "Level2"){
             Debug.Log("play lvl2 animation");
-
             // if(_direction.magnitude < 0.01 || _direction.y != 0){
             //     if(transform.position.y <= -4.3){
             //         anim.Play(FlyInAirAnimation[FaceDirection]);
@@ -94,4 +93,8 @@ public class PlayerAnimation1 : MonoBehaviour
         anim.Play(staticDirections[4]);
     }
     
+    public void TimelineAnimation(){
+            anim.Play("StaticOnGround");
+        
+    }
 }
