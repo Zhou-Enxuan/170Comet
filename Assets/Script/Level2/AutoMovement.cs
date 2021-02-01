@@ -38,6 +38,7 @@ public class AutoMovement : MonoBehaviour
                 GameObject.Find("NpcOne").GetComponent<BoxCollider2D>().enabled = false;
                 // if zoom in 停止上面的工作
                 if (MainCamera.orthographicSize < (3 + delta*2)) {
+                    //地上静止
                     MainCamera.orthographicSize = 3;
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
@@ -51,6 +52,7 @@ public class AutoMovement : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
             MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);
             if (MainCamera.orthographicSize > (5-delta)) {
+                //恢复动画
     		    MainCamera.orthographicSize = 5;
         	    NpcController.NoticeMark.SetActive(true);
         	    isDialoged = false;
