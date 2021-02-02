@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
         //Debug.Log(isTimeline);
     	// //Debug.Log(activeDirector);
      //    if (activeDirector != null) {
@@ -50,6 +51,9 @@ public class GameManager : MonoBehaviour
 
         // dialogueLineText.gameObject.SetActive(true);
     }
+    public void GetDirector(PlayableDirector _dic){
+        activeDirector = _dic;
+    }
 
     //暂停TimeLine
     public void PauseTimeline(PlayableDirector whichOne)
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void ResumeTimeline()
     {
         activeDirector.Resume();
+        Dialog.HideDialog();
         isPaused = false;
     }
 
