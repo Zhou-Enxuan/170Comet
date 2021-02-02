@@ -130,7 +130,7 @@ public class PaletteController : MonoBehaviour {
                     paper.SetActive(true);
                     PickUpHint.SetActive(false);
                     Rpen.transform.position = new Vector2(-2.89f, 1.6f);
-                    Rpaper.GetComponent<BoxCollider2D>().enabled = false;
+                    Rpen.GetComponent<BoxCollider2D>().enabled = false;
                     Rpen.SetActive(true);
                     Debug.Log("givepen");
                     IspickPen = 0;

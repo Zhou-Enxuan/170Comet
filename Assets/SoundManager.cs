@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoomBGM = Resources.Load<AudioClip>("Sound/CometSong");
+        RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
         audioSources = this.gameObject.GetComponents<AudioSource>();
         audioSources[0].clip = RoomBGM;
         audioSources[0].Play(0);

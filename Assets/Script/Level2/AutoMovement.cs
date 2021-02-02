@@ -19,7 +19,7 @@ public class AutoMovement : MonoBehaviour
         Npc01Animator = this.GetComponent<Animator>();
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-		TargetPos = new Vector2(-1f, -2.5f); //小鸟需要到达的位置
+		TargetPos = new Vector2(-1f, -2.35f); //小鸟需要到达的位置
         Direction = new Vector2(1f,0f); //向右飞
 		isAIMove = false;
 		isDialoged = false;
@@ -37,8 +37,10 @@ public class AutoMovement : MonoBehaviour
     		    Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
     		    GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = -2f;
     	    } else {
+                Player.position = TargetPos;
                 Direction.y = -4.3f;
-                MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,3,0.03f);//zoom in z
+                //zoom in z
+                MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,3,0.03f);
                 Debug.Log("Player unmove");
                 GameObject.Find("NpcOne").GetComponent<BoxCollider2D>().enabled = false;
                 // if zoom in 停止上面的工作
@@ -64,7 +66,8 @@ public class AutoMovement : MonoBehaviour
                 //恢复动画
                 //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
     		    MainCamera.orthographicSize = 5;
-        	    NpcController.NoticeMark.SetActive(true);
+                NpcController.isToStartTimeline = true;
+        	    //NpcController.NoticeMark.SetActive(true);
         	    isDialoged = false;
                 isPlaCanFly = true;
     	    }
