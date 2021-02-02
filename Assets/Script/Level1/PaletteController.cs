@@ -30,6 +30,8 @@ public class PaletteController : MonoBehaviour {
  bool IsInthePen = false;
  bool IsInthePaper = false;
  bool IsCollideBed = false;
+ bool IsPenOnBed = false;
+ bool IsPaperOnBed = false;
 
  void OnEnable(){
     board = GameObject.Find("palette1").GetComponent<Image>();
@@ -73,7 +75,7 @@ public class PaletteController : MonoBehaviour {
     Debug.Log("in the paper" + IsInthePaper);
     Debug.Log("in the pen" + IsInthePen);
     //pick up pen
-    if(IsInthePen && Input.GetKeyDown(KeyCode.Space)){
+    if(IsInthePen && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
         Rpen.SetActive(false);
             if (IspickPaper == 1) {
                 Rpaper.SetActive(true);
@@ -88,7 +90,7 @@ public class PaletteController : MonoBehaviour {
         Debug.Log("pen");
     }
     //pick up paper
-    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space)){
+    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
         //Debug.Log(Rpaper.transform.position);
                 Rpaper.SetActive(false);
                 if (IspickPen == 1) {
@@ -123,6 +125,7 @@ public class PaletteController : MonoBehaviour {
                     Rpaper.SetActive(true);
                     Debug.Log("givepaper");
                     IspickPaper = 0;
+                    Rpaper.GetComponent<Collider2D>().isTrigger = false;
                 }
                 else if (IspickPen == 1) {
                     pen_paper.SetActive(false);
@@ -132,6 +135,7 @@ public class PaletteController : MonoBehaviour {
                     Rpen.SetActive(true);
                     Debug.Log("givepen");
                     IspickPen = 0;
+                    Rpen.GetComponent<Collider2D>().isTrigger = false;
                 }              
             }
         }
@@ -148,6 +152,7 @@ public class PaletteController : MonoBehaviour {
                 if (Rpen.activeSelf) {
                     Rpaper.transform.position = new Vector2(-2.12f, 1f);
                     Rpaper.SetActive(true);
+
                 } else {
                     Rpen.transform.position = new Vector2(-2.89f, 1.6f);
                     Rpen.SetActive(true);
