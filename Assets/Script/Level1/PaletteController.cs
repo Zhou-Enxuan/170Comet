@@ -144,6 +144,7 @@ public class PaletteController : MonoBehaviour {
         if (IsCollideBed) {
             PickUpHint.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space)) {
+                i ++;
                 PickUpHint.SetActive(false);
                 paper.SetActive(false);
                 pen.SetActive(false);
@@ -188,7 +189,6 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board);
                 fadeout = false;
                 timerout = 0;
             }
@@ -212,7 +212,6 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board2.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board2);
                 fadeout = false;
                 timerout = 0;
             }
@@ -236,7 +235,6 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board3.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board3);
                 fadeout = false;
                 timerout = 0;
             }
@@ -260,7 +258,6 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board4.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board4);
                 fadeout = false;
                 timerout = 0;
             }
@@ -284,7 +281,6 @@ public class PaletteController : MonoBehaviour {
             timerout += Time.deltaTime;
             board5.color = new Color(1,1,1,1-(timerout/wait));
             if (timerout/wait >= 1) {
-                Destroy(board5);
                 Dialog.PrintDialog("Level1 End"); 
                 isLevel1End = true;
                 i++; 
