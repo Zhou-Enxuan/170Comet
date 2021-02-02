@@ -120,6 +120,7 @@ public class PaletteController : MonoBehaviour {
                     pen.SetActive(true);
                     PickUpHint.SetActive(false);
                     Rpaper.transform.position = new Vector2(-2.12f, 1f);
+                    Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                     Rpaper.SetActive(true);
                     Debug.Log("givepaper");
                     IspickPaper = 0;
@@ -129,6 +130,7 @@ public class PaletteController : MonoBehaviour {
                     paper.SetActive(true);
                     PickUpHint.SetActive(false);
                     Rpen.transform.position = new Vector2(-2.89f, 1.6f);
+                    Rpen.GetComponent<BoxCollider2D>().enabled = false;
                     Rpen.SetActive(true);
                     Debug.Log("givepen");
                     IspickPen = 0;
@@ -147,10 +149,14 @@ public class PaletteController : MonoBehaviour {
                 pen.SetActive(false);
                 if (Rpen.activeSelf) {
                     Rpaper.transform.position = new Vector2(-2.12f, 1f);
+                    Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                     Rpaper.SetActive(true);
+                    i++;
                 } else {
                     Rpen.transform.position = new Vector2(-2.89f, 1.6f);
+                    Rpen.GetComponent<BoxCollider2D>().enabled = false;
                     Rpen.SetActive(true);
+                    i++;
                 }
             }
         }
