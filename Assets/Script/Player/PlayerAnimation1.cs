@@ -39,6 +39,8 @@ public class PlayerAnimation1 : MonoBehaviour
                     }else if(_direction.x<0){
                         anim.Play(FlyInAirAnimation[0]); 
                         FaceDirection = 0;
+                    }else if(_direction.x == 0){
+                        anim.Play(FlyInAirAnimation[FaceDirection]); 
                     }
                 }else{
                     //Debug.Log("fly");
