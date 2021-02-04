@@ -60,17 +60,17 @@ public class AutoMovement : MonoBehaviour
         if(GameObject.Find("DialogBox") == null && isDialoged) {
             Npc01Animator.Play("Npc01Turn");
             NpcController.Npc02Animator.enabled = true;
-            GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
-            MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);
-            if (MainCamera.orthographicSize > (5 - delta)) {
+            //GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
+            //MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);
+            //if (MainCamera.orthographicSize > (5 - delta)) {
                 //恢复动画
-                //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
-    		    MainCamera.orthographicSize = 5;
+                // //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+    		    //MainCamera.orthographicSize = 5;
                 NpcController.isToStartTimeline = true;
         	    //NpcController.NoticeMark.SetActive(true);
         	    isDialoged = false;
                 isPlaCanFly = true;
-    	    }
+    	    //z}
         }
     }
 

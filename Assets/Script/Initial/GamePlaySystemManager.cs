@@ -56,7 +56,11 @@ public class GamePlaySystemManager : MonoBehaviour
                 Destroy(GameObject.Find("NpcPlot"));
                 Destroy(GameObject.Find("NpcOne").GetComponent<AutoMovement>());
                 // Debug.Log("删除npc对话");
-            }
+                if (isLevel2WinterEnd && isLevel2Flower) {
+                    Destroy(GameObject.Find("Flower"));
+                }
+            } 
+            
         }
 
 
