@@ -24,7 +24,7 @@ public class NpcController : MonoBehaviour
         Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         Npc02OriPos = this.GetComponent<Transform>().position;
         Npc02Animator = this.GetComponent<Animator>();
-        NpcTwoGroup = GameObject.Find("G_NpcTwoTimeline");
+        NpcTwoGroup = GameObject.Find("G_NpcTimeline");
         SadFace = GameObject.Find("SadFace");
         NoticeMark = GameObject.Find("NoticeMark");
         VillagerTimeline = GameObject.Find("VillagerTimeline");
