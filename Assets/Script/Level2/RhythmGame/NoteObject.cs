@@ -8,6 +8,7 @@ public class NoteObject : MonoBehaviour
     public KeyCode KeyToPress;
     private GameObject EndingLine;
     public SpriteRenderer NotesSR;
+    public AudioSource noteSound;
 
     void Update()
     {
@@ -15,6 +16,7 @@ public class NoteObject : MonoBehaviour
         	if (CanBePressed) {
         		NotesSR.enabled = false;
                 RhythmScore.NoteHit();
+                noteSound.Play();
         	}
         }
     }
