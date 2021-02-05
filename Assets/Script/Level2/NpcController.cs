@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿//By Huazhen Xu
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class NpcController : MonoBehaviour
 {
+    public static GameObject Player; 
     public static GameObject NoticeMark; 
     public static GameObject SadFace;   
    	public static GameObject Flower; //小花
@@ -20,11 +22,13 @@ public class NpcController : MonoBehaviour
     public static Animator Npc02FallAnimator;
     public static GameObject NpcTwoGroup; //npc对话（情景1）中的npc2素材
     public static bool isCameraChanged = false;
+    bool isDialoged = false;
     Vector2 Npc02OriPos;
 	Vector2 Npc02TransPos;
     Camera MainCamera;
 
 	void Awake() {
+        Player = GameObject.Find("Player");
         Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         Npc02OriPos = this.GetComponent<Transform>().position;
@@ -81,9 +85,9 @@ public class NpcController : MonoBehaviour
                 	NpcTransPos(true);
                     Npc03.SetActive(true);
                     this.GetComponent<SpriteRenderer>().enabled = true;
-                    if (GameObject.Find("DialogBox")==null) {
+                    if (GameObject.Find("DialogBox") == null) {
                         isPlayerMove = false;
-                        GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+                        Player.GetComponent<PlayerMovement>().enabled = true;
                         GamePlaySystemManager.isLevel2NpcPlot = true;
                         //NoticeMark.SetActive(false);
                         isToStartTimeline = false;
@@ -99,19 +103,26 @@ public class NpcController : MonoBehaviour
             	NpcTransPos(true);
                 Debug.Log("对话后摔倒");
             }
-            // 完成音游 结束情节2
+            // 完成音游 拿出花 结束情节2
             else {
-                //NpcTwoFall.SetActive(false);
-                NpcTransPos(false);
+                if (!isDialoged) {
+                    Player.GetComponent<PlayerMovement>().enabled = false;
+                    Dialog.PrintDialog("Lv2P1StandUp");
+                    Debug.Log("拿花对话");
 
+                    //之後插入拿出花的動畫
 
-                //之後插入拿出花的動畫
+                    NpcTransPos(false);
+                    isDialoged = true;
+                }
+                if(GameObject.Find("DialogBox") == null) {
+                    Player.GetComponent<PlayerMovement>().enabled = true;
+                    RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
 
-                RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
-
-                //第二關冬天任務結束
-                GamePlaySystemManager.isLevel2WinterEnd = true;
-                Debug.Log("任务结束");
+                    //第二關冬天任務結束
+                    GamePlaySystemManager.isLevel2WinterEnd = true;
+                    Debug.Log("任务结束");
+                }
             }
 
         }

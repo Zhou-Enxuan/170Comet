@@ -49,11 +49,6 @@ public class DialogueBehaviour : PlayableBehaviour
 
             clipPlayed = true;
         }
-        //playable end
-        if (director.state != PlayState.Playing) {
-            Debug.Log("timeline end");
-            GameManager.ins.DestroyTimeline();
-        }
     }
 
     public override void OnBehaviourPause(Playable playable, FrameData info) {

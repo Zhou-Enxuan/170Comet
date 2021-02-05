@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//By Huazhen Xu
+//Level2part1之后不在复用
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +12,8 @@ public class AutoMovement : MonoBehaviour
     public static Transform Player;  // [2] 目标
     public float delta = 0.01f; // 误差值
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
-    public static bool isDialoged;
     public static bool isPlaCanFly; //在playermovement引用
+    bool isDialoged;
     Camera MainCamera;
     Vector2 TargetPos;
     Vector2 Direction;

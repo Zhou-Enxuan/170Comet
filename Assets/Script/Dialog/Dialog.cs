@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//By Huazhen Xu
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class Dialog : MonoBehaviour
     public static int j;
     public float textspeed;
    
-    bool isTimeline = false; //是否开始动画播放
+    bool isTimeline = false; //是否cg动画播放中
 
     void Awake() {
         //print("start" + textFile.text);
@@ -41,7 +42,7 @@ public class Dialog : MonoBehaviour
             StopAllCoroutines(); 
             StartCoroutine(Typing(Line));
         }
-        //检测是否动画播放
+        //检测是否动画播放，用SignalAsset变值
         if (GameObject.Find("GameManager") != null && GameManager.isTimeline == true){
             isTimeline = true;
         } else {
@@ -79,7 +80,7 @@ public class Dialog : MonoBehaviour
 
     //Call for starting dialog
     public static void PrintDialog(string objName) {
-        //Debug.Log("PrintDialog");
+        Debug.Log("PrintDialog");
         j = 0;
     	CurrentTextlist.Clear();
         //if (AllTextlist.Contains(objName)) {

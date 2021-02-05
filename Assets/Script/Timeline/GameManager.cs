@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager ins;
-    public static bool isTimeline = false; //timeline开始or结束
-
-    private static bool isEnd = false;
+    public static bool isTimeline = false; //timeline开始or结束 ->NpcController.cs调用-变值
+    //private static bool isEnd = false;
     private static bool isPaused = false;
 
    //public GameObject DialogBox = GameObject.Find("DialogBox");
@@ -44,8 +43,7 @@ public class GameManager : MonoBehaviour
     //设置UI文字
     public void SetDialogue(string lineOfDialogue)
     {
-        isEnd = false;
-        isTimeline = true;
+        //isEnd = false;
         Dialog.PrintDialog(lineOfDialogue);
         // dialogueLineText.text = lineOfDialogue;
 
@@ -70,19 +68,22 @@ public class GameManager : MonoBehaviour
         Dialog.HideDialog();
         isPaused = false;
     }
-
-    public void DestroyTimeline() {
-        isTimeline = false;
-        isEnd = true;
-        Destroy(GameObject.FindObjectOfType<PlayableDirector>());
+    
+    public void EndTimeline(bool isEnd){
+        isTimeline = isEnd;
     }
+    // public void DestroyTimeline() {
+    //     isTimeline = false;
+    //     isEnd = true;
+    //     Destroy(GameObject.FindObjectOfType<PlayableDirector>());
+    // }
 
-    public static bool EndTimeline() {
-        if (!isTimeline && isEnd) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+    // public static bool EndTimeline() {
+    //     if (!isTimeline && isEnd) {
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 }

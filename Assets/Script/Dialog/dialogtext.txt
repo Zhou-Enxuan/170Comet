@@ -24,6 +24,10 @@ Bearded Man: It’s over! Everything is over! The war is coming! My life is over
 Villager3
 QAQ
 ---
+Lv2P1StandUp
+Bearded Man: What a beautiful song! What a cute little bird! Thank you little beauty, now I feel much better.
+Bearded Man: If you don’t mind, you can take this flower. Flowers are rare in winter!
+---
 Lv2P2Room
 Nightingale: It was a shining comet that flew over last night.
 Girl: How can I see the comet?
