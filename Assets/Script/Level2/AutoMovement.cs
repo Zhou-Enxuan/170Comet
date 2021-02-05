@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class AutoMovement : MonoBehaviour
 {
-    public static Animator Npc01Animator;
     public float speed = 2f; //[1] 物体移动速度
     public static Transform Player;  // [2] 目标
     public float delta = 0.01f; // 误差值
@@ -19,7 +18,6 @@ public class AutoMovement : MonoBehaviour
     Vector2 Direction;
 
     void Start() {
-        Npc01Animator = this.GetComponent<Animator>();
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 		TargetPos = new Vector2(-1f, -2.35f); //小鸟需要到达的位置
@@ -27,8 +25,6 @@ public class AutoMovement : MonoBehaviour
 		isAIMove = false;
 		isDialoged = false;
         isPlaCanFly = true;
-        Npc01Animator.enabled = false;
-
     }
 
     void Update () {
@@ -54,14 +50,14 @@ public class AutoMovement : MonoBehaviour
                     FindObjectOfType<PlayerAnimation1>().TimelineAnimation();
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
-                    Npc01Animator.enabled = true;
+                    NpcController.Npc01Animator.enabled = true;
                     isDialoged = true;
                 }
     	    }
         }
         //if dialog真正结束，恢复镜头
         if(GameObject.Find("DialogBox") == null && isDialoged) {
-            Npc01Animator.Play("Npc01Turn");
+            NpcController.Npc01Animator.Play("Npc01Turn");
             NpcController.Npc02Animator.enabled = true;
             //GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
             //MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);

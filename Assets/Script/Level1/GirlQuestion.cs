@@ -1,4 +1,5 @@
 ﻿//By Huazhen Xu
+//完成音游(isLevel2WinterEnd==true)进入房间时使用
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class GirlQuestion : MonoBehaviour
 
 	void Update(){
 		//是否完成音游触发level1情节2
-		if (GamePlaySystemManager.isLevel1Mission1End) {
+		if (GamePlaySystemManager.isLevel1Mission1End && !isDiaActive) {
 			if (!GamePlaySystemManager.isLevel2WinterEnd) {
 				QMark.SetActive(false);
 			}
@@ -26,6 +27,7 @@ public class GirlQuestion : MonoBehaviour
 			}
 		}
 	}
+
 	void OnTriggerStay2D(Collider2D collision) {
 		if(GamePlaySystemManager.isLevel2WinterEnd && collision.tag == "Player" && !isDiaActive) {
 			if (Input.GetKeyDown("space")) {
@@ -38,6 +40,7 @@ public class GirlQuestion : MonoBehaviour
 	        		Dialog.PrintDialog("Lv2P2Room");
 	        	}
 	        	isDiaActive = true;
+	        	GamePlaySystemManager.isLevel1Mission2End = true;
 		    }
 	    }
 	}

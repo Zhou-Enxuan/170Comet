@@ -11,15 +11,16 @@ public class NpcController : MonoBehaviour
     public static GameObject SadFace;   
    	public static GameObject Flower; //小花
     public static GameObject RhythmGame; //小花
-    public static GameObject Npc01;
     public static GameObject Horse;
+    public static GameObject Npc01;
     public static GameObject Npc03;
     public static GameObject NpcTwoTimeline; //胡子男拿花的timeline
     public static GameObject VillagerTimeline; //骑马过来的timeline
     public static bool isToStartTimeline = false; //开始cg ->automovent.cs调用启动
     public static bool isPlayerMove = false;
     public static Animator Npc02Animator;
-    public static Animator Npc02FallAnimator;
+    public static Animator Npc01Animator;
+    //public static Animator Npc02FallAnimator;
     public static GameObject NpcTwoGroup; //npc对话（情景1）中的npc2素材
     public static bool isCameraChanged = false;
     bool isDialoged = false;
@@ -34,6 +35,7 @@ public class NpcController : MonoBehaviour
         Npc02OriPos = this.GetComponent<Transform>().position;
         Npc02Animator = this.GetComponent<Animator>();
         Npc01 = GameObject.Find("NpcOne");
+        Npc01Animator = Npc01.GetComponent<Animator>();
         Npc03 = GameObject.Find("NpcThree");
         NpcTwoGroup = GameObject.Find("G_NpcTimeline");
         SadFace = GameObject.Find("SadFace");
@@ -52,11 +54,13 @@ public class NpcController : MonoBehaviour
         SadFace.SetActive(false);
         Npc03.SetActive(false);
         //RhythmGame.SetActive(false);
+        Npc01Animator.enabled = false;
         Npc02Animator.enabled = false;
         //Npc02FallAnimator.enabled = false;
     }
 
-    void Update() { 
+    void Update() {
+    //冬天
         //是否完成npc和骑马情节(此为情节1)
         if (!GamePlaySystemManager.isLevel2NpcPlot) {
             if (isToStartTimeline) {
@@ -126,13 +130,26 @@ public class NpcController : MonoBehaviour
             }
 
         }
-        else if (GamePlaySystemManager.isLevel2WinterEnd && GamePlaySystemManager.isLevel2Flower) {
-            Debug.Log("冬天");
-            Npc03.SetActive(true);
-            Npc01.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/GreenManTurn/A_Npc01Turn04");
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManTurn/A_Npc02Turn04");
+        //完成音游是否拿花--若返回房间出来后的场景
+        else if (GamePlaySystemManager.isLevel2WinterEnd) {
+                Npc01.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/GreenManTurn/A_Npc01Turn04");
+                Npc03.SetActive(true);
+            //拿了花
+            if (GamePlaySystemManager.isLevel2Flower) {
+                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManTurn/A_Npc02Turn04");
+            }
+            //没拿花
+            else {
+                NpcTransPos(false);
+            }
+        }
+    //夏天
+        //完成part1冬天进入part2
+        else if (GamePlaySystemManager.isLevel1Mission2End) {
+            
         }
     }
+
 
     public void NpcTransPos(bool isNeedTrans) {
     	if (isNeedTrans) {
@@ -155,8 +172,7 @@ public class NpcController : MonoBehaviour
         isCameraChanged = isNeedChanged;
         GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
         MainCamera.orthographicSize = 5;
-        Debug.Log("isCamerChanged = "+isCameraChanged);
-
+        //Debug.Log("isCamerChanged = "+isCameraChanged);
     }
 
 }
