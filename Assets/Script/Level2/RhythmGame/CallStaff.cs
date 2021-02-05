@@ -12,7 +12,7 @@ public class CallStaff : MonoBehaviour
     public bool IsInFace = false;
     public static GameObject SpaceHint;
 
-    void Start() {
+    void OnEnable() {
         RhythmGame = GameObject.FindGameObjectWithTag("RhythmGame");
         NoteHolder = GameObject.Find("NoteHolder");
         //五线谱在碰sadFace之前不可见
