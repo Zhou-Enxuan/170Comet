@@ -38,16 +38,16 @@ public class GamePlaySystemManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "Level1") {
             if (!isLevel1Mission1End) {
-        	   GameObject.Find("Player").GetComponent<PaletteController>().enabled = false;
+        	   //GameObject.Find("Player2").GetComponent<PaletteController>().enabled = false;
             } 
             else {
-                Destroy(GameObject.Find("Player").GetComponent<PaletteController>());
+                //Destroy(GameObject.Find("Player2").GetComponent<PaletteController>());
             }
         //in level1
         } else {
             // 首次
             if (!isLevelExit1 && !isPass) {
-        	    GameObject.Find("Player").GetComponent<PaletteController>().enabled = true;
+        	    //GameObject.Find("Player2").GetComponent<PaletteController>().enabled = true;
                 isLevel1Mission1End = PaletteController.isLevel1End;
             //if mission one end, destroy missionone's gameobject after loading in level1 scene agian再次进入销毁任务1的东西
             }

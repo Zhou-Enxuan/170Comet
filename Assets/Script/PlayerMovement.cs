@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
             //Debug.Log("Start PlayerMovement");
         }
-        FindObjectOfType<PlayerAnimation1>().SetDirection(direction);
+        FindObjectOfType<OutDoorAnimation>().SetDirection(direction);
 
     }
 

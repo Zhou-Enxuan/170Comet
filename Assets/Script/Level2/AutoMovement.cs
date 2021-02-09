@@ -47,7 +47,7 @@ public class AutoMovement : MonoBehaviour
                     MainCamera.orthographicSize = 3;
                     //地上静止
                     GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动
-                    FindObjectOfType<PlayerAnimation1>().TimelineAnimation();
+                    //FindObjectOfType<InDoorAnimation>().TimelineAnimation();
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
                     NpcController.Npc01Animator.enabled = true;
@@ -81,7 +81,7 @@ public class AutoMovement : MonoBehaviour
             if (Player.position.x > TargetPos.x){
                 Direction.x = -1;
             }
-            FindObjectOfType<PlayerAnimation1>().SetDirection(Direction);
+            //FindObjectOfType<InDoorAnimation>().SetDirection(Direction);
 	    }
     }
 }

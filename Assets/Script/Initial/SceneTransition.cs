@@ -20,7 +20,7 @@ public class SceneTransition : MonoBehaviour
 	void Update(){
 			if (SceneManager.GetActiveScene().name == "Loading" && !isSceneChanged) {
 				Invoke( "LoadScene" , 1f);
-				GameObject.Find("Player").GetComponent<Transform>().localPosition = PlayerPosition;
+				GameObject.Find("Player2").GetComponent<Transform>().localPosition = PlayerPosition;
 				isSceneChanged = true;
 				Debug.Log(NextSceneName + "active");
 			} //else {
@@ -35,7 +35,7 @@ public class SceneTransition : MonoBehaviour
 					isSceneChanged = false;
 					if (GameObject.Find("LeaveTip") != null && Input.GetKeyDown("space")) {
 						
-						GameObject.Find("Player").GetComponent<PlayerAnimation1>().FlyOutAnimation();
+						//GameObject.Find("Player").GetComponent<InDoorAnimation>().FlyOutAnimation();
 						StartCoroutine(WaitCoroutine());
 						NextSceneName = "Level2";
 						ActiveScene("Loading");
