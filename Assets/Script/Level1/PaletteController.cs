@@ -22,8 +22,8 @@ public class PaletteController : MonoBehaviour {
  public static GameObject Rpen;
  public static GameObject QuestionMark;
  public static GameObject PickUpHint;
- public int IspickPen = 0;
- public int IspickPaper = 0;
+//  public int GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 0;
+//  public int GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
  public static bool isLevel1End = false;
  bool IsBubbleShowed = false;
  bool IsDialogStart = true;
@@ -64,7 +64,7 @@ public class PaletteController : MonoBehaviour {
     }
 
     //第一个dialog结束出现气泡
-    Debug.Log(i);
+    //Debug.Log(i);
     if (!IsDialogStart && !IsBubbleShowed && GameObject.Find("DialogBox") == null) {
         pen_paper.SetActive(true);
         IsBubbleShowed = true;
@@ -75,15 +75,15 @@ public class PaletteController : MonoBehaviour {
     //pick up pen
     if(IsInthePen && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
         Rpen.SetActive(false);
-            if (IspickPaper == 1) {
+            if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper == 1) {
                 Rpaper.SetActive(true);
                 Rpaper.transform.position = Rpen.transform.position;
                 // Debug.Log("changetopen");
                 // Debug.Log(Rpaper.transform.position);
                 i--;
-                IspickPaper = 0;
+                GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
             }
-        IspickPen = 1;
+        GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 1;
         i++;
         Debug.Log("pen");
     }
@@ -91,14 +91,14 @@ public class PaletteController : MonoBehaviour {
     if(IsInthePaper && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
         Debug.Log(Rpaper.transform.position);
                 Rpaper.SetActive(false);
-                if (IspickPen == 1) {
+                if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen == 1) {
                     Rpen.SetActive(true);
                     Rpen.transform.position = Rpaper.transform.position;
                     //Debug.Log("changetopen");
                     i--;
-                    IspickPen = 0;
+                    GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 0;
                 }
-                IspickPaper = 1;
+                GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 1;
                 i++;
                 Debug.Log("paper");
     }
@@ -110,12 +110,12 @@ public class PaletteController : MonoBehaviour {
         }
         //交 笔/纸
         if (IsCollideBed) {
-            if (IspickPaper == 1 || IspickPen == 1) {
+            if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper == 1 || GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen == 1) {
                 PickUpHint.SetActive(true);
             }
 
             if (Input.GetKeyDown(KeyCode.Space)) {
-                if (IspickPaper == 1) {
+                if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper == 1) {
                     pen_paper.SetActive(false);
                     pen.SetActive(true);
                     PickUpHint.SetActive(false);
@@ -123,9 +123,9 @@ public class PaletteController : MonoBehaviour {
                     Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                     Rpaper.SetActive(true);
                     Debug.Log("givepaper");
-                    IspickPaper = 0;
+                    GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
                 }
-                else if (IspickPen == 1) {
+                else if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen == 1) {
                     pen_paper.SetActive(false);
                     paper.SetActive(true);
                     PickUpHint.SetActive(false);
@@ -133,7 +133,7 @@ public class PaletteController : MonoBehaviour {
                     Rpen.GetComponent<BoxCollider2D>().enabled = false;
                     Rpen.SetActive(true);
                     Debug.Log("givepen");
-                    IspickPen = 0;
+                    GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 0;
                 }              
             }
         }
@@ -159,6 +159,8 @@ public class PaletteController : MonoBehaviour {
                     i++;
                 }
             }
+            GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 0;
+            GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
         }
     }
 

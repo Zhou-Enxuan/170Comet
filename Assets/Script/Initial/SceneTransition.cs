@@ -34,6 +34,9 @@ public class SceneTransition : MonoBehaviour
 					//GameObject.Find("Player").GetComponent<PlayerAnimation1>().Level2DefultAnimation();
 					isSceneChanged = false;
 					if (GameObject.Find("LeaveTip") != null && Input.GetKeyDown("space")) {
+						
+						GameObject.Find("Player").GetComponent<PlayerAnimation1>().FlyOutAnimation();
+						StartCoroutine(WaitCoroutine());
 						NextSceneName = "Level2";
 						ActiveScene("Loading");
 					}
@@ -57,6 +60,10 @@ public class SceneTransition : MonoBehaviour
 
 	public void ActiveScene(string ToSceneName){
 		SceneManager.LoadScene(ToSceneName);
+	}
+
+	IEnumerator WaitCoroutine(){
+		yield return new WaitForSeconds(5);
 	}
 
  //    void OnTriggerStay2D(Collider2D other) {

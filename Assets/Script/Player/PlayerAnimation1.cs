@@ -9,6 +9,8 @@ public class PlayerAnimation1 : MonoBehaviour
 
     public string[] staticDirections = {"Static_N", "Static_NW", "Static_W", "Static_SW", "Static_S", "Static_SE", "Static_E,", "Static_NE"};
     public string[] runDirections = {"Run_N", "Run_NW", "Run_W", "Run_SW", "Run_S", "Run_SE", "Run_E", "Run_NE"};
+    public string[] paperDirections = {"Bird_paN", "Bird_paNW", "Bird_paW", "Bird_paSW", "Bird_paS", "Bird_paSE", "Bird_paE", "Bird_paNE"};
+    public string[] penDirections = {"Bird_PenN", "Bird_PenNW", "Bird_PenW", "Bird_PenSW", "Bird_PenS", "Bird_PenSE", "Bird_PenE", "Bird_PenNE"};
     public string[] FlyAnimation = {"Fly_L", "Fly_R"};
     public string[] FlyInAirAnimation = {"FlyStatic_L", "FlyStatic_R"}; 
     private int FaceDirection = 0; //1 right 0 left
@@ -24,13 +26,6 @@ public class PlayerAnimation1 : MonoBehaviour
         string[] directionArray = null;
         if(SceneManager.GetActiveScene().name == "Level2"){
             Debug.Log("play lvl2 animation");
-            // if(_direction.magnitude < 0.01 || _direction.y != 0){
-            //     if(transform.position.y <= -4.3){
-            //         anim.Play(FlyInAirAnimation[FaceDirection]);
-            //     }else{
-            //         anim.Play(FlyAnimation[FaceDirection]);
-            //     }
-            // }else{
                 if(transform.position.y <= -4.3){
                     //Debug.Log("on the grd");
                     if(_direction.x>0){
@@ -57,16 +52,40 @@ public class PlayerAnimation1 : MonoBehaviour
             //}
        
         }else{
-            Debug.Log("play lvl1 animation");
-            if(_direction.magnitude < 0.01){
-                directionArray = staticDirections;
-                Debug.Log("static");
+            
+            if(SceneManager.GetActiveScene().name == "Level1" && GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper == 1){
+                if(_direction.magnitude < 0.01){
+                    directionArray = paperDirections;
+                    Debug.Log("static");
+                }else{
+                    directionArray = paperDirections;
+                    lastDirection = DirectionToIndex(_direction);
+                }
+                Debug.Log(lastDirection);
+                anim.Play(directionArray[lastDirection]);
+            }else if(SceneManager.GetActiveScene().name == "Level1" && GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen == 1){
+                Debug.Log("play penanimation");
+                if(_direction.magnitude < 0.01){
+                    directionArray = penDirections;
+                    Debug.Log("static");
+                }else{
+                    directionArray = penDirections;
+                    lastDirection = DirectionToIndex(_direction);
+                }
+                Debug.Log(lastDirection);
+                anim.Play(directionArray[lastDirection]);
             }else{
-                directionArray = runDirections;
-                lastDirection = DirectionToIndex(_direction);
+                Debug.Log("play lvl1 animation");
+                if(_direction.magnitude < 0.01){
+                    directionArray = staticDirections;
+                    Debug.Log("static");
+                }else{
+                    directionArray = runDirections;
+                    lastDirection = DirectionToIndex(_direction);
+                }
+                Debug.Log(lastDirection);
+            anim.Play(directionArray[lastDirection]);
             }
-            Debug.Log(lastDirection);
-        anim.Play(directionArray[lastDirection]);
         }
     }
 
@@ -96,7 +115,16 @@ public class PlayerAnimation1 : MonoBehaviour
     }
     
     public void TimelineAnimation(){
-            anim.Play("StaticOnGround");
+        anim.Play("StaticOnGround");
         
     }
+
+    public void FlyOutAnimation(){
+        anim.Play("FlyOut");
+        StartCoroutine(WaitCoroutine());
+    }
+
+    IEnumerator WaitCoroutine(){
+		yield return new WaitForSeconds(5);
+	}
 }

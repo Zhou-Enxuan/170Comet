@@ -11,6 +11,9 @@ public class GamePlaySystemManager : MonoBehaviour
     public static bool isLevel2WinterEnd = false; //完成音游情节->Npccontroller.cs中变值
     public static bool isLevel2Flower = false; //有无捡花 ->FlowerDisappear.cs中变值
     public static bool isLevel1Mission2End = false; //返回房间对话情节->GirlQuestion.cs变值
+    public int ispickPen = 0; //返回房间对话情节->GirlQuestion.cs变值
+    public int ispickPaper = 0; //返回房间对话情节->GirlQuestion.cs变值
+
     private bool isLevelExit1;
     private bool isPass;
     

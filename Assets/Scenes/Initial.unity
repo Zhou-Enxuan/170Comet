@@ -751,7 +751,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.45}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.26, y: 0.45}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -869,6 +869,24 @@ MonoBehaviour:
   - Run_SE
   - Run_E
   - Run_NE
+  paperDirections:
+  - Bird_paN
+  - Bird_paNW
+  - Bird_paW
+  - Bird_paSW
+  - Bird_paS
+  - Bird_paSE
+  - Bird_paE
+  - Bird_paNE
+  penDirections:
+  - Bird_PenN
+  - Bird_PenNW
+  - Bird_PenW
+  - Bird_PenSW
+  - Bird_PenS
+  - Bird_PenSE
+  - Bird_PenE
+  - Bird_PenNE
   FlyAnimation:
   - Fly_L
   - Fly_R
