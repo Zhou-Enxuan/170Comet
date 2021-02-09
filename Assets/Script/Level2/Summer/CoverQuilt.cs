@@ -16,7 +16,6 @@ public class CoverQuilt : MonoBehaviour
     void Start() {
     	Player = GameObject.FindGameObjectWithTag("Player");
     	Player.SetActive(false); //为啥报错？
-        //Player.GetComponent<PlayerMovement>().enabled = false; //玩家静止
 
         Anim = GetComponent<Animator>();
         LeaveTip = GameObject.Find("LeaveTip");
@@ -42,13 +41,14 @@ public class CoverQuilt : MonoBehaviour
         if (KeyHint.activeSelf) {  
             if (Input.GetKey("space")) {
                 switchAnim1();            
-            }else{
+            }
+            /*else{
                 Anim.SetBool("Cover1", false);
                 Anim.SetBool("Cover2", false);
                 Anim.SetBool("Cover3", false);
                 Anim.SetBool("Start", true);
                 KeyHint.SetActive(true);
-            }
+            }*/
         }     
         
     }
@@ -80,6 +80,28 @@ public class CoverQuilt : MonoBehaviour
                 LeaveTip.SetActive(true);
                 //Player.GetComponent<PlayerMovement>().enabled = true; //玩家恢复
                 Player.SetActive(true);
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)){
+            //按上触发第一段
+            if (!Anim.GetBool("Cover1") && !Anim.GetBool("Cover2") && !Anim.GetBool("Cover3")) {
+                //Anim.SetBool("Cover1", true);
+                //Debug.Log(Anim.GetBool("Cover3"));
+            }
+            //按左触发第二段
+            else if (Anim.GetBool("Cover1")) {
+                Anim.SetBool("Cover1", false);
+            }
+            //按下触发第三段
+            else if (Anim.GetBool("Cover2")) {
+                Anim.SetBool("Cover2", false);
+                Anim.SetBool("Cover1", true);
+            }
+            //按右触发接下来的关卡
+            else if(Anim.GetBool("Cover3")){
+                Anim.SetBool("Cover3", false);
+                Anim.SetBool("Cover2", true);
+                //KeyHint.SetActive(false);
             }
         }
         

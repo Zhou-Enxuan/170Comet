@@ -47,8 +47,14 @@ public class SceneTransition : MonoBehaviour
 					//GameObject.Find("Player").GetComponent<PlayerAnimation1>().Level1DefultAnimation();
 					isSceneChanged = false;
 					if (GameObject.Find("Window") == null) {
-						ActiveScene("Loading");
-						NextSceneName = "Level1";
+						if(!GamePlaySystemManager.isLevel1Mission2End){
+							ActiveScene("Loading");
+							NextSceneName = "Level1";
+						}
+						else {
+							ActiveScene("Loading");
+							NextSceneName = "Level2SummerRoom";
+						}
 					}
 				}
 				if (SceneManager.GetActiveScene().name == "Level2SummerRoom") {
