@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: d741dc9ba472d4808adc8955b95a399e
+  - enabled: 1
+    path: Assets/Scenes/Level2SummerRoom.unity
+    guid: 1f87930fadb8e405480dfd10dba8fdef
   m_configObjects: {}
