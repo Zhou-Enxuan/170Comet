@@ -126,6 +126,7 @@ public class NpcController : MonoBehaviour
                     //第二關冬天任務結束
                     GamePlaySystemManager.isLevel2WinterEnd = true;
                     Debug.Log("任务结束");
+                    
                 }
             }
 
