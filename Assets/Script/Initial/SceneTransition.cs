@@ -40,36 +40,16 @@ public class SceneTransition : MonoBehaviour
 						NextSceneName = "Level2";
 						ActiveScene("Loading");
 					}
-					if(GamePlaySystemManager.isLevel1Mission2End && Input.GetKeyDown("space") && GameObject.Find("DialogBox") == null) {
-						NextSceneName = "Level2SummerRoom";
-						ActiveScene("Loading");
-					}
 				}
 				if (SceneManager.GetActiveScene().name == "Level2") {
 					PlayerPosition  = new Vector2(1.7f, 0.7f);
 					//GameObject.Find("Player").GetComponent<PlayerAnimation1>().Level1DefultAnimation();
 					isSceneChanged = false;
 					if (GameObject.Find("Window") == null) {
-						if(!GamePlaySystemManager.isLevel1Mission2End){
-							ActiveScene("Loading");
-							NextSceneName = "Level1";
-						}
-						else {
-							ActiveScene("Loading");
-							NextSceneName = "Level2SummerRoom";
-						}
-					}
-				}
-				if (SceneManager.GetActiveScene().name == "Level2SummerRoom") {
-					PlayerPosition  = new Vector2(-3.6f, -0.5f);
-					//GameObject.FindGameObjectWithTag("Player").SetActive(false);
-					isSceneChanged = false;
-					if (GameObject.Find("LeaveTip") != null && Input.GetKeyDown("space")) {
-						NextSceneName = "Level2"; //summer之后改为新建的VilligeScene
 						ActiveScene("Loading");
+						NextSceneName = "Level1";
 					}
 				}
-
 			//}
 			
 	}

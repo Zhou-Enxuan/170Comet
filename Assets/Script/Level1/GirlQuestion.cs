@@ -26,9 +26,6 @@ public class GirlQuestion : MonoBehaviour
 				QMark.SetActive(true);
 			}
 		}
-		if (Flower.activeSelf && GameObject.Find("DialogBox") == null) {
-			GamePlaySystemManager.isLevel1Mission2End = true; // 夏天：按空格call scene3 in SceneTransition
-		}
 	}
 
 	void OnTriggerStay2D(Collider2D collision) {
