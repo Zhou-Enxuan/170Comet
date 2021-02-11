@@ -10,13 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 995973669708130108}
   - component: {fileID: 995973669708130109}
-  - component: {fileID: 995973669708130110}
   - component: {fileID: 995973669708130111}
   - component: {fileID: 995973669708130096}
   - component: {fileID: 995973669708130107}
   - component: {fileID: 995973669708130104}
-  - component: {fileID: 995973669708130105}
-  - component: {fileID: 995973669708130106}
+  - component: {fileID: 4096682470178701800}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 995973669708130097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.42, y: -1.43, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5, y: 1.4999999, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,19 +57,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &995973669708130110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995973669708130097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98625d2bd5ceea54384ca3aef68c3f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
 --- !u!61 &995973669708130111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,7 +164,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &995973669708130105
+--- !u!114 &4096682470178701800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,67 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 995973669708130097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5956faa97a1e8674cb7dcad52d480ef6, type: 3}
+  m_Script: {fileID: 11500000, guid: 679cede6c82944e39a13d24edd1d4f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticDirections:
-  - Static_N
-  - Static_NW
-  - Static_W
-  - Static_SW
-  - Static_S
-  - Static_SE
-  - Static_E,
-  - Static_NE
-  runDirections:
-  - Run_N
-  - Run_NW
-  - Run_W
-  - Run_SW
-  - Run_S
-  - Run_SE
-  - Run_E
-  - Run_NE
-  paperDirections:
-  - Bird_paN
-  - Bird_paNW
-  - Bird_paW
-  - Bird_paSW
-  - Bird_paS
-  - Bird_paSE
-  - Bird_paE
-  - Bird_paNE
-  penDirections:
-  - Bird_PenN
-  - Bird_PenNW
-  - Bird_PenW
-  - Bird_PenSW
-  - Bird_PenS
-  - Bird_PenSE
-  - Bird_PenE
-  - Bird_PenNE
-  FlyAnimation:
-  - Fly_L
-  - Fly_R
-  FlyInAirAnimation:
-  - FlyStatic_L
-  - FlyStatic_R
---- !u!95 &995973669708130106
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 995973669708130097}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b7b3cf2896001e14d99264cf2b824c30, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  moveSpeed: 1

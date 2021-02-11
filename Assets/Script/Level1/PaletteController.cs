@@ -168,7 +168,7 @@ public class PaletteController : MonoBehaviour {
     if (i == 3) {
         if (Input.GetKeyDown(KeyCode.Space)) {
             fadein = true;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().enabled = false;
             GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);;
         }
         if (fadein == true && timerin >= 0 && timerin < wait) {
@@ -280,7 +280,7 @@ public class PaletteController : MonoBehaviour {
     else if (i >= 8) {
         if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
             fadeout = true;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().enabled = true;
         }
         if (fadeout == true && timerout >= 0 && timerout < wait) {
             timerout += Time.deltaTime;

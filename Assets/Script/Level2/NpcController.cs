@@ -91,7 +91,7 @@ public class NpcController : MonoBehaviour
                     this.GetComponent<SpriteRenderer>().enabled = true;
                     if (GameObject.Find("DialogBox") == null) {
                         isPlayerMove = false;
-                        Player.GetComponent<PlayerMovement>().enabled = true;
+                        Player.GetComponent<BirdOutDoorMovement>().enabled = true;
                         GamePlaySystemManager.isLevel2NpcPlot = true;
                         //NoticeMark.SetActive(false);
                         isToStartTimeline = false;
@@ -110,7 +110,7 @@ public class NpcController : MonoBehaviour
             // 完成音游 拿出花 结束情节2
             else {
                 if (!isDialoged) {
-                    Player.GetComponent<PlayerMovement>().enabled = false;
+                    Player.GetComponent<BirdOutDoorMovement>().enabled = false;
                     Dialog.PrintDialog("Lv2P1StandUp");
                     Debug.Log("拿花对话");
 
@@ -120,7 +120,7 @@ public class NpcController : MonoBehaviour
                     isDialoged = true;
                 }
                 if(GameObject.Find("DialogBox") == null) {
-                    Player.GetComponent<PlayerMovement>().enabled = true;
+                    Player.GetComponent<BirdOutDoorMovement>().enabled = true;
                     RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
 
                     //第二關冬天任務結束

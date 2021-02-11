@@ -3,35 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class BirdOutDoorMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private float moveH, moveV;
-    private Vector2 direction;
+    private Animator birdAnim;
     [SerializeField] private float moveSpeed = 1.0f;
     
     private void Awake(){
-            rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        birdAnim = GetComponent<Animator>();
     }
 
     private void FixedUpdate(){
         //碰撞到npcone的时候
         if (SceneManager.GetActiveScene().name == "Loading" || (SceneManager.GetActiveScene().name == "Level2" && (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove))) {
-            direction = new Vector2(0, 0);
-            rb.velocity = direction;
+            rb.velocity = Vector2.zero;
             Debug.Log("Stop PlayerMovement");
         } else { //normal时
-            moveH = Input.GetAxisRaw("Horizontal") * moveSpeed;
+            moveH = Input.GetAxisRaw("Horizontal");
+            birdAnim.SetFloat("horizontal", moveH);
             //Debug.Log(Input.GetAxisRaw("Horizontal"));
-            moveV = Input.GetAxisRaw("Vertical") * moveSpeed;
+            moveV = Input.GetAxisRaw("Vertical");
             //Debug.Log(Input.GetAxisRaw("Vertical"));
-            rb.velocity = new Vector2(moveH, moveV);
-            direction = new Vector2(moveH, moveV);
-
-            //Debug.Log("Start PlayerMovement");
+            rb.velocity = new Vector2(moveH, moveV) * moveSpeed * Time.deltaTime;
         }
-        FindObjectOfType<OutDoorAnimation>().SetDirection(direction);
-
     }
 
     
