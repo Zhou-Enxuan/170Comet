@@ -13,6 +13,7 @@ public class GamePlaySystemManager : MonoBehaviour
     public static bool isLevel1Mission2End = false; //返回房间对话情节->GirlQuestion.cs变值
     private bool isLevelExit1;
     private bool isPass;
+    bool isLevel2WinterStart = false;
     
     // Start is called before the first frame update
     void Awake() {
@@ -38,7 +39,9 @@ public class GamePlaySystemManager : MonoBehaviour
         	   GameObject.Find("Player").GetComponent<PaletteController>().enabled = false;
             } 
             else {
+            	Debug.Log("删除");
                 Destroy(GameObject.Find("Player").GetComponent<PaletteController>());
+            
             }
         //in level1
         } else {
@@ -50,6 +53,7 @@ public class GamePlaySystemManager : MonoBehaviour
             }
             else {
                 Destroy(GameObject.Find("MissionOne"));
+                isLevel2WinterStart = true;
             }
         }
 
