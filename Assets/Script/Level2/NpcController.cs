@@ -133,6 +133,7 @@ public class NpcController : MonoBehaviour
                     SadFace.SetActive(false);
                     GameManager.instance.Level2WinterEnd();
                     Debug.Log("任务结束");
+                    
                 }
             }
 
