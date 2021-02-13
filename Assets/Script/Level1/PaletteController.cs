@@ -302,8 +302,10 @@ public class PaletteController : MonoBehaviour {
             }
         }
     }
+    if (GameObject.Find("LeaveTip") != null && Input.GetKeyDown("space")) {
+        LevelLoader.instance.LoadLevel("Level2Winter");
+    }
  }
-
 
  void OnTriggerEnter2D(Collider2D collision) {
     if(collision.tag == "pen"){

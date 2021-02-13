@@ -29,7 +29,8 @@ public class Lv2WinWindow : MonoBehaviour
 		// 	LeaveTip.SetActive(true);
 		// }
 		if (other.tag.CompareTo("Player") == 0) {
-			Destroy(GameObject.Find("Window"));
+			Debug.Log("离开lv2");
+			LevelLoader.instance.LoadLevel("Level2Room1");
 		}
 	}
 }
