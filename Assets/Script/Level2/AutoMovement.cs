@@ -46,8 +46,9 @@ public class AutoMovement : MonoBehaviour
                 if (MainCamera.orthographicSize < (3 + delta)){
                     MainCamera.orthographicSize = 3;
                     //地上静止
-                    GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动
-                    FindObjectOfType<PlayerAnimation1>().TimelineAnimation();
+                    GameObject.Find("Player").GetComponent<BirdOutDoorMovement>().enabled = false;//禁止玩家移动
+                    Player.GetComponent<Animator>().SetTrigger("StandOnBox");
+                    //FindObjectOfType<InDoorAnimation>().TimelineAnimation();
                     isAIMove = false;
                     Dialog.PrintDialog("Villager");
                     NpcController.Npc01Animator.enabled = true;
@@ -77,11 +78,12 @@ public class AutoMovement : MonoBehaviour
 	    if (other.tag.CompareTo("Player") == 0) {
             isPlaCanFly = false;
 		    isAIMove = true;
+            Player.GetComponent<Animator>().SetFloat("horizontal", 0);
             GameObject.Find("QuestionMark").GetComponent<SpriteRenderer>().enabled = false;
             if (Player.position.x > TargetPos.x){
                 Direction.x = -1;
             }
-            FindObjectOfType<PlayerAnimation1>().SetDirection(Direction);
+            //FindObjectOfType<InDoorAnimation>().SetDirection(Direction);
 	    }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PaletteController : MonoBehaviour {
  public int i = 0;
@@ -9,7 +10,9 @@ public class PaletteController : MonoBehaviour {
  public float timerin = 0.0f;
  public float wait = 1.0f;
  public bool fadeout = false;
- public bool fadein = false;
+ public bool fadein = false; 
+ public static int ispickPen = 0;
+ public static int ispickPaper = 0;
  public static Image board;
  public static Image board2;
  public static Image board3;
@@ -22,8 +25,8 @@ public class PaletteController : MonoBehaviour {
  public static GameObject Rpen;
  public static GameObject QuestionMark;
  public static GameObject PickUpHint;
- public int IspickPen = 0;
- public int IspickPaper = 0;
+ public GameObject LeaveTip;
+
  public static bool isLevel1End = false;
  bool IsBubbleShowed = false;
  bool IsDialogStart = true;
@@ -44,6 +47,8 @@ public class PaletteController : MonoBehaviour {
     Rpaper =  GameObject.Find("Paper");
     QuestionMark = GameObject.Find("GirlQMark");
     PickUpHint = GameObject.Find("PickUpHint");
+    LeaveTip = GameObject.Find("LeaveTip");
+    LeaveTip.SetActive(false);
     pen_paper.SetActive(false);
     paper.SetActive(false);
     pen.SetActive(false);
@@ -64,8 +69,8 @@ public class PaletteController : MonoBehaviour {
     }
 
     //第一个dialog结束出现气泡
-    Debug.Log(i);
-    if (!IsDialogStart && !IsBubbleShowed && GameObject.Find("DialogBox") == null) {
+    //Debug.Log(i);
+    if (!IsDialogStart && !IsBubbleShowed && !GameManager.instance.IsDialogShow()) {
         pen_paper.SetActive(true);
         IsBubbleShowed = true;
     }
@@ -73,49 +78,52 @@ public class PaletteController : MonoBehaviour {
     Debug.Log("in the paper" + IsInthePaper);
     Debug.Log("in the pen" + IsInthePen);
     //pick up pen
-    if(IsInthePen && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
+    if(IsInthePen && Input.GetKeyDown(KeyCode.Space) && !GameManager.instance.IsDialogShow()){
         Rpen.SetActive(false);
-            if (IspickPaper == 1) {
+            // if (GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper == 1) {
+            if (ispickPaper == 1) {    
                 Rpaper.SetActive(true);
                 Rpaper.transform.position = Rpen.transform.position;
                 // Debug.Log("changetopen");
                 // Debug.Log(Rpaper.transform.position);
                 i--;
-                IspickPaper = 0;
+                // GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
+                ispickPaper = 0;
             }
-        IspickPen = 1;
+        // GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 1;
+        ispickPen = 1;
         i++;
         Debug.Log("pen");
     }
     //pick up paper
-    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space) && GameObject.Find("DialogBox") == null){
+    if(IsInthePaper && Input.GetKeyDown(KeyCode.Space) && !GameManager.instance.IsDialogShow()){
         Debug.Log(Rpaper.transform.position);
                 Rpaper.SetActive(false);
-                if (IspickPen == 1) {
+                if (ispickPen == 1) {
                     Rpen.SetActive(true);
                     Rpen.transform.position = Rpaper.transform.position;
                     //Debug.Log("changetopen");
                     i--;
-                    IspickPen = 0;
+                    ispickPen = 0;
                 }
-                IspickPaper = 1;
+                ispickPaper = 1;
                 i++;
                 Debug.Log("paper");
     }
 
     //把笔和纸交给女孩
-    if (i < 2 && GameObject.Find("DialogBox") == null) {
+    if (i < 2 && !GameManager.instance.IsDialogShow()) {
         if (IsInthePen || IsInthePaper) {
             PickUpHint.SetActive(true);
         }
         //交 笔/纸
         if (IsCollideBed) {
-            if (IspickPaper == 1 || IspickPen == 1) {
+            if (ispickPaper == 1 || ispickPen == 1) {
                 PickUpHint.SetActive(true);
             }
 
             if (Input.GetKeyDown(KeyCode.Space)) {
-                if (IspickPaper == 1) {
+                if (ispickPaper == 1) {
                     pen_paper.SetActive(false);
                     pen.SetActive(true);
                     PickUpHint.SetActive(false);
@@ -123,9 +131,9 @@ public class PaletteController : MonoBehaviour {
                     Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                     Rpaper.SetActive(true);
                     Debug.Log("givepaper");
-                    IspickPaper = 0;
+                    ispickPaper = 0;
                 }
-                else if (IspickPen == 1) {
+                else if (ispickPen == 1) {
                     pen_paper.SetActive(false);
                     paper.SetActive(true);
                     PickUpHint.SetActive(false);
@@ -133,7 +141,7 @@ public class PaletteController : MonoBehaviour {
                     Rpen.GetComponent<BoxCollider2D>().enabled = false;
                     Rpen.SetActive(true);
                     Debug.Log("givepen");
-                    IspickPen = 0;
+                    ispickPen = 0;
                 }              
             }
         }
@@ -159,6 +167,8 @@ public class PaletteController : MonoBehaviour {
                     i++;
                 }
             }
+            ispickPen = 0;
+            ispickPaper = 0;
         }
     }
 
@@ -166,7 +176,7 @@ public class PaletteController : MonoBehaviour {
     if (i == 3) {
         if (Input.GetKeyDown(KeyCode.Space)) {
             fadein = true;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().enabled = false;
             GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);;
         }
         if (fadein == true && timerin >= 0 && timerin < wait) {
@@ -278,7 +288,7 @@ public class PaletteController : MonoBehaviour {
     else if (i >= 8) {
         if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
             fadeout = true;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().enabled = true;
         }
         if (fadeout == true && timerout >= 0 && timerout < wait) {
             timerout += Time.deltaTime;
@@ -307,10 +317,14 @@ public class PaletteController : MonoBehaviour {
     if(collision.tag == "trigger"){
     	IsCollideBed = true;
     }
+    if (collision.name == "Window" && isLevel1End) {
+        LeaveTip.SetActive(true);
+    }
  }
 
  void OnTriggerExit2D(Collider2D collision) {
     PickUpHint.SetActive(false);
+    LeaveTip.SetActive(false);
     if(collision.tag == "pen"){
         IsInthePen =false;
     }

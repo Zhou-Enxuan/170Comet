@@ -37,7 +37,7 @@ public class RhythmScore : MonoBehaviour
             RhythmGame.SetActive(false);
             //continue controlling the bird
             GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<BirdOutDoorMovement>().enabled = true;
             IsGameEnded = true;
         }
         //没过关 - 未得到400分

@@ -11,6 +11,9 @@ public class GamePlaySystemManager : MonoBehaviour
     public static bool isLevel2WinterEnd = false; //完成音游情节->Npccontroller.cs中变值
     public static bool isLevel2Flower = false; //有无捡花 ->FlowerDisappear.cs中变值
     public static bool isLevel1Mission2End = false; //返回房间对话情节->GirlQuestion.cs变值
+    public int ispickPen = 0; //返回房间对话情节->GirlQuestion.cs变值
+    public int ispickPaper = 0; //返回房间对话情节->GirlQuestion.cs变值
+
     private bool isLevelExit1;
     private bool isPass;
     bool isLevel2WinterStart = false;
@@ -36,18 +39,19 @@ public class GamePlaySystemManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name != "Level1") {
             if (!isLevel1Mission1End) {
-        	   GameObject.Find("Player").GetComponent<PaletteController>().enabled = false;
+        	   //GameObject.Find("Player2").GetComponent<PaletteController>().enabled = false;
             } 
             else {
             	Debug.Log("删除");
                 Destroy(GameObject.Find("Player").GetComponent<PaletteController>());
             
+                //Destroy(GameObject.Find("Player2").GetComponent<PaletteController>());
             }
         //in level1
         } else {
             // 首次
             if (!isLevelExit1 && !isPass) {
-        	    GameObject.Find("Player").GetComponent<PaletteController>().enabled = true;
+        	    //GameObject.Find("Player2").GetComponent<PaletteController>().enabled = true;
                 isLevel1Mission1End = PaletteController.isLevel1End;
             //if mission one end, destroy missionone's gameobject after loading in level1 scene agian再次进入销毁任务1的东西
             }

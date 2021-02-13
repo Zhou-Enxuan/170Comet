@@ -29,7 +29,7 @@ public class CallStaff : MonoBehaviour
             //五线谱消失，重新控制小鸟
             RhythmGame.SetActive(false);
             GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = false;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+            GameObject.Find("Player").GetComponent<BirdOutDoorMovement>().enabled = true;
             CanHitSadFace = true;
             Debug.Log("PlayAgain!");
             RhythmGame.GetComponent<RhythmScore>().PlayAgain = false;
@@ -44,7 +44,7 @@ public class CallStaff : MonoBehaviour
                 //notes结束后回到原位
                 NoteHolder.transform.position = originalPos;
                 //不能control小鸟
-                GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+                GameObject.Find("Player").GetComponent<BirdOutDoorMovement>().enabled = false;
                 GameObject.Find("Player").GetComponent<Rigidbody2D>().isKinematic = true;
                 GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 //出现五线谱

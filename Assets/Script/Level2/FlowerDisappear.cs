@@ -8,7 +8,7 @@ public class FlowerDisappear : MonoBehaviour
     	if (other.tag.CompareTo("Player") == 0 && Input.GetKeyDown("space")) {
     		GameObject.Find("NpcTwo").GetComponent<SpriteRenderer>().enabled = true;
             GameObject.Find("Flower").SetActive(false);
-            GamePlaySystemManager.isLevel2Flower = true;
+            GameManager.instance.GetFlower();
     	}
     }
 }

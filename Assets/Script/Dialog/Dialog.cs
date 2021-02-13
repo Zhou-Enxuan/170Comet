@@ -43,7 +43,7 @@ public class Dialog : MonoBehaviour
             StartCoroutine(Typing(Line));
         }
         //检测是否动画播放，用SignalAsset变值
-        if (GameObject.Find("GameManager") != null && GameManager.isTimeline == true){
+        if (GameObject.Find("TimelineGameManager") != null && TimelineGameManager.isTimeline == true){
             isTimeline = true;
         } else {
             isTimeline = false;

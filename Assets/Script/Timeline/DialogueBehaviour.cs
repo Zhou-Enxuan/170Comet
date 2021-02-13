@@ -40,7 +40,7 @@ public class DialogueBehaviour : PlayableBehaviour
         //效果是：时间轴刚进入该clip时执行一次
         if (!clipPlayed && info.weight > 0f) {
             //Debug.Log("ProcessFrame true");
-            GameManager.ins.SetDialogue(dialogueLine);
+            TimelineGameManager.SetDialogue(dialogueLine);
 
             //检测播放完该clip后是否需要暂停，并赋值
             if (Application.isPlaying && PressToPause) {
@@ -57,7 +57,7 @@ public class DialogueBehaviour : PlayableBehaviour
 
         if (pauseScheduled) {
             pauseScheduled = false;
-            GameManager.ins.PauseTimeline(director);
+            TimelineGameManager.PauseTimeline(director);
         }
     }
 }

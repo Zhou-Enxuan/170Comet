@@ -27,7 +27,7 @@ public class AIMove : MonoBehaviour
         		Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
         	} else {
                 //Debug.Log("player unmove");
-        		GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动，！！后续需要修改为可继续播放player。ainmation 
+        		//GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;//禁止玩家移动，！！后续需要修改为可继续播放player。ainmation 
         		GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = -3f;//镜头最低位
         		MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,Size,0.03f);//zoom in 
                 GameObject.Find("NpcOne").GetComponent<BoxCollider2D>().enabled = false;
@@ -41,7 +41,7 @@ public class AIMove : MonoBehaviour
         if(GameObject.FindObjectOfType<PlayableDirector>() == null && GameObject.Find("DialogBox") == null) {
                 //Debug.Log("Cant find director");
                 isTimelineEnd = true;
-                GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
+                //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = true;
                 GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
                 MainCamera.orthographicSize = Mathf.Lerp(MainCamera.orthographicSize,5,0.03f);
                 MainCamera.orthographicSize = 5;
