@@ -49,15 +49,15 @@ public class AutoMovement : MonoBehaviour
                     GameObject.Find("Player").GetComponent<BirdOutDoorMovement>().enabled = false;//禁止玩家移动
                     Player.GetComponent<Animator>().SetTrigger("StandOnBox");
                     //FindObjectOfType<InDoorAnimation>().TimelineAnimation();
-                    isAIMove = false;
                     Dialog.PrintDialog("Villager");
                     NpcController.Npc01Animator.enabled = true;
                     isDialoged = true;
+                    isAIMove = false;
                 }
     	    }
         }
         //if dialog真正结束，恢复镜头
-        if(GameObject.Find("DialogBox") == null && isDialoged) {
+        if(!GameManager.instance.IsDialogShow() && isDialoged) {
             NpcController.Npc01Animator.Play("Npc01Turn");
             NpcController.Npc02Animator.enabled = true;
             //GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = 0;
