@@ -75,7 +75,7 @@ public class CoverQuilt : MonoBehaviour
                 //Debug.Log(Anim.GetBool("Cover3"));
             }
             //按右触发接下来的关卡
-            else if(Anim.GetBool("Cover3")){
+            else if(Anim.GetBool("Cover3") && Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1){
                 KeyHint.SetActive(false);
                 LeaveTip.SetActive(true);
                 //Player.GetComponent<PlayerMovement>().enabled = true; //玩家恢复
