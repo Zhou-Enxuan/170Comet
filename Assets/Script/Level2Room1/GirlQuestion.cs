@@ -32,7 +32,10 @@ public class GirlQuestion : MonoBehaviour
 
 	void Update(){
 		if (isDiaActive && GameObject.Find("DialogBox") == null) {
-			SceneManager.LoadScene("Level2SummerRoom"); // 夏天：按空格call scene3 in SceneTransition
+			//SceneManager.LoadScene("Level2SummerRoom"); // 夏天：按空格call scene3 in SceneTransition
+			if(Input.GetKeyDown("space")) {
+				LevelLoader.instance.LoadLevel("Level2SummerRoom");
+			}
 		}
 	}
 
