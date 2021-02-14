@@ -15,10 +15,15 @@ public class BirdOutDoorMovement : MonoBehaviour
         birdAnim = GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        GameManager.instance.stopMoving = false;
+    }
+
     private void FixedUpdate(){
         //碰撞到npcone的时候
         birdAnim.SetFloat("height", transform.position.y);
-        if (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove) {
+        if (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove || GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
             Debug.Log("Stop PlayerMovement");
         } else { //normal时
