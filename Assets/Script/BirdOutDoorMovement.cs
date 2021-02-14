@@ -17,6 +17,7 @@ public class BirdOutDoorMovement : MonoBehaviour
 
     private void FixedUpdate(){
         //碰撞到npcone的时候
+        birdAnim.SetFloat("height", transform.position.y);
         if (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove) {
             rb.velocity = Vector2.zero;
             Debug.Log("Stop PlayerMovement");
