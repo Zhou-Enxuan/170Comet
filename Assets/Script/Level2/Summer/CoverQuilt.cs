@@ -12,10 +12,11 @@ public class CoverQuilt : MonoBehaviour
     public static GameObject LeaveTip; //离开窗户提示（还没用）
     public static GameObject GirlQMark;
     public static bool isStart; //开始summer
+    public static bool isCovered;
 
     void Start() {
     	Player = GameObject.FindGameObjectWithTag("Player");
-    	Player.SetActive(false); //为啥报错？
+    	Player.SetActive(true);
 
         Anim = GetComponent<Animator>();
         LeaveTip = GameObject.Find("LeaveTip");
@@ -23,15 +24,17 @@ public class CoverQuilt : MonoBehaviour
         GirlQMark = GameObject.Find("GirlQMark");
         KeyHint = GameObject.Find("KeyHint");
         LeaveTip.SetActive(false);
-        SpaceHint.SetActive(true);
+        SpaceHint.SetActive(false);
         GirlQMark.SetActive(true);
         KeyHint.SetActive(false);
-        isStart = true;
+        isStart = false;
+        isCovered = false;
     }
 
     void Update() {
         //开始盖被子，问号消失
         if (isStart && Input.GetKeyDown("space")) {
+            Player.SetActive(false);
             SpaceHint.SetActive(false);
             GirlQMark.SetActive(false);
             KeyHint.SetActive(true);
@@ -42,13 +45,6 @@ public class CoverQuilt : MonoBehaviour
             if (Input.GetKey("space")) {
                 switchAnim1();            
             }
-            /*else{
-                Anim.SetBool("Cover1", false);
-                Anim.SetBool("Cover2", false);
-                Anim.SetBool("Cover3", false);
-                Anim.SetBool("Start", true);
-                KeyHint.SetActive(true);
-            }*/
         }     
         
     }
@@ -80,6 +76,7 @@ public class CoverQuilt : MonoBehaviour
                 LeaveTip.SetActive(true);
                 //Player.GetComponent<PlayerMovement>().enabled = true; //玩家恢复
                 Player.SetActive(true);
+                isCovered = true;
             }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow)){
@@ -103,10 +100,21 @@ public class CoverQuilt : MonoBehaviour
                 Anim.SetBool("Cover2", true);
                 //KeyHint.SetActive(false);
             }
+        }   
+    }
+    
+    void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag == "Player" && !isCovered) {
+            SpaceHint.SetActive(true);
+            isStart = true;
         }
-        
-            
-            
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if(collision.tag == "Player" && !isCovered) {
+            SpaceHint.SetActive(false);
+            isStart = false;
+        }
     }
 
 }
