@@ -16,66 +16,78 @@ public class BirdInDoorMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
+    private void Start()
+    {
+        GameManager.instance.stopMoving = false;
+    }
+
     private void FixedUpdate(){
         //碰撞到npcone的时候
-        moveH = Input.GetAxisRaw("Horizontal");
-        // Debug.Log(Input.GetAxisRaw("Horizontal"));
-        moveV = Input.GetAxisRaw("Vertical");
-        direction = new Vector2(moveH, moveV);
-        // Debug.Log(Input.GetAxisRaw("Vertical"));
-        rb.velocity = direction * moveSpeed;
-        // Debug.Log(rb.velocity);
-        if(moveH != 0 && moveV != 0)
+        if (GameManager.instance.stopMoving)
         {
-            if (direction.y == 1 && direction.x == -1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-            }
-
-            if (direction.y == 1 && direction.x == 1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-
-            if (direction.y == -1 && direction.x == -1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-            }
-
-            if (direction.y == -1 && direction.x == 1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
+            rb.velocity = Vector2.zero;
         }
         else
         {
-            if (direction.x == -1)
+            moveH = Input.GetAxisRaw("Horizontal");
+            // Debug.Log(Input.GetAxisRaw("Horizontal"));
+            moveV = Input.GetAxisRaw("Vertical");
+            direction = new Vector2(moveH, moveV);
+            // Debug.Log(Input.GetAxisRaw("Vertical"));
+            rb.velocity = direction * moveSpeed;
+            // Debug.Log(rb.velocity);
+            if (moveH != 0 && moveV != 0)
             {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                if (direction.y == 1 && direction.x == -1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+
+                if (direction.y == 1 && direction.x == 1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+
+                if (direction.y == -1 && direction.x == -1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+                }
+
+                if (direction.y == -1 && direction.x == 1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
             }
-
-            if (direction.x == 1)
+            else
             {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
+                if (direction.x == -1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
+                    transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
+
+                if (direction.x == 1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
+                    transform.localRotation = Quaternion.Euler(0, 0, 0);
+                }
 
 
-            if (direction.y == 1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
-            }
+                if (direction.y == 1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
+                }
 
 
-            if (direction.y == -1)
-            {
-                sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
+                if (direction.y == -1)
+                {
+                    sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
+                }
             }
         }
     }

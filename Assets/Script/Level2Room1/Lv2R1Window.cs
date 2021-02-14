@@ -29,7 +29,10 @@ public class Lv2R1Window : MonoBehaviour
                 SceneName = "Level2WinFlower"; // "Level2WinFlower"
                 Debug.Log("transroom Level2WinFlower");
             }
-            LevelLoader.instance.LoadLevel(SceneName);
+            GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+            GameManager.instance.stopMoving = true;
+            StartCoroutine(waitFlyAnimOver(SceneName));
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
@@ -40,5 +43,15 @@ public class Lv2R1Window : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision) {
         LeaveTip.SetActive(false);
+    }
+
+    IEnumerator waitFlyAnimOver(string sceneName)
+    {
+        while (GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            yield return null;
+        }
+        LevelLoader.instance.LoadLevel(sceneName);
+
     }
 }

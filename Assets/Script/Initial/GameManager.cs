@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance { get; private set; }
+    public bool stopMoving = false;
     public bool isLv2Npc { get; private set; }
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
