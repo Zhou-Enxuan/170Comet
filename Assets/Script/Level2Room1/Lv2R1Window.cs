@@ -33,8 +33,10 @@ public class Lv2R1Window : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
-     	if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
-			LeaveTip.SetActive(true);
+        if (!GameManager.instance.isLv2Flower) {
+     	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
+		        LeaveTip.SetActive(true);
+            }
 		}
 	}
 
