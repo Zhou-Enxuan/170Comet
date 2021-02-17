@@ -93,11 +93,11 @@ public class NpcController : MonoBehaviour
             else {
                 MainCamera.depth = -1;
                 // NpcTransPos(true);
-                SadFace.SetActive(true);
-                this.GetComponent<Transform>().position = Npc02TransPos;
-                this.GetComponent<SpriteRenderer>().enabled = true;
-                this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManPick/A_BrownMan_PickHat_05");
-                Npc03.SetActive(true);
+                // SadFace.SetActive(true);
+                // this.GetComponent<Transform>().position = Npc02TransPos;
+                // this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManPick/A_BrownMan_PickHat_05");
+                // this.GetComponent<SpriteRenderer>().enabled = true;
+                // Npc03.SetActive(true);
                 if (!TimelineGameManager.isTimeline) {
                     isPlayerMove = false;
                     Player.GetComponent<BirdOutDoorMovement>().enabled = true;

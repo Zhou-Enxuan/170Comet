@@ -8,19 +8,22 @@ public class Lv2RhythmController : MonoBehaviour
     public static GameObject SadFace;   
    	public static GameObject Flower; //小花
     public static GameObject RhythmGame; //小花
+    public static GameObject npc02Pick;
     bool isDialoged = false;
-    Vector2 Npc02OriPos;
-	Vector2 Npc02TransPos;
+ //    Vector2 Npc02OriPos;
+	// Vector2 Npc02TransPos;
     
     void Awake()
     {
+        this.GetComponent<SpriteRenderer>().enabled = false;
         Player = GameObject.Find("Player");
         Player.GetComponent<Transform>().position = GameManager.instance.PlayerPos;
         Flower = GameObject.Find("Flower");
         SadFace = GameObject.Find("SadFace");
         RhythmGame = GameObject.Find("RhythmGame");
-        Npc02OriPos = this.GetComponent<Transform>().position;
-        Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
+        // Npc02OriPos = this.GetComponent<Transform>().position;
+        // Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
+        npc02Pick = GameObject.Find("NpcTwoPick");
         Flower.SetActive(false);
     }
     
@@ -57,16 +60,16 @@ public class Lv2RhythmController : MonoBehaviour
     }
     public void NpcTransPos(bool isNeedTrans) {
     	if (isNeedTrans) {
+            // 跌倒
             Flower.SetActive(false); 
             SadFace.SetActive(true);
-    		this.GetComponent<Transform>().position = Npc02TransPos;
-            this.GetComponent<SpriteRenderer>().enabled = true;
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManPick/A_BrownMan_PickHat_05");
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            npc02Pick.SetActive(true);
     	} 
     	else {
-    		this.GetComponent<Transform>().position = Npc02OriPos;
-		    this.GetComponent<SpriteRenderer>().enabled = false;
-            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BrownManTurn/A_Npc02Turn04");
+            //站起拿花
+            npc02Pick.SetActive(false);
+    		this.GetComponent<SpriteRenderer>().enabled = true;
             Flower.SetActive(true); 
     	}
 
