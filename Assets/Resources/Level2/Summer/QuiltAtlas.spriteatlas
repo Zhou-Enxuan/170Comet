@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: QuiltAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 39cda008c8ae24b75a62c032a1b0937d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 49bbcee0b83264b3ab542506e6dddf27, type: 3}
+  - {fileID: 21300000, guid: ea5b12830692a49e18387ccde142b67e, type: 3}
+  - {fileID: 21300000, guid: d0417be3bca624bebb5873515efb7c29, type: 3}
+  - {fileID: 21300000, guid: 3e784dd5826c14bdd8346bdf95aff5cb, type: 3}
+  - {fileID: 21300000, guid: ee93875606bf34f0bb65c4970b2c68b7, type: 3}
+  - {fileID: 21300000, guid: e893a6198e1c54e5587165eae9f19704, type: 3}
+  - {fileID: 21300000, guid: 62f7cfaa918404d5c84ae01c6cef43d4, type: 3}
+  - {fileID: 21300000, guid: 009fd03ce5702450db1b5fb6f90909e2, type: 3}
+  - {fileID: 21300000, guid: 7940ec0ed1ff64df6a656b244439d3bd, type: 3}
+  - {fileID: 21300000, guid: 94b843eedc0554687963acef1a06ec07, type: 3}
+  - {fileID: 21300000, guid: 262bda1f2affb4eb7b125dcc18eaa358, type: 3}
+  - {fileID: 21300000, guid: 371b089fef4fa45748e3d5a7ea6f236e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - A_NonBirdQuilt_06
+  - A_Quilt_3
+  - A_Quilt_6
+  - A_NonBirdQuilt_01
+  - A_Quilt_5
+  - A_NonBirdQuilt_04
+  - A_Quilt_2
+  - A_NonBirdQuilt_05
+  - A_Quilt_4
+  - A_NonBirdQuilt_02
+  - A_NonBirdQuilt_03
+  - A_Quilt_1
+  m_Tag: QuiltAtlas
+  m_IsVariant: 0
