@@ -9,10 +9,12 @@ public class BirdOutDoorMovement : MonoBehaviour
     private float moveH, moveV;
     private Animator birdAnim;
     [SerializeField] private float moveSpeed = 1.0f;
+    private bool IsPickFlower = false;
     
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         birdAnim = GetComponent<Animator>();
+
     }
 
     void Start()
@@ -21,8 +23,10 @@ public class BirdOutDoorMovement : MonoBehaviour
     }
 
     private void FixedUpdate(){
+        IsPickFlower = GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower;
         //碰撞到npcone的时候
         birdAnim.SetFloat("height", transform.position.y);
+        birdAnim.SetBool("IsPickFlower", IsPickFlower);
         if (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove || GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
             Debug.Log("Stop PlayerMovement");
