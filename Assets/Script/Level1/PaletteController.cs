@@ -10,8 +10,8 @@ public class PaletteController : MonoBehaviour {
     public float wait = 1.0f;
     public bool fadeout = false;
     public bool fadein = false; 
-    public static int ispickPen = 0;
-    public static int ispickPaper = 0;
+    public int ispickPen = 0;
+    public int ispickPaper = 0;
     public static Image board;
     public static Image board2;
     public static Image board3;
@@ -88,9 +88,11 @@ public class PaletteController : MonoBehaviour {
                     i--;
                     // GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPaper = 0;
                     ispickPaper = 0;
+                    GameManager.instance.PickPaper(false);
                 }
             // GameObject.Find("GamePlaySystemManager").GetComponent<GamePlaySystemManager>().ispickPen = 1;
             ispickPen = 1;
+            GameManager.instance.PickPen(true);
             i++;
             Debug.Log("pen");
         }
@@ -104,8 +106,10 @@ public class PaletteController : MonoBehaviour {
                         //Debug.Log("changetopen");
                         i--;
                         ispickPen = 0;
+                        GameManager.instance.PickPen(false);
                     }
                     ispickPaper = 1;
+                    GameManager.instance.PickPaper(true);
                     i++;
                     Debug.Log("paper");
         }
@@ -131,6 +135,7 @@ public class PaletteController : MonoBehaviour {
                         Rpaper.SetActive(true);
                         Debug.Log("givepaper");
                         ispickPaper = 0;
+                        GameManager.instance.PickPaper(false);
                     }
                     else if (ispickPen == 1) {
                         pen_paper.SetActive(false);
@@ -141,6 +146,7 @@ public class PaletteController : MonoBehaviour {
                         Rpen.SetActive(true);
                         Debug.Log("givepen");
                         ispickPen = 0;
+                        GameManager.instance.PickPen(false);
                     }              
                 }
             }
@@ -167,7 +173,9 @@ public class PaletteController : MonoBehaviour {
                     }
                 }
                 ispickPen = 0;
+                GameManager.instance.PickPen(false);
                 ispickPaper = 0;
+                GameManager.instance.PickPaper(false);
             }
         }
 
@@ -311,7 +319,7 @@ public class PaletteController : MonoBehaviour {
 
 
     void OnTriggerEnter2D(Collider2D collision) {
-    if(collision.tag == "pen"){
+    if(collision.gameObject.name == "MyGameObjectName"){
         IsInthePen =true;
     }
 
