@@ -53,6 +53,19 @@ public class MainMenu : MonoBehaviour
         MenuUI.transform.Find("Confirm").gameObject.SetActive(true);
     }
 
+    public void Credit()
+    {
+        MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
+        MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
+        currentLevelPage = GameManager.instance.playedLevel + 2;
+        updateLevelSelect();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void confirmDeleteO()
     {
         SaveSystem.DeleteGame();
@@ -69,7 +82,7 @@ public class MainMenu : MonoBehaviour
 
     public void prevPage()
     {
-        if (currentLevelPage == 1)
+        if (currentLevelPage <= 1)
         {
             MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
             MenuUI.transform.Find("LevelSelect").gameObject.SetActive(false);
