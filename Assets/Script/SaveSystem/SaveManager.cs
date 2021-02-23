@@ -24,5 +24,10 @@ public class SaveManager : MonoBehaviour
             GameManager.instance.updateLevelData(2);
             SaveSystem.SaveGame();
         }
+        if(SceneManager.GetActiveScene().name == "Level2SummerRoom")
+        {
+            GameManager.instance.updateLevelData(3);
+            SaveSystem.SaveGame();
+        }
     }
 }

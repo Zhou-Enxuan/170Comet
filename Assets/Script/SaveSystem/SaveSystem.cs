@@ -37,4 +37,19 @@ public static class SaveSystem
             return null;
         }
     }
+
+    public static void DeleteGame()
+    {
+        string path = Application.persistentDataPath + "/game.fun";
+        if(File.Exists(path))
+        {
+            File.Delete(path);
+            GameManager.instance.playerLevel = -1;
+            GameManager.instance.playedLevel = -1;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+        }
+    }
 }
