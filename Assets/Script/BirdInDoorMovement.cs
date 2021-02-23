@@ -10,6 +10,7 @@ public class BirdInDoorMovement : MonoBehaviour
     private Vector2 direction;
     private SpriteRenderer sprite;
     [SerializeField] private float moveSpeed = 1.0f;
+    private int Numdirection = 0;
     
     
     private void Awake(){
@@ -54,6 +55,7 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
                         transform.localRotation = Quaternion.Euler(0, 180, 0);
                     }
+                    Numdirection = 1;
                 }
 
                 if (direction.y == 1 && direction.x == 1)
@@ -71,6 +73,7 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
                         transform.localRotation = Quaternion.Euler(0, 0, 0);
                     }
+                    Numdirection = 7;
                 }
 
                 if (direction.y == -1 && direction.x == -1)
@@ -88,6 +91,7 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
                         transform.localRotation = Quaternion.Euler(0, 180, 0);
                     }
+                    Numdirection = 3;
                 }
 
                 if (direction.y == -1 && direction.x == 1)
@@ -105,6 +109,7 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
                         transform.localRotation = Quaternion.Euler(0, 0, 0);
                     }
+                    Numdirection = 5;
                 }
             }
             else
@@ -124,6 +129,8 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
                         transform.localRotation = Quaternion.Euler(0, 180, 0);
                     }
+
+                    Numdirection = 2;
                 }
 
                 if (direction.x == 1)
@@ -141,6 +148,7 @@ public class BirdInDoorMovement : MonoBehaviour
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
                         transform.localRotation = Quaternion.Euler(0, 0, 0);
                     }
+                    Numdirection = 6;
                 }
 
 
@@ -158,6 +166,7 @@ public class BirdInDoorMovement : MonoBehaviour
                     }else{
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
                     }
+                    Numdirection = 0;
                 }
 
 
@@ -175,6 +184,121 @@ public class BirdInDoorMovement : MonoBehaviour
                     }else{
                         sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
                     }
+                    Numdirection = 4;
+                }
+
+                if(direction.y == 0 && direction.x == 0){
+                    if(Numdirection == 0){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdW_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdW_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdW_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
+                        }
+                    }else if(Numdirection == 1){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdWD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdWD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdWD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }
+                    }else if(Numdirection == 2){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }
+                    }else if(Numdirection == 3){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdSD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdSD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+                            transform.localRotation = Quaternion.Euler(0, 180, 0);
+                        }
+                    }else if(Numdirection == 4){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdS_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdS_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdS_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
+                        }
+                    }else if(Numdirection == 5){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdSD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdSD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }
+                    }else if(Numdirection == 6){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }
+                    }else if(Numdirection == 7){
+                        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdWD_Pen");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdWD_Paper");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+                            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdWD_Flow");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }else{
+                            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
+                            transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        }
+                    } 
                 }
             }
         }
