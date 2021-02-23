@@ -22,9 +22,9 @@ public class Lv2SummerWindows : MonoBehaviour
             if (!GameManager.instance.islv2SummerNewsEnd) {
                 SceneName = "Level2Summer"; // "Level2Winter"
                 Debug.Log("transroom Level2Winter");
-            }else{
-								SceneName = "Level2SummerRoomWin";
-						}
+            } else {
+				SceneName = "Level2SummerRoomWin";
+			}
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
