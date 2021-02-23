@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
     {
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
         MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
-        currentLevelPage = GameManager.instance.playedLevel + 1;
+        currentLevelPage = GameManager.instance.playedLevel + 2;
         updateLevelSelect();
     }
 
