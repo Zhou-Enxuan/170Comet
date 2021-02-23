@@ -368,7 +368,6 @@ public class PaletteController : MonoBehaviour {
             yield return null;
         }
         LevelLoader.instance.LoadLevel("Level2Winter");
-
     }
 
 }

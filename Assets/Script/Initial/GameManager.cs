@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool isLv1Paper { get; private set; }
     public Vector2 PlayerPos { get; private set; }
     int index;
+    public int playerLevel = -1;
+    public int playedLevel = -1;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
     
     public void StorePlayerPos() {
@@ -76,6 +79,15 @@ public class GameManager : MonoBehaviour
         } 
         else {
             return true;
+        }
+    }
+
+    public void updateLevelData(int level_num)
+    {
+        playerLevel = level_num;
+        if(playedLevel < level_num)
+        {
+            playedLevel = level_num;
         }
     }
     
