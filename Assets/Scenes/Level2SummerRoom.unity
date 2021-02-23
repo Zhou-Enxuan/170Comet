@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 1212075996}
   - component: {fileID: 1212075995}
   m_Layer: 5
-  m_Name: LeaveTip
+  m_Name: LeaveHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1589,9 +1589,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087264552}
-  - component: {fileID: 2087264550}
   - component: {fileID: 2087264553}
   - component: {fileID: 2087264551}
+  - component: {fileID: 2087264550}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087264549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7c1ca79198c4821959dfe08df4c6aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 24bd2f694f5de6349a80a6bf9f491746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!60 &2087264551
@@ -1663,14 +1663,14 @@ PolygonCollider2D:
       - {x: -0.97999996, y: 0.82}
       - {x: -1, y: 0.71}
       - {x: -1, y: -0.32}
-      - {x: -0.96, y: -0.35999998}
-      - {x: -0.88, y: -0.39999998}
-      - {x: -0.76, y: -0.44}
-      - {x: -0.52, y: -0.56}
-      - {x: -0.37, y: -0.64}
-      - {x: -0.21, y: -0.71999997}
-      - {x: -0.04, y: -0.79999995}
-      - {x: 0.59999996, y: -1.12}
+      - {x: -1.1140068, y: -0.8799459}
+      - {x: -0.9955051, y: -0.9006885}
+      - {x: -0.8370036, y: -0.9792034}
+      - {x: -0.6162547, y: -1.0992033}
+      - {x: -0.40850222, y: -1.2369748}
+      - {x: -0.21, y: -1.2977178}
+      - {x: 0.037003063, y: -1.4162321}
+      - {x: 0.5807497, y: -1.6592034}
       - {x: 0.75, y: -1.1999999}
       - {x: 0.88, y: -1.26}
       - {x: 0.97999996, y: -1.26}

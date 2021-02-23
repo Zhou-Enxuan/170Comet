@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public bool isLv2Npc { get; private set; }
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
+    public bool islv2SummerNewsEnd { get; private set; }
+    public bool isLv1Pen { get; private set; }
+    public bool isLv1Paper { get; private set; }
     public Vector2 PlayerPos { get; private set; }
     int index;
     public int playerLevel = -1;
@@ -19,6 +22,9 @@ public class GameManager : MonoBehaviour
         isLv2Npc = false;
         isLv2WinterEnd = false;
         isLv2Flower = false;
+        isLv1Pen = false;
+        isLv1Paper = false;
+        islv2SummerNewsEnd = false;
         
     	if (instance != null) {
     		GameObject.Destroy(instance);
@@ -47,6 +53,22 @@ public class GameManager : MonoBehaviour
     //FlowerDisappear.cs调用
     public void GetFlower(){
         instance.isLv2Flower = true;
+    }
+
+    public void GiveFlower(){
+        instance.isLv2Flower = false;
+    }
+
+    public void NewsEnd(){
+        instance.islv2SummerNewsEnd = true;
+    }
+
+    public void PickPen(bool status){
+        isLv1Pen = status;
+    }
+
+    public void PickPaper(bool status){
+        isLv1Paper = status;
     }
     
     

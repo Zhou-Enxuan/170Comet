@@ -10,7 +10,7 @@ public class CoverQuilt : MonoBehaviour
 	public static GameObject Player;
     public static GameObject SpaceHint;
     public static GameObject KeyHint; //盖被子的提示1
-    public static GameObject LeaveTip; //离开窗户提示（还没用）
+   // public static GameObject LeaveHint; //离开窗户提示（还没用）
     public static GameObject GirlQMark;
     public static GameObject Quilt;
     public static bool isStart; //开始summer
@@ -28,12 +28,12 @@ public class CoverQuilt : MonoBehaviour
         //GetComponent<SpriteRenderer>().sprite = atlas.GetSprite("A_NonBirdQuilt_01");
         Anim = GetComponent<Animator>();
         Quilt = GameObject.Find("Quilt"); //床没有鸟
-        LeaveTip = GameObject.Find("LeaveTip");
+        //LeaveHint = GameObject.Find("LeaveHint");
     	SpaceHint = GameObject.Find("SpaceHint");
         GirlQMark = GameObject.Find("GirlQMark");
         KeyHint = GameObject.Find("KeyHint");
         Quilt.SetActive(true);
-        LeaveTip.SetActive(false);
+        //LeaveHint.SetActive(false);
         SpaceHint.SetActive(false);
         GirlQMark.SetActive(true);
         KeyHint.SetActive(false);
@@ -95,7 +95,7 @@ public class CoverQuilt : MonoBehaviour
             //按右触发接下来的关卡
             else if(Anim.GetBool("Cover3") && Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1){
                 KeyHint.SetActive(false);
-                LeaveTip.SetActive(true);
+                //LeaveHint.SetActive(true);
                 //this.gameObject.GetComponent<SpriteRenderer>().sprite = NBird6;
                 Quilt.SetActive(true);
                 SR.sprite = NBird6;
