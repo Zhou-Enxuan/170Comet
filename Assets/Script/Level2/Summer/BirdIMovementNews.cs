@@ -58,7 +58,7 @@ public class BirdIMovementNews : MonoBehaviour
             PickUpHint.SetActive(true);
             if( Input.GetKey("space") && rb.velocity.magnitude > 0){
                 MSpeed.velocity = rb.velocity;
-                Debug.Log("移动第一张报纸");
+                Debug.Log("移动第二张报纸");
             }else{
                 MSpeed.velocity = new Vector2(0,0);
             }
@@ -66,12 +66,17 @@ public class BirdIMovementNews : MonoBehaviour
             PickUpHint.SetActive(true);
             if( Input.GetKey("space") && rb.velocity.magnitude > 0){
                 BSpeed.velocity = rb.velocity;
-                Debug.Log("移动第一张报纸");
+                Debug.Log("移动第三张报纸");
             }else{
                 BSpeed.velocity = new Vector2(0,0);
             }
         }else{
             PickUpHint.SetActive(false);
+        }
+
+        if(BNews.activeSelf == false){
+            LevelLoader.instance.LoadLevel("Level2SummerWin");
+            GameManager.instance.NewsEnd();
         }
 
     }

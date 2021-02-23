@@ -46,6 +46,7 @@ public class GirlQuestion : MonoBehaviour
 	        	if (isRoomFlower) {
 	        		Flower.SetActive(true);
 	        		Dialog.PrintDialog("Lv2P2Flower");
+							GameManager.instance.GiveFlower();
 	        	} 
 	        	else {
 	        		Dialog.PrintDialog("Lv2P2Room");
