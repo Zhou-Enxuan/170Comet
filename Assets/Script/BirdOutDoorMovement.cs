@@ -10,7 +10,9 @@ public class BirdOutDoorMovement : MonoBehaviour
     private Animator birdAnim;
     [SerializeField] private float moveSpeed = 3.0f;
     private bool IsPickFlower = false;
-    
+    private float moveHPrev = -1;
+    private bool flipOnce = false;
+
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         birdAnim = GetComponent<Animator>();
@@ -29,6 +31,7 @@ public class BirdOutDoorMovement : MonoBehaviour
         birdAnim.SetBool("IsPickFlower", IsPickFlower);
         if (!AutoMovement.isPlaCanFly || NpcController.isPlayerMove || GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
+
             Debug.Log("Stop PlayerMovement");
         } else { //normal时
             moveH = Input.GetAxisRaw("Horizontal");
@@ -37,6 +40,27 @@ public class BirdOutDoorMovement : MonoBehaviour
             moveV = Input.GetAxisRaw("Vertical");
             //Debug.Log(Input.GetAxisRaw("Vertical"));
             rb.velocity = new Vector2(moveH, moveV) * moveSpeed;
+            if (moveH == 0 && moveV == 0)
+            {
+                birdAnim.SetBool("Stand", true);
+                if(!flipOnce && birdAnim.GetCurrentAnimatorStateInfo(0).IsName("StaticRest01"))
+                {
+                    gameObject.GetComponent<SpriteRenderer>().flipX = !gameObject.GetComponent<SpriteRenderer>().flipX;
+                    flipOnce = true;
+                    moveHPrev *= -1;
+                }
+            }
+            else
+            {
+                birdAnim.SetBool("Stand", false);
+                flipOnce = false;
+            }
+            if(moveH * moveHPrev < 0)
+            {
+                Debug.Log(moveH * moveHPrev);
+                gameObject.GetComponent<SpriteRenderer>().flipX = !gameObject.GetComponent<SpriteRenderer>().flipX;
+                moveHPrev = moveH;
+            }
         }
     }
 
