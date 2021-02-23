@@ -80,6 +80,15 @@ public class GameManager : MonoBehaviour
             return true;
         }
     }
+
+    public void updateLevelData(int level_num)
+    {
+        playerLevel = level_num;
+        if(playedLevel < level_num)
+        {
+            playedLevel = level_num;
+        }
+    }
     
     // //GirlQuestion.cs调用
     // public void Level2WinFlower(){

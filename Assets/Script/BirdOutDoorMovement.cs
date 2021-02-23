@@ -11,7 +11,6 @@ public class BirdOutDoorMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     private bool IsPickFlower = false;
     private float moveHPrev = -1;
-    private bool flipOnce = false;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -33,7 +32,9 @@ public class BirdOutDoorMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
 
             Debug.Log("Stop PlayerMovement");
-        } else { //normal时
+            birdAnim.SetBool("Stand", true);
+        }
+        else { //normal时
             moveH = Input.GetAxisRaw("Horizontal");
             birdAnim.SetFloat("horizontal", moveH);
             //Debug.Log(Input.GetAxisRaw("Horizontal"));
@@ -43,17 +44,10 @@ public class BirdOutDoorMovement : MonoBehaviour
             if (moveH == 0 && moveV == 0)
             {
                 birdAnim.SetBool("Stand", true);
-                if(!flipOnce && birdAnim.GetCurrentAnimatorStateInfo(0).IsName("StaticRest01"))
-                {
-                    gameObject.GetComponent<SpriteRenderer>().flipX = !gameObject.GetComponent<SpriteRenderer>().flipX;
-                    flipOnce = true;
-                    moveHPrev *= -1;
-                }
             }
             else
             {
                 birdAnim.SetBool("Stand", false);
-                flipOnce = false;
             }
             if(moveH * moveHPrev < 0)
             {
