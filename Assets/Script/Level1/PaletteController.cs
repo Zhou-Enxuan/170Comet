@@ -25,6 +25,8 @@ public class PaletteController : MonoBehaviour {
     public static GameObject QuestionMark;
     public static GameObject PickUpHint;
     public GameObject LeaveTip;
+    static AudioSource[] audioSources;
+    public static AudioClip drawingSound;
 
     public static bool isLevel1End = false;
     bool IsBubbleShowed = false;
@@ -34,25 +36,28 @@ public class PaletteController : MonoBehaviour {
     bool IsCollideBed = false;
 
     void OnEnable(){
-    board = GameObject.Find("palette1").GetComponent<Image>();
-    board2 = GameObject.Find("palette2").GetComponent<Image>();
-    board3 = GameObject.Find("palette3").GetComponent<Image>();
-    board4 = GameObject.Find("palette4").GetComponent<Image>();
-    board5 = GameObject.Find("palette5").GetComponent<Image>();
-    pen_paper = GameObject.Find("BubblePenPaper");
-    pen =  GameObject.Find("BubblePen");
-    paper =  GameObject.Find("BubblePaper");
-    Rpen =  GameObject.Find("Pen");
-    Rpaper =  GameObject.Find("Paper");
-    QuestionMark = GameObject.Find("GirlQMark");
-    PickUpHint = GameObject.Find("PickUpHint");
-    LeaveTip = GameObject.Find("LeaveTip");
-    LeaveTip.SetActive(false);
-    pen_paper.SetActive(false);
-    paper.SetActive(false);
-    pen.SetActive(false);
-    PickUpHint.SetActive(false);
-    QuestionMark.SetActive(true);
+        audioSources = this.gameObject.GetComponents<AudioSource>();
+        drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
+        audioSources[0].clip = drawingSound;
+        board = GameObject.Find("palette1").GetComponent<Image>();
+        board2 = GameObject.Find("palette2").GetComponent<Image>();
+        board3 = GameObject.Find("palette3").GetComponent<Image>();
+        board4 = GameObject.Find("palette4").GetComponent<Image>();
+        board5 = GameObject.Find("palette5").GetComponent<Image>();
+        pen_paper = GameObject.Find("BubblePenPaper");
+        pen =  GameObject.Find("BubblePen");
+        paper =  GameObject.Find("BubblePaper");
+        Rpen =  GameObject.Find("Pen");
+        Rpaper =  GameObject.Find("Paper");
+        QuestionMark = GameObject.Find("GirlQMark");
+        PickUpHint = GameObject.Find("PickUpHint");
+        LeaveTip = GameObject.Find("LeaveTip");
+        LeaveTip.SetActive(false);
+        pen_paper.SetActive(false);
+        paper.SetActive(false);
+        pen.SetActive(false);
+        PickUpHint.SetActive(false);
+        QuestionMark.SetActive(true);
     }
 
     void Update() {
@@ -184,7 +189,7 @@ public class PaletteController : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space)) {
                 fadein = true;
                 GameObject.Find("Player").GetComponent<BirdInDoorMovement>().enabled = false;
-                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);;
+                GameObject.Find("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
             if (fadein == true && timerin >= 0 && timerin < wait) {
                 timerin += Time.deltaTime;
@@ -199,6 +204,7 @@ public class PaletteController : MonoBehaviour {
         else if(i == 4) {
             if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
                 fadeout = true;
+                audioSources[0].PlayOneShot(drawingSound, 1f);
             }
             if (fadeout == true && timerout >= 0 && timerout < wait) {
                 fadein = true;
@@ -223,6 +229,7 @@ public class PaletteController : MonoBehaviour {
         else if (i == 5) {
             if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
                 fadeout = true;
+                audioSources[0].PlayOneShot(drawingSound, 1f);
             }
             if (fadeout == true && timerout >= 0 && timerout < wait) {
                 fadein = true;
@@ -247,6 +254,7 @@ public class PaletteController : MonoBehaviour {
         else if (i == 6) {
             if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
                 fadeout = true;
+                audioSources[0].PlayOneShot(drawingSound, 1f);
             }
             if(fadeout == true && timerout >= 0 && timerout < wait) {
                 fadein = true;
@@ -271,6 +279,7 @@ public class PaletteController : MonoBehaviour {
         else if (i == 7) {
             if (fadein == false && Input.GetKeyDown(KeyCode.Space)) {
                 fadeout = true;
+                audioSources[0].PlayOneShot(drawingSound, 1f);
             }
             if (fadeout == true && timerout >= 0 && timerout < wait) {
                 fadein = true;
