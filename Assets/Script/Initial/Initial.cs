@@ -5,6 +5,6 @@ using UnityEngine;
 public class Initial : MonoBehaviour
 {    void Update()
     {
-        LevelLoader.instance.LoadLevel("Level1");
+        LevelLoader.instance.LoadLevel("Menu");
     }
 }
