@@ -319,7 +319,8 @@ public class PaletteController : MonoBehaviour {
 
 
     void OnTriggerEnter2D(Collider2D collision) {
-    if(collision.gameObject.name == "MyGameObjectName"){
+    PickUpHint.SetActive(true);
+    if(collision.tag == "pen"){
         IsInthePen =true;
     }
 

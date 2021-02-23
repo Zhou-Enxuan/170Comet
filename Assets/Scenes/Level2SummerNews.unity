@@ -158,12 +158,12 @@ PrefabInstance:
     - target: {fileID: 995973669708130108, guid: 01a944cdac5966a429a46054daa68ce1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 995973669708130108, guid: 01a944cdac5966a429a46054daa68ce1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.18
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 995973669708130108, guid: 01a944cdac5966a429a46054daa68ce1,
         type: 3}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 189392080}
   m_Layer: 0
   m_Name: DestroyB
-  m_TagString: Untagged
+  m_TagString: Destory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 192418745}
   - component: {fileID: 192418747}
   - component: {fileID: 192418748}
+  - component: {fileID: 192418749}
   m_Layer: 0
   m_Name: BNews
   m_TagString: Untagged
@@ -405,6 +406,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &192418749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192418744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b318ab62122854bac9b7a22b3477c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BNews: {fileID: 0}
 --- !u!1 &725830070
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +431,7 @@ GameObject:
   - component: {fileID: 725830071}
   m_Layer: 0
   m_Name: DestroyM
-  m_TagString: Untagged
+  m_TagString: Destory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,7 +470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725830070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.15, y: 0.3, z: -5.991141}
+  m_LocalPosition: {x: 7.88, y: 0.3, z: -5.991141}
   m_LocalScale: {x: 1, y: 6.652215, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -540,6 +554,7 @@ GameObject:
   - component: {fileID: 936132344}
   - component: {fileID: 936132346}
   - component: {fileID: 936132347}
+  - component: {fileID: 936132348}
   m_Layer: 0
   m_Name: TNews
   m_TagString: Untagged
@@ -674,6 +689,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &936132348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936132343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df43117fbe339dd4da8eb0aac15737d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TNews: {fileID: 0}
 --- !u!1 &1038126498
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +922,7 @@ GameObject:
   - component: {fileID: 1622942803}
   m_Layer: 0
   m_Name: DestroyT
-  m_TagString: Untagged
+  m_TagString: Destory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,6 +979,7 @@ GameObject:
   - component: {fileID: 1744431960}
   - component: {fileID: 1744431962}
   - component: {fileID: 1744431963}
+  - component: {fileID: 1744431964}
   m_Layer: 0
   m_Name: MNews
   m_TagString: Untagged
@@ -1084,6 +1113,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1744431964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744431959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1ccf922cf544c44ba6fb7f20e35451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MNews: {fileID: 0}
 --- !u!1 &2127191557
 GameObject:
   m_ObjectHideFlags: 0
