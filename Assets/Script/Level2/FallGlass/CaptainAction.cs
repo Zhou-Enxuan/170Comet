@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CaptainAction : MonoBehaviour
 {
 	public static bool isSoldierRun = false;
 	public static bool isSoldierTrace = false;
+	public GameObject glass;
 	public GameObject mark;
 	public GameObject questionMark;
 	public GameObject hint;
@@ -23,6 +25,7 @@ public class CaptainAction : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+    	glass.SetActive(false);
     	fading.SetActive(false);
     	questionMark.SetActive(false);
     	mark.SetActive(false);
@@ -94,7 +97,7 @@ public class CaptainAction : MonoBehaviour
         }
 
         if (sucCount == 5){
-        	//玻璃掉下
+        	glass.SetActive(true);
         	Debug.Log("游戏成功");
         }
     }
@@ -106,6 +109,6 @@ public class CaptainAction : MonoBehaviour
     IEnumerator GameEnd() {
     	fading.SetActive(true);
     	yield return new WaitForSeconds(3f);
-    	Debug.Log("游戏失败");
+    	SceneManager.LoadScene("Level2Fall");
     }
 }

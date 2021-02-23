@@ -29,7 +29,7 @@ public class Lv2WinNewsWindow : MonoBehaviour
 		// 	LeaveTip.SetActive(true);
 		// }
 		if (other.tag.CompareTo("Player") == 0) {
-			LevelLoader.instance.LoadLevel("Level2SummerRoom");
+			LevelLoader.instance.LoadLevel("Level2SumWinRoom");
 		}
 	}
 }
