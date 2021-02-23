@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 	public bool isLv2Flower { get; private set; }
     public Vector2 PlayerPos { get; private set; }
     int index;
+    public int playerLevel = -1;
+    public int playedLevel = -1;
 
     // Start is called before the first frame update
     private void Awake() {
