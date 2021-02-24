@@ -58,7 +58,7 @@ public class Dialog : MonoBehaviour
             } 
             else if (!NextPage()) {
                 dialogText.text = "";
-                dialog.SetActive(false);
+                HideDialog();
             }
         }
     }
@@ -81,6 +81,7 @@ public class Dialog : MonoBehaviour
     //Call for starting dialog
     public static void PrintDialog(string objName) {
         Debug.Log("PrintDialog");
+        GameManager.instance.stopMoving = true;
         j = 0;
     	CurrentTextlist.Clear();
         //if (AllTextlist.Contains(objName)) {
@@ -109,7 +110,8 @@ public class Dialog : MonoBehaviour
     }
 
     public static void HideDialog() {
-         dialog.SetActive(false);
+        GameManager.instance.stopMoving = false;
+        dialog.SetActive(false);
     }
 
     //Typewriter effect
