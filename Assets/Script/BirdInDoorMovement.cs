@@ -173,7 +173,7 @@ public class BirdInDoorMovement : MonoBehaviour
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }else{
-            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
@@ -189,7 +189,7 @@ public class BirdInDoorMovement : MonoBehaviour
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdS_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }else{
-            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
+            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
         }
     }
 
@@ -204,7 +204,7 @@ public class BirdInDoorMovement : MonoBehaviour
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }else{
-            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
+            sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
