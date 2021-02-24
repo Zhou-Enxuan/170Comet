@@ -119,6 +119,10 @@ public class MainMenu : MonoBehaviour
         {
             LevelLoader.instance.LoadLevel("Level2Winter");
         }
+        else if (currentLevelPage == 3)
+        {
+            LevelLoader.instance.LoadLevel("Level2Fall");
+        }
     }
 
     private void updateLevelSelect()

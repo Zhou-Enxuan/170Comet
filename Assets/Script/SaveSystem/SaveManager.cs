@@ -19,14 +19,20 @@ public class SaveManager : MonoBehaviour
             GameManager.instance.updateLevelData(1);
             SaveSystem.SaveGame();
         }
-        if(SceneManager.GetActiveScene().name == "Level2Winter")
+        else if(SceneManager.GetActiveScene().name == "Level2Winter")
         {
             GameManager.instance.updateLevelData(2);
             SaveSystem.SaveGame();
         }
-        if(SceneManager.GetActiveScene().name == "Level2SummerRoom")
+        else if(SceneManager.GetActiveScene().name == "Level2SummerRoom")
         {
             GameManager.instance.updateLevelData(3);
+            SaveSystem.SaveGame();
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Level2Fall")
+        {
+            GameManager.instance.updateLevelData(4);
             SaveSystem.SaveGame();
         }
     }
