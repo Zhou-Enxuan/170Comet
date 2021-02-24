@@ -10,8 +10,8 @@ public class SoundManager : MonoBehaviour
  //    public static AudioClip Level2BGM;
     public static AudioSource[] audioSources;
     public float audioSpeed;
-    bool play = false;
-    bool isChangVolume = true;
+    bool isBGMplayed = false; //flip
+    bool isChangVolume = false;
     int i = 0;
     // Start is called before the first frame update
     void Start()
@@ -20,8 +20,6 @@ public class SoundManager : MonoBehaviour
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
         audioSources[0].clip = Resources.Load<AudioClip>("Sound/RoomBGM");
-        audioSources[i].volume = 0;
-        audioSources[0].Play();
         audioSources[1].clip = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
     }
 
@@ -32,21 +30,31 @@ public class SoundManager : MonoBehaviour
             ChangVolume(i);
         }
 
-        if (SceneManager.GetActiveScene().name == "Level2Winter" && !play) {
-            audioSources[0].Stop();
+        if (SceneManager.GetActiveScene().name == "Level1" && !isBGMplayed) {
+            PlayClip();
+
+        }
+        if (SceneManager.GetActiveScene().name == "Level2Winter" && isBGMplayed) {
+            audioSources[i].Stop();
             i = 1;
-            audioSources[i].volume = 0;
-            isChangVolume = true;
-            audioSources[1].Play();
-            play = true;
+            PlayClip();
+            
+        }
+
+    }
+
+    void ChangVolume(int clipnum) {
+        audioSources[clipnum].volume = Mathf.Lerp(audioSources[clipnum].volume, 1 , Time.deltaTime * audioSpeed);
+        if ( audioSources[clipnum].volume > 0.95) {
+            audioSources[clipnum].volume = 1;
+            isChangVolume = false;
         }
     }
 
-    void ChangVolume(int i) {
-        audioSources[i].volume = Mathf.Lerp(audioSources[i].volume, 1 , Time.deltaTime * audioSpeed);
-        if ( audioSources[i].volume > 0.95) {
-            audioSources[i].volume = 1;
-            isChangVolume = false;
-        }
+    void PlayClip() {
+        audioSources[i].volume = 0;
+        isChangVolume = true;
+        audioSources[i].Play();
+        isBGMplayed = !isBGMplayed;
     }
 }
