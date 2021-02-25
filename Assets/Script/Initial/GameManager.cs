@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
     public bool islv2SummerNewsEnd { get; private set; }
-    public bool isLv1Pen { get; private set; }
-    public bool isLv1Paper { get; private set; }
+    public bool isLv1Pen;
+    public bool isLv1Paper;
     public Vector2 PlayerPos { get; private set; }
     int index;
     public int playerLevel = -1;
