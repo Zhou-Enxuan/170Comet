@@ -21,7 +21,9 @@ public class PaletteControllerRe : MonoBehaviour
     private Animator boardAnim;
     private GameObject LeaveTip;
     private Collider2D currentCollider;
-    private int currentBoard = -1;
+    private int currentBoard = 0;
+    private AudioSource[] audioSources;
+    private AudioClip drawingSound;
     private int girlItem = 0;
 
 
@@ -37,6 +39,7 @@ public class PaletteControllerRe : MonoBehaviour
         board = GameObject.Find("palette1");
         LeaveTip = GameObject.Find("LeaveTip");
         boardAnim = board.GetComponent<Animator>();
+        drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
     }
 
     void Start()
@@ -47,7 +50,9 @@ public class PaletteControllerRe : MonoBehaviour
         pen_paper.SetActive(false);
         paper.SetActive(false);
         pen.SetActive(false);
+        board.SetActive(false);
         PickUpHint.SetActive(false);
+        audioSources = this.gameObject.GetComponents<AudioSource>();
     }
 
     void Update()
@@ -170,19 +175,25 @@ public class PaletteControllerRe : MonoBehaviour
 
     private void startDrawing()
     {
+        board.SetActive(true);
         GameManager.instance.stopMoving = true;
         if (Input.GetKeyDown(KeyCode.Space) && boardAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             boardAnim.SetInteger("current", ++currentBoard);
-            if(currentBoard > 4)
+            if (currentBoard > 4)
             {
                 GameManager.instance.stopMoving = false;
                 OnCommand -= startDrawing;
                 PickUpHint.SetActive(false);
                 StartCoroutine(WaitanimDone());
             }
+            else
+            {
+                audioSources[0].PlayOneShot(drawingSound, 1f);
+            }
         }
     }
+
     IEnumerator WaitanimDone()
     {
         yield return new WaitForSeconds(1f);
@@ -225,7 +236,6 @@ public class PaletteControllerRe : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         currentCollider = collision;
-        Debug.Log(currentCollider);
     }
 
     //void OnTriggerStay2D(Collider2D collision)
@@ -237,7 +247,6 @@ public class PaletteControllerRe : MonoBehaviour
     {
         PickUpHint.SetActive(false);
         currentCollider = null;
-        Debug.Log(currentCollider);
         //LeaveTip.SetActive(false);
     }
 
