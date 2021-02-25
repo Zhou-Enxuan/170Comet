@@ -52,10 +52,6 @@ public class PaletteControllerRe : MonoBehaviour
 
     void Update()
     {
-    }
-
-    private void FixedUpdate()
-    {
         if (currentCollider != null)
             OnPlayerAction?.Invoke(currentCollider);
         OnCommand?.Invoke();
