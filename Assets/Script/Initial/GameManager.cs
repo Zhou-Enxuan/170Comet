@@ -9,14 +9,22 @@ public class GameManager : MonoBehaviour
     public bool isLv2Npc { get; private set; }
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
+    public bool islv2SummerNewsEnd { get; private set; }
+    public bool isLv1Pen;
+    public bool isLv1Paper;
     public Vector2 PlayerPos { get; private set; }
     int index;
+    public int playerLevel = -1;
+    public int playedLevel = -1;
 
     // Start is called before the first frame update
     private void Awake() {
         isLv2Npc = false;
         isLv2WinterEnd = false;
         isLv2Flower = false;
+        isLv1Pen = false;
+        isLv1Paper = false;
+        islv2SummerNewsEnd = false;
         
     	if (instance != null) {
     		GameObject.Destroy(instance);
@@ -30,6 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
     
     public void StorePlayerPos() {
@@ -46,6 +55,22 @@ public class GameManager : MonoBehaviour
     public void GetFlower(){
         instance.isLv2Flower = true;
     }
+
+    public void GiveFlower(){
+        instance.isLv2Flower = false;
+    }
+
+    public void NewsEnd(){
+        instance.islv2SummerNewsEnd = true;
+    }
+
+    public void PickPen(bool status){
+        isLv1Pen = status;
+    }
+
+    public void PickPaper(bool status){
+        isLv1Paper = status;
+    }
     
     
     public bool IsDialogShow() {
@@ -54,6 +79,15 @@ public class GameManager : MonoBehaviour
         } 
         else {
             return true;
+        }
+    }
+
+    public void updateLevelData(int level_num)
+    {
+        playerLevel = level_num;
+        if(playedLevel < level_num)
+        {
+            playedLevel = level_num;
         }
     }
     
