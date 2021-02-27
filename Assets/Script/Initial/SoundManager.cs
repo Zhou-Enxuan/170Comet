@@ -10,9 +10,9 @@ public class SoundManager : MonoBehaviour
  //    public static AudioClip Level2BGM;
     public static AudioSource[] audioSources;
     public float audioSpeed;
-    bool isBGMplayed = false; //flip
-    bool isChangVolume = false;
-    int i = 0;
+   // bool isBGMplayed = false; //flip
+    public static bool isChangVolume = false;
+    public static int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,16 +30,16 @@ public class SoundManager : MonoBehaviour
             ChangVolume(i);
         }
 
-        if (SceneManager.GetActiveScene().name == "Level1" && !isBGMplayed) {
-            PlayClip();
+        // if (SceneManager.GetActiveScene().name == "Level1" && !isBGMplayed) {
+        //     PlayClip();
 
-        }
-        if (SceneManager.GetActiveScene().name == "Level2Winter" && isBGMplayed) {
-            audioSources[i].Stop();
-            i = 1;
-            PlayClip();
+        // }
+        // if (SceneManager.GetActiveScene().name == "Level2Winter" && isBGMplayed) {
+        //     audioSources[i].Stop();
+        //     i = 1;
+        //     PlayClip();
             
-        }
+        // }
 
     }
 
@@ -51,10 +51,24 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    void PlayClip() {
+    // void PlayClip() {
+    //     audioSources[i].volume = 0;
+    //     isChangVolume = true;
+    //     audioSources[i].Play();
+    //     isBGMplayed = !isBGMplayed;
+    // }
+
+    public static void playRoomBgm() {
+        audioSources[0].volume = 0;
+        isChangVolume = true;
+        audioSources[0].Play();
+    }
+
+    public static void playLv2Bgm(int num){
+        i = num;
+        audioSources[i-1].Stop();
         audioSources[i].volume = 0;
         isChangVolume = true;
         audioSources[i].Play();
-        isBGMplayed = !isBGMplayed;
     }
 }

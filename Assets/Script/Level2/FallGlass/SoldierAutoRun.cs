@@ -8,14 +8,16 @@ public class SoldierAutoRun : MonoBehaviour
 	public static float waitTime = 0.1f;
 	public Transform[] movePos;
 
-	private int i = 1;
-	private bool moveingRight = true;
+	private int i;
+	private bool moveingRight;
 	private float wait;
 
     // Start is called before the first frame update
     void Start()
     {
-       wait = waitTime;
+    	i = 1;
+    	moveingRight = true;
+    	wait = waitTime;
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class SoldierAutoRun : MonoBehaviour
 		        }
 	        }
 		}
+		// 追玩家
 		else if (CaptainAction.isSoldierTrace) {
 			this.transform.eulerAngles = new Vector3 (0, -180, 0);
 			this.transform.position = Vector2.MoveTowards(this.transform.position, GameObject.Find("Player").GetComponent<Transform>().position, speed * Time.deltaTime);

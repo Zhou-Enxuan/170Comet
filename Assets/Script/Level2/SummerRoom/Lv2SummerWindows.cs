@@ -19,12 +19,8 @@ public class Lv2SummerWindows : MonoBehaviour
     void Update()
     {
         if (LeaveHint.activeSelf && Input.GetKeyDown("space")) {
-            if (!GameManager.instance.islv2SummerNewsEnd) {
-                SceneName = "Level2Summer"; // "Level2Winter"
-                Debug.Log("transroom Level2Winter");
-            } else {
-				SceneName = "Level2SummerRoomWin";
-			}
+            SceneName = "Level2Summer"; 
+            //Debug.Log("transroom Level2Winter");
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
@@ -32,11 +28,9 @@ public class Lv2SummerWindows : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
-        if (!GameManager.instance.islv2SummerNewsEnd) {
-     	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
-		        LeaveHint.SetActive(true);
-          }
-		}
+ 	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
+	        LeaveHint.SetActive(true);
+      }
 	}
 
     void OnTriggerExit2D(Collider2D collision) {
