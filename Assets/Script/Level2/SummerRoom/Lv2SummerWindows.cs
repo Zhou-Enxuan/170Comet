@@ -22,6 +22,7 @@ public class Lv2SummerWindows : MonoBehaviour
             SceneName = "Level2Summer"; 
             //Debug.Log("transroom Level2Winter");
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             //GameObject.Find("Player").GetComponent<Animator>().SetTrigger("FlyOut");
             GameObject.Find("Player").GetComponent<Animator>().SetBool("IsFlyingOut", true);
             //Debug.Log("FlyingOut");
