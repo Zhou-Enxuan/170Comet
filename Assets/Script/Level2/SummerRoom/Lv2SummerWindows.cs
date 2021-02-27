@@ -27,6 +27,7 @@ public class Lv2SummerWindows : MonoBehaviour
 			}
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+            //GameObject.Find("Player").GetComponent<Animator>().SetTrigger("FlyOut");
             GameObject.Find("Player").GetComponent<Animator>().SetBool("IsFlyingOut", true);
             Debug.Log("FlyingOut");
             GameManager.instance.stopMoving = true;
@@ -53,7 +54,8 @@ public class Lv2SummerWindows : MonoBehaviour
         // }
         // GameManager.instance.stopMoving = false;
         // LevelLoader.instance.LoadLevel(sceneName);
-        yield return new WaitWhile(() => GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitWhile(() => GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         //GameManager.instance.stopMoving = false;
         LevelLoader.instance.LoadLevel(sceneName);
 

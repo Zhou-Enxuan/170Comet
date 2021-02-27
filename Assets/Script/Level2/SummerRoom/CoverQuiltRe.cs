@@ -83,6 +83,7 @@ public class CoverQuiltRe : MonoBehaviour
     IEnumerator WaitCoveranimDone()
     {
         yield return new WaitWhile(() => Anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+
         Anim.SetBool("End", true);
         KeyHint.SetActive(false);
         //Player.GetComponent<QuiltCaller>().enabled = true;
