@@ -18,7 +18,6 @@ public class NpcController : MonoBehaviour
     public static GameObject NpcTwoTimeline; //胡子男拿花的timeline
     public static GameObject VillagerTimeline; //骑马过来的timeline
     public static bool isToStartTimeline = false; //开始cg ->automovent.cs调用启动
-    public static bool isPlayerMove = false;
     public static Animator Npc02Animator;
     public static Animator Npc01Animator;
     //public static Animator Npc02FallAnimator;
@@ -60,6 +59,7 @@ public class NpcController : MonoBehaviour
         Npc01Animator.enabled = false;
         Npc02Animator.enabled = false;
         //Npc02FallAnimator.enabled = false;
+        SoundManager.playLv2Bgm(1);
     }
 
     void Update() {
@@ -70,8 +70,7 @@ public class NpcController : MonoBehaviour
         //是否完成npc和骑马情节(此为情节1)
         // if (!isLevel2NpcPlot) {
         if (isToStartTimeline) {
-            isPlayerMove = true;
-            //GameObject.Find("Player").GetComponent<PlayerMovement>().enabled = false;
+            Player.GetComponent<BirdOutDoorMovement>().enabled = false;
             TimelineGameManager.GetDirector(VillagerTimeline.GetComponent<PlayableDirector>());
             VillagerTimeline.SetActive(true); //播放cg动画
             if(VillagerTimeline.GetComponent<PlayableDirector>().enabled == true) {
@@ -99,7 +98,6 @@ public class NpcController : MonoBehaviour
                 // this.GetComponent<SpriteRenderer>().enabled = true;
                 // Npc03.SetActive(true);
                 if (!TimelineGameManager.isTimeline) {
-                    isPlayerMove = false;
                     Player.GetComponent<BirdOutDoorMovement>().enabled = true;
                     //NoticeMark.SetActive(false);
                     // Destroy(GameObject.Find("G_NpcPlot"));
