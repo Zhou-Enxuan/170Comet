@@ -19,25 +19,23 @@ public class Lv2SummerWindows : MonoBehaviour
     void Update()
     {
         if (LeaveHint.activeSelf && Input.GetKeyDown("space")) {
-            if (!GameManager.instance.islv2SummerNewsEnd) {
-                SceneName = "Level2Summer"; // "Level2Winter"
-                Debug.Log("transroom Level2Winter");
-            } else {
-				SceneName = "Level2SummerRoomWin";
-			}
+            SceneName = "Level2Summer"; 
+            //Debug.Log("transroom Level2Winter");
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
+            //GameObject.Find("Player").GetComponent<Animator>().SetTrigger("FlyOut");
+            GameObject.Find("Player").GetComponent<Animator>().SetBool("IsFlyingOut", true);
+            //Debug.Log("FlyingOut");
             GameManager.instance.stopMoving = true;
             StartCoroutine(waitFlyAnimOver(SceneName));
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
-        if (!GameManager.instance.islv2SummerNewsEnd) {
-     	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
-		        LeaveHint.SetActive(true);
-          }
+ 	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
+	        LeaveHint.SetActive(true);
+      }
+
 		}
-	}
 
     void OnTriggerExit2D(Collider2D collision) {
         LeaveHint.SetActive(false);
@@ -45,11 +43,9 @@ public class Lv2SummerWindows : MonoBehaviour
 
     IEnumerator waitFlyAnimOver(string sceneName)
     {
-        while (GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            yield return null;
-        }
-        GameManager.instance.stopMoving = false;
+        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitWhile(() => GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+        //GameManager.instance.stopMoving = false;
         LevelLoader.instance.LoadLevel(sceneName);
 
     }
