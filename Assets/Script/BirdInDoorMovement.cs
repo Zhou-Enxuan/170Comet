@@ -28,6 +28,39 @@ public class BirdInDoorMovement : MonoBehaviour
         if (GameManager.instance.stopMoving)
         {
             rb.velocity = Vector2.zero;
+
+            if (Numdirection == 0)
+            {
+                NDAnimation();
+            }
+            else if (Numdirection == 1)
+            {
+                NWDAnimation();
+            }
+            else if (Numdirection == 2)
+            {
+                WAnimation();
+            }
+            else if (Numdirection == 3)
+            {
+                SWAnimation();
+            }
+            else if (Numdirection == 4)
+            {
+                SDAnimation();
+            }
+            else if (Numdirection == 5)
+            {
+                SEDAnimation();
+            }
+            else if (Numdirection == 6)
+            {
+                EDAnimation();
+            }
+            else if (Numdirection == 7)
+            {
+                NEDAnimation();
+            }
         }
         else
         {
