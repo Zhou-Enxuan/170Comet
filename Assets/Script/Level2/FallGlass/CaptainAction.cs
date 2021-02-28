@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CaptainAction : MonoBehaviour
 {
-	public static bool isSoldierRun = false;
-	public static bool isSoldierTrace = false;
+	public static bool isSoldierRun;
+	public static bool isSoldierTrace;
 	public GameObject glass;
 	public GameObject mark;
 	public GameObject questionMark;
@@ -14,17 +14,24 @@ public class CaptainAction : MonoBehaviour
 	public GameObject fading;
 	float whistleTime = 3f;
 	float knockableTime = 1f;
-	private bool isKnockable = false;	//玻璃是否可以被敲
-	private bool isGameStart = false;	//游戏开始
-	private bool isKnockedGlass = false; //是否敲过玻璃了
-	private int sucCount = 0;
-	private int failCount = 0;
-	enum failState {CHANGED, UNCHANGE, NONE};
+	private bool isKnockable; //玻璃是否可以被敲
+	private bool isGameStart;	//游戏开始
+	private bool isKnockedGlass; //是否敲过玻璃了
+	private int sucCount;
+	private int failCount;
+	enum failState {CHANGED, UNCHANGE};
 	failState curFailState;
 
     // Start is called before the first frame update
     void Awake()
     {
+    	isSoldierRun = false;
+    	isSoldierTrace = false;
+    	isKnockable = false;
+    	isGameStart = false;
+    	isKnockedGlass = false;
+    	sucCount = 0;
+    	failCount = 0;
     	glass.SetActive(false);
     	fading.SetActive(false);
     	questionMark.SetActive(false);
@@ -79,6 +86,10 @@ public class CaptainAction : MonoBehaviour
 	        }
 
 	    }
+	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount == 5) {
+	    	Debug.Log("捡起玻璃");
+        	StartCoroutine(GameEnd("Level2Fall"));
+	    }
 
         if (failCount == 1 && curFailState == failState.UNCHANGE) {
         	questionMark.SetActive(true);
@@ -93,12 +104,14 @@ public class CaptainAction : MonoBehaviour
         	isSoldierRun = false;
         	isSoldierTrace = true;
         	Debug.Log("fading");     
-        	StartCoroutine(GameEnd());
+        	StartCoroutine(GameEnd("Level2Fall"));
         }
 
         if (sucCount == 5){
-        	glass.SetActive(true);
         	Debug.Log("游戏成功");
+        	glass.SetActive(true);
+        	isGameStart = false;
+
         }
     }
 
@@ -106,9 +119,9 @@ public class CaptainAction : MonoBehaviour
 		isGameStart = true;
     }
 
-    IEnumerator GameEnd() {
+    IEnumerator GameEnd(string SceneName) {
     	fading.SetActive(true);
     	yield return new WaitForSeconds(3f);
-    	SceneManager.LoadScene("Level2Fall");
+    	SceneManager.LoadScene(SceneName);
     }
 }

@@ -38,3 +38,5 @@ Nightingale: Here is a present for you! It was a shining comet that flew over la
 Girl: How can I see the comet?
 Nightingale: I don't know... But I'll find out for you!
 ---
+Lv2NewsRoom
+Nightingale: Newspaper.

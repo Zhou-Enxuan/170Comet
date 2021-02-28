@@ -40,6 +40,7 @@ public class PaletteControllerRe : MonoBehaviour
         LeaveTip = GameObject.Find("LeaveTip");
         boardAnim = board.GetComponent<Animator>();
         drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
+        SoundManager.playRoomBgm();
     }
 
     void Start()
