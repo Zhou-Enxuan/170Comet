@@ -43,13 +43,6 @@ public class Lv2SummerWindows : MonoBehaviour
 
     IEnumerator waitFlyAnimOver(string sceneName)
     {
-
-        // while (GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        // {
-        //     yield return null;
-        // }
-        // GameManager.instance.stopMoving = false;
-        // LevelLoader.instance.LoadLevel(sceneName);
         yield return new WaitForSeconds(1.5f);
         //yield return new WaitWhile(() => GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         //GameManager.instance.stopMoving = false;
