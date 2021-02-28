@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuiltCaller : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class QuiltCaller : MonoBehaviour
     private GameObject SpaceHint;
     private GameObject KeyHint; //盖被子的提示1
     private GameObject GirlQMark;
-    private SpriteRenderer SR;
     private bool LBed;
     //private GameObject Window;
     //private GameObject LeaveHint;
@@ -31,7 +31,6 @@ public class QuiltCaller : MonoBehaviour
         LBed = false;
         //Window = GameObject.Find("Window");
         //LeaveHint = GameObject.Find("LeaveHint");
-        SR = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -71,8 +70,9 @@ public class QuiltCaller : MonoBehaviour
             {
                 GirlQMark.SetActive(false);
                 KeyHint.SetActive(true);
-                Anim.enabled = true;
+                GameManager.instance.stopMoving = true;
                 Player.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                Anim.enabled = true;
                 Anim.SetBool("IsGoingBed", true);
                 OnPlayerAction -= GoToBed;
                 StartCoroutine(WaitanimDone());
@@ -84,9 +84,8 @@ public class QuiltCaller : MonoBehaviour
     IEnumerator WaitanimDone()
     {
         yield return new WaitWhile(() => Anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
-        //GameManager.instance.stopMoving = true;
-        //SR.enabled = false;
         BedWQuilt.GetComponent<CoverQuiltRe>().enabled = true;
+        OnPlayerAction -= GoToBed;
         //OnPlayerFinish += LeaveBed;
         //Player.transform.position = new Vector2(-3.7f, 1f);
         
@@ -105,9 +104,10 @@ public class QuiltCaller : MonoBehaviour
     IEnumerator WaitLeaveanimDone()
     {
         yield return new WaitWhile(() => Anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
-        //GameManager.instance.stopMoving = false;
+        GameManager.instance.stopMoving = false;
         Anim.SetBool("IsLeavingBed", false);
         Player.GetComponent<QuiltCaller>().enabled = false;
+        Anim.enabled = false;
         //Anim.enabled = false;
         //Anim.SetBool("IsFlyingOut", true);
     }
