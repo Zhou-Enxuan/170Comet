@@ -172,18 +172,14 @@ EdgeCollider2D:
   - {x: 4.34075, y: -4.941182}
   - {x: 5.243726, y: -4.304837}
   - {x: 4.294583, y: -2.5905433}
-  - {x: 4.2382226, y: -2.416717}
-  - {x: 4.4215813, y: -2.3408577}
-  - {x: 4.813475, y: -1.6392553}
-  - {x: 3.936777, y: -0.57791394}
-  - {x: 3.7623892, y: -0.5959114}
-  - {x: 3.1045763, y: -0.94993263}
-  - {x: 2.55721, y: -0.65548795}
-  - {x: 2.781421, y: 0.06385073}
-  - {x: 2.4931767, y: 0.22577414}
-  - {x: 0.11097783, y: 1.3510246}
-  - {x: -0.011869013, y: 1.4487994}
+  - {x: 4.5976467, y: -2.416717}
+  - {x: 3.697947, y: -0.7712942}
+  - {x: 3.7185652, y: -1.2528038}
+  - {x: 3.4507937, y: -1.2814829}
+  - {x: 2.6022298, y: -0.6779981}
+  - {x: 2.6934216, y: -0.30973768}
   - {x: -0.15927124, y: 1.1619143}
+  - {x: -0.49452808, y: 0.9974974}
   - {x: -0.8177228, y: 0.83899605}
   - {x: -2.510523, y: 1.6374464}
   m_AdjacentStartPoint: {x: 0, y: 0}
@@ -462,6 +458,7 @@ GameObject:
   - component: {fileID: 1297076711}
   - component: {fileID: 1297076710}
   - component: {fileID: 1297076708}
+  - component: {fileID: 1297076709}
   m_Layer: 0
   m_Name: Bed
   m_TagString: trigger
@@ -497,6 +494,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1297076709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297076707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36d8b1a303004109b0bb52c2ae0ff72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!68 &1297076710
 EdgeCollider2D:
   m_ObjectHideFlags: 0

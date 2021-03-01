@@ -17,6 +17,7 @@ public class Dialog : MonoBehaviour
     public static List<string> dialogList;
     public static bool startTyping;
     public static bool isTyping;
+    public static bool istalking;
     public static string Line;
     public static int j;
     public float textspeed;
@@ -34,6 +35,7 @@ public class Dialog : MonoBehaviour
         dialogText = GameObject.Find("DialogText").GetComponent<Text>();
         dialog.SetActive(false);
         isTyping = false;
+        istalking = false;
     }
 
     void Update() {
@@ -58,7 +60,7 @@ public class Dialog : MonoBehaviour
             } 
             else if (!NextPage()) {
                 dialogText.text = "";
-                dialog.SetActive(false);
+                HideDialog();
             }
         }
     }
@@ -81,6 +83,8 @@ public class Dialog : MonoBehaviour
     //Call for starting dialog
     public static void PrintDialog(string objName) {
         Debug.Log("PrintDialog");
+        GameManager.instance.stopMoving = true;
+        istalking = true;
         j = 0;
     	CurrentTextlist.Clear();
         //if (AllTextlist.Contains(objName)) {
@@ -109,7 +113,9 @@ public class Dialog : MonoBehaviour
     }
 
     public static void HideDialog() {
-         dialog.SetActive(false);
+        GameManager.instance.stopMoving = false;
+        istalking = false;
+        dialog.SetActive(false);
     }
 
     //Typewriter effect

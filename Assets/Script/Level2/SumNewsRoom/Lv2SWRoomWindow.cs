@@ -17,10 +17,16 @@ public class Lv2SWRoomWindow : MonoBehaviour
     void Update()
     {
         if (LeaveTip.activeSelf && Input.GetKeyDown("space")) {
+            if (!GameManager.instance.islv2SummerNewsEnd) {
+                SceneName = "Level2Summer";
+            }
+            else {
+                SceneName = "Level2Fall";
+            }
         	GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
-            StartCoroutine(waitFlyAnimOver("Level2Fall"));
+            StartCoroutine(waitFlyAnimOver(SceneName));
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
@@ -40,6 +46,7 @@ public class Lv2SWRoomWindow : MonoBehaviour
         {
             yield return null;
         }
+        GameManager.instance.stopMoving = false;
         LevelLoader.instance.LoadLevel(sceneName);
 
     }
