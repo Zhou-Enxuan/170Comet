@@ -7,8 +7,8 @@ public class CaptainAction : MonoBehaviour
 {
 	public static bool isSoldierRun;
 	public static bool isSoldierTrace;
+	public static Animator captainAnim;
 	public GameObject glass;
-	public GameObject mark;
 	public GameObject questionMark;
 	public GameObject hint;
 	public GameObject fading;
@@ -25,6 +25,7 @@ public class CaptainAction : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+    	captainAnim = this.GetComponent<Animator>();
     	isSoldierRun = false;
     	isSoldierTrace = false;
     	isKnockable = false;
@@ -35,7 +36,6 @@ public class CaptainAction : MonoBehaviour
     	glass.SetActive(false);
     	fading.SetActive(false);
     	questionMark.SetActive(false);
-    	mark.SetActive(false);
     	hint.SetActive(false);
     	Invoke("StartWhistle", 3f);
     }
@@ -60,12 +60,12 @@ public class CaptainAction : MonoBehaviour
 		        		knockableTime = 2f;
 		        		isKnockedGlass = false;
 		        		isKnockable = false;
-		        		mark.SetActive(false);
+		        		captainAnim.SetBool("isWhistle",false);
 		        		hint.SetActive(false);
 			        	// Debug.Log("不可以敲");
 		        	} else {
 		        		isKnockable = true;
-			        	mark.SetActive(true);
+		        		captainAnim.SetBool("isWhistle",true);
 			        	hint.SetActive(true);
 			        	// Debug.Log("可以敲");
 		        	}
