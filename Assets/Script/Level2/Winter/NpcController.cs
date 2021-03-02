@@ -15,7 +15,6 @@ public class NpcController : MonoBehaviour
     public static GameObject Horse;
     public static GameObject Npc01;
     public static GameObject Npc03;
-    public static GameObject NpcTwoTimeline; //胡子男拿花的timeline
     public static GameObject VillagerTimeline; //骑马过来的timeline
     public static bool isToStartTimeline = false; //开始cg ->automovent.cs调用启动
     public static Animator Npc02Animator;
@@ -43,13 +42,11 @@ public class NpcController : MonoBehaviour
         SadFace = GameObject.Find("SadFace");
         NoticeMark = GameObject.Find("NoticeMark");
         VillagerTimeline = GameObject.Find("VillagerTimeline");
-        NpcTwoTimeline = GameObject.Find("NpcTwoTimeline");
         // RhythmGame = GameObject.Find("RhythmGame");
         // Flower = GameObject.Find("Flower");
         Horse = GameObject.Find("Horse");
         NoticeMark.SetActive(false);
         VillagerTimeline.SetActive(false);
-        NpcTwoTimeline.SetActive(false);
         NpcTwoGroup.SetActive(false);
         // Flower.SetActive(false);
         Horse.SetActive(false);
