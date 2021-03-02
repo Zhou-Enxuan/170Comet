@@ -64,11 +64,8 @@ public class BirdIMovementNews : MonoBehaviour
             }
         }else if(IsOnB && TNews.activeSelf == false && MNews.activeSelf == false){
             PickUpHint.SetActive(true);
-            if( Input.GetKey("space") && rb.velocity.magnitude > 0){
-                BSpeed.velocity = rb.velocity;
-                Debug.Log("移动第三张报纸");
-            }else{
-                BSpeed.velocity = new Vector2(0,0);
+            if( Input.GetKey("space")){
+                BNews.SetActive(false);
             }
         }else{
             PickUpHint.SetActive(false);
