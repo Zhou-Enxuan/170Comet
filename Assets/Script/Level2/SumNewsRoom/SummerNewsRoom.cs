@@ -31,6 +31,7 @@ public class SummerNewsRoom : MonoBehaviour
 			if (Input.GetKeyDown("space")) {
 	        	QMark.SetActive(false);
 	        	Dialog.PrintDialog("Lv2NewsRoom");
+	        	isDiaActive = true;
 		    }
 	    }
 	}
