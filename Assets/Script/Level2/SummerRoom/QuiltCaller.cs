@@ -74,8 +74,9 @@ public class QuiltCaller : MonoBehaviour
                 Player.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 Anim.enabled = true;
                 Anim.SetBool("IsGoingBed", true);
-                OnPlayerAction -= GoToBed;
+                //OnPlayerAction -= GoToBed;
                 StartCoroutine(WaitanimDone());
+                OnPlayerAction -= GoToBed;
             }
         }
         
@@ -85,7 +86,7 @@ public class QuiltCaller : MonoBehaviour
     {
         yield return new WaitWhile(() => Anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         BedWQuilt.GetComponent<CoverQuiltRe>().enabled = true;
-        OnPlayerAction -= GoToBed;
+        //OnPlayerAction -= GoToBed;
         //OnPlayerFinish += LeaveBed;
         //Player.transform.position = new Vector2(-3.7f, 1f);
         
@@ -93,7 +94,7 @@ public class QuiltCaller : MonoBehaviour
 
     private void LeaveBed()
     {
-        Player.transform.position = new Vector2(-3.7f, 0.1f);
+        //Player.transform.position = new Vector2(-3.7f, 0.1f);
         Anim.enabled = true;
         Anim.SetBool("IsLeavingBed", true);
         //SR.enabled = true;

@@ -40,7 +40,7 @@ public class CoverQuiltRe : MonoBehaviour
     {
         if (!Anim.GetBool("Cover3") && Input.GetKey(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow)){
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown("w")){
                 //按上触发第一段
                 if (!Anim.GetBool("Cover1") && !Anim.GetBool("Cover2") && !Anim.GetBool("Cover3")) {
                     Anim.SetBool("Cover1", true);
@@ -58,7 +58,7 @@ public class CoverQuiltRe : MonoBehaviour
                 
             }
         
-            else if (Input.GetKeyDown(KeyCode.DownArrow)){
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown("s")){
                 //按上触发第一段
                 if (!Anim.GetBool("Cover1") && !Anim.GetBool("Cover2") && !Anim.GetBool("Cover3")) {
                 }
@@ -87,7 +87,7 @@ public class CoverQuiltRe : MonoBehaviour
         Anim.SetBool("End", true);
         KeyHint.SetActive(false);
         //Player.GetComponent<QuiltCaller>().enabled = true;
-        //Player.transform.position = new Vector2(-3.7f, 1f);
+        Player.transform.position = new Vector2(-3.7f, 0.1f);
         Player.SetActive(true);
         
         OnQuiltMovement -= CoveringQuilt;
