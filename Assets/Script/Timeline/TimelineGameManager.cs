@@ -43,6 +43,7 @@ public class TimelineGameManager : MonoBehaviour
     {
         //isEnd = false;
         Dialog.PrintDialog(lineOfDialogue);
+        Debug.Log(lineOfDialogue);
         // dialogueLineText.text = lineOfDialogue;
 
         // dialogueLineText.gameObject.SetActive(true);

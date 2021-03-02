@@ -37,29 +37,65 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 49bbcee0b83264b3ab542506e6dddf27, type: 3}
+  - {fileID: 21300000, guid: e3a72a0202f1f4bfd81211ff9bafcbef, type: 3}
+  - {fileID: 21300000, guid: 7771b412323cf4e8ab435c20ff203100, type: 3}
+  - {fileID: 21300000, guid: c4b69392b731b4d15874248f7031056b, type: 3}
+  - {fileID: 21300000, guid: 571c8be2a22fd4cf5a010264281ccbd3, type: 3}
   - {fileID: 21300000, guid: ea5b12830692a49e18387ccde142b67e, type: 3}
+  - {fileID: 21300000, guid: e6e690938e3af415a9c2697ca15d7f8b, type: 3}
+  - {fileID: 21300000, guid: de531bb3168594a4f9614c64e2a635cc, type: 3}
+  - {fileID: 21300000, guid: 70850bc3afbec4a59ad0aefc25fd91aa, type: 3}
   - {fileID: 21300000, guid: d0417be3bca624bebb5873515efb7c29, type: 3}
+  - {fileID: 21300000, guid: 72d96704879e04b7bbb33989e3f481b5, type: 3}
+  - {fileID: 21300000, guid: 09d72215d770c499eb1e9029ac91e0d8, type: 3}
+  - {fileID: 21300000, guid: 11aa43c589d0d418682f7e55e5deeafe, type: 3}
   - {fileID: 21300000, guid: 3e784dd5826c14bdd8346bdf95aff5cb, type: 3}
   - {fileID: 21300000, guid: ee93875606bf34f0bb65c4970b2c68b7, type: 3}
+  - {fileID: 21300000, guid: 7bb1f266f1e6941399db9fdcfdae4026, type: 3}
+  - {fileID: 21300000, guid: 4492cd8693dff48a8a82ef4a0ab758d4, type: 3}
+  - {fileID: 21300000, guid: b6b105c6e750c494abb8dffb35f1812b, type: 3}
+  - {fileID: 21300000, guid: 2942dbb701d444f43a54b33342e09edf, type: 3}
   - {fileID: 21300000, guid: e893a6198e1c54e5587165eae9f19704, type: 3}
   - {fileID: 21300000, guid: 62f7cfaa918404d5c84ae01c6cef43d4, type: 3}
+  - {fileID: 21300000, guid: 440bdbead51b74607864900aff5fd558, type: 3}
   - {fileID: 21300000, guid: 009fd03ce5702450db1b5fb6f90909e2, type: 3}
+  - {fileID: 21300000, guid: aa074e6cca0614b2aa99ef3553c79726, type: 3}
+  - {fileID: 21300000, guid: 0f228f0dfec7d478aa45e6d96693a49e, type: 3}
   - {fileID: 21300000, guid: 7940ec0ed1ff64df6a656b244439d3bd, type: 3}
   - {fileID: 21300000, guid: 94b843eedc0554687963acef1a06ec07, type: 3}
   - {fileID: 21300000, guid: 262bda1f2affb4eb7b125dcc18eaa358, type: 3}
+  - {fileID: 21300000, guid: d1bddb7f819fa4d9eaed6226a6e2f83f, type: 3}
   - {fileID: 21300000, guid: 371b089fef4fa45748e3d5a7ea6f236e, type: 3}
   m_PackedSpriteNamesToIndex:
   - A_NonBirdQuilt_06
+  - A_GoBed_2
+  - A_GoBed_8
+  - A_LeaveBed_6
+  - A_GoBed_1
   - A_Quilt_3
+  - A_LeaveBed_3
+  - A_GoBed_6
+  - A_LeaveBed_2
   - A_Quilt_6
+  - A_GoBed_4
+  - A_LeaveBed_4
+  - A_GoBed_7
   - A_NonBirdQuilt_01
   - A_Quilt_5
+  - A_LeaveBed_8
+  - A_GoBed_3
+  - A_GoBed_9
+  - A_LeaveBed_9
   - A_NonBirdQuilt_04
   - A_Quilt_2
+  - A_LeaveBed_7
   - A_NonBirdQuilt_05
+  - A_GoBed_5
+  - A_LeaveBed_5
   - A_Quilt_4
   - A_NonBirdQuilt_02
   - A_NonBirdQuilt_03
+  - A_LeaveBed_1
   - A_Quilt_1
   m_Tag: QuiltAtlas
   m_IsVariant: 0
