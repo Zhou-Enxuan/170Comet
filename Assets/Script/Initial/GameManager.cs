@@ -10,10 +10,6 @@ public class GameManager : MonoBehaviour
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
     public bool islv2SummerNewsEnd { get; private set; }
-    public bool isLv1Pen;
-    public bool isLv1Paper;
-    public enum BirdsState {PEN, PAPER, NEWS, STATIC, Flower}
-    public BirdsState currentState;
     public Vector2 PlayerPos { get; private set; }
     int index;
     public int playerLevel = -1;
@@ -24,11 +20,7 @@ public class GameManager : MonoBehaviour
         isLv2Npc = false;
         isLv2WinterEnd = false;
         isLv2Flower = false;
-        isLv1Pen = false;
-        isLv1Paper = false;
         islv2SummerNewsEnd = false;
-
-        currentState = BirdsState.STATIC;
 
         if (instance != null) {
     		GameObject.Destroy(instance);
@@ -66,14 +58,6 @@ public class GameManager : MonoBehaviour
 
     public void NewsEnd(){
         instance.islv2SummerNewsEnd = true;
-    }
-
-    public void PickPen(bool status){
-        isLv1Pen = status;
-    }
-
-    public void PickPaper(bool status){
-        isLv1Paper = status;
     }
     
     
