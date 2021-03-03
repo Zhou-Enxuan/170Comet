@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool islv2SummerNewsEnd { get; private set; }
     public bool isLv1Pen;
     public bool isLv1Paper;
+    public enum BirdsState {PEN, PAPER, NEWS, STATIC, Flower}
+    public BirdsState currentState;
     public Vector2 PlayerPos { get; private set; }
     int index;
     public int playerLevel = -1;
@@ -25,8 +27,10 @@ public class GameManager : MonoBehaviour
         isLv1Pen = false;
         isLv1Paper = false;
         islv2SummerNewsEnd = false;
-        
-    	if (instance != null) {
+
+        currentState = BirdsState.STATIC;
+
+        if (instance != null) {
     		GameObject.Destroy(instance);
     	}
     	else {
