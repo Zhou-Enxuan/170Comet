@@ -95,25 +95,24 @@ public class PaletteControllerRe : MonoBehaviour
             {
                 if(other.tag == "pen")
                 {
-                    GameManager.instance.isLv1Pen = true;
                     other.gameObject.SetActive(false);
-                    if (GameManager.instance.isLv1Paper)
+                    if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PAPER)
                     {
-                        GameManager.instance.isLv1Paper = false;
                         Rpaper.SetActive(true);
                         Rpaper.transform.position = transform.position;
                     }
+                    GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.PEN;
+
                 }
                 else if(other.tag == "paper")
                 {
-                    GameManager.instance.isLv1Paper = true;
                     other.gameObject.SetActive(false);
-                    if (GameManager.instance.isLv1Pen)
+                    if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN)
                     {
-                        GameManager.instance.isLv1Pen = false;
                         Rpen.SetActive(true);
                         Rpen.transform.position = transform.position;
                     }
+                    GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.PAPER;
                 }
             }
         }
@@ -122,7 +121,7 @@ public class PaletteControllerRe : MonoBehaviour
     private void turnItemToGirl(Collider2D collision)
     {
         Debug.Log("in_turnItemToGirl");
-        if (collision.tag == "trigger" && (GameManager.instance.isLv1Paper || GameManager.instance.isLv1Pen))
+        if (collision.tag == "trigger" && (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN || GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PAPER))
         {
             PickUpHint.SetActive(true);
             if(Input.GetKeyDown(KeyCode.Space) )
@@ -134,8 +133,8 @@ public class PaletteControllerRe : MonoBehaviour
                     pen_paper.SetActive(false);
                     pen.SetActive(false);
                     paper.SetActive(false);
-                    GameManager.instance.isLv1Paper = false;
-                    GameManager.instance.isLv1Pen = false;
+                    GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
+
                     Rpaper.transform.position = new Vector2(-2.12f, 1f);
                     Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                     Rpaper.SetActive(true);
@@ -149,17 +148,17 @@ public class PaletteControllerRe : MonoBehaviour
                 }
                 else
                 {
-                    if (GameManager.instance.isLv1Paper)
-                    {
+                    if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PAPER)
+                    { 
                         pen_paper.SetActive(false);
                         pen.SetActive(true);
                         PickUpHint.SetActive(false);
                         Rpaper.transform.position = new Vector2(-2.12f, 1f);
                         Rpaper.GetComponent<BoxCollider2D>().enabled = false;
                         Rpaper.SetActive(true);
-                        GameManager.instance.isLv1Paper = false;
+                        GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
                     }
-                    else if (GameManager.instance.isLv1Pen)
+                    else if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN)
                     {
                         pen_paper.SetActive(false);
                         paper.SetActive(true);
@@ -167,7 +166,7 @@ public class PaletteControllerRe : MonoBehaviour
                         Rpen.transform.position = new Vector2(-2.89f, 1.6f);
                         Rpen.GetComponent<BoxCollider2D>().enabled = false;
                         Rpen.SetActive(true);
-                        GameManager.instance.isLv1Pen = false;
+                        GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
                     }
                 }
             }
