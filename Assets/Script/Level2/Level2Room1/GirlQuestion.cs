@@ -46,7 +46,8 @@ public class GirlQuestion : MonoBehaviour
 	        	if (isRoomFlower) {
 	        		Flower.SetActive(true);
 	        		Dialog.PrintDialog("Lv2P2Flower");
-							GameManager.instance.GiveFlower();
+					GameManager.instance.GiveFlower();
+					GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 	        	} 
 	        	else {
 	        		Dialog.PrintDialog("Lv2P2Room");

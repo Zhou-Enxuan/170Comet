@@ -32,6 +32,11 @@ public class BirdInDoorMovement : MonoBehaviour
         {
             currentState = BirdsState.STATIC;
         }
+
+        if(GameManager.instance.isLv2Flower)
+        {
+            currentState = BirdsState.FLOWER;
+        }
     }
 
     private void FixedUpdate(){
