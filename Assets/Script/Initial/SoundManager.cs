@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     //     RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
-        audioSources[0].clip = Resources.Load<AudioClip>("Sound/RoomBGM");
+        audioSources[0].clip = Resources.Load<AudioClip>("Sound/level1");
         audioSources[1].clip = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
     }
 
