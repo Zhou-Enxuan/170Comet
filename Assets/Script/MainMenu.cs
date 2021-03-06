@@ -28,6 +28,8 @@ public class MainMenu : MonoBehaviour
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
             GameObject.Find("Delete Button").GetComponent<Button>().interactable = true;
         }
+
+        MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -161,5 +163,11 @@ public class MainMenu : MonoBehaviour
         {
             Levels.transform.GetChild(1).gameObject.SetActive(false);
         }
+    }
+
+    public void test()
+    {
+        MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
+        MenuUI.transform.Find("TitleButton").gameObject.SetActive(false);
     }
 }
