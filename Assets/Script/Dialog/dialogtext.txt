@@ -39,4 +39,22 @@ Girl: How can I see the comet?
 Nightingale: I don't know... But I'll find out for you!
 ---
 Lv2NewsRoom
-Nightingale: Newspaper.
+Nightingale: The newspaper says that people has made a telescope which can see the comet.
+Girl: Wow! If so, they can see the comet at any time.
+---
+Npc01Wall
+Boy with Green Hair: Things are getting worse between the two countries... What should we do?
+---
+Npc02Wall
+Bearded Man: ... Shush！
+---
+Npc03Wall
+Bearded Man: They sent soldiers. Let's get out of here!
+---
+GreenSoldierTalk
+Solider: It's not safe on the other side. Stay away from here!
+---
+Lv2FallStart
+Nightingale: If I could make a telescope as a gift...
+Nightingale: She would be very happy. 
+---
