@@ -20,7 +20,7 @@ public class AutoMovement : MonoBehaviour
     void Start() {
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-		TargetPos = new Vector2(3.7f, -1f); //小鸟需要到达的位置
+		TargetPos = new Vector2(3.7f, -1.1f); //小鸟需要到达的位置
         Direction = new Vector2(1f,0f); //向右飞
 		isAIMove = false;
 		isDialoged = false;
