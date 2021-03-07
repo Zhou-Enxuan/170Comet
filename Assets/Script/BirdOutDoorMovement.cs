@@ -10,7 +10,7 @@ public class BirdOutDoorMovement : MonoBehaviour
     private Animator birdAnim;
     [SerializeField] private float moveSpeed = 3.0f;
     private bool IsPickFlower = false;
-    private float moveHPrev = 1;
+    private float moveHPrev;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -29,6 +29,15 @@ public class BirdOutDoorMovement : MonoBehaviour
         else
         {
             birdAnim.SetBool("IsNews", false);
+        }
+
+        if(GetComponent<SpriteRenderer>().flipX)
+        {
+            moveHPrev = 1;
+        }
+        else
+        {
+            moveHPrev = -1;
         }
     }
 
