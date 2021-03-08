@@ -71,7 +71,7 @@ public class QuiltCaller : MonoBehaviour
                 GirlQMark.SetActive(false);
                 KeyHint.SetActive(true);
                 GameManager.instance.stopMoving = true;
-                Player.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                GetComponent<BirdInDoorMovement>().Numdirection = 6;
                 Anim.enabled = true;
                 Anim.SetBool("IsGoingBed", true);
                 OnPlayerAction -= GoToBed;

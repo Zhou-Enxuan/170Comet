@@ -12,7 +12,7 @@ public class BirdInDoorMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.0f;
     public enum BirdsState { PEN, PAPER, NEWS, STATIC, FLOWER, GLASSES}
     public BirdsState currentState;
-    private int Numdirection = 0;
+    public int Numdirection = 0;
     
     
     private void Awake(){
