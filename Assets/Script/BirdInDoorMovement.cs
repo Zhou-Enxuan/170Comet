@@ -10,7 +10,9 @@ public class BirdInDoorMovement : MonoBehaviour
     private Vector2 direction;
     private SpriteRenderer sprite;
     [SerializeField] private float moveSpeed = 1.0f;
-    private int Numdirection = 0;
+    public enum BirdsState { PEN, PAPER, NEWS, STATIC, FLOWER, GLASSES}
+    public BirdsState currentState;
+    public int Numdirection = 0;
     
     
     private void Awake(){
@@ -20,7 +22,20 @@ public class BirdInDoorMovement : MonoBehaviour
 
     private void Start()
     {
-        GameManager.instance.stopMoving = false;
+        currentState = BirdsState.STATIC;
+        if(SceneManager.GetActiveScene().name == "Level2SumWinRoom")
+        {
+            currentState = BirdsState.NEWS;
+        }
+        else
+        {
+            currentState = BirdsState.STATIC;
+        }
+
+        if(GameManager.instance.isLv2Flower)
+        {
+            currentState = BirdsState.FLOWER;
+        }
     }
 
     private void FixedUpdate(){
@@ -28,6 +43,39 @@ public class BirdInDoorMovement : MonoBehaviour
         if (GameManager.instance.stopMoving)
         {
             rb.velocity = Vector2.zero;
+
+            if (Numdirection == 0)
+            {
+                NDAnimation();
+            }
+            else if (Numdirection == 1)
+            {
+                NWDAnimation();
+            }
+            else if (Numdirection == 2)
+            {
+                WAnimation();
+            }
+            else if (Numdirection == 3)
+            {
+                SWAnimation();
+            }
+            else if (Numdirection == 4)
+            {
+                SDAnimation();
+            }
+            else if (Numdirection == 5)
+            {
+                SEDAnimation();
+            }
+            else if (Numdirection == 6)
+            {
+                EDAnimation();
+            }
+            else if (Numdirection == 7)
+            {
+                NEDAnimation();
+            }
         }
         else
         {
@@ -116,126 +164,217 @@ public class BirdInDoorMovement : MonoBehaviour
     }
 
     private void NDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if (currentState == BirdsState.PEN) {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdW_Pen");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if (currentState == BirdsState.PAPER) {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdW_Paper");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if (currentState == BirdsState.FLOWER) {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdW_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdW_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
         }
     }
 
     private void NWDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN){
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdWD_Pen");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdWD_Paper");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdWD_Flow");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdWD_News");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
     private void WAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdD_Pen");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdD_Paper");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdD_Flow");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdD_News");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
     private void SWAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdSD_Pen");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdSD_Paper");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdSD_News");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
     private void SDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdS_Pen");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdS_Paper");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdS_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdS_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
         }
     }
 
     private void SEDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdSD_Pen");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdSD_Paper");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdSD_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdSD_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
     private void EDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdD_Pen");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdD_Paper");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdD_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdD_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
     private void NEDAnimation(){
-        if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Pen == true){
+        if(currentState == BirdsState.PEN)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Pen/A_Level1BirdWD_Pen");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv1Paper == true){
+        }
+        else if(currentState == BirdsState.PAPER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Paper/A_Level1BirdWD_Paper");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else if(GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower == true){
+        }
+        else if(currentState == BirdsState.FLOWER)
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Flow/A_Level1BirdWD_Flow");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        }else{
+        }
+        else if (currentState == BirdsState.NEWS)
+        {
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdWD_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
             sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }

@@ -7,16 +7,20 @@ public class CaptainAction : MonoBehaviour
 {
 	public static bool isSoldierRun;
 	public static bool isSoldierTrace;
-	public static Animator captainAnim;
 	public GameObject glass;
+	public GameObject windowGlass;
 	public GameObject questionMark;
 	public GameObject hint;
 	public GameObject fading;
+	public GameObject player;
 	float whistleTime = 3f;
 	float knockableTime = 1f;
+	private Animator captainAnim;
+	private Animator birdAnim;
 	private bool isKnockable; //玻璃是否可以被敲
 	private bool isGameStart;	//游戏开始
 	private bool isKnockedGlass; //是否敲过玻璃了
+	private int glassNum = 0;
 	private int sucCount;
 	private int failCount;
 	enum failState {CHANGED, UNCHANGE};
@@ -26,6 +30,7 @@ public class CaptainAction : MonoBehaviour
     void Awake()
     {
     	captainAnim = this.GetComponent<Animator>();
+    	birdAnim = player.GetComponent<Animator>();
     	isSoldierRun = false;
     	isSoldierTrace = false;
     	isKnockable = false;
@@ -73,8 +78,11 @@ public class CaptainAction : MonoBehaviour
 	        }
 
 	        if (Input.GetKeyDown(KeyCode.Space) && !isKnockedGlass) {
+	        	birdAnim.Play("Knock");
 	        	if (isKnockable) {
 	        		sucCount += 1;
+	        		glassNum++;
+	        		windowGlass.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BreakWindowGame/Glass/A_Glass0"+glassNum);
 	        		Debug.Log("敲成功");
 	        	} 
 	        	else {
@@ -125,3 +133,4 @@ public class CaptainAction : MonoBehaviour
     	SceneManager.LoadScene(SceneName);
     }
 }
+

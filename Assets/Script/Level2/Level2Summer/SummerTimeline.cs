@@ -42,7 +42,7 @@ public class SummerTimeline : MonoBehaviour
         if(NpcTwoTimeline.GetComponent<PlayableDirector>().enabled == false) {
             if (!TimelineGameManager.isTimeline) {
                 player.GetComponent<BirdOutDoorMovement>().enabled = true;
-                SceneManager.LoadScene("Level2Summer");
+                LevelLoader.instance.LoadLevel("Level2Summer");
 	        }
 	    }
     }
