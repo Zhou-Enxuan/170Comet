@@ -32,6 +32,8 @@ public class SummerNewsRoom : MonoBehaviour
 	        	QMark.SetActive(false);
 	        	Dialog.PrintDialog("Lv2NewsRoom");
 	        	isDiaActive = true;
+				GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
+				GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 		    }
 	    }
 	}

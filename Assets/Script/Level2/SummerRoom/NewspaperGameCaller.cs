@@ -7,6 +7,11 @@ public class NewspaperGameCaller : MonoBehaviour
 
     private bool IsonNewspaper = false;
 
+    private void Start()
+    {
+        GameManager.instance.stopMoving = false;
+    }
+
     private void Update(){
         if( Input.GetKey("space") && IsonNewspaper == true){
             LevelLoader.instance.LoadLevel("Level2SummerNews");

@@ -11,7 +11,7 @@ public class AutoMovement : MonoBehaviour
     public static Transform Player;  // [2] 目标
     public float delta = 0.01f; // 误差值
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
-    public static bool isPlaCanFly; //在playermovement引用
+    public static bool isPlaCanFly = true; //在playermovement引用
     bool isDialoged;
     Camera MainCamera;
     Vector2 TargetPos;
@@ -20,11 +20,12 @@ public class AutoMovement : MonoBehaviour
     void Start() {
         Player = GameObject.Find("Player").GetComponent<Transform>();
 		MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-		TargetPos = new Vector2(3.7f, -1f); //小鸟需要到达的位置
+		TargetPos = new Vector2(3.7f, -1.1f); //小鸟需要到达的位置
         Direction = new Vector2(1f,0f); //向右飞
 		isAIMove = false;
 		isDialoged = false;
         isPlaCanFly = true;
+        GameManager.instance.stopMoving = false;
     }
 
     void Update () {

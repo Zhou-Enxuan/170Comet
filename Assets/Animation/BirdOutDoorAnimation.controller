@@ -189,7 +189,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -219886972347851108}
   m_Solo: 0
@@ -214,7 +214,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1654784836545697207}
   m_Solo: 0
@@ -268,7 +268,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3953362397324971740}
   m_Solo: 0
@@ -483,6 +483,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -4355779579513634412}
   - {fileID: -8334450930341187376}
+  - {fileID: 1613379602983834814}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -512,31 +513,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: height
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsPickFlower
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Stand
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsNews
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -678,6 +679,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &1613379602983834814
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsPickFlower
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3953362397324971740}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &1654784836545697207
 AnimatorState:
   serializedVersion: 5
@@ -716,7 +742,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4851820545991557703}
   m_Solo: 0
@@ -741,7 +767,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2132415369920280942}
   m_Solo: 0
@@ -833,6 +859,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &5548887787715402862
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsPickFlower
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3953362397324971740}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &6607676277536950642
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -843,7 +894,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 3
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7822209977861393922}
   m_Solo: 0
@@ -935,7 +986,7 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 4
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7581320606732964361}
   m_Solo: 0
@@ -963,6 +1014,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -4627743364168721441}
   - {fileID: 6769886117249847557}
+  - {fileID: 5548887787715402862}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -991,7 +1043,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: height
-    m_EventTreshold: -4.2
+    m_EventTreshold: -2.2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3807741959597206022}
   m_Solo: 0
