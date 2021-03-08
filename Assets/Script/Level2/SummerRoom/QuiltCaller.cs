@@ -94,7 +94,7 @@ public class QuiltCaller : MonoBehaviour
 
     private void LeaveBed()
     {
-        //Player.transform.position = new Vector2(-3.7f, 0.1f);
+        Player.transform.position = new Vector2(-3.7f, 0.1f);
         Anim.enabled = true;
         Anim.SetBool("IsLeavingBed", true);
         //SR.enabled = true;
