@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 7.5
+  m_Time: 6.85
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: d89c7f344b7914530850a233a2dcb331, type: 2}
@@ -1056,10 +1056,10 @@ MonoBehaviour:
   - {fileID: -895622342072444239}
   - {fileID: -6215865022193439590}
   - {fileID: -1009671750178750618}
-  m_FixedDuration: 7.5
+  m_FixedDuration: 6.85
   m_EditorSettings:
     m_Framerate: 60
-  m_DurationMode: 1
+  m_DurationMode: 0
   m_MarkerTrack: {fileID: -7305127249109225786}
 --- !u!74 &268033933478742508
 AnimationClip:
