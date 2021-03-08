@@ -20,8 +20,6 @@ public class BirdOutDoorMovement : MonoBehaviour
 
     void Start()
     {
-        GameManager.instance.stopMoving = false;
-
         if (SceneManager.GetActiveScene().name == "Level2SummerWin")
         {
             birdAnim.SetBool("IsNews", true);

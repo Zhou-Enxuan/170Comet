@@ -11,7 +11,7 @@ public class AutoMovement : MonoBehaviour
     public static Transform Player;  // [2] 目标
     public float delta = 0.01f; // 误差值
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
-    public static bool isPlaCanFly; //在playermovement引用
+    public static bool isPlaCanFly = true; //在playermovement引用
     bool isDialoged;
     Camera MainCamera;
     Vector2 TargetPos;
@@ -25,6 +25,7 @@ public class AutoMovement : MonoBehaviour
 		isAIMove = false;
 		isDialoged = false;
         isPlaCanFly = true;
+        GameManager.instance.stopMoving = false;
     }
 
     void Update () {
