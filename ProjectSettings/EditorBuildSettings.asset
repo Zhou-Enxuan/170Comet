@@ -50,4 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level2FallGlass.unity
     guid: 8ba7b4410dd294d5b9e76fc940b13ca1
+  - enabled: 1
+    path: Assets/Scenes/Level2FallLose.unity
+    guid: 6e3bbb9520cc2487f9fe99a3f8c1caa3
+  - enabled: 1
+    path: Assets/Scenes/Level2FallRoom.unity
+    guid: 1f51291f4b6d4444ca52b3db3ccc4088
   m_configObjects: {}

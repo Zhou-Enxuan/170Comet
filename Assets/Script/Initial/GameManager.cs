@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isLv2WinterEnd { get; private set; }
 	public bool isLv2Flower { get; private set; }
     public bool islv2SummerNewsEnd { get; private set; }
+    public bool islv2FallGlassEnd { get; private set; }
     public Vector2 PlayerPos { get; private set; }
     int index;
     public int playerLevel = -1;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         isLv2WinterEnd = false;
         isLv2Flower = false;
         islv2SummerNewsEnd = false;
+        islv2FallGlassEnd = false;
 
         if (instance != null) {
     		GameObject.Destroy(instance);
@@ -39,6 +41,10 @@ public class GameManager : MonoBehaviour
     
     public void StorePlayerPos() {
         PlayerPos = GameObject.Find("Player").GetComponent<Transform>().position;
+    }
+    
+    public void StorePlayerLoc(Vector2 position){
+        PlayerPos = position;
     }
     
     public void Level2WinterNPC() {
@@ -60,6 +66,9 @@ public class GameManager : MonoBehaviour
         instance.islv2SummerNewsEnd = true;
     }
     
+    public void GlassEnd() {
+        islv2FallGlassEnd = true;
+    }
     
     public bool IsDialogShow() {
         if (GameObject.Find("DialogBox") == null) {

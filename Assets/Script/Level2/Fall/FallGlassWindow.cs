@@ -6,9 +6,9 @@ public class FallGlassWindow : MonoBehaviour
 {
 	bool isActive = false;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Dialog.PrintDialog("Lv2FallStart");
+        
     }
 
     // Update is called once per frame
