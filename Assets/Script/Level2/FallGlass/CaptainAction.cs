@@ -96,7 +96,7 @@ public class CaptainAction : MonoBehaviour
 	    }
 	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount == 5) {
 	    	Debug.Log("捡起玻璃");
-        	StartCoroutine(GameEnd("Level2Fall"));
+        	StartCoroutine(GameEnd("Level2FallRoom"));
 	    }
 
         if (failCount == 1 && curFailState == failState.UNCHANGE) {
@@ -111,14 +111,16 @@ public class CaptainAction : MonoBehaviour
         	isGameStart = false;
         	isSoldierRun = false;
         	isSoldierTrace = true;
-        	Debug.Log("fading");     
-        	StartCoroutine(GameEnd("Level2Fall"));
+        	// Debug.Log("游戏失败");
+        	GameManager.instance.StorePlayerLoc(new Vector2(25f,-1.5f));     
+        	StartCoroutine(GameEnd("Level2FallLose"));
         }
 
         if (sucCount == 5){
         	Debug.Log("游戏成功");
         	glass.SetActive(true);
         	isGameStart = false;
+        	GameManager.instance.GlassEnd();
 
         }
     }
@@ -129,7 +131,7 @@ public class CaptainAction : MonoBehaviour
 
     IEnumerator GameEnd(string SceneName) {
     	fading.SetActive(true);
-    	yield return new WaitForSeconds(3f);
+    	yield return new WaitForSeconds(2f);
     	SceneManager.LoadScene(SceneName);
     }
 }

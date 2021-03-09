@@ -61,7 +61,10 @@ public class SoldierAutoRun : MonoBehaviour
 		}
 		// 追玩家
 		else if (CaptainAction.isSoldierTrace) {
-			// this.transform.eulerAngles = new Vector3 (0, -180, 0);
+			soldier01.GetComponent<SpriteRenderer>().flipX = true; 
+			soldier02.GetComponent<SpriteRenderer>().flipX = true;       
+			Soldier01Anim.SetBool("isWalking",true);
+	        Soldier02Anim.SetBool("isWalking",true);
 			this.transform.position = Vector2.MoveTowards(this.transform.position, GameObject.Find("Player").GetComponent<Transform>().position, speed * Time.deltaTime);
 		}
 		// 静止
