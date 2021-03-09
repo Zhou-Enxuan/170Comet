@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 763639235}
   - component: {fileID: 763639234}
   - component: {fileID: 763639233}
+  - component: {fileID: 763639232}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -290,6 +291,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &763639232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763639231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baa5b4d5d3b14587bc49952107da6d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &763639233
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -511,6 +524,7 @@ GameObject:
   - component: {fileID: 1297076711}
   - component: {fileID: 1297076710}
   - component: {fileID: 1297076708}
+  - component: {fileID: 1297076709}
   m_Layer: 0
   m_Name: Bed
   m_TagString: trigger
@@ -546,6 +560,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1297076709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297076707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d14328defffc41ec8465d9d4324c358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!68 &1297076710
 EdgeCollider2D:
   m_ObjectHideFlags: 0
