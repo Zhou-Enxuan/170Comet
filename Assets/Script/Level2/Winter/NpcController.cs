@@ -180,4 +180,8 @@ public class NpcController : MonoBehaviour
         //Debug.Log("isCamerChanged = "+isCameraChanged);
     }
 
+    public void ChangeBGM(){
+        SoundManager.playLv2Bgm(2);
+    }
+
 }

@@ -912,7 +912,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
@@ -958,6 +958,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: d89c7f344b7914530850a233a2dcb331, type: 2}
     - {fileID: 11400000, guid: 4d37fc7c2ba89410190519e9ed9f090d, type: 2}
+    - {fileID: 11400000, guid: a5df2862bae244104bb17130678395f5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -998,6 +999,20 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 871111352}
+          m_TargetAssemblyTypeName: NpcController, Assembly-CSharp
+          m_MethodName: ChangeBGM
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &141451436
 MonoBehaviour:
