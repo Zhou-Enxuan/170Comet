@@ -13,6 +13,7 @@ public class GirlQuestion : MonoBehaviour
     bool isDiaActive = false;
 
 	void Awake() {
+        SoundManager.playLv2Bgm(3);
 		QMark = GameObject.Find("GirlQMark");
 		Flower =  GameObject.Find("Flower");
 		Flower.SetActive(false);
