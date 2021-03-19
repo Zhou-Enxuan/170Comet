@@ -11,7 +11,7 @@ public class MoveChair : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.0f;
     private GameObject Hint;
     private GameObject StartTip;
-    public static bool InPos;
+    private bool InPos;
 
 
     // Start is called before the first frame update
@@ -43,28 +43,6 @@ public class MoveChair : MonoBehaviour
                 moveV = Input.GetAxisRaw("Vertical");
                 direction = new Vector2(moveH, moveV);
                 rb.velocity = direction * moveSpeed;
-                if (moveH != 0 && moveV != 0)
-                {
-                    if (direction.y == 1 && direction.x == -1)
-                        //transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                    if (direction.y == 1 && direction.x == 1)
-                        transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-                    if (direction.y == -1 && direction.x == -1)
-                        //transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                    if (direction.y == -1 && direction.x == 1)
-                        transform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
-                else
-                {
-                    if (direction.x == -1)
-                        //transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-                    if (direction.x == 1)
-                        transform.localRotation = Quaternion.Euler(0, 0, 0);
-                }
                 rb.isKinematic = false;
             }
             else
@@ -73,7 +51,7 @@ public class MoveChair : MonoBehaviour
                 rb.velocity = Vector2.zero;
             }
 
-            }//else
+        }
        
         
         
