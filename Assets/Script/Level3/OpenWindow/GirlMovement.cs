@@ -45,7 +45,7 @@ public class GirlMovement : MonoBehaviour
             if (direction.y == 1 && direction.x == 1)
             {
                // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                //transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
             if (direction.y == -1 && direction.x == -1)
@@ -58,7 +58,7 @@ public class GirlMovement : MonoBehaviour
             if (direction.y == -1 && direction.x == 1)
             {
                // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                //transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
         }
         else
@@ -72,7 +72,7 @@ public class GirlMovement : MonoBehaviour
             if (direction.x == 1)
             {
                 //sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
+                //transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
 
 
