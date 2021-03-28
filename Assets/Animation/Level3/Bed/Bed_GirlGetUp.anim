@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GirlLeaveBed
+  m_Name: Bed_GirlGetUp
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,25 +21,25 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 2967e2d625e2e4c1b83c8871a4b7f6ee, type: 3}
-    - time: 0.21666667
+    - time: 0.125
       value: {fileID: 21300000, guid: 6dcd88f4a012c4ce0b834a063596fea8, type: 3}
-    - time: 0.43333334
+    - time: 0.25
       value: {fileID: 21300000, guid: a8ff2c52d8cf244ac82e689ec66e316c, type: 3}
-    - time: 0.65
+    - time: 0.375
       value: {fileID: 21300000, guid: 555610d5924ed44b0b656aba4b1d66d4, type: 3}
-    - time: 0.85
+    - time: 0.5
       value: {fileID: 21300000, guid: fc109da2c08484bb5b6f29c372bde00f, type: 3}
-    - time: 1.0666667
+    - time: 0.625
       value: {fileID: 21300000, guid: 75fd0b3a55e264a5eadf8ac143171204, type: 3}
-    - time: 1.2833333
+    - time: 0.75
       value: {fileID: 21300000, guid: d7b218d5610e746dc802b360e3e57310, type: 3}
-    - time: 1.5
+    - time: 0.875
       value: {fileID: 21300000, guid: 5f63a325c2437498fa5158fe3f3043fa, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -67,12 +67,12 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5166667
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
