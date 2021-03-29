@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MoveChairRe : MonoBehaviour
 {
-    public event Action<Collider2D> OnMoveChair;
+    public event Action OnMoveChair;
     public event Action OnGirlMove;
 
     private Rigidbody2D rb;
@@ -19,6 +19,7 @@ public class MoveChairRe : MonoBehaviour
     private Collider2D currentCollider;
     private GameObject Girl;
     private Animator GirlAnim;
+    private GameObject Window;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -27,6 +28,7 @@ public class MoveChairRe : MonoBehaviour
         StartTip = GameObject.Find("StartTip");
         Girl = GameObject.Find("Girl");
         GirlAnim = Girl.GetComponent<Animator>();
+        Window = GameObject.Find("Window");
     }
 
     void Start()
@@ -35,12 +37,12 @@ public class MoveChairRe : MonoBehaviour
         InPos = false;
         StartTip.SetActive(true);
         OnMoveChair += HoldChair;
+        InPos = false;
     }
 
     void Update()
     {
-        if (currentCollider != null)
-            OnMoveChair?.Invoke(currentCollider);
+        OnMoveChair?.Invoke();
         
     }
 
@@ -49,52 +51,39 @@ public class MoveChairRe : MonoBehaviour
         
     }
 
-    private void HoldChair(Collider2D collision)
+    private void HoldChair()
     {
-        if (collision.name == "ChairPos")
+        if (InPos)
         {
             Destroy(rb);
             Hint.SetActive(false);
+            Girl.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GirlAnim.SetInteger("Direction", 0);
+            GirlAnim.SetInteger("Idle", 0);
             OnMoveChair -= HoldChair;
+            Window.GetComponent<OpenWindow>().enabled = true;
         }
         else{
-            if (collision.name == "Girl")
+            if (Hint.activeSelf && Input.GetKey("space"))
             {
-                Hint.SetActive(true);
-                StartTip.SetActive(false);
+                GirlAnim.SetInteger("Direction", 0);
+                GirlAnim.SetInteger("Idle", 0);
+                OnGirlMove += AnimTrigger;
+                OnGirlMove?.Invoke();
                 moveH = Input.GetAxisRaw("Horizontal");
                 moveV = Input.GetAxisRaw("Vertical");
                 direction = new Vector2(moveH, moveV);
-                if (Input.GetKey("space"))
-                {
-                    OnGirlMove += AnimTrigger;
-                    OnGirlMove?.Invoke();
-                    if (moveH == 0 && moveV == 0)
-                    {
-                        rb.isKinematic = true;//不动
-                        rb.velocity = Vector2.zero;
-                    }
-                    else
-                    {
-                        rb.velocity = direction * moveSpeed;
-                        rb.isKinematic = false;
-                    }
-                }
-                else
-                {
-                    Girl.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                    GirlAnim.SetInteger("Direction", 0);
-                    OnGirlMove -= AnimTrigger;
-                    rb.isKinematic = true;//不动
-                    rb.velocity = Vector2.zero;
-                }
+                rb.velocity = direction * moveSpeed;
+                rb.isKinematic = false;
             }
             else
             {
-                Girl.transform.localRotation = Quaternion.Euler(0, 0, 0);
-                GirlAnim.SetInteger("Direction", 0);
                 rb.isKinematic = true;//不动
                 rb.velocity = Vector2.zero;
+                Girl.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                GirlAnim.SetInteger("Direction", 0);
+                GirlAnim.SetInteger("Idle", 0);
+                OnGirlMove -= AnimTrigger;
             }
         }
     }
@@ -144,19 +133,27 @@ public class MoveChairRe : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        currentCollider = collision;
+        if (collision.name == "Girl" && !InPos)
+        {
+            Hint.SetActive(true);
+            StartTip.SetActive(false);
+        }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        currentCollider = null;
-        Hint.SetActive(false);
+        if (collision.name == "Girl")
+        {
+            Hint.SetActive(false);
+        }
     }
+
     void OnTriggerStay2D(Collider2D collision)
     {
-        // if (collision.name == "ChairPos")
-        // {
-        //     InPos = true;
-        // }
+        if (collision.name == "ChairPos")
+        {
+            InPos = true;
+        }
     }
 }

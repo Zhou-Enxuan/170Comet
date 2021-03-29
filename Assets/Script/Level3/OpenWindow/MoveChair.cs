@@ -38,7 +38,6 @@ public class MoveChair : MonoBehaviour
         {
             if (Hint.activeSelf && Input.GetKey("space"))
             {
-               
                 moveH = Input.GetAxisRaw("Horizontal");
                 moveV = Input.GetAxisRaw("Vertical");
                 direction = new Vector2(moveH, moveV);
