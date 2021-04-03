@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Girl_MoveChair_N
+  m_Name: A_GirlWithStool_SD
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: f7f5b2ebd6e5747efbc5476da3410a91, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: ddc47727807b84a35be9f2790fac9899, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: c0a632e5e3b644f0d960ce18ea26734a, type: 3}
+      value: {fileID: 21300000, guid: 1f9e0fc7fe4e54e259eb809629345116, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 5b6b830439c2f44dd990e22be787b7c8, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 0f21133d3d14d460cae0bc51d219331a, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 4
+  m_SampleRate: 3
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,15 +44,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: f7f5b2ebd6e5747efbc5476da3410a91, type: 3}
-    - {fileID: 21300000, guid: ddc47727807b84a35be9f2790fac9899, type: 3}
-    - {fileID: 21300000, guid: c0a632e5e3b644f0d960ce18ea26734a, type: 3}
+    - {fileID: 21300000, guid: 1f9e0fc7fe4e54e259eb809629345116, type: 3}
+    - {fileID: 21300000, guid: 5b6b830439c2f44dd990e22be787b7c8, type: 3}
+    - {fileID: 21300000, guid: 0f21133d3d14d460cae0bc51d219331a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
