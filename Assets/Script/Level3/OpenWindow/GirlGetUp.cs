@@ -18,7 +18,7 @@ public class GirlGetUp : MonoBehaviour
     void Start()
     {
         Girl.SetActive(false);
-        Chair.GetComponent<MoveChairRe>().enabled = false;
+        Girl.GetComponent<MoveChairRe>().enabled = false;
         StartCoroutine(WaitAnimDone());
     }
 
@@ -27,7 +27,7 @@ public class GirlGetUp : MonoBehaviour
         yield return new WaitWhile(() => Anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
 
         Girl.SetActive(true);
-        Chair.GetComponent<MoveChairRe>().enabled = true;
+        Girl.GetComponent<MoveChairRe>().enabled = true;
     }
 
     void Update()
