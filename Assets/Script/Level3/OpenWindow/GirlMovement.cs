@@ -49,7 +49,7 @@ public class GirlMovement : MonoBehaviour
             if (moveH == 0 && moveV == 0)
             {
                 rb.velocity = Vector2.zero;
-                if (GetComponent<MoveChairRe>().touchChair && Input.GetKey("space"))
+                if (GetComponent<MoveChairRe>().touchChair)
                 {
                 }
                 else
