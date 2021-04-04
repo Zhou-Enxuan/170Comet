@@ -10,11 +10,11 @@ public class MoveChairRe : MonoBehaviour
     private GameObject Hint;
     private GameObject StartTip;
     private float moveH, moveV;
+    private float H, V;
     private GameObject Chair;
     private GameObject Girl;
     private Animator GirlAnim;
     private GameObject Window;
-    private Collider2D currentCollider;
     private Collider2D chairCollider;
     public bool touchChair;
 
@@ -33,6 +33,8 @@ public class MoveChairRe : MonoBehaviour
         StartTip.SetActive(true);
         touchChair = false;
         chairCollider = null;
+        H = 0;
+        V = 0f;
     }
 
     void Update()
@@ -41,11 +43,6 @@ public class MoveChairRe : MonoBehaviour
         {
             OnMoveChair += HoldChair;
             OnMoveChair?.Invoke(chairCollider);
-        }
-        else if (currentCollider != null)
-        {
-            OnMoveChair += MoveInPos;
-            OnMoveChair?.Invoke(currentCollider);
         }
         
     }
@@ -58,57 +55,57 @@ public class MoveChairRe : MonoBehaviour
     private void HoldChair(Collider2D other)
     {
         StartTip?.SetActive(false);
-        Hint.SetActive(true);
+        moveH = Input.GetAxisRaw("Horizontal");
+        moveV = Input.GetAxisRaw("Vertical");
+        if (moveH == 0 && moveV == 0)
+        {
+        }
+        else
+        {
+            H = moveH;
+            V = moveV;
+        }
 
         if (Input.GetKey("space"))
         {
             touchChair = true;
             Chair.SetActive(false);
+            GirlAnim.enabled = true;
             GirlAnim.SetBool("chair", true);
-            // moveH = Input.GetAxisRaw("Horizontal");
-            // moveV = Input.GetAxisRaw("Vertical");
-            // GirlAnim.SetFloat("stoolX", moveH);
-            // GirlAnim.SetFloat("stoolY", moveV);
-            Debug.Log("222222");
+            GirlAnim.SetFloat("stoolX", H);
+            GirlAnim.SetFloat("stoolY", V);
         }
-        else
+        else if (Input.GetKeyUp("space"))
         {
             touchChair = false;
+            if (other.name == "RoomEdge")
+                Chair.transform.position = new Vector2(1.7f, 0.7f);
+            else
+                Chair.transform.position = this.gameObject.transform.position + new Vector3(H, V - 0.4f, 0f);
             Chair.SetActive(true);
             GirlAnim.SetBool("chair", false);
-            Hint.SetActive(false);
             chairCollider = null;
-            
         }
         OnMoveChair -= HoldChair;
-    }
-
-    private void MoveInPos(Collider2D other)
-    {
-        if (other.name == "ChairPos")
-        {
-            Chair.transform.position = new Vector2(1.7f, 0.7f);
-            Chair.SetActive(true);
-            Hint.SetActive(false);
-            Window.GetComponent<OpenWindow>().enabled = true;
-            
-        }
-        OnMoveChair -= MoveInPos;
     }
 
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        currentCollider = collision;
         if (collision.name == "Chair")
+        {
             chairCollider = collision;
+            Hint.SetActive(true);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        currentCollider = null;
         if (collision.name == "Chair")
+        {
             chairCollider = collision;
+            Hint.SetActive(false);
+        }
     }
 
 }
