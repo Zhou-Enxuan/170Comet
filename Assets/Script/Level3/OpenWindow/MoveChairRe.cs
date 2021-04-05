@@ -78,7 +78,7 @@ public class MoveChairRe : MonoBehaviour
         else if (Input.GetKeyUp("space"))
         {
             touchChair = false;
-            if (other.name == "RoomEdge")
+            if (other.name == "RoomEdge" || other.name == "ChairPos")
                 Chair.transform.position = new Vector2(1.7f, 0.7f);
             else
                 Chair.transform.position = this.gameObject.transform.position + new Vector3(H, V - 0.4f, 0f);
