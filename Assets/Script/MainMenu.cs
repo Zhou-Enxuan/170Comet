@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-
+        SoundManager.PlayTMBgm();
         if(GameManager.instance.playedLevel > 0)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
