@@ -24,6 +24,8 @@ public class PaletteControllerRe : MonoBehaviour
     private int currentBoard = 0;
     private AudioSource[] audioSources;
     private AudioClip drawingSound;
+    private AudioClip penSound;
+    private AudioClip paperSound;
     private int girlItem = 0;
 
 
@@ -40,6 +42,8 @@ public class PaletteControllerRe : MonoBehaviour
         LeaveTip = GameObject.Find("LeaveTip");
         boardAnim = board.GetComponent<Animator>();
         drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
+        penSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PenSound");
+        paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
         SoundManager.playRoomBgm();
     }
 
@@ -96,6 +100,7 @@ public class PaletteControllerRe : MonoBehaviour
                 if(other.tag == "pen")
                 {
                     other.gameObject.SetActive(false);
+                    audioSources[1].PlayOneShot(penSound, 1f);
                     if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PAPER)
                     {
                         Rpaper.SetActive(true);
@@ -107,6 +112,7 @@ public class PaletteControllerRe : MonoBehaviour
                 else if(other.tag == "paper")
                 {
                     other.gameObject.SetActive(false);
+                    audioSources[2].PlayOneShot(paperSound, 1f);
                     if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN)
                     {
                         Rpen.SetActive(true);

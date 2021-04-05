@@ -13,11 +13,11 @@ public class GirlQuestion : MonoBehaviour
     bool isDiaActive = false;
 
 	void Awake() {
-        SoundManager.playLv2Bgm(3);
 		QMark = GameObject.Find("GirlQMark");
 		Flower =  GameObject.Find("Flower");
 		Flower.SetActive(false);
 		if (GameManager.instance.isLv2WinterEnd) {
+        	SoundManager.playLv2Bgm(3);
             isRoomStart = true;
 			QMark.SetActive(true);
             if (GameManager.instance.isLv2Flower) {

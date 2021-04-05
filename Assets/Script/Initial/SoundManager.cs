@@ -12,17 +12,18 @@ public class SoundManager : MonoBehaviour
     public float audioSpeed;
    // bool isBGMplayed = false; //flip
     public static bool isChangVolume = false;
-    public static int i = 0;
+    public static int i = 4;
     // Start is called before the first frame update
     void Start()
     {
     //     RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
-        audioSources[0].clip = Resources.Load<AudioClip>("Sound/Level1");
-        audioSources[1].clip = Resources.Load<AudioClip>("Sound/Level2part1town");
-        audioSources[2].clip = Resources.Load<AudioClip>("Sound/Old/Level2MusicConcept");
-        audioSources[3].clip = Resources.Load<AudioClip>("Sound/Level2part1room");
+        audioSources[0].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
+        audioSources[1].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
+        audioSources[2].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
+        audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/CometSong");
+        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
     }
 
     // Update is called once per frame
@@ -59,8 +60,15 @@ public class SoundManager : MonoBehaviour
     //     audioSources[i].Play();
     //     isBGMplayed = !isBGMplayed;
     // }
+    public static void PlayTMBgm() {
+        audioSources[4].volume = 0;
+        isChangVolume = true;
+        audioSources[4].Play();
+    }
 
     public static void playRoomBgm() {
+        audioSources[4].Stop();
+        i = 0;
         audioSources[0].volume = 0;
         isChangVolume = true;
         audioSources[0].Play();
