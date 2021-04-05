@@ -17,7 +17,7 @@ public class ChairInPosition : MonoBehaviour
 
     void Start()
     {
-        
+        Window.GetComponent<OpenWindow>().enabled = false;
     }
 
     void Update()
@@ -29,11 +29,13 @@ public class ChairInPosition : MonoBehaviour
     {
         if (collision.name == "ChairPos")
         {
-            Girl.GetComponent<MoveChairRe>().enabled = false;
-            gameObject.transform.position = new Vector2(1.7f, 0.7f);
-            gameObject.SetActive(true);
             Hint.SetActive(false);
+            Girl.GetComponent<MoveChairRe>().enabled = false;
+            gameObject.transform.position = new Vector2(1.45f, 1.0f);
+            gameObject.SetActive(true);
+            
             Window.GetComponent<OpenWindow>().enabled = true;
+            gameObject.GetComponent<ChairInPosition>().enabled = false;
         }
     }
 

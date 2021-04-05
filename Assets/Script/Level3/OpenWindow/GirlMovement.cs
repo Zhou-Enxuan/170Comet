@@ -49,12 +49,9 @@ public class GirlMovement : MonoBehaviour
             if (moveH == 0 && moveV == 0)
             {
                 rb.velocity = Vector2.zero;
-                if (GetComponent<MoveChairRe>().touchChair)
+                GirlAnim.enabled = false;
+                if (GetComponent<MoveChairRe>().touchChair == false)
                 {
-                }
-                else
-                {
-                    GirlAnim.enabled = false;
                     if (tempX == -1)
                     {
                         if (tempY == -1) 
@@ -75,13 +72,46 @@ public class GirlMovement : MonoBehaviour
                     }
                     else
                     {
-                        // if (tempY == -1)
-                        // else if (tempY == 0)
-                        // else
+                        if (tempY == -1)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementSD");
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementD");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementWD");
                     }
                 }
-                
+                else
+                {
+                    if (tempX == -1)
+                    {
+                        if (tempY == -1) 
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_WA/A_GirlWithStool_WA_01");//correct:AS -- wrongname:WA
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_A/A_GirlWithStool_A_01");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_SA/A_GirlWithStool_SA_01");//WA -- SA
+                    }
+                    else if (tempX == 0)
+                    {
+                        if (tempY == -1)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_W/A_GirlWithStool_W_01");//S -- W
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_WA/A_GirlWithStool_WA_01");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_S/A_GirlWithStool_S_01");//W -- S
+                    }
+                    else
+                    {
+                        if (tempY == -1)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_WD/A_GirlWithStool_WD_01");//SD -- WD
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_D/A_GirlWithStool_D_01");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/A_GirlWithStool/A_GirlWithStool_SD/A_GirlWithStool_SD_01");//WD -- SD
+                    }
+                }
             }
+            
             else{
                 GirlAnim.enabled = true;
                 rb.velocity = direction * moveSpeed;
