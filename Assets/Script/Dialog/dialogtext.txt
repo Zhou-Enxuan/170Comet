@@ -1,32 +1,32 @@
 Level1 Start
-Nightingale: Can you hear people cheering outside? They’re saying:”Comet, Comet!”
-Girl: “Comet?” I’ve only heard of it through books. It said it’s the most beautiful star in the world...
-Nightingale: Can you see it through the window? What does a “comet” look like?
-Girl: The sky was blocked by trees. I could only see a few light. 
-Girl: It’s okay! I’ve heard about it in books, let me draw it for you! Could you bring me a pen and a paper?
+Nightingale: Can you hear the people cheering outside? They're saying: Comet, Comet!
+Girl: A Comet? I’ve only heard of it through books. They say it’s the most beautiful star in the world...
+Nightingale: Can you see it through the window? What does it look like?
+Girl: The sky is blocked by trees. I could only catch a glimpse of it. 
+Girl: I know! Let me draw it for you! I just need a pen and paper.
 ---
 Level1 End
 Nightingale: Wow!
-GIRL: The book says it’s a star with a trailing tail, but I don’t know if I drew it right.
-Nightingale: Never mind, I’ll go get some evidences to see what it looks like!
+GIRL: The books say it’s a star with a trailing tail, but I don’t know if I drew it right.
+Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
-Bearded Man: That’s it, those amazing stars dragged their long tails and traveled cross the sky.
-Boy with Green Hair: Those stars brings happiness. We are so lucky!
-Bearded Man: I’ve heard that if we could go up to the mountain top and touch them close, we could have a wish come true!
+Man with Mustache: Did you see? Those amazing stars dragged their long tails cross the sky.
+Boy with Green Hair: They were truly beautiful. We were lucky to see them!
+Man with Mustache: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
 ---
 Villager1
-Cowboy: Big news! The king is dead.
+Cowboy: Breaking news! The king is dead.
 ---
 Villager2
-Bearded Man: It’s over! Everything is over! The war is coming! My life is over...
+Man with Mustache: It’s over! Everything is over! The war is coming! My life is over...
 ---
 Villager3
 QAQ
 ---
 Lv2P1StandUp
-Bearded Man: What a beautiful song! What a cute little bird! Thank you little beauty, now I feel much better.
-Bearded Man: If you don’t mind, you can take this flower. Flowers are rare in winter!
+Man with Mustache: What a beautiful song from such a cute little bird! Thank you, now I feel much better.
+Man with Mustache: Take this flower. They are rare in winter!
 ---
 Lv2P2Room
 Nightingale: It was a shining comet that flew over last night.
@@ -34,28 +34,28 @@ Girl: How can I see the comet?
 Nightingale: I don't know... But I'll find out for you!
 ---
 Lv2P2Flower
-Nightingale: Here is a present for you! It was a shining comet that flew over last night.
+Nightingale: Here is a present for you! There was a shining comet flying in the sky last night.
 Girl: How can I see the comet?
 Nightingale: I don't know... But I'll find out for you!
 ---
 Lv2NewsRoom
-Nightingale: The newspaper says that people has made a telescope which can see the comet.
-Girl: Wow! If so, they can see the comet at any time.
+Nightingale: The newspaper says that a telescope can let anyone see the comet.
+Girl: Wow! That means we could see the comet at any time.
 ---
 Npc01Wall
-Boy with Green Hair: Things are getting worse between the two countries... What should we do?
+Boy with Green Hair: This war is splitting our country apart... What should we do?
 ---
 Npc02Wall
-Bearded Man: ... Shush！
+Man with Mustache: ... Shush！
 ---
 Npc03Wall
-Bearded Man: They sent soldiers. Let's get out of here!
+Man with Mustache: Soldiers are coming. Let's get out of here!
 ---
 GreenSoldierTalk
-Solider: It's not safe on the other side. Stay away from here!
+Solider: It's not safe here. Stay away!
 ---
 Lv2FallStart
-Nightingale: If I could make a telescope as a gift...
+Nightingale: If I could make a telescope for her as a gift...
 Nightingale: She would be very happy. 
 ---
 Lv2FallRoom

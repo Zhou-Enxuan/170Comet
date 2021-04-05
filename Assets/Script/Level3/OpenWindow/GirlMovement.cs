@@ -10,81 +10,83 @@ public class GirlMovement : MonoBehaviour
     private Vector2 direction;
     private SpriteRenderer sprite;
     [SerializeField] private float moveSpeed = 1.0f;
+    private Animator GirlAnim;
+    private float tempX;
+    private float tempY;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        GirlAnim = GetComponent<Animator>();
+        tempX = 0;
+        tempY = 0;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void Update() 
     {
         moveH = Input.GetAxisRaw("Horizontal");
-        // Debug.Log(Input.GetAxisRaw("Horizontal"));
         moveV = Input.GetAxisRaw("Vertical");
         direction = new Vector2(moveH, moveV);
-        // Debug.Log(Input.GetAxisRaw("Vertical"));
-        rb.velocity = direction * moveSpeed;
-        // Debug.Log(rb.velocity);
-        if (moveH != 0 && moveV != 0)
+        
+
+        if (GameManager.instance.stopMoving)
         {
-            if (direction.y == 1 && direction.x == -1)
-            {
-              //  sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-            }
-
-            if (direction.y == 1 && direction.x == 1)
-            {
-               // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdWD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-
-            if (direction.y == -1 && direction.x == -1)
-            {
-               // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-
-            }
-
-            if (direction.y == -1 && direction.x == 1)
-            {
-               // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdSD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
+            rb.velocity = Vector2.zero;
+            GirlAnim.SetFloat("x", 0);
+            GirlAnim.SetFloat("y", 0);
         }
         else
         {
-            if (direction.x == -1)
+            GirlAnim.SetFloat("x", moveH);
+            GirlAnim.SetFloat("y", moveV);
+            if (moveH == 0 && moveV == 0)
             {
-                //sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
+                rb.velocity = Vector2.zero;
+                if (GetComponent<MoveChairRe>().touchChair)
+                {
+                }
+                else
+                {
+                    GirlAnim.enabled = false;
+                    if (tempX == -1)
+                    {
+                        if (tempY == -1) 
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementAS");
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementA");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementWA");
+                    }
+                    else if (tempX == 0)
+                    {
+                        if (tempY == -1)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementS");
+                        else if (tempY == 0)
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementAS");
+                        else
+                            sprite.sprite = Resources.Load<Sprite>("Level3/GirlMovement/A_GirlMovementW");
+                    }
+                    else
+                    {
+                        // if (tempY == -1)
+                        // else if (tempY == 0)
+                        // else
+                    }
+                }
+                
             }
-
-            if (direction.x == 1)
-            {
-                //sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdD_01");
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-            }
-
-
-            if (direction.y == 1)
-            {
-               // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdW_01");
-            }
-
-
-            if (direction.y == -1)
-            {
-               // sprite.sprite = Resources.Load<Sprite>("Level1/A_Level1BirdS_01");
+            else{
+                GirlAnim.enabled = true;
+                rb.velocity = direction * moveSpeed;
+                tempX = GirlAnim.GetFloat("x");
+                tempY = GirlAnim.GetFloat("y");
             }
         }
     }
