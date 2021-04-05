@@ -24,7 +24,7 @@ public class Lv2FallRoomWindow : MonoBehaviour
             }
             else {
             	// 小鸟被抓ppt
-                SceneName = " ";
+                SceneName = "Level3OpenWindow";
             }
         	GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
