@@ -61,6 +61,8 @@ public class SoldierAutoRun : MonoBehaviour
 		}
 		// 追玩家
 		else if (CaptainAction.isSoldierTrace) {
+    		Soldier01Anim.SetBool("isOnBack",false);
+    		Soldier02Anim.SetBool("isOnBack",false);
 			soldier01.GetComponent<SpriteRenderer>().flipX = true; 
 			soldier02.GetComponent<SpriteRenderer>().flipX = true;       
 			Soldier01Anim.SetBool("isWalking",true);

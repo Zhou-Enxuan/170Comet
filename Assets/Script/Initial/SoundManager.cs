@@ -12,25 +12,26 @@ public class SoundManager : MonoBehaviour
     public float audioSpeed;
    // bool isBGMplayed = false; //flip
     public static bool isChangVolume = false;
-    public static int i = 4;
+    public static int newBgm = 0;
+    public static int curBgm;
     // Start is called before the first frame update
     void Start()
     {
     //     RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
-        audioSources[0].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
-        audioSources[1].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
-        audioSources[2].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
-        audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/CometSong");
-        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
+        audioSources[0].clip = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
+        audioSources[1].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
+        audioSources[2].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
+        audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
+        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/CometSong");
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isChangVolume) {
-            ChangVolume(i);
+            ChangVolume(newBgm);
         }
 
         // if (SceneManager.GetActiveScene().name == "Level1" && !isBGMplayed) {
@@ -61,24 +62,18 @@ public class SoundManager : MonoBehaviour
     //     isBGMplayed = !isBGMplayed;
     // }
     public static void PlayTMBgm() {
-        audioSources[4].volume = 0;
-        isChangVolume = true;
-        audioSources[4].Play();
-    }
-
-    public static void playRoomBgm() {
-        audioSources[4].Stop();
-        i = 0;
         audioSources[0].volume = 0;
         isChangVolume = true;
         audioSources[0].Play();
+        curBgm = 0;
     }
 
-    public static void playLv2Bgm(int num){
-        i = num;
-        audioSources[i-1].Stop();
-        audioSources[i].volume = 0;
+    public static void playBgm(int num){
+        newBgm = num;
+        audioSources[curBgm].Stop();
+        audioSources[newBgm].volume = 0;
         isChangVolume = true;
-        audioSources[i].Play();
+        audioSources[newBgm].Play();
+        curBgm = num;
     }
 }

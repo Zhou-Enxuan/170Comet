@@ -17,7 +17,7 @@ public class GirlQuestion : MonoBehaviour
 		Flower =  GameObject.Find("Flower");
 		Flower.SetActive(false);
 		if (GameManager.instance.isLv2WinterEnd) {
-        	SoundManager.playLv2Bgm(3);
+        	SoundManager.playBgm(4);
             isRoomStart = true;
 			QMark.SetActive(true);
             if (GameManager.instance.isLv2Flower) {

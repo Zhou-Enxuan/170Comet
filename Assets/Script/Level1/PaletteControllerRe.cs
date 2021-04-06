@@ -44,7 +44,7 @@ public class PaletteControllerRe : MonoBehaviour
         drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
         penSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PenSound");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
-        SoundManager.playRoomBgm();
+        SoundManager.playBgm(0);
     }
 
     void Start()
