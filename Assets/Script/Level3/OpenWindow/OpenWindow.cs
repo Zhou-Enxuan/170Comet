@@ -62,6 +62,7 @@ public class OpenWindow : MonoBehaviour
         {
             SpaceHint.SetActive(false);
             Anim.SetBool("Open", true);
+            LevelLoader.instance.LoadLevel("Level4");
         }
     }
 
