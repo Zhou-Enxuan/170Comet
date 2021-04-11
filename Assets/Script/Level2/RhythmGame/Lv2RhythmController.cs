@@ -25,6 +25,7 @@ public class Lv2RhythmController : MonoBehaviour
         // Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         npc02Pick = GameObject.Find("NpcTwoPick");
         Flower.SetActive(false);
+        GameManager.instance.stopMoving = false;
     }
     
     void Update()
