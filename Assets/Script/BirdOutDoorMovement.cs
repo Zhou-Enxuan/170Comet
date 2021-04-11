@@ -53,9 +53,9 @@ public class BirdOutDoorMovement : MonoBehaviour
         else { //normal时
             moveH = Input.GetAxisRaw("Horizontal");
             birdAnim.SetFloat("horizontal", moveH);
-            //Debug.Log(Input.GetAxisRaw("Horizontal"));
+            Debug.Log(Input.GetAxisRaw("Horizontal"));
             moveV = Input.GetAxisRaw("Vertical");
-            //Debug.Log(Input.GetAxisRaw("Vertical"));
+            Debug.Log(Input.GetAxisRaw("Vertical"));
             rb.velocity = new Vector2(moveH, moveV) * moveSpeed;
             if (moveH == 0 && moveV == 0)
             {

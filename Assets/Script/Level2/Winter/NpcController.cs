@@ -56,7 +56,7 @@ public class NpcController : MonoBehaviour
         Npc01Animator.enabled = false;
         Npc02Animator.enabled = false;
         //Npc02FallAnimator.enabled = false;
-        SoundManager.playLv2Bgm(1);
+        SoundManager.playBgm(2);
     }
 
     void Update() {
@@ -181,7 +181,7 @@ public class NpcController : MonoBehaviour
     }
 
     public void ChangeBGM(){
-        SoundManager.playLv2Bgm(2);
+        SoundManager.playBgm(3);
     }
 
 }
