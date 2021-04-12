@@ -8,11 +8,15 @@ public class GirlOutMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float moveH, moveV;
     private Vector2 direction;
-    private SpriteRenderer sprite;
     [SerializeField] private float moveSpeed = 1.0f;
     private Animator GirlAnimator;
     private float tempX;
     private float tempY;
+    private bool IsinHideObj;
+    private GameObject HideHint;
+    private GameObject LeaveHint;
+    private SpriteRenderer sprite;
+    private bool isHiding;
 
 
     private void Awake()
@@ -22,10 +26,17 @@ public class GirlOutMovement : MonoBehaviour
         GirlAnimator = GetComponent<Animator>();
         tempX = 0;
         tempY = 0;
+        IsinHideObj = false;
+        HideHint = GameObject.Find("HideHint");
+        LeaveHint = GameObject.Find("LeaveHint");
+        sprite = GetComponent<SpriteRenderer>();
+        isHiding = false;
     }
 
     void Start()
     {
+        HideHint.SetActive(false);
+        LeaveHint.SetActive(false);
     }
 
 
@@ -39,12 +50,62 @@ public class GirlOutMovement : MonoBehaviour
         GirlAnimator.SetFloat("Direaction", moveH);
         GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
 
-        Debug.Log("speed is " + Mathf.Abs(moveH));
-        Debug.Log("direaction is " + moveH);
+        //Debug.Log("speed is " + Mathf.Abs(moveH));
+        //Debug.Log("direaction is " + moveH);
 
+        if(moveH < 0){
+            GirlAnimator.SetBool("FaceR", false);
+            //Debug.Log("FaceR is " + false);
+        }else if(moveH > 0){
+            GirlAnimator.SetBool("FaceR", true);
+            //Debug.Log("FaceR is " + true);
+        }
 
         direction = new Vector2(moveH, 0);
         rb.velocity = direction * moveSpeed;  
+
+        if(isHiding && IsinHideObj){
+            HideHint.SetActive(false);
+            LeaveHint.SetActive(true);
+        }else if(!isHiding && IsinHideObj){
+            HideHint.SetActive(true);
+            LeaveHint.SetActive(false);
+        }else{
+            HideHint.SetActive(false);
+            LeaveHint.SetActive(false);
+        }
+
+        if(IsinHideObj && Input.GetKeyDown("space") && !isHiding){
+            sprite.sortingOrder = -1;
+            isHiding = true;
+        }else if(IsinHideObj && Input.GetKeyDown("space") && isHiding){
+            sprite.sortingOrder = 0;
+            isHiding = false;
+        }
+
+        if(!IsinHideObj){
+            sprite.sortingOrder = 0;
+            isHiding = false;
+        }
+
+    }
+
+        void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hide")
+        {
+            //Debug.Log("hit box");
+            IsinHideObj = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hide")
+        {
+            //Debug.Log("miss hit box");
+            IsinHideObj = false;
+        }
     }
 
 }

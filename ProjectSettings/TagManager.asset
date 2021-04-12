@@ -15,6 +15,7 @@ TagManager:
   - EndingLine
   - Flower
   - Destory
+  - Hide
   layers:
   - Default
   - TransparentFX
