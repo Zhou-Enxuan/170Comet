@@ -61,9 +61,15 @@ public class OpenWindow : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             SpaceHint.SetActive(false);
-            Anim.SetBool("Open", true);
-            LevelLoader.instance.LoadLevel("Level4");
+            Anim.SetBool("Open", true); 
+            StartCoroutine(WaitAnim2Done());
         }
+    }
+
+    IEnumerator WaitAnim2Done()
+    {
+        yield return new WaitForSeconds(1f);
+        LevelLoader.instance.LoadLevel("Level4");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
