@@ -9,14 +9,15 @@ public class ThreeSoldierAction : MonoBehaviour
     private float pointX;
     public float Speed;
     private GameObject Drawing;
+    private GameObject Girl;
 
 
     void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
-        transform.DetachChildren();
         pointX = point.position.x;
         Drawing = GameObject.Find("Drawing");
+        Girl = GameObject.Find("PlayerGirl");
     }
 
     void Start()
@@ -39,12 +40,14 @@ public class ThreeSoldierAction : MonoBehaviour
         //     GetComponent<Animator>().enabled = false;
         // }
 
-        if (Drawing.GetComponent<Animator>().enabled)
+        // 画睁眼 - 不动敬礼
+        if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier)
         {
             rb.velocity = Vector2.zero;
             GetComponent<Animator>().enabled = false;
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/NPCs/RedSoldier/A_RedSoldier");
         }
+        // 画闭眼 - 动
         else
         {
             rb.velocity = new Vector2(Speed, rb.velocity.y);
