@@ -113,8 +113,7 @@ public class Dialog : MonoBehaviour
     }
 
     public static void HideDialog() {
-        if(AutoMovement.isPlaCanFly)
-            GameManager.instance.stopMoving = false;
+        GameManager.instance.stopMoving = false;
         istalking = false;
         dialog.SetActive(false);
     }

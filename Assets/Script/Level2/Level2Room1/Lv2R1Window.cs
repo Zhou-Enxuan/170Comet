@@ -54,6 +54,7 @@ public class Lv2R1Window : MonoBehaviour
             yield return null;
         }
         LevelLoader.instance.LoadLevel(sceneName);
+        GameManager.instance.stopMoving = false;
 
     }
 }

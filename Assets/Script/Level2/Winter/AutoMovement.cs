@@ -11,7 +11,7 @@ public class AutoMovement : MonoBehaviour
     public static Transform Player;  // [2] 目标
     public float delta = 0.01f; // 误差值
     public static bool isAIMove; //玩家是否在自动移动到指定坐标
-    public static bool isPlaCanFly = true; //在playermovement引用
+    // public static bool isPlaCanFly = true; //在playermovement引用
     bool isDialoged;
     Camera MainCamera;
     Vector2 TargetPos;
@@ -24,7 +24,7 @@ public class AutoMovement : MonoBehaviour
         Direction = new Vector2(1f,0f); //向右飞
 		isAIMove = false;
 		isDialoged = false;
-        isPlaCanFly = true;
+        //isPlaCanFly = true;
         GameManager.instance.stopMoving = false;
     }
 
@@ -70,15 +70,14 @@ public class AutoMovement : MonoBehaviour
     		    //MainCamera.orthographicSize = 5;
                 NpcController.isToStartTimeline = true;
         	    //NpcController.NoticeMark.SetActive(true);
+                GameManager.instance.stopMoving = true;
         	    isDialoged = false;
-                isPlaCanFly = true;
     	    //z}
         }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
 	    if (other.tag.CompareTo("Player") == 0) {
-            isPlaCanFly = false;
 		    isAIMove = true;
             GameManager.instance.stopMoving = true;
             Player.GetComponent<Animator>().SetFloat("horizontal", 0);

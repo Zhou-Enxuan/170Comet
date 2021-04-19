@@ -66,14 +66,17 @@ public class SoundManager : MonoBehaviour
         isChangVolume = true;
         audioSources[0].Play();
         curBgm = 0;
+        Debug.Log("play music");
     }
 
     public static void playBgm(int num){
         newBgm = num;
-        audioSources[curBgm].Stop();
-        audioSources[newBgm].volume = 0;
-        isChangVolume = true;
-        audioSources[newBgm].Play();
-        curBgm = num;
+        if (newBgm != curBgm){
+            audioSources[curBgm].Stop();
+            audioSources[newBgm].volume = 0;
+            isChangVolume = true;
+            audioSources[newBgm].Play();
+            curBgm = num;
+        }
     }
 }

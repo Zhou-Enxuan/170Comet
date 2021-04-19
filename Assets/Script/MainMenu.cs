@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,15 +10,22 @@ public class MainMenu : MonoBehaviour
 {
     private GameObject MenuUI;
 
+    private event Action CallBack; 
+
     [SerializeField]
     private GameObject Levels;
 
     private int currentLevelPage;
+
+    private AudioSource[] audio;
+    private AudioClip buttonSound;
+
     // Start is called before the first frame update
     void Awake()
     {
         MenuUI = GameObject.Find("MenuUI");
         currentLevelPage = 0;
+        buttonSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_MenuButton");
     }
 
     void Start()
@@ -30,6 +38,8 @@ public class MainMenu : MonoBehaviour
         }
 
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
+
+        audio = this.gameObject.GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,11 +49,17 @@ public class MainMenu : MonoBehaviour
 
     public void startGame()
     {
+        CallBack = startGameEvent;
+        StartCoroutine(ButtonSound());
+    }
+
+    private void startGameEvent() {
         SceneManager.LoadScene("Level1");
     }
 
     public void continueGame()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
         MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
         ++currentLevelPage;
@@ -52,11 +68,13 @@ public class MainMenu : MonoBehaviour
 
     public void DeleteGame()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         MenuUI.transform.Find("Confirm").gameObject.SetActive(true);
     }
 
     public void Credit()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
         MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
         currentLevelPage = GameManager.instance.playedLevel + 2;
@@ -65,11 +83,13 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         Application.Quit();
     }
 
     public void confirmDeleteO()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         SaveSystem.DeleteGame();
         GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
         GameObject.Find("Delete Button").GetComponent<Button>().interactable = false;
@@ -79,11 +99,13 @@ public class MainMenu : MonoBehaviour
 
     public void confirmDeleteX()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         MenuUI.transform.Find("Confirm").gameObject.SetActive(false);
     }
 
     public void prevPage()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         if (currentLevelPage <= 1)
         {
             MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
@@ -99,12 +121,18 @@ public class MainMenu : MonoBehaviour
 
     public void nextPage()
     {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
         currentLevelPage += 2;
         updateLevelSelect();
     }
 
     public void leftStart()
     {
+        CallBack = leftStartEvent;
+        StartCoroutine(ButtonSound());
+    }
+
+    private void leftStartEvent() {
         if(currentLevelPage == 1)
         {
             LevelLoader.instance.LoadLevel("Level1");
@@ -117,6 +145,11 @@ public class MainMenu : MonoBehaviour
 
     public void rightStart()
     {
+        CallBack = rightStartEvent;
+        StartCoroutine(ButtonSound());
+    }
+
+    private void rightStartEvent() {
         if (currentLevelPage == 1)
         {
             LevelLoader.instance.LoadLevel("Level2Winter");
@@ -125,6 +158,13 @@ public class MainMenu : MonoBehaviour
         {
             LevelLoader.instance.LoadLevel("Level2Fall");
         }
+    }
+
+    IEnumerator ButtonSound() {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
+        yield return new WaitForSeconds(audio[0].clip.length);
+        CallBack.Invoke();
+
     }
 
     private void updateLevelSelect()
