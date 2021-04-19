@@ -12,6 +12,10 @@ public class GirlAction : MonoBehaviour
     private bool IsMoving;
     private GameObject Drawing;
     public bool IsCollidingSoldier;
+    public Transform EndPoint;
+    private float pointX;
+    public bool IsArrived;
+    private GameObject Continue;
 
     private void Awake()
     {
@@ -20,19 +24,26 @@ public class GirlAction : MonoBehaviour
         Anim = GetComponent<Animator>();
         Hint = GameObject.Find("Hint");
         Drawing = GameObject.Find("Drawing");
+        pointX = EndPoint.position.x;
+        Continue = GameObject.Find("Continue");
     }
 
     void Start()
     {
         IsMoving = true;
         IsCollidingSoldier = false;
+        Destroy(EndPoint.gameObject);
+        IsArrived = false;
+        Continue.SetActive(false);
     }
 
 
     void Update() 
     {
         if (!IsCollidingSoldier)
+        {
             GirlMovement();
+        }
         else
         {
             GetComponent<Animator>().enabled = false;
@@ -42,6 +53,15 @@ public class GirlAction : MonoBehaviour
 
     private void GirlMovement()
     {
+        // 到终点
+        if (transform.position.x > pointX)
+        {
+            //transform.localScale = new Vector3();
+            IsCollidingSoldier = true;
+            IsArrived = true;
+            Continue.SetActive(true);
+        }
+
         if (Input.GetKeyDown("space"))
         {
             Hint.SetActive(false);
@@ -50,14 +70,17 @@ public class GirlAction : MonoBehaviour
             else
                 IsMoving = true;
         }
+        // 继续行走
         if(IsMoving)
         {
             GetComponent<Animator>().enabled = true;
             rb.velocity = new Vector2(Speed, rb.velocity.y);
         }
+        //停止行走
         else
         {
             GetComponent<Animator>().enabled = false;
+            sprite.sprite = Resources.Load<Sprite>("A_Girl");
             rb.velocity = Vector2.zero;
         }
     }

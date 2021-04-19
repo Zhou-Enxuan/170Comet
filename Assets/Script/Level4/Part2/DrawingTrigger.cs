@@ -27,23 +27,38 @@ public class DrawingTrigger : MonoBehaviour
 
     void Update()
     {
-        if (!Girl.GetComponent<GirlAction>().IsCollidingSoldier)
+        if (Girl.GetComponent<GirlAction>().IsArrived)
         {
-            CloseEyes();
+            Anim.enabled = false;
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level4/HuangGongbg/paint00");
+            Hint.SetActive(false);
         }
         else
         {
-            StopAnim();
+            if (!Girl.GetComponent<GirlAction>().IsCollidingSoldier)
+            {
+                CloseEyes();
+            }
+            else
+            {
+                StopAnim();
+            }
         }
     }
 
     private void CloseEyes()
     {
-        if (Soldier.transform.position.x > num)
+        if (Soldier.transform.position.x > 40.0f)
+        {
+            Anim.enabled = false;
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level4/HuangGongbg/paint00");
+            Hint.SetActive(false);
+        }
+        else if (Soldier.transform.position.x > num)
         {
             Anim.enabled = true;
             StartCoroutine(WaitanimDone());
-            num = num + Random.Range(5.0f, 10.0f);
+            num = num + Random.Range(8.0f, 12.0f);
             Hint.SetActive(true);
         }
     }
@@ -52,14 +67,13 @@ public class DrawingTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         Anim.enabled = false;
-        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("temp/bird02");
+        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level4/HuangGongbg/paint00");
         Hint.SetActive(true);
     }
 
     private void StopAnim()
     {
-        Anim.enabled = false;
-        GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("temp/bird02");
+        Anim.enabled = true;
         Hint.SetActive(false);
     }
 }
