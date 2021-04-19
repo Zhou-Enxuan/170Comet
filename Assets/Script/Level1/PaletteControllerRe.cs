@@ -44,7 +44,7 @@ public class PaletteControllerRe : MonoBehaviour
         drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
         penSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PenSound");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
-        SoundManager.playBgm(0);
+        SoundManager.playBgm(1);
     }
 
     void Start()
@@ -100,7 +100,7 @@ public class PaletteControllerRe : MonoBehaviour
                 if(other.tag == "pen")
                 {
                     other.gameObject.SetActive(false);
-                    audioSources[1].PlayOneShot(penSound, 1f);
+                    audioSources[1].PlayOneShot(penSound, 0.3f);
                     if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PAPER)
                     {
                         Rpaper.SetActive(true);
@@ -112,7 +112,7 @@ public class PaletteControllerRe : MonoBehaviour
                 else if(other.tag == "paper")
                 {
                     other.gameObject.SetActive(false);
-                    audioSources[2].PlayOneShot(paperSound, 1f);
+                    audioSources[2].PlayOneShot(paperSound, 0.3f);
                     if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN)
                     {
                         Rpen.SetActive(true);
@@ -195,7 +195,7 @@ public class PaletteControllerRe : MonoBehaviour
             }
             else
             {
-                audioSources[0].PlayOneShot(drawingSound, 1f);
+                audioSources[0].PlayOneShot(drawingSound, 0.3f);
             }
         }
     }
@@ -225,7 +225,7 @@ public class PaletteControllerRe : MonoBehaviour
     {
         if (collision.name == "Window")
         {
-            PickUpHint.SetActive(true);
+            LeaveTip.SetActive(true);
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 PickUpHint.SetActive(false);
@@ -252,6 +252,7 @@ public class PaletteControllerRe : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         PickUpHint.SetActive(false);
+        LeaveTip.SetActive(false);
         currentCollider = null;
         //LeaveTip.SetActive(false);
     }
