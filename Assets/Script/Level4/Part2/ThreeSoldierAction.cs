@@ -32,14 +32,6 @@ public class ThreeSoldierAction : MonoBehaviour
 
     private void Movement()
     {
-        
-        // if (transform.position.x > pointX)
-        // {
-        //     //transform.localScale = new Vector3();
-        //     rb.velocity = Vector2.zero;
-        //     GetComponent<Animator>().enabled = false;
-        // }
-
         // 画睁眼 - 不动敬礼
         if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier)
         {
