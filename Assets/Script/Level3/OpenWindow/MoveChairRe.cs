@@ -85,10 +85,13 @@ public class MoveChairRe : MonoBehaviour
             touchChair = false;
             if (other.name == "ChairPos")
                 Chair.transform.position = new Vector2(1.45f, 1.0f);
-            else if (other.name == "Bed" || other.name == "Shelf" || other.name == "RoomEdge")
+            else if (Chair.GetComponent<Renderer>().bounds.Intersects(GameObject.Find("Bed").GetComponent<Renderer>().bounds))
                 Chair.transform.position = gameObject.transform.position;
+            // else if (other.name != "RoomEdge")
+                // Chair.transform.position = gameObject.transform.position;
             else
                 Chair.transform.position = this.gameObject.transform.position + new Vector3(H * 0.8f, V * 0.8f - 0.5f, 0f);
+            
             Chair.SetActive(true);
             GirlAnim.SetBool("chair", false);
             chairCollider = null;

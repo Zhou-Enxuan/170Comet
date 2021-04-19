@@ -864,6 +864,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2127191561}
     m_Modifications:
+    - target: {fileID: 8504493363123099276, guid: 46c0972d202796d49805759f006490bd,
+        type: 3}
+      propertyPath: m_Text
+      value: '[HOLD SPACE]'
+      objectReference: {fileID: 0}
     - target: {fileID: 8504493363294957064, guid: 46c0972d202796d49805759f006490bd,
         type: 3}
       propertyPath: m_Pivot.x
