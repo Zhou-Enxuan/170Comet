@@ -87,8 +87,8 @@ public class MoveChairRe : MonoBehaviour
                 Chair.transform.position = new Vector2(1.45f, 1.0f);
             else if (Chair.GetComponent<Renderer>().bounds.Intersects(GameObject.Find("Bed").GetComponent<Renderer>().bounds))
                 Chair.transform.position = gameObject.transform.position;
-            else if (other.name != "RoomEdge")
-                Chair.transform.position = gameObject.transform.position;
+            // else if (other.name != "RoomEdge")
+                // Chair.transform.position = gameObject.transform.position;
             else
                 Chair.transform.position = this.gameObject.transform.position + new Vector3(H * 0.8f, V * 0.8f - 0.5f, 0f);
             
