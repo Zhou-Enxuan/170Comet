@@ -30,11 +30,11 @@ public class Lv2SWRoomWindow : MonoBehaviour
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
-        //if (!GameManager.instance.isLv2Flower) {
+        if (GameObject.Find("GirlQMark") == null) {
      	    if (other.tag.CompareTo("Player") == 0 && !GameManager.instance.IsDialogShow()) {
 		        LeaveTip.SetActive(true);
             }
-		//}
+		}
 	}
 
     void OnTriggerExit2D(Collider2D collision) {

@@ -11,11 +11,16 @@ public class GirlQuestion : MonoBehaviour
     public static bool isRoomStart = false;
     public static bool isRoomFlower = false;
     bool isDiaActive = false;
+	private GameObject Crossfade;
+	private GameObject Hint;
 
 	void Awake() {
+		Crossfade = GameObject.Find("EndOnly");
 		QMark = GameObject.Find("GirlQMark");
 		Flower =  GameObject.Find("Flower");
 		Flower.SetActive(false);
+		Hint = GameObject.Find("PickUpHint");
+		Hint.SetActive(false);
 		if (GameManager.instance.isLv2WinterEnd) {
         	SoundManager.playBgm(4);
             isRoomStart = true;
@@ -34,10 +39,18 @@ public class GirlQuestion : MonoBehaviour
 	void Update(){
 		if (isDiaActive && GameObject.Find("DialogBox") == null) {
 			//SceneManager.LoadScene("Level2SummerRoom"); // 夏天：按空格call scene3 in SceneTransition
-			if(Input.GetKeyDown("space")) {
-				SceneManager.LoadScene("Level2SummerRoom");
-			}
+			//黑屏
+			StartCoroutine(LoadLevel());
+			
 		}
+	}
+
+	IEnumerator LoadLevel()
+	{
+		Crossfade.transform.Find("Image").gameObject.SetActive(true);
+		Crossfade.GetComponent<Animator>().enabled = true;
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene("Level2SummerRoom");
 	}
 
 	void OnTriggerStay2D(Collider2D collision) {
