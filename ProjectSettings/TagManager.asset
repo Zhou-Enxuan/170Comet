@@ -16,6 +16,7 @@ TagManager:
   - Flower
   - Destory
   - Hide
+  - Hat
   layers:
   - Default
   - TransparentFX
