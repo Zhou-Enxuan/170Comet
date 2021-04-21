@@ -13,10 +13,12 @@ public class GirlOutMovement : MonoBehaviour
     private float tempX;
     private float tempY;
     private bool IsinHideObj;
+    private bool Isinhat;
     private GameObject HideHint;
     private GameObject LeaveHint;
     private SpriteRenderer sprite;
-    private bool isHiding;
+    public bool isHiding;
+    public GameObject Hat;
 
 
     private void Awake()
@@ -88,6 +90,12 @@ public class GirlOutMovement : MonoBehaviour
             isHiding = false;
         }
 
+        if(Isinhat && Input.GetKeyDown("space")){
+            Destroy(Hat);
+            LevelLoader.instance.LoadLevel("Level4Part2");
+        }
+        
+
     }
 
         void OnTriggerEnter2D(Collider2D collision)
@@ -97,6 +105,12 @@ public class GirlOutMovement : MonoBehaviour
             //Debug.Log("hit box");
             IsinHideObj = true;
         }
+
+        if (collision.gameObject.tag == "Hat")
+        {
+            //Debug.Log("hit box");
+            Isinhat = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -105,6 +119,12 @@ public class GirlOutMovement : MonoBehaviour
         {
             //Debug.Log("miss hit box");
             IsinHideObj = false;
+        }
+
+        if (collision.gameObject.tag == "Hat")
+        {
+            //Debug.Log("miss hit box");
+            Isinhat = false;
         }
     }
 
