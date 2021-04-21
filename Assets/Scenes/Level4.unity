@@ -672,7 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   distance: 5
-  waitingTime: 2
+  waitingTime: 2.5
   groundDe: {fileID: 1501590640}
   girlDe: {fileID: 1500907220}
   ismoving: 1
@@ -1415,12 +1415,12 @@ PrefabInstance:
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.15
+      value: 16.52
       objectReference: {fileID: 0}
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.62
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
