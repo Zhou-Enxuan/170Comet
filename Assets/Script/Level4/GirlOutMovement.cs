@@ -94,7 +94,7 @@ public class GirlOutMovement : MonoBehaviour
 
         if(Isinhat && Input.GetKeyDown("space")){
             Destroy(Hat);
-            StartCoroutine(LoadLevel());
+            StartCoroutine(LoadLevel());//进入Level4Part2
         }
         
 
