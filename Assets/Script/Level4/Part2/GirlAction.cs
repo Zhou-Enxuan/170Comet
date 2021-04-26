@@ -37,6 +37,7 @@ public class GirlAction : MonoBehaviour
         IsCollidingSoldier = false;
         Destroy(EndPoint.gameObject);
         IsArrived = false;
+        Continue.SetActive(false);
     }
 
 
