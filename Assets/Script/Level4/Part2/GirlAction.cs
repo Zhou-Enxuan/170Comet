@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GirlAction : MonoBehaviour
 {
@@ -16,9 +17,11 @@ public class GirlAction : MonoBehaviour
     private float pointX;
     public bool IsArrived;
     private GameObject Continue;
+    private GameObject Crossfade;
 
     private void Awake()
     {
+        Crossfade = GameObject.Find("Crossfade");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
@@ -34,7 +37,6 @@ public class GirlAction : MonoBehaviour
         IsCollidingSoldier = false;
         Destroy(EndPoint.gameObject);
         IsArrived = false;
-        Continue.SetActive(false);
     }
 
 
@@ -59,7 +61,8 @@ public class GirlAction : MonoBehaviour
             //transform.localScale = new Vector3();
             IsCollidingSoldier = true;
             IsArrived = true;
-            Continue.SetActive(true);
+            //fade out黑屏
+            StartCoroutine(LoadLevel());
         }
 
         if (Input.GetKeyDown("space"))
@@ -85,18 +88,38 @@ public class GirlAction : MonoBehaviour
         }
     }
 
+    IEnumerator LoadLevel()
+	{
+		Crossfade.GetComponent<Animator>().SetTrigger("Start");
+		yield return new WaitForSeconds(1f);
+        //进入Level4Part3
+        Application.Quit();
+		//SceneManager.LoadScene("");
+	}
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Soldier2")
         {
             Debug.Log("Soldier2");
             IsCollidingSoldier = true; //撞了士兵
+            //fade out黑屏
+            StartCoroutine(ReloadLevel());
         }
         if(collision.name == "Soldier3")
         {
             Debug.Log("Soldier3");
             IsCollidingSoldier = true;//撞了士兵
+            //fade out黑屏
+            StartCoroutine(ReloadLevel());
         }
     }
+
+    IEnumerator ReloadLevel()
+	{
+		Crossfade.GetComponent<Animator>().SetTrigger("Start");
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene("Level4Part2");
+	}
 
 }
