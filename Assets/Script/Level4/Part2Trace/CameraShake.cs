@@ -32,9 +32,27 @@ public class CameraShake : MonoBehaviour
         		cvCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         	cvBasicPerlin.m_AmplitudeGain = 0f;
         }
+
+        if (KingControl.sceneCount == 0 && GameManager.instance.stopMoving) {
+        	CameraMove(new Vector3(7.65f, 0f, -10f));
+        } 
+        else if (KingControl.sceneCount == 1 && KingControl.isToNextScene && GameManager.instance.stopMoving) {
+        	CameraMove(new Vector3(-9.85f, 0f, -10f));
+        }
     }
 
+    private void CameraMove(Vector3 targetPos) {
+		if (Vector3.Distance(this.transform.position, targetPos) < 0.1f) {
+        	this.transform.position = targetPos;
+        	GameManager.instance.stopMoving = false;
+    	} 
+    	else
+        {
+    		this.transform.position = Vector3.MoveTowards(this.transform.position, targetPos, 6f * Time.deltaTime);
+    	}	
+    }
     public static void ShakeCamera(float intensity, float time) {
+    	//Debug.Log("camera shakeing");
     	CinemachineBasicMultiChannelPerlin cvBasicPerlin = 
     		cvCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     	cvBasicPerlin.m_AmplitudeGain = intensity;
