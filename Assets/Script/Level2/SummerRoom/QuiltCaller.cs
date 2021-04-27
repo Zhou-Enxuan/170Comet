@@ -31,6 +31,9 @@ public class QuiltCaller : MonoBehaviour
         LBed = false;
         //Window = GameObject.Find("Window");
         //LeaveHint = GameObject.Find("LeaveHint");
+        if (GameManager.instance.bgmNum != 4) {
+            SoundManager.playBgm(4);
+        }
     }
 
     void Start()

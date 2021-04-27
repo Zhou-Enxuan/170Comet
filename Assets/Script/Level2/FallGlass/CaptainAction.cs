@@ -25,6 +25,9 @@ public class CaptainAction : MonoBehaviour
 	private int failCount;
 	enum failState {CHANGED, UNCHANGE};
 	failState curFailState;
+	private AudioSource[] audioSources;
+    private AudioClip whistleSound;
+    private AudioClip glassSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -42,6 +45,12 @@ public class CaptainAction : MonoBehaviour
     	fading.SetActive(false);
     	questionMark.SetActive(false);
     	hint.SetActive(false);
+    	audioSources = this.gameObject.GetComponents<AudioSource>();
+		glassSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassSound");
+		//whistleSound = Resources.Load<AudioClip>("Sound/SoundEffect/");
+		audioSources[0].clip = glassSound;
+		audioSources[1].clip = whistleSound;
+    
     	Invoke("StartWhistle", 3f);
     }
 
@@ -94,7 +103,7 @@ public class CaptainAction : MonoBehaviour
 	        }
 
 	    }
-	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount == 5) {
+	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount >= 5) {
 	    	Debug.Log("捡起玻璃");
         	StartCoroutine(GameEnd("Level2FallRoom"));
 	    }
@@ -117,11 +126,12 @@ public class CaptainAction : MonoBehaviour
         }
 
         if (sucCount == 5){
+        	audioSources[0].PlayOneShot(glassSound,0.5f);
         	Debug.Log("游戏成功");
         	glass.SetActive(true);
         	isGameStart = false;
         	GameManager.instance.GlassEnd();
-
+        	sucCount++;
         }
     }
 

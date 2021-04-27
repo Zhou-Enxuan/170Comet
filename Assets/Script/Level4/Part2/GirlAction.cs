@@ -94,8 +94,7 @@ public class GirlAction : MonoBehaviour
 		Crossfade.GetComponent<Animator>().SetTrigger("Start");
 		yield return new WaitForSeconds(1f);
         //进入Level4Part3
-        Application.Quit();
-		//SceneManager.LoadScene("");
+        SceneManager.LoadScene("Level4Trace");
 	}
 
     void OnTriggerEnter2D(Collider2D collision)

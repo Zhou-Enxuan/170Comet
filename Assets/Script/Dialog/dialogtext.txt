@@ -61,3 +61,6 @@ Nightingale: She would be very happy.
 Lv2FallRoom
 Nightingale:I should be in a hurry to get a second piece of glass.
 ---
+Lv4Part2Trace
+King: You'd better run faster!
+---

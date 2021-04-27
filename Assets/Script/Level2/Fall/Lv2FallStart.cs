@@ -8,6 +8,7 @@ public class Lv2FallStart : MonoBehaviour
     void Start()
     {
     	GameManager.instance.StorePlayerPos();
+        SoundManager.playBgm(5);
         Dialog.PrintDialog("Lv2FallStart");
     }
 
