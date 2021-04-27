@@ -17,6 +17,7 @@ TagManager:
   - Destory
   - Hide
   - Hat
+  - Door
   layers:
   - Default
   - TransparentFX

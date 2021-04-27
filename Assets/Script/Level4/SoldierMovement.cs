@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoldierMovement : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class SoldierMovement : MonoBehaviour
         if(girlInfo.rigidbody == true && !girl.GetComponent<GirlOutMovement>().isHiding){
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
+                SceneManager.LoadScene("Level4");
             }
         }
         
@@ -86,6 +88,10 @@ public class SoldierMovement : MonoBehaviour
             SoldierAnimator.SetBool("Turnflag", true);
             Hat.SetActive(true);
         }
+
+        if(girl.GetComponent<GirlOutMovement>().isPickHat){
+            Hat.SetActive(false);
+        }
     }
 
     void move(){
@@ -95,5 +101,9 @@ public class SoldierMovement : MonoBehaviour
         BlackAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
         Hat.SetActive(true);
+        if(girl.GetComponent<GirlOutMovement>().isPickHat){
+            Hat.SetActive(false);
+        }
     }
+
 }

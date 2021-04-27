@@ -15,11 +15,14 @@ public class GirlOutMovement : MonoBehaviour
     private float tempY;
     private bool IsinHideObj;
     private bool Isinhat;
+    private bool Isindoor;
     private GameObject HideHint;
     private GameObject LeaveHint;
+    private GameObject DoorHint;
     private SpriteRenderer sprite;
     public bool isHiding;
     public GameObject Hat;
+    public bool isPickHat;
 
 
     private void Awake()
@@ -33,14 +36,17 @@ public class GirlOutMovement : MonoBehaviour
         IsinHideObj = false;
         HideHint = GameObject.Find("HideHint");
         LeaveHint = GameObject.Find("LeaveHint");
+        DoorHint = GameObject.Find("DoorHint");
         sprite = GetComponent<SpriteRenderer>();
         isHiding = false;
+        isPickHat = false;
     }
 
     void Start()
     {
         HideHint.SetActive(false);
         LeaveHint.SetActive(false);
+        DoorHint.SetActive(false);
     }
 
 
@@ -92,11 +98,21 @@ public class GirlOutMovement : MonoBehaviour
             isHiding = false;
         }
 
+        if(Isindoor){
+            DoorHint.SetActive(true);
+        }else{
+            DoorHint.SetActive(false);
+        }
+
         if(Isinhat && Input.GetKeyDown("space")){
-            Destroy(Hat);
+            Hat.SetActive(false);
+            isPickHat = true;
             GirlAnimator.SetBool("IsPickHat", true);
             //GirlAnimator.SetTrigger("PickTrigger");
-            //StartCoroutine(LoadLevel());//进入Level4Part2
+        }
+
+        if(Isindoor && Input.GetKeyDown("space")){
+            StartCoroutine(LoadLevel());//进入Level4Part2
         }
         
 
@@ -123,6 +139,12 @@ public class GirlOutMovement : MonoBehaviour
             //Debug.Log("hit box");
             Isinhat = true;
         }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            //Debug.Log("miss hit box");
+            Isindoor = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -137,6 +159,12 @@ public class GirlOutMovement : MonoBehaviour
         {
             //Debug.Log("miss hit box");
             Isinhat = false;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            //Debug.Log("miss hit box");
+            Isindoor = false;
         }
     }
 
