@@ -35,16 +35,22 @@ public class GirlInGameMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (KingControl.isToNextScene && GameManager.instance.stopMoving)
-        {
+        if (GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
-            if (KingControl.sceneCount == 0) {
-            	AutoMove(14f);
-            } else if (KingControl.sceneCount == 1) {
-            	AutoMove(-3f);
-            } else if (KingControl.sceneCount == 2) {
-            	Debug.Log("通过通过通过通过");
-            }
+            if (KingControl.isToNextScene) {
+	            if(KingControl.sceneCount == 0) {
+	            	AutoMove(32f);
+	            }
+	            else if (KingControl.sceneCount == 1) {
+	            	AutoMove(14f);
+	            } 
+	            else if (KingControl.sceneCount == 2) {
+	            	AutoMove(-3f);
+	            } 
+	            else if (KingControl.sceneCount == 3) {
+	            	Debug.Log("游戏成功通过通过通过通过");
+	            }
+	        }
         }
         else
         {
@@ -121,14 +127,21 @@ public class GirlInGameMovement : MonoBehaviour
         if (collision.gameObject.name == "Bird") {
         	isPickBird = true;
         }
-        if (KingControl.isToNextScene && KingControl.sceneCount == 0 && collision.gameObject.name == "InvisibleWall03") {
+        if (KingControl.isToNextScene && KingControl.sceneCount == 0 && collision.gameObject.name == "InvisibleWall04") {
         	GameManager.instance.stopMoving = true;
+        	KingControl.nextHint.SetActive(false);
         }
-        else if (KingControl.isToNextScene && KingControl.sceneCount == 1 && collision.gameObject.name == "InvisibleWall02") {
+        else if (KingControl.isToNextScene && KingControl.sceneCount == 1 && collision.gameObject.name == "InvisibleWall03") {
         	GameManager.instance.stopMoving = true;
+        	KingControl.nextHint.SetActive(false);
         }
-        else if (KingControl.isToNextScene && KingControl.sceneCount == 2 && collision.gameObject.name == "InvisibleWall01") {
+        else if (KingControl.isToNextScene && KingControl.sceneCount == 2 && collision.gameObject.name == "InvisibleWall02") {
         	GameManager.instance.stopMoving = true;
+        	KingControl.nextHint.SetActive(false);
+        }
+        else if (KingControl.isToNextScene && KingControl.sceneCount == 3 && collision.gameObject.name == "InvisibleWall01") {
+        	GameManager.instance.stopMoving = true;
+        	KingControl.nextHint.SetActive(false);
         }
 	}
 

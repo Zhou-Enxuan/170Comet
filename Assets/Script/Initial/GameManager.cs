@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     int index;
     public int playerLevel = -1;
     public int playedLevel = -1;
+    public int bgmNum = 0;
 
     // Start is called before the first frame update
     private void Awake() {

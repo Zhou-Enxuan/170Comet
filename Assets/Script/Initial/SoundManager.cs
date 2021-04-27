@@ -24,7 +24,8 @@ public class SoundManager : MonoBehaviour
         audioSources[1].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
         audioSources[2].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
         audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
-        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/CometSong");
+        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
+        audioSources[5].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
     }
 
     // Update is called once per frame
@@ -77,6 +78,7 @@ public class SoundManager : MonoBehaviour
             isChangVolume = true;
             audioSources[newBgm].Play();
             curBgm = num;
+            GameManager.instance.bgmNum = num;
         }
     }
 }
