@@ -94,7 +94,9 @@ public class GirlOutMovement : MonoBehaviour
 
         if(Isinhat && Input.GetKeyDown("space")){
             Destroy(Hat);
-            StartCoroutine(LoadLevel());//进入Level4Part2
+            GirlAnimator.SetBool("IsPickHat", true);
+            //GirlAnimator.SetTrigger("PickTrigger");
+            //StartCoroutine(LoadLevel());//进入Level4Part2
         }
         
 

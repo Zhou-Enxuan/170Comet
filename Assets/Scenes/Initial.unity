@@ -783,6 +783,7 @@ MonoBehaviour:
   stopMoving: 0
   playerLevel: -1
   playedLevel: -1
+  bgmNum: 0
 --- !u!4 &758242617
 Transform:
   m_ObjectHideFlags: 0
