@@ -28,6 +28,8 @@ public class CaptainAction : MonoBehaviour
 	private AudioSource[] audioSources;
     private AudioClip whistleSound;
     private AudioClip glassSound;
+    private AudioClip glassBreakSound;
+ 	private bool isSoundPlay = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,9 +49,11 @@ public class CaptainAction : MonoBehaviour
     	hint.SetActive(false);
     	audioSources = this.gameObject.GetComponents<AudioSource>();
 		glassSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassSound");
-		//whistleSound = Resources.Load<AudioClip>("Sound/SoundEffect/");
+		whistleSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_CaptianWhistle");
+		glassBreakSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassBreak");
 		audioSources[0].clip = glassSound;
 		audioSources[1].clip = whistleSound;
+		audioSources[2].clip = glassBreakSound;
     
     	Invoke("StartWhistle", 3f);
     }
@@ -74,10 +78,15 @@ public class CaptainAction : MonoBehaviour
 		        		knockableTime = 2f;
 		        		isKnockedGlass = false;
 		        		isKnockable = false;
+		        		isSoundPlay = false;
 		        		captainAnim.SetBool("isWhistle",false);
 		        		hint.SetActive(false);
 			        	// Debug.Log("不可以敲");
 		        	} else {
+		        		if (!isSoundPlay) {
+							audioSources[1].PlayOneShot(whistleSound,0.5f);
+							isSoundPlay = true;
+						}
 		        		isKnockable = true;
 		        		captainAnim.SetBool("isWhistle",true);
 			        	hint.SetActive(true);
@@ -88,6 +97,7 @@ public class CaptainAction : MonoBehaviour
 
 	        if (Input.GetKeyDown(KeyCode.Space) && !isKnockedGlass) {
 	        	birdAnim.Play("Knock");
+	        	audioSources[0].PlayOneShot(glassSound,0.5f);
 	        	if (isKnockable) {
 	        		sucCount += 1;
 	        		glassNum++;
@@ -126,7 +136,7 @@ public class CaptainAction : MonoBehaviour
         }
 
         if (sucCount == 5){
-        	audioSources[0].PlayOneShot(glassSound,0.5f);
+        	audioSources[2].PlayOneShot(glassSound,0.5f);
         	Debug.Log("游戏成功");
         	glass.SetActive(true);
         	isGameStart = false;
