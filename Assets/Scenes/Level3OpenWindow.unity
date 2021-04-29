@@ -701,6 +701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndOnly
       objectReference: {fileID: 0}
+    - target: {fileID: 1771272877510805587, guid: c96db3510cb4641d0a617ab63a21a903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1771272877510805613, guid: c96db3510cb4641d0a617ab63a21a903,
         type: 3}
       propertyPath: m_Enabled
@@ -772,6 +777,11 @@ PrefabInstance:
       value: LevelTrans
       objectReference: {fileID: 0}
     - target: {fileID: 1771272877925574650, guid: c96db3510cb4641d0a617ab63a21a903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521462340226544156, guid: c96db3510cb4641d0a617ab63a21a903,
         type: 3}
       propertyPath: m_IsActive
       value: 0
