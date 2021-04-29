@@ -84,7 +84,7 @@ public class GirlAction : MonoBehaviour
         else
         {
             GetComponent<Animator>().enabled = false;
-            sprite.sprite = Resources.Load<Sprite>("A_Girl");
+            sprite.sprite = Resources.Load<Sprite>("Level4/GirlHat/A_GirlHatMove00");
             rb.velocity = Vector2.zero;
         }
     }
