@@ -49,7 +49,6 @@ public class GirlAction : MonoBehaviour
         }
         else
         {
-            GetComponent<Animator>().enabled = false;
             rb.velocity = Vector2.zero;
         }
     }
@@ -61,6 +60,7 @@ public class GirlAction : MonoBehaviour
         {
             //transform.localScale = new Vector3();
             IsCollidingSoldier = true;
+            Anim.enabled = false;
             IsArrived = true;
             //fade out黑屏
             StartCoroutine(LoadLevel());
@@ -77,13 +77,13 @@ public class GirlAction : MonoBehaviour
         // 继续行走
         if(IsMoving)
         {
-            GetComponent<Animator>().enabled = true;
+            Anim.enabled = true;
             rb.velocity = new Vector2(Speed, rb.velocity.y);
         }
         //停止行走
         else
         {
-            GetComponent<Animator>().enabled = false;
+            Anim.enabled = false;
             sprite.sprite = Resources.Load<Sprite>("Level4/GirlHat/A_GirlHatMove00");
             rb.velocity = Vector2.zero;
         }
@@ -103,13 +103,17 @@ public class GirlAction : MonoBehaviour
         {
             Debug.Log("Soldier2");
             IsCollidingSoldier = true; //撞了士兵
+            Anim.enabled = true;
+            Anim.SetInteger("Fall", 1);
             //fade out黑屏
             StartCoroutine(ReloadLevel());
         }
-        if(collision.name == "Soldier3")
+        else if(collision.name == "Soldier3")
         {
             Debug.Log("Soldier3");
             IsCollidingSoldier = true;//撞了士兵
+            Anim.enabled = true;
+            Anim.SetInteger("Fall", 2);
             //fade out黑屏
             StartCoroutine(ReloadLevel());
         }
@@ -117,6 +121,7 @@ public class GirlAction : MonoBehaviour
 
     IEnumerator ReloadLevel()
 	{
+        yield return new WaitForSeconds(1f);
 		Crossfade.GetComponent<Animator>().SetTrigger("Start");
 		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene("Level4Part2");
