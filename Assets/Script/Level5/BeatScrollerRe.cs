@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class BeatScrollerRe : MonoBehaviour
 {
     [SerializeField] float beatTempo;//音符速度
+    [SerializeField] MusicButtonController musicButtonController;
     public int score;//得分
     public int total;//总分
     // public bool win;
     private GameObject Rhythm;
     private Vector3 origin;//位置
+    public bool Reset;
 
     void Awake()
     {
@@ -37,6 +39,8 @@ public class BeatScrollerRe : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(true);
                 transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
             }
+            musicButtonController.index = 1;
+            Reset = true;
         }
         else
         {

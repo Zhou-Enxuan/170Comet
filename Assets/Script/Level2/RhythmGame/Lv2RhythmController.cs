@@ -20,7 +20,7 @@ public class Lv2RhythmController : MonoBehaviour
         Player.GetComponent<Transform>().position = GameManager.instance.PlayerPos;
         Flower = GameObject.Find("Flower");
         SadFace = GameObject.Find("SadFace");
-        RhythmGame = GameObject.Find("RhythmGame");
+        RhythmGame = GameObject.Find("RhythmGameUI");
         // Npc02OriPos = this.GetComponent<Transform>().position;
         // Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         npc02Pick = GameObject.Find("NpcTwoPick");
@@ -32,7 +32,7 @@ public class Lv2RhythmController : MonoBehaviour
     {
         if (!GameManager.instance.isLv2WinterEnd) {
             //没完成音游
-            if (!RhythmGame.GetComponent<RhythmScore>().IsGameEnded) {
+            if (!SadFace.GetComponent<CallRhythm>().IsGameEnded) {
                 NpcTransPos(true);
                 Debug.Log("对话后摔倒");
             }
@@ -44,15 +44,15 @@ public class Lv2RhythmController : MonoBehaviour
                     Debug.Log("拿花对话");
 
                     //之後插入拿出花的動畫
-
+                    SadFace.SetActive(false);
                     NpcTransPos(false);
                     isDialoged = true;
                 }
                 if(!GameManager.instance.IsDialogShow()) {
                     Player.GetComponent<BirdOutDoorMovement>().enabled = true;
-                    RhythmGame.GetComponent<RhythmScore>().IsGameEnded = false;
+                    SadFace.GetComponent<CallRhythm>().IsGameEnded = false;
                     //第二關冬天任務結束
-                    SadFace.SetActive(false);
+                    
                     GameManager.instance.Level2WinterEnd();
                     Debug.Log("任务结束");
                 }
