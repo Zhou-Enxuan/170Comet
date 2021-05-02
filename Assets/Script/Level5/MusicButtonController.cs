@@ -5,7 +5,8 @@ using UnityEngine;
 public class MusicButtonController : MonoBehaviour
 {
     public Animator Anim;
-    public float index;
+    public int index;
+    [SerializeField] GameObject Notes;
 
     void Awake()
     {
@@ -14,7 +15,7 @@ public class MusicButtonController : MonoBehaviour
 
     void Start()
     {
-
+        // Debug.Log(Notes.transform.GetChild(index-1).gameObject.transform.position);
     }
 
     void Update()
@@ -33,13 +34,16 @@ public class MusicButtonController : MonoBehaviour
             Anim.SetBool("press", false);
             if(index < 5 && Input.GetKeyDown("down"))
             {
-                transform.position -= new Vector3(0, 53f, 0f);
-                index++;
+                // transform.position -= new Vector3(0, 53f, 0f);
+                ++index;
+                transform.position = new Vector3(transform.position.x, Notes.transform.GetChild(index-1).gameObject.transform.position.y, 0);
+                // Notes.transform.GetChild(index).gameObject.SetActive(false);
             }
             else if(index > 1 && Input.GetKeyDown("up"))
             {
-                transform.position += new Vector3(0, 53f, 0f);
-                index--;
+                // transform.position += new Vector3(0, 53f, 0f);
+                --index;
+                transform.position = new Vector3(transform.position.x, Notes.transform.GetChild(index-1).gameObject.transform.position.y, 0);
             }
         }
         

@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anim: {fileID: 197828360}
   index: 1
+  Notes: {fileID: 330619771}
 --- !u!1 &237588647
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +433,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beatTempo: 80
+  score: 0
+  total: 0
+  win: 0
 --- !u!1 &588988699
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,6 +609,7 @@ MonoBehaviour:
   musicButtonController: {fileID: 197828361}
   thisIndex: 5
   rt: {fileID: 197828357}
+  beatScrollerRe: {fileID: 330619773}
 --- !u!1001 &681558916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1145,6 +1150,7 @@ MonoBehaviour:
   musicButtonController: {fileID: 197828361}
   thisIndex: 3
   rt: {fileID: 197828357}
+  beatScrollerRe: {fileID: 330619773}
 --- !u!1 &1548652137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1242,7 @@ MonoBehaviour:
   musicButtonController: {fileID: 197828361}
   thisIndex: 1
   rt: {fileID: 197828357}
+  beatScrollerRe: {fileID: 330619773}
 --- !u!1 &1577346020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1334,7 @@ MonoBehaviour:
   musicButtonController: {fileID: 197828361}
   thisIndex: 4
   rt: {fileID: 197828357}
+  beatScrollerRe: {fileID: 330619773}
 --- !u!1 &1592325099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,6 +1623,7 @@ MonoBehaviour:
   musicButtonController: {fileID: 197828361}
   thisIndex: 2
   rt: {fileID: 197828357}
+  beatScrollerRe: {fileID: 330619773}
 --- !u!1 &1908506523
 GameObject:
   m_ObjectHideFlags: 0

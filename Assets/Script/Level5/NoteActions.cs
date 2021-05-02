@@ -8,6 +8,8 @@ public class NoteActions : MonoBehaviour
     [SerializeField] float thisIndex;
     private GameObject Button;
     [SerializeField] RectTransform rt;
+    [SerializeField] BeatScrollerRe beatScrollerRe;
+    private Vector3 origin; 
 
     void Awake()
     {
@@ -16,20 +18,29 @@ public class NoteActions : MonoBehaviour
 
     void Start()
     {
-        
+        origin = transform.position;
     }
 
     void Update()
     {
-        if (musicButtonController.index == thisIndex)
+        if (beatScrollerRe.total == 5)
         {
-            if (transform.position.x < (Button.transform.position.x + rt.rect.width/2) && transform.position.x > (Button.transform.position.x - rt.rect.width/2))
+            transform.position = origin;
+            this.gameObject.SetActive(true);
+        }
+
+        if (transform.position.x < (Button.transform.position.x + rt.rect.width/2) && transform.position.x > (Button.transform.position.x - rt.rect.width/2))
+        {
+            if(musicButtonController.index == thisIndex && Input.GetKeyDown("space"))
             {
-                if(Input.GetKeyDown("space"))
-                {
-                    this.gameObject.SetActive(false);
-                }
+                beatScrollerRe.score += 1;
+                this.gameObject.SetActive(false);
             }
+        }
+        else if (transform.position.x < 0)
+        {
+            beatScrollerRe.total += 1;
+            this.gameObject.SetActive(false);
         }
     }
 }
