@@ -43,6 +43,7 @@ public class NoteActions : MonoBehaviour
         else if (transform.position.x < 0)
         {
             beatScrollerRe.total += 1;
+            IsPlayed = false;
             this.gameObject.SetActive(false);
         }
     }

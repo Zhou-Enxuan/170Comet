@@ -30,13 +30,13 @@ public class MusicButtonController : MonoBehaviour
             if(index < 5 && Input.GetKeyDown("down"))
             {
                 ++index;
-                transform.position = new Vector3(transform.position.x, Notes.transform.GetChild(index-1).gameObject.transform.position.y, 0);
+                
             }
             else if(index > 1 && Input.GetKeyDown("up"))
             {
                 --index;
-                transform.position = new Vector3(transform.position.x, Notes.transform.GetChild(index-1).gameObject.transform.position.y, 0);
             }
+            transform.position = new Vector3(transform.position.x, Notes.transform.GetChild(index-1).gameObject.transform.position.y, 0);
         }
     }
 

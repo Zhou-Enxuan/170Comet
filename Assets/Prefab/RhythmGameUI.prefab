@@ -457,8 +457,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beatTempo: 80
+  musicButtonController: {fileID: 446811633288886824}
   score: 0
   total: 0
+  Reset: 0
 --- !u!1 &446811633822902932
 GameObject:
   m_ObjectHideFlags: 0
