@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeatScrollerRe : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class BeatScrollerRe : MonoBehaviour
             transform.position = origin;
             for(int i = 0; i<5; i++){
                 transform.GetChild(i).gameObject.SetActive(true);
+                transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
             }
         }
         else
