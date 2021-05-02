@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BeatScrollerRe : MonoBehaviour
 {
-    [SerializeField] float beatTempo;
-    public int score;
-    public int total;
-    public bool win;
+    [SerializeField] float beatTempo;//音符速度
+    public int score;//得分
+    public int total;//总分
+    // public bool win;
     private GameObject Rhythm;
+    private Vector3 origin;//位置
 
     void Awake()
     {
@@ -17,19 +18,23 @@ public class BeatScrollerRe : MonoBehaviour
 
     void Start() 
     {
-
+        origin = transform.position;
     }
 
     void Update() 
     {
         if(total == 5)
         {
-            if(score >= 4)
-            {
-                win = true;
+            // if(score >= 4)
+            // {
+            //     win = true;
+            // }
+            
+            //reset音符位置
+            transform.position = origin;
+            for(int i = 0; i<5; i++){
+                transform.GetChild(i).gameObject.SetActive(true);
             }
-
-            // Rhythm.SetActive(false);
         }
         else
         {

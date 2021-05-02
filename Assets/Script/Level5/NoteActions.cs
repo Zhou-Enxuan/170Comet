@@ -5,11 +5,10 @@ using UnityEngine;
 public class NoteActions : MonoBehaviour
 {
     [SerializeField] MusicButtonController musicButtonController;
-    [SerializeField] float thisIndex;
+    [SerializeField] int thisIndex;
     private GameObject Button;
     [SerializeField] RectTransform rt;
     [SerializeField] BeatScrollerRe beatScrollerRe;
-    private Vector3 origin; 
 
     void Awake()
     {
@@ -18,24 +17,23 @@ public class NoteActions : MonoBehaviour
 
     void Start()
     {
-        origin = transform.position;
     }
 
     void Update()
     {
-        if (beatScrollerRe.total == 5)
-        {
-            transform.position = origin;
-            this.gameObject.SetActive(true);
-        }
-
+        //按空格得分--音符消失--音效
         if (transform.position.x < (Button.transform.position.x + rt.rect.width/2) && transform.position.x > (Button.transform.position.x - rt.rect.width/2))
         {
-            if(musicButtonController.index == thisIndex && Input.GetKeyDown("space"))
+            if(musicButtonController.index == thisIndex)
             {
-                beatScrollerRe.score += 1;
-                this.gameObject.SetActive(false);
+                if(Input.GetKeyDown("space"))
+                {
+                    beatScrollerRe.score += 1;
+                    beatScrollerRe.total += 1;
+                    this.gameObject.SetActive(false);
+                }
             }
+            
         }
         else if (transform.position.x < 0)
         {
