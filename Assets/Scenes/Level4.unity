@@ -976,6 +976,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1771272877510805587, guid: c96db3510cb4641d0a617ab63a21a903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1771272877628792022, guid: c96db3510cb4641d0a617ab63a21a903,
         type: 3}
       propertyPath: m_RootOrder
@@ -1035,6 +1040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LevelTrans
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521462340226544156, guid: c96db3510cb4641d0a617ab63a21a903,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96db3510cb4641d0a617ab63a21a903, type: 3}
@@ -1446,7 +1456,7 @@ SpriteRenderer:
   m_Size: {x: 21.333334, y: 16.666666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1216076858
@@ -1620,7 +1630,7 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1299825976
