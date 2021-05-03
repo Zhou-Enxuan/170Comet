@@ -52,7 +52,7 @@ Npc03Wall
 Man with Mustache: Soldiers are coming. Let's get out of here!
 ---
 GreenSoldierTalk
-Solider: It's not safe here. Stay away!
+Soldier: It's not safe here. Stay away!
 ---
 Lv2FallStart
 Nightingale: If I could make a telescope for her as a gift...
