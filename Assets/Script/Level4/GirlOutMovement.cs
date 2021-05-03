@@ -27,7 +27,7 @@ public class GirlOutMovement : MonoBehaviour
 
     private void Awake()
     {
-        Crossfade = GameObject.Find("CrossWipe");
+        Crossfade = GameObject.Find("Crossfade");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         GirlAnimator = GetComponent<Animator>();

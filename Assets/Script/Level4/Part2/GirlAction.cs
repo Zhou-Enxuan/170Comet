@@ -16,19 +16,21 @@ public class GirlAction : MonoBehaviour
     public Transform EndPoint;
     private float pointX;
     public bool IsArrived;
-    private GameObject Continue;
+    private GameObject ReviveHint;
     private GameObject Crossfade;
+    private GameObject GameOverText;
 
     private void Awake()
     {
-        Crossfade = GameObject.Find("CrossWipe");
+        Crossfade = GameObject.Find("Crossfade");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         Hint = GameObject.Find("Hint");
         Drawing = GameObject.Find("Drawing");
         pointX = EndPoint.position.x;
-        Continue = GameObject.Find("Continue");
+        ReviveHint = GameObject.Find("ReviveHint");
+        GameOverText = GameObject.Find("GameOverText");
     }
 
     void Start()
@@ -37,7 +39,8 @@ public class GirlAction : MonoBehaviour
         IsCollidingSoldier = false;
         Destroy(EndPoint.gameObject);
         IsArrived = false;
-        Continue.SetActive(false);
+        ReviveHint.SetActive(false);
+        GameOverText.SetActive(false);
     }
 
 
@@ -50,6 +53,12 @@ public class GirlAction : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+        }
+        if (ReviveHint.activeSelf){
+            if (Input.GetKeyDown("space"))
+            {
+                SceneManager.LoadScene("Level4Part2");
+            }
         }
     }
 
@@ -118,13 +127,15 @@ public class GirlAction : MonoBehaviour
             StartCoroutine(ReloadLevel());
         }
     }
-
     IEnumerator ReloadLevel()
-	{
-        yield return new WaitForSeconds(1f);
-		Crossfade.GetComponent<Animator>().SetTrigger("Start");
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("Level4Part2");
-	}
+    {
+        yield return new WaitForSeconds(1.2f);
+        Crossfade.GetComponent<Animator>().SetTrigger("Start");
+        yield return new WaitForSeconds(1.2f);
+        GameOverText.SetActive(true);
+        yield return new WaitForSeconds(1.2f);
+        ReviveHint.SetActive(true);
+    }
+
 
 }
