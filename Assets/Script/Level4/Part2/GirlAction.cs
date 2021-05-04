@@ -16,21 +16,15 @@ public class GirlAction : MonoBehaviour
     public Transform EndPoint;
     private float pointX;
     public bool IsArrived;
-    private GameObject ReviveHint;
-    private GameObject Crossfade;
-    private GameObject GameOverText;
 
     private void Awake()
     {
-        Crossfade = GameObject.Find("Crossfade");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         Hint = GameObject.Find("Hint");
         Drawing = GameObject.Find("Drawing");
         pointX = EndPoint.position.x;
-        ReviveHint = GameObject.Find("ReviveHint");
-        GameOverText = GameObject.Find("GameOverText");
     }
 
     void Start()
@@ -39,8 +33,6 @@ public class GirlAction : MonoBehaviour
         IsCollidingSoldier = false;
         Destroy(EndPoint.gameObject);
         IsArrived = false;
-        ReviveHint.SetActive(false);
-        GameOverText.SetActive(false);
     }
 
 
@@ -54,12 +46,12 @@ public class GirlAction : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        if (ReviveHint.activeSelf){
-            if (Input.GetKeyDown("space"))
-            {
-                LevelLoader.instance.LoadLevel("Level4Part2");
-            }
-        }
+        // if (Hint.activeSelf){
+        //     if (Input.GetKeyDown("space"))
+        //     {
+        //         LevelLoader.instance.LoadLevel("Level4Part2");
+        //     }
+        // }
     }
 
     private void GirlMovement()
@@ -97,12 +89,6 @@ public class GirlAction : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
-
- //    IEnumerator LoadLevel()
-	// {
-	// 	LevelLoader.instance.LoadLevel("Level4Trace");
-	// }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Soldier2")
@@ -112,7 +98,7 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = true;
             Anim.SetInteger("Fall", 1);
             //fade out黑屏
-            StartCoroutine(ReloadLevel());
+            SceneManager.LoadScene("Level4Part2");
         }
         else if(collision.name == "Soldier3")
         {
@@ -121,17 +107,8 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
             //fade out黑屏
-            StartCoroutine(ReloadLevel());
+            SceneManager.LoadScene("Level4Part2");
         }
-    }
-    IEnumerator ReloadLevel()
-    {
-        yield return new WaitForSeconds(1.2f);
-        Crossfade.GetComponent<Animator>().SetTrigger("Start");
-        yield return new WaitForSeconds(1.2f);
-        GameOverText.SetActive(true);
-        yield return new WaitForSeconds(1.2f);
-        ReviveHint.SetActive(true);
     }
 
 
