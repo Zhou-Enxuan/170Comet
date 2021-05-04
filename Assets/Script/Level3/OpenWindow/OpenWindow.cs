@@ -11,11 +11,9 @@ public class OpenWindow : MonoBehaviour
     private GameObject Girl;
     private GameObject Chair;
     private GameObject SpaceHint;
-    private GameObject Crossfade;
 
     void Awake()
     {
-        Crossfade = GameObject.Find("EndOnly");
         Anim = GetComponent<Animator>();
         Girl = GameObject.Find("Girl");
         Chair = GameObject.Find("Chair");
@@ -72,17 +70,9 @@ public class OpenWindow : MonoBehaviour
     IEnumerator WaitAnim2Done()
     {
         yield return new WaitForSeconds(1f);
-        StartCoroutine(LoadLevel());
+        SceneManager.LoadScene("Level4");
         //LevelLoader.instance.LoadLevel("Level4");
     }
-
-    IEnumerator LoadLevel()
-	{
-		Crossfade.transform.Find("Image").gameObject.SetActive(true);
-		Crossfade.GetComponent<Animator>().enabled = true;
-		yield return new WaitForSeconds(1f);
-		SceneManager.LoadScene("Level4");
-	}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
