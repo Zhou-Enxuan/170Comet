@@ -8,6 +8,9 @@ public class GirlInGameMovement : MonoBehaviour
     private float moveH, moveV;
     private Vector2 direction;
 
+    private GameObject hideHint;
+    private GameObject leaveHint;
+
     [SerializeField] private float moveSpeed = 3f;
     private Animator GirlAnimator;
     private SpriteRenderer sprite;
@@ -26,11 +29,14 @@ public class GirlInGameMovement : MonoBehaviour
         IsinHideObj = false;
         isPickBird = false;
         curGirlState = girlState.UnHiding;
+        hideHint = GameObject.Find("HideHint");
+        leaveHint = GameObject.Find("LeaveHint");
     }
 
     void Start()
     {
-
+        hideHint.SetActive(false);
+        leaveHint.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -72,26 +78,34 @@ public class GirlInGameMovement : MonoBehaviour
 	        rb.velocity = direction * moveSpeed;  
 
 	        if (IsinHideObj) {
-	        	if (curGirlState == girlState.UnHiding  && Input.GetKeyDown("space")) {
-	        		if (isPickBird) {
-	        			KingControl.birdItem.SetActive(false);
-	        		} 
-	        		else {
-		        		sprite.sortingOrder = -2;
-		        		curGirlState = girlState.Hiding;
-		        		isGirlHiding = true;
-	        		}
-	        	} else if (curGirlState == girlState.Hiding && Input.GetKeyDown("space")) {
-	        		if (isPickBird) {
-	        			KingControl.birdItem.SetActive(false);
-	        		} 
-	        		else {
-		        		sprite.sortingOrder = 0;
-		        		curGirlState = girlState.UnHiding;
-		        		IsinHideObj = false;
-		        	}
-	        	}
+	        	if (curGirlState == girlState.UnHiding) {
+                    hideHint.SetActive(true);
+                    if (Input.GetKeyDown("space")) {
+    	        		if (isPickBird) {
+    	        			KingControl.birdItem.SetActive(false);
+    	        		} 
+    	        		else {
+    		        		sprite.sortingOrder = -2;
+    		        		curGirlState = girlState.Hiding;
+    		        		isGirlHiding = true;
+    	        		}
+                    }
+	        	} else if (curGirlState == girlState.Hiding) {
+                    leaveHint.SetActive(true);
+                    if (Input.GetKeyDown("space")) {
+    	        		if (isPickBird) {
+    	        			KingControl.birdItem.SetActive(false);
+    	        		} 
+    	        		else {
+    		        		sprite.sortingOrder = 0;
+    		        		curGirlState = girlState.UnHiding;
+    		        		IsinHideObj = false;
+    		        	}
+    	        	}
+                }
 	        } else {
+                hideHint.SetActive(false);
+                leaveHint.SetActive(false);
 				sprite.sortingOrder = 0;
 	            curGirlState = girlState.UnHiding;
 	        	if (isPickBird && Input.GetKeyDown("space")) {

@@ -115,7 +115,7 @@ public class CaptainAction : MonoBehaviour
 	    }
 	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount >= 5) {
 	    	Debug.Log("捡起玻璃");
-        	StartCoroutine(GameEnd("Level2FallRoom"));
+        	LevelLoader.instance.LoadLevel("Level2FallRoom");
 	    }
 
         if (failCount == 1 && curFailState == failState.UNCHANGE) {
@@ -132,7 +132,7 @@ public class CaptainAction : MonoBehaviour
         	isSoldierTrace = true;
         	// Debug.Log("游戏失败");
         	GameManager.instance.StorePlayerLoc(new Vector2(25f,-1.5f));     
-        	StartCoroutine(GameEnd("Level2FallLose"));
+        	LevelLoader.instance.LoadLevel("Level2FallLose");
         }
 
         if (sucCount == 5){
@@ -149,10 +149,10 @@ public class CaptainAction : MonoBehaviour
 		isGameStart = true;
     }
 
-    IEnumerator GameEnd(string SceneName) {
-    	fading.SetActive(true);
-    	yield return new WaitForSeconds(2f);
-    	SceneManager.LoadScene(SceneName);
-    }
+    // IEnumerator GameEnd(string SceneName) {
+    // 	fading.SetActive(true);
+    // 	yield return new WaitForSeconds(2f);
+    // 	SceneManager.LoadScene(SceneName);
+    // }
 }
 

@@ -112,19 +112,20 @@ public class GirlOutMovement : MonoBehaviour
         }
 
         if(Isindoor && Input.GetKeyDown("space")){
-            StartCoroutine(LoadLevel());//进入Level4Part2
+            LevelLoader.instance.LoadLevel("Level4Part2");
+            //StartCoroutine(LoadLevel());//进入Level4Part2
         }
         
 
     }
 
-    IEnumerator LoadLevel()
-	{
-		Crossfade.GetComponent<Animator>().SetTrigger("Start");
-		yield return new WaitForSeconds(1f);
-        //进入Level4Part2
-		SceneManager.LoadScene("Level4Part2");
-	}
+ //    IEnumerator LoadLevel()
+	// {
+	// 	Crossfade.GetComponent<Animator>().SetTrigger("Start");
+	// 	yield return new WaitForSeconds(1f);
+ //        //进入Level4Part2
+	// 	SceneManager.LoadScene("Level4Part2");
+	// }
 
         void OnTriggerEnter2D(Collider2D collision)
     {

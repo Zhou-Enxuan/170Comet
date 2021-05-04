@@ -57,7 +57,7 @@ public class GirlAction : MonoBehaviour
         if (ReviveHint.activeSelf){
             if (Input.GetKeyDown("space"))
             {
-                SceneManager.LoadScene("Level4Part2");
+                LevelLoader.instance.LoadLevel("Level4Part2");
             }
         }
     }
@@ -72,7 +72,7 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = false;
             IsArrived = true;
             //fade out黑屏
-            StartCoroutine(LoadLevel());
+            LevelLoader.instance.LoadLevel("Level4Trace");
         }
 
         if (Input.GetKeyDown("space"))
@@ -98,13 +98,10 @@ public class GirlAction : MonoBehaviour
         }
     }
 
-    IEnumerator LoadLevel()
-	{
-		Crossfade.GetComponent<Animator>().SetTrigger("Start");
-		yield return new WaitForSeconds(1f);
-        //进入Level4Part3
-        SceneManager.LoadScene("Level4Trace");
-	}
+ //    IEnumerator LoadLevel()
+	// {
+	// 	LevelLoader.instance.LoadLevel("Level4Trace");
+	// }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

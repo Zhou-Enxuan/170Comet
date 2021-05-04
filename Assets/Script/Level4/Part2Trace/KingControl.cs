@@ -155,7 +155,8 @@ public class KingControl : MonoBehaviour
     		}
     		if (loseCount == 3){
     			Debug.Log("第二场景游戏失败");
-          	 	SceneManager.LoadScene("Level4Trace");
+          	 	//SceneManager.LoadScene
+                LevelLoader.instance.LoadLevel("Level4Trace");
     		}
     		KingUnTrancingMethod();
     		KingStampingMethod();
@@ -456,7 +457,8 @@ public class KingControl : MonoBehaviour
         if (collision.gameObject.tag == "Player" && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding)
         {
            Debug.Log("游戏失败");
-           SceneManager.LoadScene("Level4Trace");
+           // SceneManager.LoadScene
+           LevelLoader.instance.LoadLevel("Level4Trace");
         }
 	}
 
