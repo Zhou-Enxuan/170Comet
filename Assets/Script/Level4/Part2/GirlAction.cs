@@ -107,7 +107,7 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
             //fade out黑屏
-            SceneManager.LoadScene("Level4Part2");
+            LevelLoader.instance.LoadLevel("Level4Part2");
         }
     }
 
