@@ -15,7 +15,7 @@ public class FallGlassWindow : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isActive) {
-        	SceneManager.LoadScene("Level2FallGlass");
+        	LevelLoader.instance.LoadLevel("Level2FallGlass");
         }
     }
 

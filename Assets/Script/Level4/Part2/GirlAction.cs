@@ -46,6 +46,13 @@ public class GirlAction : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+        
+        if (ReviveHint.activeSelf){
+            if (Input.GetKeyDown("space"))
+            {
+                LevelLoader.instance.LoadLevel("Level4Part2");
+            }
+        }
     }
 
     private void GirlMovement()
@@ -58,7 +65,7 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = false;
             IsArrived = true;
             //fade out黑屏
-            SceneManager.LoadScene("Level4Trace");
+            LevelLoader.instance.LoadLevel("Level4Trace");
         }
 
         if (Input.GetKeyDown("space"))

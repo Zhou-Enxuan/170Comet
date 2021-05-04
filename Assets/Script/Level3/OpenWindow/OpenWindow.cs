@@ -70,9 +70,16 @@ public class OpenWindow : MonoBehaviour
     IEnumerator WaitAnim2Done()
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("Level4");
-        //LevelLoader.instance.LoadLevel("Level4");
+        LevelLoader.instance.LoadLevel("Level4");
     }
+
+ //    IEnumerator LoadLevel()
+	// {
+	// 	Crossfade.transform.Find("Image").gameObject.SetActive(true);
+	// 	Crossfade.GetComponent<Animator>().enabled = true;
+	// 	yield return new WaitForSeconds(1f);
+	// 	SceneManager.LoadScene("Level4");
+	// }
 
     void OnTriggerEnter2D(Collider2D collision)
     {

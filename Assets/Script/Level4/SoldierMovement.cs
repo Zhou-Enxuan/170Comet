@@ -54,7 +54,7 @@ public class SoldierMovement : MonoBehaviour
         if(girlInfo.rigidbody == true && !girl.GetComponent<GirlOutMovement>().isHiding){
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
-                SceneManager.LoadScene("Level4");
+                LevelLoader.instance.LoadLevel("Level4");
             }
         }
         
