@@ -19,6 +19,6 @@ public class Initial : MonoBehaviour
     }
     void Update()
     {
-        LevelLoader.instance.LoadLevel("Menu");
+        LevelLoader.instance.LoadLevel("Level3OpenWindow");
     }
 }
