@@ -46,13 +46,12 @@ public class GirlAction : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
-        
-        if (ReviveHint.activeSelf){
-            if (Input.GetKeyDown("space"))
-            {
-                LevelLoader.instance.LoadLevel("Level4Part2");
-            }
-        }
+        // if (Hint.activeSelf){
+        //     if (Input.GetKeyDown("space"))
+        //     {
+        //         LevelLoader.instance.LoadLevel("Level4Part2");
+        //     }
+        // }
     }
 
     private void GirlMovement()
@@ -90,7 +89,6 @@ public class GirlAction : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Soldier2")
@@ -109,7 +107,7 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
             //fade out黑屏
-            SceneManager.LoadScene("Level4Part2");
+            LevelLoader.instance.LoadLevel("Level4Part2");
         }
     }
 
