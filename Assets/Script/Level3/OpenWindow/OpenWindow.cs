@@ -11,11 +11,9 @@ public class OpenWindow : MonoBehaviour
     private GameObject Girl;
     private GameObject Chair;
     private GameObject SpaceHint;
-    private GameObject Crossfade;
 
     void Awake()
     {
-        Crossfade = GameObject.Find("EndOnly");
         Anim = GetComponent<Animator>();
         Girl = GameObject.Find("Girl");
         Chair = GameObject.Find("Chair");

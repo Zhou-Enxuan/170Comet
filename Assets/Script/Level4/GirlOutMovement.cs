@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GirlOutMovement : MonoBehaviour
 {
-    private GameObject Crossfade;
     private Rigidbody2D rb;
     private float moveH, moveV;
     private Vector2 direction;
@@ -27,7 +26,6 @@ public class GirlOutMovement : MonoBehaviour
 
     private void Awake()
     {
-        Crossfade = GameObject.Find("Crossfade");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         GirlAnimator = GetComponent<Animator>();
