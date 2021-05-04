@@ -4122,6 +4122,9 @@ CanvasRenderer:
   m_GameObject: {fileID: 1751358171}
   m_CullTransparentMesh: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fa1f76a1d178203d8304cb0ff93d8461622b70c0
 --- !u!1 &1868469468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,8 +4288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96db3510cb4641d0a617ab63a21a903, type: 3}
+<<<<<<< HEAD
 =======
 >>>>>>> 6f62ab552cd37b78f609d24132e2785c270c57a9
+=======
+>>>>>>> fa1f76a1d178203d8304cb0ff93d8461622b70c0
 --- !u!1 &1952042157
 GameObject:
   m_ObjectHideFlags: 0
