@@ -9,6 +9,7 @@ public class Lv2FallStart : MonoBehaviour
     {
     	GameManager.instance.StorePlayerPos();
         SoundManager.playBgm(5);
+        GameManager.instance.stopMoving = true;
         Dialog.PrintDialog("Lv2FallStart");
     }
 

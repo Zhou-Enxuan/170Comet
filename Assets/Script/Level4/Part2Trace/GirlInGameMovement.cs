@@ -43,7 +43,7 @@ public class GirlInGameMovement : MonoBehaviour
     {
         if (GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
-            if (KingControl.isToNextScene) {
+            if (KingControl.isToNextScene && !KingControl.isGameFailed) {
 	            if(KingControl.sceneCount == 0) {
 	            	AutoMove(32f);
 	            }

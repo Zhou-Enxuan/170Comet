@@ -61,7 +61,8 @@ public class SoldierMovement : MonoBehaviour
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 if (!isEnd) {
-                    Invoke("FailScreen",1f);
+                    failUI.SetActive(true);     
+                    Invoke("EndHint",0.7f);
                     isEnd = true;
                 } else {
                     if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
@@ -90,10 +91,6 @@ public class SoldierMovement : MonoBehaviour
         }
     }
 
-    void FailScreen() {
-        failUI.SetActive(true);     
-        Invoke("EndHint",0.7f);
-    }
     void EndHint() {
         hint.SetActive(true);
     }

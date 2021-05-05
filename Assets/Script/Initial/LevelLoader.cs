@@ -7,6 +7,7 @@ public class LevelLoader : MonoBehaviour
 	public static LevelLoader instance { get; private set; }
     public Animator anim;
     private string scene;
+    private bool isCanMove = false;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel (string sceneName) {
         gameObject.SetActive(true);
         scene = sceneName; 
+        isCanMove = false;
         StartCoroutine(Loading());
     }
     public void LoadNext() {
@@ -33,7 +35,16 @@ public class LevelLoader : MonoBehaviour
         GameManager.instance.stopMoving = true;
         yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
-        GameManager.instance.stopMoving = false;
+        if (scene == "Level2Fall" && GameObject.Find("DialogBox") != null) {
+            GameManager.instance.stopMoving = true;
+        } else if (scene == "Level4Trace" && GameObject.Find("DialogBox") != null) {
+            GameManager.instance.stopMoving = true;
+        } else {
+            GameManager.instance.stopMoving = false;
+        }
+        
+        
+
     }
     // public void LoadLevel (string sceneName) {
     //     Debug.Log(sceneName);

@@ -17,6 +17,10 @@ public class GirlAction : MonoBehaviour
     private float pointX;
     public bool IsArrived;
 
+    public GameObject failUI;
+    public GameObject restartHint;
+    private bool isEnd;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +37,9 @@ public class GirlAction : MonoBehaviour
         IsCollidingSoldier = false;
         Destroy(EndPoint.gameObject);
         IsArrived = false;
+        failUI.SetActive(false);
+        restartHint.SetActive(false);
+        isEnd = false;
     }
 
 
@@ -45,6 +52,7 @@ public class GirlAction : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+            FailScreen("Level4Part2");
         }
         // if (Hint.activeSelf){
         //     if (Input.GetKeyDown("space"))
@@ -98,7 +106,6 @@ public class GirlAction : MonoBehaviour
             Anim.enabled = true;
             Anim.SetInteger("Fall", 1);
             //fade out黑屏
-            SceneManager.LoadScene("Level4Part2");
         }
         else if(collision.name == "Soldier3")
         {
@@ -106,10 +113,24 @@ public class GirlAction : MonoBehaviour
             IsCollidingSoldier = true;//撞了士兵
             Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
-            //fade out黑屏
-            LevelLoader.instance.LoadLevel("Level4Part2");
+            //fade out黑屏】
         }
     }
 
+    private void FailScreen(string screenname) {
+        if (!isEnd) {
+            failUI.SetActive(true);     
+            Invoke("EndHint",0.7f);
+            isEnd = true;
+        } else {
+            if (restartHint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+                LevelLoader.instance.LoadLevel(screenname);
+            }
+        }
+    }
+
+    void EndHint() {
+        restartHint.SetActive(true);
+    }
 
 }

@@ -11,6 +11,8 @@ public class SummerTimeline : MonoBehaviour
 	public static GameObject npc02;
 	public static GameObject redSoldier;
 	public static GameObject greenSoldier;
+    public static GameObject rSoldier01;
+    public static GameObject gSoldier01;
 	public static Animator npc01Anim;
 	public static Animator npc02Anim;
 
@@ -22,15 +24,19 @@ public class SummerTimeline : MonoBehaviour
         npc02 = GameObject.Find("NpcTwo");
         redSoldier = GameObject.Find("RedSoldier");
         greenSoldier = GameObject.Find("GreenSoldier");
+        rSoldier01 = GameObject.Find("RedSoldier01");
+        gSoldier01 = GameObject.Find("GreenSoldier01");
         npc01Anim = npc01.GetComponent<Animator>();
         npc02Anim = npc02.GetComponent<Animator>();
         NpcTwoTimeline = GameObject.Find("NpcTwoTimeline");
-        redSoldier.SetActive(false);
-        greenSoldier.SetActive(false);
-        NpcTwoTimeline.SetActive(false);
     }
 
     void Start() {
+        rSoldier01.SetActive(false);
+        gSoldier01.SetActive(false);
+        NpcTwoTimeline.SetActive(false);
+        redSoldier.SetActive(false);
+        greenSoldier.SetActive(false);
         TimelineGameManager.GetDirector(NpcTwoTimeline.GetComponent<PlayableDirector>());
         NpcTwoTimeline.SetActive(true);
         TimelineGameManager.isTimeline = true;
@@ -43,6 +49,10 @@ public class SummerTimeline : MonoBehaviour
             if (!TimelineGameManager.isTimeline) {
                 player.GetComponent<BirdOutDoorMovement>().enabled = true;
                 LevelLoader.instance.LoadLevel("Level2Summer");
+                npc01.SetActive(false);
+                npc02.SetActive(false);
+                rSoldier01.SetActive(true);
+                gSoldier01.SetActive(true);
 	        }
 	    }
     }

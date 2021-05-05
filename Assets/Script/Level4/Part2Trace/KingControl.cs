@@ -27,7 +27,12 @@ public class KingControl : MonoBehaviour
 	private bool isShaked;
 	private bool isGirlRunning;
 
-	public static bool isToNextScene = false;
+    public GameObject failUI;
+    public GameObject Hint;
+
+    public static bool isGameFailed;
+	public static bool isToNextScene;
+    
 	public Transform[] movePos;
 	public enum kingState {Stop, Tracing, UnTracing, Spring, Stamping, FinalTracing};
     public static kingState curKingState;
@@ -54,6 +59,8 @@ public class KingControl : MonoBehaviour
 
     void Start()
     {
+        isGameFailed = false;
+        isToNextScene = false;
     	isInvoke = false;
     	curKingState = kingState.Stop;
     	turnWaitTime = 0.1f;
@@ -70,115 +77,130 @@ public class KingControl : MonoBehaviour
     	isShaked = true;
     	isCounting = false;
  		Dialog.PrintDialog("Lv4Part2Trace");
+        failUI.SetActive(false);
+        Hint.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("sceneCount "+ sceneCount);
     	//Debug.Log("winningCount = " + winningCount);
     	//Debug.Log("loseCount = " + loseCount);
     	//Debug.Log(curKingState);
     	// Debug.Log(isMovingR);
     	// Debug.Log(isKingFacePlayer);
-    	if (sceneCount == 0 && !GameManager.instance.IsDialogShow()) {
-    		this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(36f, this.transform.position.y), 3f * Time.deltaTime);
-    		if (!birdItem.activeSelf) {
-    			isToNextScene = true;
-    			sceneSet(25.6f, 0, 36.5f, "KingStart", 2f);
-    		// 	if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(25.6f, 0f, -10f)) {
-	    	// 		//Debug.Log("场景2");
-	    	// 		isToNextScene = false;
-	    	// 		//国王场景2初始位置
-	    	// 		if (!CheckTraceMoveState()) {
-	    	// 			turnWaitTime = 0;
-	    	// 			KingTurn();
-    		// 		}
-	    	// 		this.transform.position = new Vector2(36.5f, this.transform.position.y);
-	    	// 		// curKingState = kingState.Stop;
- 					// Invoke("KingStart", 2f);
-	    	// 		//Invoke("KingTrace", 2f);
-	    	// 	}
-    		}
-    	}
-    	// 场景1
-    	if (sceneCount == 1) {
-    		if (winningCount >= 2) {
-    			if (winningCount == 2) 
-    				nextHint.SetActive(true);
-	    		isToNextScene = true;
-	    		curKingState = kingState.UnTracing;
-    			sceneSet(7.65f, 2, 18.5f, "KingTrace", 2f);
-	    		// if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(7.65f, 0f, -10f)) {
-	    		// 	//Debug.Log("场景2");
-	    		// 	curNum = 2; 
-	    		// 	isToNextScene = false;
-	    		// 	//国王场景2初始位置
-	    		// 	if (!CheckTraceMoveState()) {
-	    		// 		turnWaitTime = 0;
-	    		// 		KingTurn();
-    			// 	}
-	    		// 	this.transform.position = new Vector2(18.5f, this.transform.position.y);
-	    		// 	curKingState = kingState.Stop;
-	    		// 	Invoke("KingTrace", 2f);
-	    		// }
-	    		winningCount++;
-	    	}
-    		KingTracingMethod();
-    		KingUnTrancingMethod();
-    		KingSpringMethod();
-    	} 
-    	// 场景2
-    	else if (sceneCount == 2) {
-    		if (winningCount >= 2 && !birdItem.activeSelf) {
-    			if (winningCount == 2) 
-    				nextHint.SetActive(true);
-    			curKingState = kingState.UnTracing;
-    			isToNextScene = true;
-    			countTimer = 0;
-    			sceneSet(-9.85f, 4, 1f, "KingTrace", 3f);
-    			// if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(-9.85f, 0f, -10f)) {
-	    		// 	Debug.Log("场景3");
-	    		// 	curNum = 4; 
-	    		// 	isToNextScene = false;
-	    		// 	//国王场景2初始位置
-	    		// 	if (!CheckTraceMoveState()) {
-	    		// 		turnWaitTime = 0;
-	    		// 		KingTurn();
-    			// 	}
-	    		// 	this.transform.position = new Vector2(1f, this.transform.position.y);
-	    		// 	curKingState = kingState.Stop;
-	    		// 	Invoke("KingTrace", 3f);
-	    		// }
-	    		winningCount++;
-    		} else {
-    			isToNextScene = false;
-    		}
-    		if (loseCount == 3){
-    			Debug.Log("第二场景游戏失败");
-          	 	//SceneManager.LoadScene
-                LevelLoader.instance.LoadLevel("Level4Trace");
-    		}
-    		KingUnTrancingMethod();
-    		KingStampingMethod();
-    		//随机国王跺脚
-    		countTimer -= Time.deltaTime;
-    		if (countTimer <= 0) {
-    			curKingState = kingState.Stamping;
-    		} 
-    		else {
-    			stampTime = 2f;
-    			isShaked = true;
-    			curKingState = kingState.UnTracing;
-    		}
-    	}
-    	// 场景3
-    	else if (sceneCount == 3) {
-    		isToNextScene = true;
-    		// Debug.Log("开始场景3");
-			this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(-18.85f, this.transform.position.y), 5f * Time.deltaTime);
-			
-    	}
+        if (!isGameFailed) {
+        	if (sceneCount == 0 && !GameManager.instance.IsDialogShow()) {
+        		this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(36f, this.transform.position.y), 3f * Time.deltaTime);
+        		if (!birdItem.activeSelf) {
+        			isToNextScene = true;
+        			sceneSet(25.6f, 0, 36.5f, "KingStart", 2f);
+        		// 	if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(25.6f, 0f, -10f)) {
+    	    	// 		//Debug.Log("场景2");
+    	    	// 		isToNextScene = false;
+    	    	// 		//国王场景2初始位置
+    	    	// 		if (!CheckTraceMoveState()) {
+    	    	// 			turnWaitTime = 0;
+    	    	// 			KingTurn();
+        		// 		}
+    	    	// 		this.transform.position = new Vector2(36.5f, this.transform.position.y);
+    	    	// 		// curKingState = kingState.Stop;
+     					// Invoke("KingStart", 2f);
+    	    	// 		//Invoke("KingTrace", 2f);
+    	    	// 	}
+        		}
+        	}
+        	// 场景1
+        	if (sceneCount == 1) {
+        		if (winningCount >= 2) {
+        			if (winningCount == 2) 
+        				nextHint.SetActive(true);
+    	    		isToNextScene = true;
+    	    		curKingState = kingState.UnTracing;
+        			sceneSet(7.65f, 2, 18.5f, "KingTrace", 2f);
+    	    		// if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(7.65f, 0f, -10f)) {
+    	    		// 	//Debug.Log("场景2");
+    	    		// 	curNum = 2; 
+    	    		// 	isToNextScene = false;
+    	    		// 	//国王场景2初始位置
+    	    		// 	if (!CheckTraceMoveState()) {
+    	    		// 		turnWaitTime = 0;
+    	    		// 		KingTurn();
+        			// 	}
+    	    		// 	this.transform.position = new Vector2(18.5f, this.transform.position.y);
+    	    		// 	curKingState = kingState.Stop;
+    	    		// 	Invoke("KingTrace", 2f);
+    	    		// }
+    	    		winningCount++;
+    	    	}
+        		KingTracingMethod();
+        		KingUnTrancingMethod();
+        		KingSpringMethod();
+        	} 
+        	// 场景2
+        	else if (sceneCount == 2) {
+        		if (winningCount >= 2 && !birdItem.activeSelf) {
+        			if (winningCount == 2) 
+        				nextHint.SetActive(true);
+        			curKingState = kingState.UnTracing;
+        			isToNextScene = true;
+        			countTimer = 0;
+        			sceneSet(-9.85f, 4, 1f, "KingTrace", 3f);
+        			// if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(-9.85f, 0f, -10f)) {
+    	    		// 	Debug.Log("场景3");
+    	    		// 	curNum = 4; 
+    	    		// 	isToNextScene = false;
+    	    		// 	//国王场景2初始位置
+    	    		// 	if (!CheckTraceMoveState()) {
+    	    		// 		turnWaitTime = 0;
+    	    		// 		KingTurn();
+        			// 	}
+    	    		// 	this.transform.position = new Vector2(1f, this.transform.position.y);
+    	    		// 	curKingState = kingState.Stop;
+    	    		// 	Invoke("KingTrace", 3f);
+    	    		// }
+    	    		winningCount++;
+        		} else {
+        			isToNextScene = false;
+        		}
+        		if (loseCount == 3){
+        			Debug.Log("第二场景游戏失败");
+              	 	//SceneManager.LoadScene
+                    LevelLoader.instance.LoadLevel("Level4Trace");
+        		}
+        		KingUnTrancingMethod();
+        		KingStampingMethod();
+        		//随机国王跺脚
+        		countTimer -= Time.deltaTime;
+        		if (countTimer <= 0) {
+        			curKingState = kingState.Stamping;
+        		} 
+        		else {
+        			stampTime = 2f;
+        			isShaked = true;
+        			curKingState = kingState.UnTracing;
+        		}
+        	}
+        	// 场景3
+        	else if (sceneCount == 3) {
+        		isToNextScene = true;
+        		// Debug.Log("开始场景3");
+    			this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(-18.85f, this.transform.position.y), 5f * Time.deltaTime);
+    			
+        	}
+        } 
+        else {
+            //游戏失败 停止移动
+            GameManager.instance.stopMoving = true;
+        }
+
+        //游戏失败 转场
+        if (failUI.activeSelf && Hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+            LevelLoader.instance.LoadLevel("Level4Trace");
+        }
     }
+
     void sceneSet(float camPos, int curnum, float kingPos, string method, float methodTime) {
     	if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(camPos, 0f, -10f)) {
 			// 场景3一开始
@@ -457,13 +479,19 @@ public class KingControl : MonoBehaviour
         if (collision.gameObject.tag == "Player" && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding)
         {
            Debug.Log("游戏失败");
-           // SceneManager.LoadScene
-           LevelLoader.instance.LoadLevel("Level4Trace");
+           // SceneManager.LoadScene 
+            failUI.SetActive(true);     
+            Invoke("EndHint",0.7f);
+            isGameFailed = true;
         }
 	}
 
 	void OnTriggerExit2D(Collider2D collision)
     {
         
+    }
+
+    void EndHint() {
+        Hint.SetActive(true);
     }
 }

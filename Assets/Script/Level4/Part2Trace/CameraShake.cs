@@ -33,13 +33,13 @@ public class CameraShake : MonoBehaviour
         	cvBasicPerlin.m_AmplitudeGain = 0f;
         }
 
-        if (KingControl.sceneCount == 0 && KingControl.isToNextScene && GameManager.instance.stopMoving) {
+        if (KingControl.sceneCount == 0 && !KingControl.isGameFailed && KingControl.isToNextScene && GameManager.instance.stopMoving) {
         	CameraMove(new Vector3(25.6f, 0f, -10f));
         } 
-        else if (KingControl.sceneCount == 1&& KingControl.isToNextScene && GameManager.instance.stopMoving) {
+        else if (KingControl.sceneCount == 1 && !KingControl.isGameFailed && KingControl.isToNextScene && GameManager.instance.stopMoving) {
         	CameraMove(new Vector3(7.65f, 0f, -10f));
         } 
-        else if (KingControl.sceneCount == 2 && KingControl.isToNextScene && GameManager.instance.stopMoving) {
+        else if (KingControl.sceneCount == 2 && !KingControl.isGameFailed && KingControl.isToNextScene && GameManager.instance.stopMoving) {
         	CameraMove(new Vector3(-9.85f, 0f, -10f));
         }
     }
