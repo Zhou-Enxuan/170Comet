@@ -11,12 +11,16 @@ public class CallRhythm : MonoBehaviour
     public bool IsGameEnded;
     private GameObject SpaceHint;
     private GameObject RhythmHint;
+    private GameObject Fail;
+    private GameObject Hint;
 
     void Awake() 
     {
         Rhythm = GameObject.Find("RhythmGameUI");
         SpaceHint = GameObject.Find("SpaceHint");
         RhythmHint = GameObject.Find("RhythmHint");
+        Fail = GameObject.Find("Fail");
+        Hint = GameObject.Find("Hint");
     }
 
     void Start()
@@ -25,6 +29,8 @@ public class CallRhythm : MonoBehaviour
         IsGameEnded = false;
         RhythmHint.SetActive(false);
         SpaceHint.SetActive(false);
+        Fail.SetActive(false);
+        Hint.SetActive(false);
     }
 
     void Update()
@@ -52,8 +58,31 @@ public class CallRhythm : MonoBehaviour
             {
                 IsGameEnded = true;
             }
+            else
+            {
+                Fail.SetActive(true);
+                StartCoroutine(WaitanimDone());
+                
+            }
+            
+        }else{
+            Hint.SetActive(false);
+        }
+    }
+
+    IEnumerator WaitanimDone()
+    {
+        yield return new WaitWhile(() => Fail.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+        
+        if (Input.GetKeyDown("space"))
+        {
+            Fail.SetActive(false);
+            Hint.SetActive(false);
             GameManager.instance.stopMoving = false;
             beatScrollerRe.Reset = false;
+
+        }else{
+            Hint.SetActive(true);
         }
     }
 
