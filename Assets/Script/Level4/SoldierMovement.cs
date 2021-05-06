@@ -9,8 +9,9 @@ public class SoldierMovement : MonoBehaviour
     public float distance = 5.0f;
 
     private bool moveingRight = true;
-    public float waitingTime = 5.0f;
+    public float waitingTime = 6.0f;
     private float timer = 0.0f;
+    private float NPCtimer = 0.0f;
 
     public Transform groundDe;
     public Transform girlDe;
@@ -22,9 +23,13 @@ public class SoldierMovement : MonoBehaviour
     private Animator BlackAnimator;
     public GameObject Hat;
     private bool isEnd = false;
+    private bool NPCMoveBack = false;
+    private bool moveFlag = false;
 
     public GameObject hint;
     public GameObject failUI;
+    public GameObject GreenNpC;
+    public GameObject BlackNpC;
 
     private void Start(){
         SoldierAnimator = GetComponent<Animator>();
@@ -53,6 +58,7 @@ public class SoldierMovement : MonoBehaviour
 
         if(moveingRight == true){
             girlInfo = Physics2D.Raycast(girlDe.position, Vector2.right, distance);
+            NPCMoveBack = true;
         }else{
             girlInfo = Physics2D.Raycast(girlDe.position, Vector2.left, distance);
         }
@@ -61,13 +67,13 @@ public class SoldierMovement : MonoBehaviour
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 if (!isEnd) {
-                    failUI.SetActive(true);     
-                    Invoke("EndHint",0.7f);
-                    isEnd = true;
+                    //failUI.SetActive(true);     
+                    //Invoke("EndHint",0.7f);
+                    //isEnd = true;
                 } else {
-                    if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
-                        LevelLoader.instance.LoadLevel("Level4");
-                    }
+                    //if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+                    //    LevelLoader.instance.LoadLevel("Level4");
+                    //}
                 }
             }
         }
@@ -101,10 +107,21 @@ public class SoldierMovement : MonoBehaviour
             SoldierAnimator.SetBool("HatDropflag", true);
             GreenAnimator.SetBool("HatDropflag", true);
             BlackAnimator.SetBool("HatDropflag", true);
+            GreenAnimator.SetBool("WalkFlag", false);
             Hat.SetActive(false);
         }else{
             SoldierAnimator.SetBool("Turnflag", true);
+            GreenAnimator.SetBool("HatDropflag", false);
+            BlackAnimator.SetBool("WalkFlag", true);
+            GreenAnimator.SetBool("WalkFlag", true);
             Hat.SetActive(true);
+
+            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            moveFlag = true;
+
+            //GreenNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
+            //BlackNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
         }
 
         if(girl.GetComponent<GirlOutMovement>().isPickHat){
@@ -113,14 +130,79 @@ public class SoldierMovement : MonoBehaviour
     }
 
     void move(){
+
+        if(moveingRight && moveFlag){
+            GreenNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
+            BlackNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
+            BlackAnimator.SetBool("WalkBack", true);
+            GreenAnimator.SetBool("WalkBack", true);
+            GreenAnimator.SetBool("HatDropflag", false);
+
+            Debug.Log("move Right");
+        }else{
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("HatDropflag", true);
+            BlackAnimator.SetBool("WalkFlag", false);
+        }
+        NPCtimer = 0f;
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         SoldierAnimator.SetBool("HatDropflag", false);
-        GreenAnimator.SetBool("HatDropflag", false);
         BlackAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
+
+        //BlackAnimator.SetBool("WalkFlag", false);
+        //GreenAnimator.SetBool("WalkFlag", false);
+
+        if(BlackNpC.transform.position.x == 11.51){
+            Debug.Log("original position");
+        }
+
         Hat.SetActive(true);
         if(girl.GetComponent<GirlOutMovement>().isPickHat){
             Hat.SetActive(false);
+        }
+    }
+
+        void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hide")
+        {
+            //Debug.Log("hit box");
+            IsinHideObj = true;
+        }
+
+        if (collision.gameObject.tag == "Hat")
+        {
+            //Debug.Log("hit box");
+            Isinhat = true;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            //Debug.Log("miss hit box");
+            Isindoor = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Hide")
+        {
+            //Debug.Log("miss hit box");
+            IsinHideObj = false;
+        }
+
+        if (collision.gameObject.tag == "Hat")
+        {
+            //Debug.Log("miss hit box");
+            Isinhat = false;
+        }
+
+        if (collision.gameObject.tag == "Door")
+        {
+            //Debug.Log("miss hit box");
+            Isindoor = false;
         }
     }
 
