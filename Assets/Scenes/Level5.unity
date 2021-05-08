@@ -268,6 +268,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4277554083655060093, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 034ace170ae6a43c9b6f4fa9cabb52dd,
+        type: 3}
+    - target: {fileID: 4277554083655060093, guid: 4078682f37205ac499f0abe15aad7157,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -348,6 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157, type: 3}
+    - {fileID: 5002115480857127439, guid: 4078682f37205ac499f0abe15aad7157, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4078682f37205ac499f0abe15aad7157, type: 3}
 --- !u!1 &681558917 stripped
 GameObject:
@@ -367,11 +374,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a39ade9bb49b4a9e992b48f4d844ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 1
   Dia1: {fileID: 1269819649}
   Dia2: {fileID: 2016195408}
   Dia3: {fileID: 1164412911}
   Dia4: {fileID: 755831234}
+  Rhythm: {fileID: 446811633100563746}
+--- !u!95 &681558919
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681558917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7d420a87d55d4b1481e82950099cea5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &681558920
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -492,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006794773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.8, y: 4.1, z: 0}
+  m_LocalPosition: {x: 15.8, y: 6.7, z: 0}
   m_LocalScale: {x: 3.2, y: 3.2, z: 1}
   m_Children: []
   m_Father: {fileID: 237588649}
@@ -903,7 +930,7 @@ MonoBehaviour:
   x_min: 10
   x_max: 42
   y_min: 0
-  y_max: 14.5
+  y_max: 15
 --- !u!114 &1626880368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,3 +1187,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c182bb9a27646a890ae433399d3ee8, type: 3}
+--- !u!1 &446811633100563746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 446811632974400134, guid: a0c182bb9a27646a890ae433399d3ee8,
+    type: 3}
+  m_PrefabInstance: {fileID: 446811633100563745}
+  m_PrefabAsset: {fileID: 0}
