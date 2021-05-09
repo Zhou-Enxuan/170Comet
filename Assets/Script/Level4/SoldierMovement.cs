@@ -26,6 +26,7 @@ public class SoldierMovement : MonoBehaviour
     private bool NPCMoveBack = false;
     private bool moveFlag = false;
     private bool IsNpcMoving = false;
+    private bool NpcWalkBack = false;
 
     public GameObject hint;
     public GameObject failUI;
@@ -68,13 +69,13 @@ public class SoldierMovement : MonoBehaviour
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 if (!isEnd) {
-                    //failUI.SetActive(true);     
-                    //Invoke("EndHint",0.7f);
-                    //isEnd = true;
+                    failUI.SetActive(true);     
+                    Invoke("EndHint",0.7f);
+                    isEnd = true;
                 } else {
-                    //if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
-                    //    LevelLoader.instance.LoadLevel("Level4");
-                    //}
+                    if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+                        LevelLoader.instance.LoadLevel("Level4");
+                    }
                 }
             }
         }
@@ -91,6 +92,8 @@ public class SoldierMovement : MonoBehaviour
                 }else{
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     moveingRight = true;
+                    IsNpcMoving = false;
+                    NpcWalkBack = true;
                 }
                 timer = 0f;
                 ismoving = true;
@@ -109,14 +112,22 @@ public class SoldierMovement : MonoBehaviour
 
     void stop(){
         transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
+        GreenNpC.transform.Translate(Vector2.right * 0.5f * Time.deltaTime * 0);
+        BlackNpC.transform.Translate(Vector2.right * 0.5f * Time.deltaTime * 0);
 
 
         if(moveingRight){//在右边停下，捡帽子，帽子被打下，扔石头.左边停下，播放静止动画
             SoldierAnimator.SetBool("HatDropflag", true);
             BlackAnimator.SetBool("HatDropflag", true);
+            GreenAnimator.SetBool("ArgueFlag", true);
+            Hat.SetActive(false);
         }else{
             SoldierAnimator.SetBool("Turnflag", true);
             GreenAnimator.SetBool("ArgueFlag", false);
+            BlackAnimator.SetBool("WalkFlag", false);
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("WalkFlag", false);
+            GreenAnimator.SetBool("WalkBack", false);
         }
 
     }
@@ -128,22 +139,40 @@ public class SoldierMovement : MonoBehaviour
         SoldierAnimator.SetBool("Turnflag", false);
 
         BlackAnimator.SetBool("HatDropflag", false);
-        GreenAnimator.SetBool("ArgueFlag", true);
 
         //当触碰到树的时候，npc向左走，到A停下
-        if(IsNpcMoving){
-            
+        if(IsNpcMoving){//向左走
+            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            BlackAnimator.SetBool("WalkFlag", true);
+            GreenAnimator.SetBool("WalkFlag", true);
         }
+
+        if(moveingRight && NpcWalkBack){//向右走
+            BlackNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+            GreenNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+            BlackAnimator.SetBool("WalkBack", true);
+            GreenAnimator.SetBool("WalkBack", true);
+        }else{
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("ArgueFlag", true);
+        }
+        Hat.SetActive(true);
 
 
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hide")
+        if (collision.gameObject.tag == "Hide" && !moveingRight)
         {
-            Debug.Log(" hit box");
+            Debug.Log(" go");
             IsNpcMoving = true;
+        }else if(collision.gameObject.tag == "Hide" && moveingRight){
+            Debug.Log(" stop");
+            IsNpcMoving = false;
+            NpcWalkBack = false;
         }
 
     }
