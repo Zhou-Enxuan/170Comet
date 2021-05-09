@@ -18,6 +18,7 @@ public class GirlHiking : MonoBehaviour
     private int order;
     private GameObject Rhythm2, Rhythm3, Rhythm4;
     private GameObject Fail;
+    private GameObject Continue;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class GirlHiking : MonoBehaviour
         Rhythm3 = GameObject.Find("Rhythm3");
         Rhythm4 = GameObject.Find("Rhythm4");
         Fail = GameObject.Find("Fail");
+        Continue = GameObject.Find("Continue");//临时
     }
 
     void Start()
@@ -42,6 +44,7 @@ public class GirlHiking : MonoBehaviour
         Rhythm2.SetActive(false);
         Rhythm3.SetActive(false);
         Rhythm4.SetActive(false);
+        Continue.SetActive(false);//临时
     }
 
     void Update()
@@ -138,6 +141,8 @@ public class GirlHiking : MonoBehaviour
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
         Debug.Log("The End");
         Anim.enabled = false;
+        Continue.SetActive(true);//临时
+        GameManager.instance.stopMoving = true;//临时
     }
 }
 

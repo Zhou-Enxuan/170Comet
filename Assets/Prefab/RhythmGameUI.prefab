@@ -461,6 +461,7 @@ MonoBehaviour:
   score: 0
   total: 0
   Reset: 0
+  BGrt: {fileID: 446811634161771933}
 --- !u!1 &446811633822902932
 GameObject:
   m_ObjectHideFlags: 0
