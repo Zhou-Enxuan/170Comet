@@ -64,3 +64,15 @@ Nightingale:I should be in a hurry to get a second piece of glass.
 Lv4Part2Trace
 King: You'd better run faster!
 ---
+Lv5Part1
+The First Dialog
+---
+Lv5Part2
+The Second Dialog
+---
+Lv5Part3
+The Third Dialog
+---
+Lv5Part4
+The Last Dialog
+---
