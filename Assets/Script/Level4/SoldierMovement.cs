@@ -25,7 +25,8 @@ public class SoldierMovement : MonoBehaviour
     private bool isEnd = false;
     private bool NPCMoveBack = false;
     private bool moveFlag = false;
-    private bool IsinHideObj = false;
+    private bool IsNpcMoving = false;
+    private bool NpcWalkBack = false;
 
     public GameObject hint;
     public GameObject failUI;
@@ -68,13 +69,13 @@ public class SoldierMovement : MonoBehaviour
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 if (!isEnd) {
-                    //failUI.SetActive(true);     
-                    //Invoke("EndHint",0.7f);
-                    //isEnd = true;
+                    failUI.SetActive(true);     
+                    Invoke("EndHint",0.7f);
+                    isEnd = true;
                 } else {
-                    //if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
-                    //    LevelLoader.instance.LoadLevel("Level4");
-                    //}
+                    if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+                        LevelLoader.instance.LoadLevel("Level4");
+                    }
                 }
             }
         }
@@ -91,10 +92,16 @@ public class SoldierMovement : MonoBehaviour
                 }else{
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     moveingRight = true;
+                    IsNpcMoving = false;
+                    NpcWalkBack = true;
                 }
                 timer = 0f;
                 ismoving = true;
             }
+        }
+
+        if(girl.GetComponent<GirlOutMovement>().isPickHat){
+            Hat.SetActive(false);
         }
 
     }
@@ -105,78 +112,67 @@ public class SoldierMovement : MonoBehaviour
 
     void stop(){
         transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
-        if(moveingRight == true){
+        GreenNpC.transform.Translate(Vector2.right * 0.5f * Time.deltaTime * 0);
+        BlackNpC.transform.Translate(Vector2.right * 0.5f * Time.deltaTime * 0);
+
+
+        if(moveingRight){//在右边停下，捡帽子，帽子被打下，扔石头.左边停下，播放静止动画
             SoldierAnimator.SetBool("HatDropflag", true);
-            GreenAnimator.SetBool("HatDropflag", true);
             BlackAnimator.SetBool("HatDropflag", true);
-            //GreenAnimator.SetBool("WalkFlag", false);
+            GreenAnimator.SetBool("ArgueFlag", true);
             Hat.SetActive(false);
         }else{
             SoldierAnimator.SetBool("Turnflag", true);
-            GreenAnimator.SetBool("HatDropflag", false);
-            //BlackAnimator.SetBool("WalkFlag", true);
-            //GreenAnimator.SetBool("WalkFlag", true);
-            Hat.SetActive(true);
-
-            //GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            //BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            //moveFlag = true;
-
-            //GreenNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
-            //BlackNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
+            GreenAnimator.SetBool("ArgueFlag", false);
+            BlackAnimator.SetBool("WalkFlag", false);
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("WalkFlag", false);
+            GreenAnimator.SetBool("WalkBack", false);
         }
 
-        if(girl.GetComponent<GirlOutMovement>().isPickHat){
-            Hat.SetActive(false);
-        }
     }
 
     void move(){
-
-        if(IsinHideObj){
-            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            moveFlag = true;
-        }else{
-            if(moveingRight && moveFlag){
-                GreenNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-                BlackNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-                BlackAnimator.SetBool("WalkBack", true);
-                GreenAnimator.SetBool("WalkBack", true);
-                GreenAnimator.SetBool("HatDropflag", false);
-
-                Debug.Log("move Right");
-            }else{
-                BlackAnimator.SetBool("WalkBack", false);
-                GreenAnimator.SetBool("WalkBack", false);
-                GreenAnimator.SetBool("HatDropflag", true);
-                BlackAnimator.SetBool("WalkFlag", false);
-            }
-        }
-
-
-        NPCtimer = 0f;
+        //行走，关闭帽子动画或静止动画，行走动画播放。黑帽子静态。绿毛争吵
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         SoldierAnimator.SetBool("HatDropflag", false);
-        BlackAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
 
-        //BlackAnimator.SetBool("WalkFlag", false);
-        //GreenAnimator.SetBool("WalkFlag", false);
+        BlackAnimator.SetBool("HatDropflag", false);
 
-
-        Hat.SetActive(true);
-        if(girl.GetComponent<GirlOutMovement>().isPickHat){
-            Hat.SetActive(false);
+        //当触碰到树的时候，npc向左走，到A停下
+        if(IsNpcMoving){//向左走
+            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            BlackAnimator.SetBool("WalkFlag", true);
+            GreenAnimator.SetBool("WalkFlag", true);
         }
+
+        if(moveingRight && NpcWalkBack){//向右走
+            BlackNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+            GreenNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+            BlackAnimator.SetBool("WalkBack", true);
+            GreenAnimator.SetBool("WalkBack", true);
+        }else{
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("ArgueFlag", true);
+        }
+        Hat.SetActive(true);
+
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hide")
+        if (collision.gameObject.tag == "Hide" && !moveingRight)
         {
-            Debug.Log(" hit box");
-            IsinHideObj = ! IsinHideObj;
+            Debug.Log(" go");
+            IsNpcMoving = true;
+        }else if(collision.gameObject.tag == "Hide" && moveingRight){
+            Debug.Log(" stop");
+            IsNpcMoving = false;
+            NpcWalkBack = false;
         }
 
     }
