@@ -25,6 +25,7 @@ public class SoldierMovement : MonoBehaviour
     private bool isEnd = false;
     private bool NPCMoveBack = false;
     private bool moveFlag = false;
+    private bool IsinHideObj = false;
 
     public GameObject hint;
     public GameObject failUI;
@@ -95,6 +96,7 @@ public class SoldierMovement : MonoBehaviour
                 ismoving = true;
             }
         }
+
     }
 
     void EndHint() {
@@ -107,18 +109,18 @@ public class SoldierMovement : MonoBehaviour
             SoldierAnimator.SetBool("HatDropflag", true);
             GreenAnimator.SetBool("HatDropflag", true);
             BlackAnimator.SetBool("HatDropflag", true);
-            GreenAnimator.SetBool("WalkFlag", false);
+            //GreenAnimator.SetBool("WalkFlag", false);
             Hat.SetActive(false);
         }else{
             SoldierAnimator.SetBool("Turnflag", true);
             GreenAnimator.SetBool("HatDropflag", false);
-            BlackAnimator.SetBool("WalkFlag", true);
-            GreenAnimator.SetBool("WalkFlag", true);
+            //BlackAnimator.SetBool("WalkFlag", true);
+            //GreenAnimator.SetBool("WalkFlag", true);
             Hat.SetActive(true);
 
-            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            moveFlag = true;
+            //GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            //BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            //moveFlag = true;
 
             //GreenNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
             //BlackNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
@@ -131,20 +133,28 @@ public class SoldierMovement : MonoBehaviour
 
     void move(){
 
-        if(moveingRight && moveFlag){
-            GreenNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-            BlackNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-            BlackAnimator.SetBool("WalkBack", true);
-            GreenAnimator.SetBool("WalkBack", true);
-            GreenAnimator.SetBool("HatDropflag", false);
-
-            Debug.Log("move Right");
+        if(IsinHideObj){
+            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            moveFlag = true;
         }else{
-            BlackAnimator.SetBool("WalkBack", false);
-            GreenAnimator.SetBool("WalkBack", false);
-            GreenAnimator.SetBool("HatDropflag", true);
-            BlackAnimator.SetBool("WalkFlag", false);
+            if(moveingRight && moveFlag){
+                GreenNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
+                BlackNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
+                BlackAnimator.SetBool("WalkBack", true);
+                GreenAnimator.SetBool("WalkBack", true);
+                GreenAnimator.SetBool("HatDropflag", false);
+
+                Debug.Log("move Right");
+            }else{
+                BlackAnimator.SetBool("WalkBack", false);
+                GreenAnimator.SetBool("WalkBack", false);
+                GreenAnimator.SetBool("HatDropflag", true);
+                BlackAnimator.SetBool("WalkFlag", false);
+            }
         }
+
+
         NPCtimer = 0f;
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         SoldierAnimator.SetBool("HatDropflag", false);
@@ -154,9 +164,6 @@ public class SoldierMovement : MonoBehaviour
         //BlackAnimator.SetBool("WalkFlag", false);
         //GreenAnimator.SetBool("WalkFlag", false);
 
-        if(BlackNpC.transform.position.x == 11.51){
-            Debug.Log("original position");
-        }
 
         Hat.SetActive(true);
         if(girl.GetComponent<GirlOutMovement>().isPickHat){
@@ -164,25 +171,14 @@ public class SoldierMovement : MonoBehaviour
         }
     }
 
-        void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Hide")
         {
-            //Debug.Log("hit box");
-            IsinHideObj = true;
+            Debug.Log(" hit box");
+            IsinHideObj = ! IsinHideObj;
         }
 
-        if (collision.gameObject.tag == "Hat")
-        {
-            //Debug.Log("hit box");
-            Isinhat = true;
-        }
-
-        if (collision.gameObject.tag == "Door")
-        {
-            //Debug.Log("miss hit box");
-            Isindoor = true;
-        }
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -190,19 +186,7 @@ public class SoldierMovement : MonoBehaviour
         if (collision.gameObject.tag == "Hide")
         {
             //Debug.Log("miss hit box");
-            IsinHideObj = false;
-        }
-
-        if (collision.gameObject.tag == "Hat")
-        {
-            //Debug.Log("miss hit box");
-            Isinhat = false;
-        }
-
-        if (collision.gameObject.tag == "Door")
-        {
-            //Debug.Log("miss hit box");
-            Isindoor = false;
+            //IsinHideObj = false;
         }
     }
 

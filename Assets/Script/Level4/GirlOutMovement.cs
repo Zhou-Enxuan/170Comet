@@ -116,11 +116,11 @@ public class GirlOutMovement : MonoBehaviour
 
     }
 
-        void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Hide")
         {
-            //Debug.Log("hit box");
+            Debug.Log("hit box");
             IsinHideObj = true;
         }
 
@@ -141,7 +141,7 @@ public class GirlOutMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hide")
         {
-            //Debug.Log("miss hit box");
+            Debug.Log("miss hit box");
             IsinHideObj = false;
         }
 

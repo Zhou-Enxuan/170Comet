@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 663418962}
   - component: {fileID: 663418963}
   - component: {fileID: 663418964}
+  - component: {fileID: 663418965}
   m_Layer: 0
   m_Name: RedSoldier
   m_TagString: Untagged
@@ -1030,13 +1031,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663418959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0655365, y: 0.0072836876}
+  m_Offset: {x: -0.031123161, y: -0.024944305}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1047,8 +1048,29 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1368637, y: 2.2074509}
+  m_Size: {x: 0.9435444, y: 2.1429949}
   m_EdgeRadius: 0
+--- !u!50 &663418965
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663418959}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &830071514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1850,7 @@ PrefabInstance:
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.8230952
+      value: 0.79087734
       objectReference: {fileID: 0}
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
@@ -1838,12 +1860,17 @@ PrefabInstance:
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_Offset.x
-      value: -0.1270234
+      value: 0.14684534
       objectReference: {fileID: 0}
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_Offset.y
       value: -0.06930208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4277554083655060093, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
@@ -1864,12 +1891,12 @@ PrefabInstance:
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.65
+      value: 15.23
       objectReference: {fileID: 0}
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4470348357693251214, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
