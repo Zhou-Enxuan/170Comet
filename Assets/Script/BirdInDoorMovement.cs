@@ -32,6 +32,10 @@ public class BirdInDoorMovement : MonoBehaviour
             currentState = BirdsState.STATIC;
         }
 
+        if(SceneManager.GetActiveScene().name == "Level2FallRoom"){
+            currentState = BirdsState.GLASSES;
+        }
+
         if(GameManager.instance.isLv2Flower)
         {
             currentState = BirdsState.FLOWER;
@@ -180,6 +184,9 @@ public class BirdInDoorMovement : MonoBehaviour
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdW_News");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdW_Glass");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
@@ -205,6 +212,9 @@ public class BirdInDoorMovement : MonoBehaviour
         else if (currentState == BirdsState.NEWS)
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdWD_News");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdWD_Glass");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         else {
@@ -232,6 +242,9 @@ public class BirdInDoorMovement : MonoBehaviour
         else if (currentState == BirdsState.NEWS)
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdD_News");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdD_Glass");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         else
@@ -261,6 +274,9 @@ public class BirdInDoorMovement : MonoBehaviour
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdSD_News");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdSD_Glass");
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {
@@ -289,6 +305,9 @@ public class BirdInDoorMovement : MonoBehaviour
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdS_News");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdS_Glass");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
@@ -315,6 +334,9 @@ public class BirdInDoorMovement : MonoBehaviour
         else if (currentState == BirdsState.NEWS)
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdSD_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdSD_Glass");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
@@ -344,6 +366,9 @@ public class BirdInDoorMovement : MonoBehaviour
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdD_News");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdD_Glass");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else
         {
@@ -371,6 +396,9 @@ public class BirdInDoorMovement : MonoBehaviour
         else if (currentState == BirdsState.NEWS)
         {
             sprite.sprite = Resources.Load<Sprite>("Level1/Bird_News/A_Level1BirdWD_News");
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }else if(currentState == BirdsState.GLASSES){
+            sprite.sprite = Resources.Load<Sprite>("Level1/Bird_Glass/A_Level1BirdWD_Glass");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         else

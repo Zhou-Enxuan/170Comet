@@ -25,7 +25,7 @@ public class SoldierMovement : MonoBehaviour
     private bool isEnd = false;
     private bool NPCMoveBack = false;
     private bool moveFlag = false;
-    private bool IsinHideObj = false;
+    private bool IsNpcMoving = false;
 
     public GameObject hint;
     public GameObject failUI;
@@ -97,6 +97,10 @@ public class SoldierMovement : MonoBehaviour
             }
         }
 
+        if(girl.GetComponent<GirlOutMovement>().isPickHat){
+            Hat.SetActive(false);
+        }
+
     }
 
     void EndHint() {
@@ -105,70 +109,33 @@ public class SoldierMovement : MonoBehaviour
 
     void stop(){
         transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
-        if(moveingRight == true){
+
+
+        if(moveingRight){//在右边停下，捡帽子，帽子被打下，扔石头.左边停下，播放静止动画
             SoldierAnimator.SetBool("HatDropflag", true);
-            GreenAnimator.SetBool("HatDropflag", true);
             BlackAnimator.SetBool("HatDropflag", true);
-            //GreenAnimator.SetBool("WalkFlag", false);
-            Hat.SetActive(false);
         }else{
             SoldierAnimator.SetBool("Turnflag", true);
-            GreenAnimator.SetBool("HatDropflag", false);
-            //BlackAnimator.SetBool("WalkFlag", true);
-            //GreenAnimator.SetBool("WalkFlag", true);
-            Hat.SetActive(true);
-
-            //GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            //BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            //moveFlag = true;
-
-            //GreenNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
-            //BlackNpC.transform.Translate(Vector2.right * 3.0f * Time.deltaTime);
+            GreenAnimator.SetBool("ArgueFlag", false);
         }
 
-        if(girl.GetComponent<GirlOutMovement>().isPickHat){
-            Hat.SetActive(false);
-        }
     }
 
     void move(){
-
-        if(IsinHideObj){
-            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            moveFlag = true;
-        }else{
-            if(moveingRight && moveFlag){
-                GreenNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-                BlackNpC.transform.Translate(Vector2.right * 0.45f * Time.deltaTime);
-                BlackAnimator.SetBool("WalkBack", true);
-                GreenAnimator.SetBool("WalkBack", true);
-                GreenAnimator.SetBool("HatDropflag", false);
-
-                Debug.Log("move Right");
-            }else{
-                BlackAnimator.SetBool("WalkBack", false);
-                GreenAnimator.SetBool("WalkBack", false);
-                GreenAnimator.SetBool("HatDropflag", true);
-                BlackAnimator.SetBool("WalkFlag", false);
-            }
-        }
-
-
-        NPCtimer = 0f;
+        //行走，关闭帽子动画或静止动画，行走动画播放。黑帽子静态。绿毛争吵
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         SoldierAnimator.SetBool("HatDropflag", false);
-        BlackAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
 
-        //BlackAnimator.SetBool("WalkFlag", false);
-        //GreenAnimator.SetBool("WalkFlag", false);
+        BlackAnimator.SetBool("HatDropflag", false);
+        GreenAnimator.SetBool("ArgueFlag", true);
 
-
-        Hat.SetActive(true);
-        if(girl.GetComponent<GirlOutMovement>().isPickHat){
-            Hat.SetActive(false);
+        //当触碰到树的时候，npc向左走，到A停下
+        if(IsNpcMoving){
+            
         }
+
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -176,7 +143,7 @@ public class SoldierMovement : MonoBehaviour
         if (collision.gameObject.tag == "Hide")
         {
             Debug.Log(" hit box");
-            IsinHideObj = ! IsinHideObj;
+            IsNpcMoving = true;
         }
 
     }
