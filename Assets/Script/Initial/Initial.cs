@@ -19,6 +19,6 @@ public class Initial : MonoBehaviour
     }
     void Update()
     {
-        LevelLoader.instance.LoadLevel("Level4Trace");
+        LevelLoader.instance.LoadLevel("Menu");
     }
 }
