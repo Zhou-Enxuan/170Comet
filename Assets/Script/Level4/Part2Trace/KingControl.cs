@@ -297,7 +297,7 @@ public class KingControl : MonoBehaviour
                     throwItem.GetComponent<Transform>().position = new Vector2(x, throwItem.GetComponent<Transform>().position.y);
                     kingAnim.SetBool("isThrow",true);
                     Debug.Log("砸一下");
-                    Invoke("KingDropItem",3.5f);
+                    Invoke("KingDropItem",4f);
                     curKingState = kingState.Throwed;
                 }
             }
