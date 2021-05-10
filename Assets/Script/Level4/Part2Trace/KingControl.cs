@@ -296,13 +296,14 @@ public class KingControl : MonoBehaviour
                     throwPos.SetActive(true);
                     throwItem.GetComponent<Transform>().position = new Vector2(x, throwItem.GetComponent<Transform>().position.y);
                     kingAnim.SetBool("isThrow",true);
+                    Debug.Log("砸一下");
                     Invoke("KingDropItem",3.5f);
                     curKingState = kingState.Throwed;
                 }
             }
         } 
         else if (curKingState == kingState.Throwed) {
-            Debug.Log("准备dropitem");
+            // Debug.Log("准备dropitem");
             if (throwItem.activeSelf && DropingItem.isThrowed) {
                 throwItem.SetActive(false);
                 throwPos.SetActive(false);
