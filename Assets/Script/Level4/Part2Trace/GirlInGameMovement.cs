@@ -19,6 +19,8 @@ public class GirlInGameMovement : MonoBehaviour
     public enum girlState {Hiding, UnHiding,CantControl};
     public static girlState curGirlState;
     public static bool isGirlHiding;
+    public static bool isPlayFailUI;
+    private bool isBeDroped;
 
     private void Awake()
     {
@@ -28,6 +30,8 @@ public class GirlInGameMovement : MonoBehaviour
         isGirlHiding = false;
         IsinHideObj = false;
         isPickBird = false;
+        isPlayFailUI = false;
+        isBeDroped = false;
         curGirlState = girlState.UnHiding;
         hideHint = GameObject.Find("HideHint");
         leaveHint = GameObject.Find("LeaveHint");
@@ -75,9 +79,16 @@ public class GirlInGameMovement : MonoBehaviour
 	        }
 
 	        direction = new Vector2(moveH, 0);
-	        rb.velocity = direction * moveSpeed;  
+	        rb.velocity = direction * moveSpeed; 
 
-	        if (IsinHideObj) {
+            if (!KingControl.birdItem.activeSelf) {
+                GirlAnimator.SetBool("WithBird", true);
+            } 
+            else {
+                GirlAnimator.SetBool("WithBird", false);
+            }
+
+	        if (IsinHideObj && !KingControl.isGameFailed) {
 	        	if (curGirlState == girlState.UnHiding) {
                     hideHint.SetActive(true);
                     if (Input.GetKeyDown("space")) {
@@ -90,7 +101,9 @@ public class GirlInGameMovement : MonoBehaviour
     		        		isGirlHiding = true;
     	        		}
                     }
-	        	} else if (curGirlState == girlState.Hiding) {
+	        	} 
+                else if (curGirlState == girlState.Hiding) {
+                    hideHint.SetActive(false);
                     leaveHint.SetActive(true);
                     if (Input.GetKeyDown("space")) {
     	        		if (isPickBird) {
@@ -103,7 +116,8 @@ public class GirlInGameMovement : MonoBehaviour
     		        	}
     	        	}
                 }
-	        } else {
+	        } 
+            else if (!IsinHideObj && !KingControl.isGameFailed) {
                 hideHint.SetActive(false);
                 leaveHint.SetActive(false);
 				sprite.sortingOrder = 0;
@@ -112,14 +126,25 @@ public class GirlInGameMovement : MonoBehaviour
 					KingControl.birdItem.SetActive(false);
 	        	}
 	        }
+
+            GirlBeHurted();
     	}
+    }
+
+    void GirlBeHurted() {
+        if (KingControl.throwItem.activeSelf && isBeDroped && curGirlState == girlState.UnHiding && DropingItem.isThrowTrig) {
+            Debug.Log("砸中！");
+            KingControl.isGameFailed = true;
+            GirlAnimator.SetTrigger("Losed");
+            isBeDroped = false;
+        }
     }
 
     void AutoMove(float targetPoint) {
 		this.GetComponent<BoxCollider2D>().isTrigger = true;
 		if (Vector2.Distance(this.transform.position, new Vector2(targetPoint, this.transform.position.y)) < 0.1f) {
 	    	this.transform.position = new Vector2(targetPoint, this.transform.position.y);
-	    	GirlAnimator.Play("Stand");
+	    	GirlAnimator.Play("StandWiBird");
 	    	GirlAnimator.SetFloat("Speed", 0f);
 		} 
 		else
@@ -141,6 +166,9 @@ public class GirlInGameMovement : MonoBehaviour
         if (collision.gameObject.name == "Bird") {
         	isPickBird = true;
         }
+        if (collision.gameObject.name == "DropItem") {
+            isBeDroped = true;
+        } 
         if (KingControl.isToNextScene && KingControl.sceneCount == 0 && collision.gameObject.name == "InvisibleWall04") {
         	GameManager.instance.stopMoving = true;
         	KingControl.nextHint.SetActive(false);
@@ -170,5 +198,18 @@ public class GirlInGameMovement : MonoBehaviour
         if (collision.gameObject.name == "Bird") {
         	isPickBird = false;
         }
+        if (collision.gameObject.name == "DropItem") {
+            isBeDroped = false;
+        } 
+    }
+
+    void BirdFallOut() {
+        KingControl.birdItem.SetActive(true);
+    }
+    void StandedUp() {
+        GameManager.instance.stopMoving = false;
+    }
+    void PlayFailUI() {
+        isPlayFailUI = true;
     }
 }
