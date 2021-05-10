@@ -88,47 +88,50 @@ public class GirlInGameMovement : MonoBehaviour
                 GirlAnimator.SetBool("WithBird", false);
             }
 
-	        if (IsinHideObj && !KingControl.isGameFailed) {
-	        	if (curGirlState == girlState.UnHiding) {
-                    hideHint.SetActive(true);
-                    if (Input.GetKeyDown("space")) {
-    	        		if (isPickBird) {
-    	        			KingControl.birdItem.SetActive(false);
-    	        		} 
-    	        		else {
-    		        		sprite.sortingOrder = -2;
-    		        		curGirlState = girlState.Hiding;
-    		        		isGirlHiding = true;
-    	        		}
-                    }
-	        	} 
-                else if (curGirlState == girlState.Hiding) {
-                    hideHint.SetActive(false);
-                    leaveHint.SetActive(true);
-                    if (Input.GetKeyDown("space")) {
-    	        		if (isPickBird) {
-    	        			KingControl.birdItem.SetActive(false);
-    	        		} 
-    	        		else {
-    		        		sprite.sortingOrder = 0;
-    		        		curGirlState = girlState.UnHiding;
-    		        		IsinHideObj = false;
-    		        	}
-    	        	}
-                }
-	        } 
-            else if (!IsinHideObj && !KingControl.isGameFailed) {
-                hideHint.SetActive(false);
-                leaveHint.SetActive(false);
-				sprite.sortingOrder = 0;
-	            curGirlState = girlState.UnHiding;
-	        	if (isPickBird && Input.GetKeyDown("space")) {
-					KingControl.birdItem.SetActive(false);
-	        	}
-	        }
-
+	        ShowHint();
             GirlBeHurted();
     	}
+    }
+
+    void ShowHint() {
+        if (IsinHideObj && !KingControl.isGameFailed) {
+            if (curGirlState == girlState.UnHiding) {
+                hideHint.SetActive(true);
+                if (Input.GetKeyDown("space")) {
+                    if (isPickBird) {
+                        KingControl.birdItem.SetActive(false);
+                    } 
+                    else {
+                        sprite.sortingOrder = -2;
+                        curGirlState = girlState.Hiding;
+                        isGirlHiding = true;
+                    }
+                }
+            } 
+            else if (curGirlState == girlState.Hiding) {
+                hideHint.SetActive(false);
+                leaveHint.SetActive(true);
+                if (Input.GetKeyDown("space")) {
+                    if (isPickBird) {
+                        KingControl.birdItem.SetActive(false);
+                    } 
+                    else {
+                        sprite.sortingOrder = 0;
+                        curGirlState = girlState.UnHiding;
+                        IsinHideObj = false;
+                    }
+                }
+            }
+        } 
+        else if (!IsinHideObj && !KingControl.isGameFailed) {
+            hideHint.SetActive(false);
+            leaveHint.SetActive(false);
+            sprite.sortingOrder = 0;
+            curGirlState = girlState.UnHiding;
+            if (isPickBird && Input.GetKeyDown("space")) {
+                KingControl.birdItem.SetActive(false);
+            }
+        }
     }
 
     void GirlBeHurted() {
