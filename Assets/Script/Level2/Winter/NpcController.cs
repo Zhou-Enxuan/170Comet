@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class NpcController : MonoBehaviour
-{
+{    
     public static GameObject Player; 
     public static GameObject NoticeMark; 
     public static GameObject SadFace;   

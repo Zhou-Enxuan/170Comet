@@ -10,12 +10,17 @@ public class SoundManager : MonoBehaviour
  //    public static AudioClip Level2BGM;
     public static AudioSource[] audioSources;
     public float audioSpeed;
+    // 播放soundeffect的source number
+    public static int soundEffectSource = 8;
    // bool isBGMplayed = false; //flip
     public static bool isChangVolume = false;
     public static int newBgm = 0;
     public static int curBgm;
+    public static AudioClip birdFlyOutSound;
+    public static AudioClip paperSound;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
     //     RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
@@ -26,6 +31,10 @@ public class SoundManager : MonoBehaviour
         audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
         audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
         audioSources[5].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
+        audioSources[6].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
+        audioSources[7].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
+        birdFlyOutSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_BirdFlyOut");
+        paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
     }
 
     // Update is called once per frame
@@ -79,6 +88,17 @@ public class SoundManager : MonoBehaviour
             audioSources[newBgm].Play();
             curBgm = num;
             GameManager.instance.bgmNum = num;
+        }
+    }
+
+    public static void playSEOne(string name, float loud) {
+        switch (name) {
+            case "birdFlyOut":
+                audioSources[soundEffectSource].PlayOneShot(birdFlyOutSound, loud);
+                break;
+            case "paper":
+                audioSources[soundEffectSource].PlayOneShot(paperSound, loud);
+                break;
         }
     }
 }
