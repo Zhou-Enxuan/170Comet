@@ -419,7 +419,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[Press Space & UP]'
+  m_Text: '[Hold Space & UP]'
 --- !u!222 &225206006
 CanvasRenderer:
   m_ObjectHideFlags: 0
