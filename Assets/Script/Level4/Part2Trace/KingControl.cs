@@ -89,7 +89,7 @@ public class KingControl : MonoBehaviour
     	curNum = 0; //国王左右两点位置
     	//isCanSpring = false;
         isStartThrow = false;
-        throwTimer = Random.Range(3, 6);
+        throwTimer = Random.Range(1, 2);
         throwPos.SetActive(false);
         throwItem.SetActive(false);
 
