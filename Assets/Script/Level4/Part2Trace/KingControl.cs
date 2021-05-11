@@ -89,7 +89,7 @@ public class KingControl : MonoBehaviour
     	curNum = 0; //国王左右两点位置
     	//isCanSpring = false;
         isStartThrow = false;
-        throwTimer = Random.Range(3, 6);
+        throwTimer = Random.Range(1, 2);
         throwPos.SetActive(false);
         throwItem.SetActive(false);
 
@@ -140,8 +140,8 @@ public class KingControl : MonoBehaviour
         	}
         	// 场景1
         	if (sceneCount == 1) {
-        		if (winningCount >= 5) {
-        			if (winningCount == 5) {
+        		if (winningCount >= 10) {
+        			if (winningCount == 10) {
         				nextHint.SetActive(true);
                         Debug.Log("喘气");
                         curKingState = kingState.Breathing;
@@ -343,7 +343,7 @@ public class KingControl : MonoBehaviour
                     throwPos.SetActive(true);
                     kingAnim.SetBool("isThrow",true);
                     //Debug.Log("砸一下");
-                    Invoke("KingDropItem",3f);
+                    Invoke("KingDropItem",1.5f);
                     curKingState = kingState.Throwed;
                 }
             }
@@ -354,7 +354,7 @@ public class KingControl : MonoBehaviour
                 throwItem.SetActive(false);
                 throwPos.SetActive(false);
                 kingAnim.SetBool("isThrow",false);
-                throwTimer = Random.Range(3, 6);
+                throwTimer = Random.Range(1, 2);
                 winningCount ++;
                 curKingState = kingState.Throwing;
             } 
