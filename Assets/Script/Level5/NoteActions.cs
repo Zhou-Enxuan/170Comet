@@ -11,7 +11,7 @@ public class NoteActions : MonoBehaviour
     [SerializeField] RectTransform rt;
     [SerializeField] BeatScrollerRe beatScrollerRe;
     [SerializeField] AudioSource PressSound;
-    [SerializeField] bool IsPlayed;//CHECK each note only hit ONCE
+    public bool IsPlayed;//CHECK each note only hit ONCE
 
     void Awake()
     {
@@ -20,6 +20,7 @@ public class NoteActions : MonoBehaviour
 
     void Start()
     {
+        IsPlayed = false;
     }
 
     void Update()
