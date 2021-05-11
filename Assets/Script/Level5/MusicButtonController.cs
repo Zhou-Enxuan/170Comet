@@ -27,12 +27,12 @@ public class MusicButtonController : MonoBehaviour
         }
         else{
             Anim.SetBool("press", false);
-            if(index < 5 && Input.GetKeyDown("down"))
+            if ((index < 5 && Input.GetKeyDown("down")) || (index < 5 && Input.GetKeyDown("s")))
             {
                 ++index;
                 
             }
-            else if(index > 1 && Input.GetKeyDown("up"))
+            else if ((index > 1 && Input.GetKeyDown("up")) || (index > 1 && Input.GetKeyDown("w")))
             {
                 --index;
             }
