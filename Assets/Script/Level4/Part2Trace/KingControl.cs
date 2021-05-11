@@ -140,8 +140,8 @@ public class KingControl : MonoBehaviour
         	}
         	// 场景1
         	if (sceneCount == 1) {
-        		if (winningCount >= 3) {
-        			if (winningCount == 3) {
+        		if (winningCount >= 5) {
+        			if (winningCount == 5) {
         				nextHint.SetActive(true);
                         Debug.Log("喘气");
                         curKingState = kingState.Breathing;
@@ -321,13 +321,29 @@ public class KingControl : MonoBehaviour
                 if (throwTimer <= 0) {
                     //扔权杖动画
                     //                     左，                        右
-                    var x = Random.Range(17.5f , 29f);
-                    throwPos.GetComponent<Transform>().position = new Vector2(x, throwPos.GetComponent<Transform>().position.y);
+                    //var x = Random.Range(17.5f , 29f);
+                    //throwPos.GetComponent<Transform>().position = new Vector2(x, throwPos.GetComponent<Transform>().position.y);
+                    //throwPos.SetActive(true);
+                    // throwItem.GetComponent<Transform>().position = new Vector2(x, throwItem.GetComponent<Transform>().position.y);
+                    if (target.position.x <= 17.5f) {
+                        //Debug.Log("位置17.5f");
+                        throwPos.GetComponent<Transform>().position = new Vector2(17.5f, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(17.5f, throwItem.GetComponent<Transform>().position.y);
+                    } 
+                    else if (target.position.x >= 29f) {
+                        //Debug.Log("位置29f");
+                        throwPos.GetComponent<Transform>().position = new Vector2(29f, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(29f, throwItem.GetComponent<Transform>().position.y);
+                    }
+                    else {
+                        Debug.Log("玩家位置");
+                        throwPos.GetComponent<Transform>().position = new Vector2(target.position.x, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(target.position.x, throwItem.GetComponent<Transform>().position.y);
+                    }
                     throwPos.SetActive(true);
-                    throwItem.GetComponent<Transform>().position = new Vector2(x, throwItem.GetComponent<Transform>().position.y);
                     kingAnim.SetBool("isThrow",true);
-                    Debug.Log("砸一下");
-                    Invoke("KingDropItem",4f);
+                    //Debug.Log("砸一下");
+                    Invoke("KingDropItem",3f);
                     curKingState = kingState.Throwed;
                 }
             }
