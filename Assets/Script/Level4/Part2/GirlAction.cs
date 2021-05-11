@@ -23,6 +23,8 @@ public class GirlAction : MonoBehaviour
 
     private void Awake()
     {
+
+        SoundManager.playBgm(6);
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();

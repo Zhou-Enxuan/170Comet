@@ -70,7 +70,7 @@ public class OpenWindow : MonoBehaviour
     IEnumerator WaitAnim2Done()
     {
         yield return new WaitForSeconds(1f);
-        LevelLoader.instance.LoadLevel("Level4");
+        LevelLoader.instance.LoadLevel("Level3Part2");
     }
 
  //    IEnumerator LoadLevel()

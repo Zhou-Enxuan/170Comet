@@ -49,6 +49,8 @@ public class Lv2R1Window : MonoBehaviour
 
     IEnumerator waitFlyAnimOver(string sceneName)
     {
+        
+        SoundManager.playSEOne("birdFlyOut", 0.7f);
         while (GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
         {
             yield return null;
