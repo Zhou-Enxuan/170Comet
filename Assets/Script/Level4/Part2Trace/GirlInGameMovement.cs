@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GirlInGameMovement : MonoBehaviour
 {
@@ -45,6 +46,14 @@ public class GirlInGameMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!KingControl.birdItem.activeSelf) {
+            GirlAnimator.SetBool("WithBird", true);
+        } 
+        else {
+            GirlAnimator.SetBool("WithBird", false);
+        }
+
         if (GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
             if (KingControl.isToNextScene && !KingControl.isGameFailed) {
@@ -59,8 +68,21 @@ public class GirlInGameMovement : MonoBehaviour
 	            } 
 	            else if (KingControl.sceneCount == 3) {
 	            	Debug.Log("游戏成功通过通过通过通过");
+                    AutoMove(-20f);
+
 	            }
-	        }
+	        } 
+            else {
+                GirlAnimator.SetFloat("Speed", 0f);
+                if (KingControl.isGameFailed) {
+                    if (hideHint.activeSelf) {
+                        hideHint.SetActive(false);
+                    } 
+                    if (leaveHint.activeSelf) {
+                        leaveHint.SetActive(false);
+                    }
+                }
+            }
         }
         else
         {
@@ -81,20 +103,13 @@ public class GirlInGameMovement : MonoBehaviour
 	        direction = new Vector2(moveH, 0);
 	        rb.velocity = direction * moveSpeed; 
 
-            if (!KingControl.birdItem.activeSelf) {
-                GirlAnimator.SetBool("WithBird", true);
-            } 
-            else {
-                GirlAnimator.SetBool("WithBird", false);
-            }
-
 	        ShowHint();
             GirlBeHurted();
     	}
     }
 
     void ShowHint() {
-        if (IsinHideObj && !KingControl.isGameFailed) {
+        if (IsinHideObj) {
             if (curGirlState == girlState.UnHiding) {
                 hideHint.SetActive(true);
                 if (Input.GetKeyDown("space")) {
@@ -123,7 +138,7 @@ public class GirlInGameMovement : MonoBehaviour
                 }
             }
         } 
-        else if (!IsinHideObj && !KingControl.isGameFailed) {
+        else if (!IsinHideObj) {
             hideHint.SetActive(false);
             leaveHint.SetActive(false);
             sprite.sortingOrder = 0;
@@ -131,7 +146,7 @@ public class GirlInGameMovement : MonoBehaviour
             if (isPickBird && Input.GetKeyDown("space")) {
                 KingControl.birdItem.SetActive(false);
             }
-        }
+        } 
     }
 
     void GirlBeHurted() {
@@ -187,6 +202,7 @@ public class GirlInGameMovement : MonoBehaviour
         else if (KingControl.isToNextScene && KingControl.sceneCount == 3 && collision.gameObject.name == "InvisibleWall01") {
         	GameManager.instance.stopMoving = true;
         	KingControl.nextHint.SetActive(false);
+            LevelLoader.instance.LoadLevel("Level5");
         }
 	}
 
@@ -210,9 +226,21 @@ public class GirlInGameMovement : MonoBehaviour
         KingControl.birdItem.SetActive(true);
     }
     void StandedUp() {
+        GirlAnimator.SetBool("isStanded", true);
         GameManager.instance.stopMoving = false;
+    }
+    void StandUpChangeSize() {
+        Debug.Log("恢复判定框");
+        this.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 0);
+        this.GetComponent<BoxCollider2D>().size = new Vector2(1, 1.6f);
     }
     void PlayFailUI() {
         isPlayFailUI = true;
+    }
+    void ChangeColliderSize() {
+        Debug.Log("改判定框");
+        GirlAnimator.SetBool("isStanded", false);
+        this.GetComponent<BoxCollider2D>().offset = new Vector2(1.6f, 0);
+        this.GetComponent<BoxCollider2D>().size = new Vector2(2, 1.6f);
     }
 }

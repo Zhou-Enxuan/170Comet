@@ -33,11 +33,14 @@ public class KingControl : MonoBehaviour
 	private bool isCounting;
 	private bool isShaked;
 	private bool isGirlRunning;
+    private bool isGirlFalled;
 
     public GameObject failUI;
     public GameObject Hint;
 
+    [SerializeField] 
     public static bool isGameFailed;
+    [SerializeField] 
 	public static bool isToNextScene;
     
 	public Transform[] movePos;
@@ -72,6 +75,7 @@ public class KingControl : MonoBehaviour
         kingAnim.SetBool("isWalking", false);
         kingAnim.SetBool("isFaceR", false);
         kingAnim.SetBool("isThrow", false);
+        kingAnim.SetBool("isStamping", false);
         isGameFailed = false;
         isToNextScene = false;
     	isInvoke = false;
@@ -91,9 +95,11 @@ public class KingControl : MonoBehaviour
     	winningCount = 0;
     	sceneCount = 0;
     	countTimer = Random.Range(4, 6);
-    	stampTime = 2f;
+    	stampTime = 1.5f;
     	isShaked = true;
     	isCounting = false;
+        isGirlFalled = false;
+        isGirlRunning = false;
  		Dialog.PrintDialog("Lv4Part2Trace");
         failUI.SetActive(false);
         Hint.SetActive(false);
@@ -173,13 +179,31 @@ public class KingControl : MonoBehaviour
         	} 
         	// 场景2
         	else if (sceneCount == 2) {
-        		if (winningCount >= 2 && !birdItem.activeSelf) {
-        			if (winningCount == 2) 
-        				nextHint.SetActive(true);
-        			curKingState = kingState.UnTracing;
-        			isToNextScene = true;
-        			countTimer = 0;
-        			sceneSet(-9.85f, 4, 1f, "KingTrace", 3f);
+        		if (winningCount >= 2) {
+                    if (!birdItem.activeSelf) {
+            			if (winningCount == 2) {
+            				nextHint.SetActive(true);                
+                            kingAnim.SetBool("isStamping", false);
+                            kingAnim.SetBool("isWalking", false);
+                            Debug.Log("喘气");
+                            curKingState = kingState.Breathing;
+                            kingAnim.SetTrigger("Breath");
+                        }
+            			// curKingState = kingState.UnTracing;
+            			isToNextScene = true;
+            			countTimer = 0;
+            			sceneSet(-9.85f, 4, 1f, "KingTrace", 3f);
+                    }
+                    else {
+                        if (winningCount == 2) {    
+                            nextHint.SetActive(true);             
+                            kingAnim.SetBool("isStamping", false);
+                            kingAnim.SetBool("isWalking", false);
+                            Debug.Log("喘气");
+                            curKingState = kingState.Breathing;
+                            kingAnim.SetTrigger("Breath");
+                        }
+                    }
         			// if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(-9.85f, 0f, -10f)) {
     	    		// 	Debug.Log("场景3");
     	    		// 	curNum = 4; 
@@ -194,32 +218,36 @@ public class KingControl : MonoBehaviour
     	    		// 	Invoke("KingTrace", 3f);
     	    		// }
     	    		winningCount++;
-        		} else {
-        			isToNextScene = false;
-        		}
-        		if (loseCount == 3){
-        			Debug.Log("第二场景游戏失败");
-              	 	isGameFailed = true;
-                    loseReasonText.text = "You were hurt by the jolt!";
-                    GameFailed();
-        		}
-        		KingUnTrancingMethod();
-        		KingStampingMethod();
-        		//随机国王跺脚
-        		countTimer -= Time.deltaTime;
-        		if (countTimer <= 0) {
-        			curKingState = kingState.Stamping;
         		} 
-        		else {
-        			stampTime = 2f;
-        			isShaked = true;
-        			curKingState = kingState.UnTracing;
-        		}
-                //女孩站起来
-                if (curKingState == kingState.UnTracing && isGirlRunning) {
-                    playerAnim.SetBool("Falling", false);
-                    isGirlRunning = false;
+                else {
+        			isToNextScene = false;
+        		
+            		if (loseCount == 3){
+            			Debug.Log("第二场景游戏失败");
+                  	 	isGameFailed = true;
+                        loseReasonText.text = "You were hurt by the jolt!";
+                        GameFailed();
+            		}
+            		//随机国王跺脚
+            		countTimer -= Time.deltaTime;
+            		if (countTimer <= 0) {
+            			curKingState = kingState.Stamping;
+            		} 
+            		else {
+            			stampTime = 1.5f;
+            			isShaked = true;
+            			curKingState = kingState.UnTracing;
+            		}
                 }
+                //女孩站起来
+                if (curKingState == kingState.UnTracing) {
+                    if(playerAnim.GetBool("Falling")) {
+                        playerAnim.SetBool("Falling", false);
+                    } 
+                    //isGirlRunning = false;
+                }
+                KingUnTrancingMethod();
+                KingStampingMethod();
         	}
         	// 场景3
         	else if (sceneCount == 3) {
@@ -251,7 +279,8 @@ public class KingControl : MonoBehaviour
 
     void sceneSet(float camPos, int curnum, float kingPos, string method, float methodTime) {
     	if (!GameManager.instance.stopMoving && GameObject.Find("CM vcam1").GetComponent<Transform>().position == new Vector3(camPos, 0f, -10f)) {
-			// 场景3一开始
+			Debug.Log("新场景");
+            // 场景3一开始
 			if(sceneCount == 2)
 				nextHint.SetActive(true);
 			curNum = curnum; 
@@ -331,8 +360,10 @@ public class KingControl : MonoBehaviour
     //跺脚
     void KingStampingMethod() {
     	if (curKingState == kingState.Stamping) {
-    		Debug.Log("Stamping");
+    		 Debug.Log("Stamping");
     		if (isShaked) {
+                kingAnim.SetBool("isWalking", false);
+                kingAnim.SetBool("isStamping",true);
 	    		CameraShake.ShakeCamera(3f,1f);
 	    		isShaked = false;
     		}
@@ -345,9 +376,16 @@ public class KingControl : MonoBehaviour
 	    	//1秒跺脚
     		stampTime -= Time.deltaTime;
     		if (stampTime <= 0) {
-    			isCounting = false;
-    			GameManager.instance.stopMoving = false;
-    			countTimer = Random.Range(4, 6);
+            //女孩没动
+                if (!isCounting){
+                    Debug.Log("没动");
+                    winningCount ++;
+                } else {
+                    isCounting = false;
+                }
+                kingAnim.SetBool("isWalking", true);
+                kingAnim.SetBool("isStamping",false);
+    			countTimer = Random.Range(6,8);
     		}
     		else {
     			//女孩在动
@@ -382,52 +420,35 @@ public class KingControl : MonoBehaviour
 							birdPos.position =  new Vector2(target.position.x + 3.5f, birdPos.position.y);
 							//birdItem.SetActive(true);
 						}
-    				}
+    				} 
+                    else {
+                        if (!playerAnim.GetBool("FaceR") && target.position.x <= movePos[curNum+1].position.x + 3f) {
+                            //女孩到左边尽头，转身，小鸟要朝右边掉
+                            playerAnim.SetBool("FaceR", true);
+                            playerAnim.SetBool("Falling", true);
+                        }
+                        else if (!playerAnim.GetBool("FaceR") && target.position.x > movePos[curNum+1].position.x + 3f) {
+                            playerAnim.SetBool("Falling", true);
+                        }
+                        else if(playerAnim.GetBool("FaceR") && target.position.x >= movePos[curNum].position.x - 3f) {
+                            playerAnim.SetBool("FaceR", false);
+                            playerAnim.SetBool("Falling", true);
+                        }
+                        else if (playerAnim.GetBool("FaceR") && target.position.x < movePos[curNum].position.x - 3f) {
+                            playerAnim.SetBool("Falling", true);
+                        }
+                    }
     				loseCount ++;
-    				GameManager.instance.stopMoving = true;
-    				isCounting = true;
-    			}
-    			//女孩没动
-    			else if (!isGirlRunning && !isCounting){
-    				//Debug.Log("没动");
-    				winningCount ++;
     				isCounting = true;
     			}
     		}
     	}
-
     }
-
-    // //追踪
-    // void KingTracingMethod() {
-    // 	if (curKingState == kingState.Tracing) {
-    // 		Debug.Log("Tracing");
-    // 		//判断king面向左or右
-    // 		if (GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding) {
-    // 			if (!CheckTraceMoveState()) {
-    // 				//turnWaitTime = 0;
-    // 				KingTurn();
-    // 			}
-    // 			//follow
-		  //   	if (Vector2.Distance(this.transform.position, new Vector2(target.position.x, this.transform.position.y)) > 5) {
-    // 				//Debug.Log("追踪");
-    // 				this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(target.position.x, this.transform.position.y), speed * Time.deltaTime);
-		  //   	} 
-		  //   	else {
-		  //   		curKingState = kingState.Spring;
-		  //   	}
-    // 		}
-    // 		else if (GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.Hiding) {
-    // 			curKingState = kingState.UnTracing;
-    // 		} 
-		    
-    // 	}
-    // }
-
+    
     //来回走
     void KingUnTrancingMethod() {
     	if (curKingState == kingState.UnTracing) {
-    		Debug.Log("UnTracing");
+    		//Debug.Log("UnTracing");
     		// if (!isToNextScene && sceneCount == 1 && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding) {
     		// 	curKingState = kingState.Tracing;
     		// }
@@ -447,43 +468,9 @@ public class KingControl : MonoBehaviour
     	}
     }
 
-    // //冲刺
-    // void KingSpringMethod() { 
-    // 	if (curKingState == kingState.Spring) {
-    // 		Debug.Log("Spring");
-		  //   if (springTime <= 1f) {
-		  //   	isCanSpring = false;
-		  //   	springTime -= Time.deltaTime;
-		  //   	if (springTime <= 0) {
-		  //   		isCanSpring = true;
-		  //   	}
-		  //   }
-
-	   //  	if (!isCanSpring) {
-		  //   	if (!CheckTraceMoveState()) {
-		  //   		//turnWaitTime = 0;
-		  //   		KingTurn();
-    // 				KingSpringPos();
-				// } 
-				// else {
-				// 	KingSpringPos();
-				// }
-		  //   }
-		  //   else {
-				// if (Vector2.Distance(this.transform.position, newtarget) > 1f) {
-			 //    		this.transform.position = Vector2.MoveTowards(this.transform.position, newtarget, 5f * Time.deltaTime);
-			 //    		// Debug.Log("CHONGCI");
-			 //    } 
-			 //    else if (curKingState == kingState.Spring) {
-			 //    	winningCount ++;
-			 //    	curKingState = kingState.UnTracing;
-			 //    	springTime = 1f;
-			 //   	}
-		  //   }
-    // 	}
-    // }
 
     bool CheckTraceMoveState() {
+        Debug.Log("CheckTraceMoveState");
     	if (this.transform.position.x > target.position.x && isMovingR) {
     		isKingFacePlayer = true;
     	} 
@@ -506,8 +493,9 @@ public class KingControl : MonoBehaviour
 
     void KingTrace() {
     //转场设数据
+        Debug.Log("kingtrace重置");
         kingAnim.SetBool("isWalking", true);
-    	if (sceneCount == 1 && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding) {
+    	if (sceneCount == 1) {
     		if (winningCount >= 3) {
     			sceneCount = 2;
 	    		winningCount = 0;
@@ -530,7 +518,7 @@ public class KingControl : MonoBehaviour
     }
 
     void KingTurn() {
-    	//Debug.Log("转身");
+    	Debug.Log("转身");
 		if (turnWaitTime > 0) {
 	        turnWaitTime -= Time.deltaTime;
     	} 
@@ -560,25 +548,6 @@ public class KingControl : MonoBehaviour
         }
     }
 
-  //   void KingSpringPos() {
-  //   	if (!isMovingR) {
-		// 	//向右冲
-		// 	newtarget = new Vector2(this.transform.position.x + 10, this.transform.position.y);
-		// 	if (newtarget.x >= movePos[curNum].position.x) {
-		// 		newtarget.x = movePos[curNum].position.x;
-		// 	} 
-		// 	//Debug.Log("111");
-		// } 
-		// else {
-		// 	//向左冲
-		// 	newtarget = new Vector2(this.transform.position.x - 10, this.transform.position.y);
-		// 	if (newtarget.x <= movePos[curNum+1].position.x) {
-		// 		newtarget.x = movePos[curNum+1].position.x;
-		// 	} 
-		// 	//Debug.Log("222");
-		// }
-  //   }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding)
@@ -586,6 +555,15 @@ public class KingControl : MonoBehaviour
             Debug.Log("游戏失败");
             playerAnim.SetTrigger("Losed");
             loseReasonText.text = "The King caught you!";
+           // SceneManager.LoadScene 
+            isGameFailed = true;
+        }
+        if (collision.gameObject.name == "Bird") {
+            Debug.Log("碰小鸟");
+            //国王提起小鸟动画
+            //playerAnim.SetTrigger("Losed");
+            loseReasonText.text = "The King caught your friend!";
+            GameFailed();
            // SceneManager.LoadScene 
             isGameFailed = true;
         }
@@ -604,4 +582,85 @@ public class KingControl : MonoBehaviour
     void EndHint() {
         Hint.SetActive(true);
     }
+
+    // //追踪
+    // void KingTracingMethod() {
+    //  if (curKingState == kingState.Tracing) {
+    //      Debug.Log("Tracing");
+    //      //判断king面向左or右
+    //      if (GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding) {
+    //          if (!CheckTraceMoveState()) {
+    //              //turnWaitTime = 0;
+    //              KingTurn();
+    //          }
+    //          //follow
+          //    if (Vector2.Distance(this.transform.position, new Vector2(target.position.x, this.transform.position.y)) > 5) {
+    //              //Debug.Log("追踪");
+    //              this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(target.position.x, this.transform.position.y), speed * Time.deltaTime);
+          //    } 
+          //    else {
+          //        curKingState = kingState.Spring;
+          //    }
+    //      }
+    //      else if (GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.Hiding) {
+    //          curKingState = kingState.UnTracing;
+    //      } 
+            
+    //  }
+    // }
+
+  //   void KingSpringPos() {
+  //    if (!isMovingR) {
+        //  //向右冲
+        //  newtarget = new Vector2(this.transform.position.x + 10, this.transform.position.y);
+        //  if (newtarget.x >= movePos[curNum].position.x) {
+        //      newtarget.x = movePos[curNum].position.x;
+        //  } 
+        //  //Debug.Log("111");
+        // } 
+        // else {
+        //  //向左冲
+        //  newtarget = new Vector2(this.transform.position.x - 10, this.transform.position.y);
+        //  if (newtarget.x <= movePos[curNum+1].position.x) {
+        //      newtarget.x = movePos[curNum+1].position.x;
+        //  } 
+        //  //Debug.Log("222");
+        // }
+  //   }
+
+    // //冲刺
+    // void KingSpringMethod() { 
+    //  if (curKingState == kingState.Spring) {
+    //      Debug.Log("Spring");
+          //   if (springTime <= 1f) {
+          //    isCanSpring = false;
+          //    springTime -= Time.deltaTime;
+          //    if (springTime <= 0) {
+          //        isCanSpring = true;
+          //    }
+          //   }
+
+       //   if (!isCanSpring) {
+          //    if (!CheckTraceMoveState()) {
+          //        //turnWaitTime = 0;
+          //        KingTurn();
+    //              KingSpringPos();
+                // } 
+                // else {
+                //  KingSpringPos();
+                // }
+          //   }
+          //   else {
+                // if (Vector2.Distance(this.transform.position, newtarget) > 1f) {
+             //         this.transform.position = Vector2.MoveTowards(this.transform.position, newtarget, 5f * Time.deltaTime);
+             //         // Debug.Log("CHONGCI");
+             //    } 
+             //    else if (curKingState == kingState.Spring) {
+             //     winningCount ++;
+             //     curKingState = kingState.UnTracing;
+             //     springTime = 1f;
+             //     }
+          //   }
+    //  }
+    // }
 }

@@ -697,7 +697,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.41, y: 4}
+  m_Size: {x: 3, y: 4}
   m_EdgeRadius: 0
 --- !u!1001 &237932267
 PrefabInstance:
@@ -744,12 +744,12 @@ PrefabInstance:
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 7.18
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 3265785806585203414, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.89
+      value: 1.84
       objectReference: {fileID: 0}
     - target: {fileID: 4277554083655060093, guid: 4078682f37205ac499f0abe15aad7157,
         type: 3}
@@ -2801,7 +2801,7 @@ GameObject:
   - component: {fileID: 902375704}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
