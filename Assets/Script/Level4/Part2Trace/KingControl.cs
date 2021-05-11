@@ -60,6 +60,7 @@ public class KingControl : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake() {
+        SoundManager.playBgm(7);
         kingAnim = this.GetComponent<Animator>();
     	nextHint = GameObject.Find("NextHint");
     	target = GameObject.Find("PlayerGirl").GetComponent<Transform>();
