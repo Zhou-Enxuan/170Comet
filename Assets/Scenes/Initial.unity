@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 37529337}
   - component: {fileID: 37529336}
   - component: {fileID: 37529335}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: MainUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559574090}
   - component: {fileID: 559574091}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: GameMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 600719523}
   - component: {fileID: 600719525}
   - component: {fileID: 600719526}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Loading
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 684520271}
   - component: {fileID: 684520273}
   - component: {fileID: 684520272}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: NextText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1330,7 @@ GameObject:
   - component: {fileID: 1348744368}
   - component: {fileID: 1348744367}
   - component: {fileID: 1348744366}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: DialogBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 1469755445}
   - component: {fileID: 1469755447}
   - component: {fileID: 1469755446}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: DialogText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 1594652218}
   - component: {fileID: 1594652220}
   - component: {fileID: 1594652219}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: NextText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1579,7 +1579,7 @@ GameObject:
   - component: {fileID: 1705879521}
   - component: {fileID: 1705879523}
   - component: {fileID: 1705879522}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: NextText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,7 +1658,7 @@ GameObject:
   - component: {fileID: 1973705121}
   - component: {fileID: 1973705124}
   - component: {fileID: 1973705123}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: InGameMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
