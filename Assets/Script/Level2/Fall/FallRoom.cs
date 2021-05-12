@@ -29,9 +29,16 @@ public class FallRoom : MonoBehaviour
 	        	QMark.SetActive(false);
 	        	Dialog.PrintDialog("Lv2FallRoom");
 	        	isDiaActive = true;
+				StartCoroutine(CheckDialogueDone());
 				//GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 				//GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 		    }
 	    }
+	}
+
+	IEnumerator CheckDialogueDone()
+    {
+        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+		LevelLoader.instance.LoadLevel("Level3OpenWindow");
 	}
 }

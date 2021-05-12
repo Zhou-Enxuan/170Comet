@@ -20,6 +20,7 @@ public class GirlAction : MonoBehaviour
     public GameObject failUI;
     public GameObject restartHint;
     private bool isEnd;
+    private bool Restart;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class GirlAction : MonoBehaviour
         failUI.SetActive(false);
         restartHint.SetActive(false);
         isEnd = false;
+        Restart = false;
     }
 
 
@@ -54,7 +56,8 @@ public class GirlAction : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
-            FailScreen("Level4Part2");
+            if (Restart)
+                FailScreen("Level4Part2");
         }
         // if (Hint.activeSelf){
         //     if (Input.GetKeyDown("space"))
@@ -73,7 +76,6 @@ public class GirlAction : MonoBehaviour
             IsCollidingSoldier = true;
             Anim.enabled = false;
             IsArrived = true;
-            //fade out黑屏
             LevelLoader.instance.LoadLevel("Level4Trace");
         }
 
@@ -107,7 +109,7 @@ public class GirlAction : MonoBehaviour
             IsCollidingSoldier = true; //撞了士兵
             Anim.enabled = true;
             Anim.SetInteger("Fall", 1);
-            //fade out黑屏
+            StartCoroutine(WaitanimDone());
         }
         else if(collision.name == "Soldier3")
         {
@@ -115,8 +117,14 @@ public class GirlAction : MonoBehaviour
             IsCollidingSoldier = true;//撞了士兵
             Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
-            //fade out黑屏】
+            StartCoroutine(WaitanimDone());
         }
+    }
+
+    IEnumerator WaitanimDone()
+    {
+        yield return new WaitForSeconds(1.2f);
+        Restart = true;
     }
 
     private void FailScreen(string screenname) {
@@ -125,7 +133,8 @@ public class GirlAction : MonoBehaviour
             Invoke("EndHint",0.7f);
             isEnd = true;
         } else {
-            if (restartHint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
+            if (restartHint.activeSelf && Input.GetKeyDown("space")) {
+                Debug.Log("YES");
                 LevelLoader.instance.LoadLevel(screenname);
             }
         }
