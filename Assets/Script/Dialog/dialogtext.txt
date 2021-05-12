@@ -61,6 +61,15 @@ Nightingale: She would be very happy.
 Lv2FallRoom
 Nightingale:I should be in a hurry to get a second piece of glass.
 ---
+Lv3Part2
+Girl: Did you see a little bird with a piece of glasses? He is missing.
+Man: I did not remember...
+Man: Did you mean the one that got caught last night?
+Man: I heard he was stealing at another side of wall.
+Girl: Where is him now?
+Man: Maybe in Palace.
+Girl: Thank You.
+---
 Lv4Part2Trace
 King: You'd better run faster!
 ---

@@ -113,10 +113,10 @@ public class CaptainAction : MonoBehaviour
 	        }
 
 	    }
-	    else if (Input.GetKeyDown(KeyCode.Space) && sucCount >= 5) {
-	    	Debug.Log("捡起玻璃");
-        	LevelLoader.instance.LoadLevel("Level2FallRoom");
-	    }
+	    // else if (Input.GetKeyDown(KeyCode.Space) && sucCount >= 5) {
+	    // 	Debug.Log("捡起玻璃");
+     //    	LevelLoader.instance.LoadLevel("Level2FallRoom");
+	    // }
 
         if (failCount == 1 && curFailState == failState.UNCHANGE) {
         	questionMark.SetActive(true);
@@ -146,6 +146,7 @@ public class CaptainAction : MonoBehaviour
         	glass.SetActive(true);
         	isGameStart = false;
         	GameManager.instance.GlassEnd();
+        	LevelLoader.instance.LoadLevel("Level2FallRoom");
         	sucCount++;
         }
     }

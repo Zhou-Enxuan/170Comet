@@ -71,6 +71,7 @@ public class Lv2RhythmController : MonoBehaviour
             //站起拿花
             npc02Pick.SetActive(false);
     		this.GetComponent<SpriteRenderer>().enabled = true;
+            SoundManager.playSEOne("paper", 0.7f);
             Flower.SetActive(true); 
     	}
 

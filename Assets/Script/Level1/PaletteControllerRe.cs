@@ -260,6 +260,7 @@ public class PaletteControllerRe : MonoBehaviour
 
     IEnumerator waitFlyAnimOver()
     {
+        SoundManager.playSEOne("birdFlyOut", 0.7f);
         yield return new WaitWhile(() => GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
 
         LevelLoader.instance.LoadLevel("Level2Winter");

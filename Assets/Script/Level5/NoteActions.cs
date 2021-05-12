@@ -12,10 +12,13 @@ public class NoteActions : MonoBehaviour
     [SerializeField] BeatScrollerRe beatScrollerRe;
     [SerializeField] AudioSource PressSound;
     public bool IsPlayed;//CHECK each note only hit ONCE
+    private GameObject BackGround;
+    [SerializeField] RectTransform BGrt;
 
     void Awake()
     {
         Button = GameObject.Find("ControlButton");
+        BackGround = GameObject.Find("Background");
     }
 
     void Start()
@@ -25,6 +28,16 @@ public class NoteActions : MonoBehaviour
 
     void Update()
     {
+        if (transform.position.x < (BackGround.transform.position.x + BGrt.rect.width/2) && transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2))
+        {
+            Debug.Log(BackGround.transform.position.x - BGrt.rect.width/2);
+            if (!IsPlayed)
+                GetComponent<Image>().enabled = true;
+        }
+        else{
+            GetComponent<Image>().enabled = false;
+        }
+
         //按空格得分--音符消失--音效
         if (transform.position.x < (Button.transform.position.x + rt.rect.width/2) && transform.position.x > (Button.transform.position.x - rt.rect.width/2))
         {
