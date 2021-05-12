@@ -148,7 +148,7 @@ public class KingControl : MonoBehaviour
                         kingAnim.SetTrigger("Breath");
                     }
     	    		isToNextScene = true;
-        			sceneSet(7.65f, 2, 18.5f, "KingTrace", 2f);
+        			sceneSet(7.65f, 2, 19.5f, "KingTrace", 2f);
     	    		winningCount++;
     	    	}
         		KingThrowingMethod();
@@ -193,7 +193,7 @@ public class KingControl : MonoBehaviour
             			// curKingState = kingState.UnTracing;
             			isToNextScene = true;
             			countTimer = 0;
-            			sceneSet(-9.85f, 4, 1f, "KingTrace", 3f);
+            			sceneSet(-9.85f, 4, 2f, "KingTrace", 3f);
                     }
                     else {
                         if (winningCount == 2) {    

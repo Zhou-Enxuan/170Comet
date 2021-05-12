@@ -143,6 +143,7 @@ public class CaptainAction : MonoBehaviour
         if (sucCount == 5){
         	audioSources[2].PlayOneShot(glassSound,0.5f);
         	Debug.Log("游戏成功");
+        	hint.SetActive(false);
         	glass.SetActive(true);
         	isGameStart = false;
         	GameManager.instance.GlassEnd();
