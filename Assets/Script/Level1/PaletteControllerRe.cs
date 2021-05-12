@@ -230,9 +230,10 @@ public class PaletteControllerRe : MonoBehaviour
             {
                 PickUpHint.SetActive(false);
                 LeaveTip.SetActive(false);
+                GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
+                GameManager.instance.stopMoving = true;
                 GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
                 GameObject.Find("Player").GetComponent<Animator>().enabled = true;
-                GameManager.instance.stopMoving = true;
                 OnPlayerAction -= WindowHint;
                 StartCoroutine(waitFlyAnimOver());
             }

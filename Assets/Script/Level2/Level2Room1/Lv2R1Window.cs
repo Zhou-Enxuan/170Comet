@@ -29,6 +29,7 @@ public class Lv2R1Window : MonoBehaviour
                 SceneName = "Level2WinFlower"; // "Level2WinFlower"
                 Debug.Log("transroom Level2WinFlower");
             }
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
