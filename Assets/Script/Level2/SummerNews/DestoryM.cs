@@ -13,6 +13,7 @@ public class DestoryM : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "Destory"){
+            SoundManager.playSEOne("paper",0.7f);
             MNews.SetActive(false);
         }
     }

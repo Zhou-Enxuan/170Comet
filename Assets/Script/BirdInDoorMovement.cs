@@ -32,7 +32,7 @@ public class BirdInDoorMovement : MonoBehaviour
             currentState = BirdsState.STATIC;
         }
 
-        if(SceneManager.GetActiveScene().name == "Level2FallRoom"){
+        if(SceneManager.GetActiveScene().name == "Level2FallRoom" && GameManager.instance.islv2FallGlassEnd){
             currentState = BirdsState.GLASSES;
         }
 
