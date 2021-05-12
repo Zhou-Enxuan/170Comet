@@ -13,13 +13,13 @@ public class BeatScrollerRe : MonoBehaviour
     private GameObject Rhythm;
     private Vector3 origin;//位置
     public bool Reset;
-    private GameObject BackGround;
-    [SerializeField] RectTransform BGrt;
+    // private GameObject BackGround;
+    // [SerializeField] RectTransform BGrt;
 
     void Awake()
     {
         Rhythm = GameObject.Find("RhythmGameUI");
-        BackGround = GameObject.Find("Background");
+        // BackGround = GameObject.Find("Background");
     }
 
     void Start() 
@@ -29,19 +29,20 @@ public class BeatScrollerRe : MonoBehaviour
 
     void Update() 
     {
-        for(int i = 0; i<5; i++)
-        {
-                if (transform.GetChild(i).gameObject.transform.position.x < (BackGround.transform.position.x + BGrt.rect.width/2 +60) && transform.GetChild(i).gameObject.transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2 -60))
-                {
-                    if (!transform.GetChild(i).gameObject.GetComponent<NoteActions>().IsPlayed)
-                        transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
-                }
-                else{
-                    transform.GetChild(i).gameObject.GetComponent<Image>().enabled = false;
-                }
-                // transform.GetChild(i).gameObject.SetActive(true);
-                // transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
-        }
+        // for(int i = 0; i<5; i++)
+        // {
+        //         if (transform.GetChild(i).gameObject.transform.position.x < (BackGround.transform.position.x + BGrt.rect.width/2) && transform.GetChild(i).gameObject.transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2))
+        //         {
+        //             Debug.Log(BackGround.transform.position.x + BGrt.rect.width/2);
+        //             if (!transform.GetChild(i).gameObject.GetComponent<NoteActions>().IsPlayed)
+        //                 transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
+        //         }
+        //         else{
+        //             transform.GetChild(i).gameObject.GetComponent<Image>().enabled = false;
+        //         }
+        //         // transform.GetChild(i).gameObject.SetActive(true);
+        //         // transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
+        // }
         
 
         if(total == 5)
@@ -53,7 +54,8 @@ public class BeatScrollerRe : MonoBehaviour
                 transform.GetChild(i).gameObject.GetComponent<Image>().enabled = true;
             }
             musicButtonController.index = 1;
-            Reset = true;
+            if (musicButtonController.index == 1)
+                Reset = true;
         }
         else
         {
