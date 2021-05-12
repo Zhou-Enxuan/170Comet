@@ -19,8 +19,9 @@ public class Lv2SummerWindows : MonoBehaviour
     void Update()
     {
         if (LeaveHint.activeSelf && Input.GetKeyDown("space")) {
-            SceneName = "Level2SummerTimeline"; 
+            SceneName = "Level2SummerTimeline";
             //Debug.Log("transroom Level2Winter");
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             //GameObject.Find("Player").GetComponent<Animator>().SetTrigger("FlyOut");

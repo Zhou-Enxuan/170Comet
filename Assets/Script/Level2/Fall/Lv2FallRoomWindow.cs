@@ -26,7 +26,8 @@ public class Lv2FallRoomWindow : MonoBehaviour
             	// 小鸟被抓ppt
                 SceneName = "Level3OpenWindow";
             }
-        	GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
+            GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
+            GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
             StartCoroutine(waitFlyAnimOver(SceneName));
