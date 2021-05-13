@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Initial : MonoBehaviour
 {
+    public string StartSceneName = "Menu";
     PlayerData thisData;
     void Start()
     {
@@ -19,6 +20,6 @@ public class Initial : MonoBehaviour
     }
     void Update()
     {
-        LevelLoader.instance.LoadLevel("Menu");
+        LevelLoader.instance.LoadLevel(StartSceneName);
     }
 }
