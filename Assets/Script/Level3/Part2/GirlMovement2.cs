@@ -64,7 +64,7 @@ public class GirlMovement2 : MonoBehaviour
     IEnumerator WaitAnimDone(){
         yield return new WaitWhile(() => GirlAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         GirlAnimator.SetBool("ClimbTrigger", false);
-        transform.position = new Vector3(26.84f, -1.69f, -0.6602975f);
+        transform.position = new Vector3(24.6f, -1.69f, -0.6602975f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
