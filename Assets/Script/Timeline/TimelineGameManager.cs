@@ -6,7 +6,7 @@ public class TimelineGameManager : MonoBehaviour
 {
     public static bool isTimeline = false; //timeline开始or结束 ->NpcController.cs调用-变值
     //private static bool isEnd = false;
-    private static bool isPaused = false;
+    public static bool isPaused = false;
 
    //public GameObject DialogBox = GameObject.Find("DialogBox");
 

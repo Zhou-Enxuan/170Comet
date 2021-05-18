@@ -21,6 +21,7 @@ public class KingControl : MonoBehaviour
     private bool isStartThrow;
     public GameObject throwPos;
     public static GameObject throwItem;
+    public int s1WinTimes;
 
 	private int posNum;
 	private int curNum;
@@ -140,8 +141,8 @@ public class KingControl : MonoBehaviour
         	}
         	// 场景1
         	if (sceneCount == 1) {
-        		if (winningCount >= 10) {
-        			if (winningCount == 10) {
+        		if (winningCount >= s1WinTimes) {
+        			if (winningCount == s1WinTimes) {
         				nextHint.SetActive(true);
                         Debug.Log("喘气");
                         curKingState = kingState.Breathing;
@@ -240,13 +241,6 @@ public class KingControl : MonoBehaviour
             			curKingState = kingState.UnTracing;
             		}
                 }
-                //女孩站起来
-                if (curKingState == kingState.UnTracing) {
-                    if(playerAnim.GetBool("Falling")) {
-                        playerAnim.SetBool("Falling", false);
-                    } 
-                    //isGirlRunning = false;
-                }
                 KingUnTrancingMethod();
                 KingStampingMethod();
         	}
@@ -262,7 +256,7 @@ public class KingControl : MonoBehaviour
             //游戏失败 停止移动
             GameManager.instance.stopMoving = true;
             kingAnim.SetBool("isWalking", false);
-            if (sceneCount == 1 && throwItem.activeSelf && (DropingItem.isThrowTrig || DropingItem.isThrowed)) {
+            if (sceneCount == 1 && throwItem.activeSelf && DropingItem.isThrowed) {
                 throwItem.SetActive(false);
                 throwPos.SetActive(false);
             }
@@ -465,6 +459,10 @@ public class KingControl : MonoBehaviour
     //来回走
     void KingUnTrancingMethod() {
     	if (curKingState == kingState.UnTracing) {
+            // 女孩站起来
+            if(playerAnim.GetBool("Falling")) {
+                playerAnim.SetBool("Falling", false);
+            } 
     		//Debug.Log("UnTracing");
     		// if (!isToNextScene && sceneCount == 1 && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding) {
     		// 	curKingState = kingState.Tracing;

@@ -85,3 +85,18 @@ The Third Dialog
 Lv5Part4
 The Last Dialog
 ---
+Lv4P2TL101
+Soldier: Hey! You must be new here.
+---
+Lv4P2TL102
+Soldier: Keep up with us, the king is going to parade soldiers himself. 
+---
+Lv4P2TL103
+Soldier: He won't tolerate a single mistake!
+---
+Lv4P2TL201
+Soldier: How did you get in here?
+---
+Lv4P2TL202
+Soldier: This is no place for a kid. Get out of here!
+---
