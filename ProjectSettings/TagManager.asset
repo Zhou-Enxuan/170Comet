@@ -18,6 +18,7 @@ TagManager:
   - Hide
   - Hat
   - Door
+  - DropItem
   layers:
   - Default
   - TransparentFX

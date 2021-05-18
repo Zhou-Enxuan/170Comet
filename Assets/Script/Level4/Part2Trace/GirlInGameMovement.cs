@@ -184,7 +184,7 @@ public class GirlInGameMovement : MonoBehaviour
         if (collision.gameObject.name == "Bird") {
         	isPickBird = true;
         }
-        if (collision.gameObject.name == "DropItem") {
+        if (collision.gameObject.tag == "DropItem") {
             isBeDroped = true;
         } 
         if (KingControl.isToNextScene && KingControl.sceneCount == 0 && collision.gameObject.name == "InvisibleWall04") {
@@ -217,7 +217,7 @@ public class GirlInGameMovement : MonoBehaviour
         if (collision.gameObject.name == "Bird") {
         	isPickBird = false;
         }
-        if (collision.gameObject.name == "DropItem") {
+        if (collision.gameObject.tag == "DropItem") {
             isBeDroped = false;
         } 
     }
