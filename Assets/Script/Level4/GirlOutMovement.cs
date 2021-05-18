@@ -53,7 +53,9 @@ public class GirlOutMovement : MonoBehaviour
         if (GameManager.instance.stopMoving)
         {
             rb.velocity = Vector2.zero;
-        }
+            HideHint.SetActive(false);
+            LeaveHint.SetActive(false);
+        }else{
         moveH = Input.GetAxisRaw("Horizontal");
         GirlAnimator.SetFloat("Direaction", moveH);
         GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
@@ -116,6 +118,7 @@ public class GirlOutMovement : MonoBehaviour
             else {
                 LevelLoader.instance.LoadLevel("Level4P2TL2");
             }
+        }
         }
         
 

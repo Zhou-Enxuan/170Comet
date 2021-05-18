@@ -12,6 +12,7 @@ public class GirlMovement2 : MonoBehaviour
     private bool isnearWall;
     public GameObject ClimbHint;
     private bool FaceR;
+    public bool passWall = false;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -50,12 +51,14 @@ public class GirlMovement2 : MonoBehaviour
         rb.velocity = direction * moveSpeed;
         }
 
-        if(isnearWall){
+        if(isnearWall && !passWall){
             ClimbHint.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space) && FaceR){
                 GirlAnimator.SetBool("ClimbTrigger", true);
                 StartCoroutine(WaitAnimDone());
+                passWall = true;
             }
+
         }else{
             ClimbHint.SetActive(false);
         }

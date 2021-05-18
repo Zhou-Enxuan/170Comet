@@ -12,7 +12,7 @@ public class GreenNpcMovement : MonoBehaviour
     public Transform groundDe;
     public Transform girlDe;
     private bool moveingRight = true;
-    private float timer;
+    private float timer = 0.0f;
     public float waitingTime = 0.2f;
     public bool ismoving = true;
     private bool istouchingNPC = false;
@@ -30,6 +30,8 @@ public class GreenNpcMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log("now moving" + ismoving);
 
 
         if(takeTrigger && !GameManager.instance.IsDialogShow()){
@@ -59,27 +61,25 @@ public class GreenNpcMovement : MonoBehaviour
         
 
 
-        if(groundInfo.collider.name != "patrolObj"){
+        if(groundInfo.collider.name == "G_Background"){
             Debug.Log(groundInfo.collider.name);
-            Debug.Log("not in obj");
+            //Debug.Log("not in obj");
             ismoving = false;
-            timer += Time.deltaTime;
-            if(timer > waitingTime){
                 if(moveingRight == true){
                     transform.eulerAngles = new Vector3(0, -180, 0);
                     moveingRight = false;
-                    Debug.Log("moveleft");
+                    //Debug.Log("moveleft");
                 }else{
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     moveingRight = true;
-                    Debug.Log("moveright");
+                    //Debug.Log("moveright");
                 }
-                timer = 0f;
-                ismoving = true;
-            }else{
-                Debug.Log("in obj");
-            }
+            ismoving = true;
+        }else{
+                //Debug.Log("in obj");
         }
+        
+            
 
         if(istouchingNPC && !isDiaActive){
             if (Input.GetKeyDown(KeyCode.Space)){
@@ -98,10 +98,12 @@ public class GreenNpcMovement : MonoBehaviour
 
     void move(){
         transform.Translate(Vector2.right * speed * Time.deltaTime);
+        GAnimator.SetBool("DialogFlag", false);
     }
 
     void stop(){
         transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
+        GAnimator.SetBool("DialogFlag", true);
     }
 
     IEnumerator WaitAnimDone(){
