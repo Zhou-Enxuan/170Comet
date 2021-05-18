@@ -11,13 +11,14 @@ public class SoundManager : MonoBehaviour
     public static AudioSource[] audioSources;
     public float audioSpeed;
     // 播放soundeffect的source number
-    public static int soundEffectSource = 8;
+    public static int soundEffectSource = 9;
    // bool isBGMplayed = false; //flip
     public static bool isChangVolume = false;
     public static int newBgm = 0;
     public static int curBgm;
     public static AudioClip birdFlyOutSound;
     public static AudioClip paperSound;
+    public static AudioClip scepterSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,8 +34,10 @@ public class SoundManager : MonoBehaviour
         audioSources[5].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
         audioSources[6].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
         audioSources[7].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
+        audioSources[8].clip = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
         birdFlyOutSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_BirdFlyOut");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
+        scepterSound =  Resources.Load<AudioClip>("Sound/SoundEffect/A_Scepter");
     }
 
     // Update is called once per frame
@@ -98,6 +101,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "paper":
                 audioSources[soundEffectSource].PlayOneShot(paperSound, loud);
+                break;
+            case "scepter":
+                audioSources[soundEffectSource].PlayOneShot(scepterSound, loud);
                 break;
         }
     }
