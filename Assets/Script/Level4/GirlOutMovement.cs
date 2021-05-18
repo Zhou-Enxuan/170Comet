@@ -110,7 +110,12 @@ public class GirlOutMovement : MonoBehaviour
         }
 
         if(Isindoor && Input.GetKeyDown("space")){
-            LevelLoader.instance.LoadLevel("Level4Part2");
+            if (isPickHat) {
+                LevelLoader.instance.LoadLevel("Level4P2TL1");
+            }
+            else {
+                LevelLoader.instance.LoadLevel("Level4P2TL2");
+            }
         }
         
 

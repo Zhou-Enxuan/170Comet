@@ -23,6 +23,7 @@ public class ThreeSoldierAction : MonoBehaviour
     void Start()
     {
         Destroy(point.gameObject);
+        GetComponent<Animator>().SetBool("isWalking", true);
     }
 
     void Update()
@@ -36,14 +37,14 @@ public class ThreeSoldierAction : MonoBehaviour
         if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier || Girl.GetComponent<GirlAction>().IsArrived)
         {
             rb.velocity = Vector2.zero;
-            GetComponent<Animator>().enabled = false;
+            GetComponent<Animator>().SetBool("isWalking", false);
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/NPCs/RedSoldier/A_RedSoldier");
         }
         // 画闭眼 - 动
         else
         {
             rb.velocity = new Vector2(Speed, rb.velocity.y);
-            GetComponent<Animator>().enabled = true;
+            GetComponent<Animator>().SetBool("isWalking", true);
         }
     }
 }

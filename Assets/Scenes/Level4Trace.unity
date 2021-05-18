@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwPos: {fileID: 1432060290}
+  s1WinTimes: 10
   failUI: {fileID: 100573439}
   Hint: {fileID: 2013687542}
   movePos:

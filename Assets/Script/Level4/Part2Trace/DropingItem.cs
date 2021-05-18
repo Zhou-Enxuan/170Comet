@@ -24,4 +24,7 @@ public class DropingItem : MonoBehaviour
     void Trigger() {
         isThrowTrig = true;
     }
+    void DisTrigger() {
+        isThrowTrig = false;
+    }
 }
