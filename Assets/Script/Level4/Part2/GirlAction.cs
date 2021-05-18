@@ -74,9 +74,10 @@ public class GirlAction : MonoBehaviour
         {
             //transform.localScale = new Vector3();
             IsCollidingSoldier = true;
-            Anim.enabled = false;
+            IsMoving = false;
             IsArrived = true;
-            LevelLoader.instance.LoadLevel("Level4Trace");
+            Dialog.PrintDialog("Lv4Part2Follow");
+            StartCoroutine(CheckDialogueDone());
         }
 
         if (Input.GetKeyDown("space"))
@@ -101,6 +102,14 @@ public class GirlAction : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+
+    IEnumerator CheckDialogueDone()
+    {
+        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+        //对话播完进入level4Trace，缺少timeline
+        LevelLoader.instance.LoadLevel("Level4Trace");
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.name == "Soldier2")

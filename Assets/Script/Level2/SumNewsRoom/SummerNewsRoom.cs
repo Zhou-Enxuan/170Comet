@@ -10,8 +10,10 @@ public class SummerNewsRoom : MonoBehaviour
     public static GameObject QMark;
     public static bool isRoomStart = false;
     bool isDiaActive = false;
+	private GameObject Hint;
 
 	void Awake() {
+		Hint = GameObject.Find("Hint");
 		QMark = GameObject.Find("GirlQMark");
 		if (GameManager.instance.islv2SummerNewsEnd) {
             isRoomStart = true;
@@ -22,13 +24,19 @@ public class SummerNewsRoom : MonoBehaviour
 		}
 	}
 
+	void Start() {
+		Hint.SetActive(false);
+	}
+
 	void Update(){
 
 	}
 
 	void OnTriggerStay2D(Collider2D collision) {
 		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
+			Hint.SetActive(true);
 			if (Input.GetKeyDown("space")) {
+				Hint.SetActive(false);
 	        	QMark.SetActive(false);
 	        	Dialog.PrintDialog("Lv2NewsRoom");
 	        	isDiaActive = true;
@@ -36,5 +44,11 @@ public class SummerNewsRoom : MonoBehaviour
 				GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 		    }
 	    }
+	}
+
+	void OnTriggerExit2D(Collider2D collision) {
+		if (collision.tag == "Player" && Hint.activeSelf) {
+			Hint.SetActive(false);
+		}
 	}
 }

@@ -30,7 +30,6 @@ public class NoteActions : MonoBehaviour
     {
         if (transform.position.x < (BackGround.transform.position.x + BGrt.rect.width/2) && transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2))
         {
-            Debug.Log(BackGround.transform.position.x - BGrt.rect.width/2);
             if (!IsPlayed)
                 GetComponent<Image>().enabled = true;
         }

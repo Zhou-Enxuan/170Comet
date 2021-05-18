@@ -22,7 +22,7 @@ Villager2
 Man with Mustache: It’s over! Everything is over! The war is coming! My life is over...
 ---
 Villager3
-QAQ
+Boy with Green Hair: Hell no...
 ---
 Lv2P1StandUp
 Man with Mustache: What a beautiful song! Thank you, now I feel much better.
@@ -59,7 +59,7 @@ Nightingale: If I could make a telescope for her as a gift...
 Nightingale: She would be very happy. 
 ---
 Lv2FallRoom
-Nightingale:I should be in a hurry to get a second piece of glass.
+Nightingale: I should be in a hurry to get a second piece of glass.
 ---
 Lv3Part2
 Girl: Did you see a little bird with a piece of glasses? He is missing.
@@ -69,6 +69,12 @@ Man: I heard he was stealing at another side of wall.
 Girl: Where is him now?
 Man: Maybe in Palace.
 Girl: Thank You.
+---
+Lv4Part2Follow
+King: Now, count off one by one.
+Soldiers: 1, 2, 3
+Girl: ...4
+King: It seems that a little "mouse" sneaked in. Now leave me alone with the little "mouse".
 ---
 Lv4Part2Trace
 King: You'd better run faster!
