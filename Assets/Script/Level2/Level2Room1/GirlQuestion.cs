@@ -47,7 +47,9 @@ public class GirlQuestion : MonoBehaviour
 
 	void OnTriggerStay2D(Collider2D collision) {
 		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
+			Hint.SetActive(true);
 			if (Input.GetKeyDown("space")) {
+				Hint.SetActive(false);
 	        	QMark.SetActive(false);
 	        	if (isRoomFlower) {
 	        		Flower.SetActive(true);
@@ -61,5 +63,13 @@ public class GirlQuestion : MonoBehaviour
 	        	isDiaActive = true;
 		    }
 	    }
+	}
+
+	void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.tag == "Player" && Hint.activeSelf)
+		{
+			Hint.SetActive(false);
+		}
 	}
 }

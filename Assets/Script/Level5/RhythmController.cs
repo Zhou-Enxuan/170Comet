@@ -9,6 +9,7 @@ public class RhythmController : MonoBehaviour
     private GameObject Fail;
     private GameObject Hint;
     public bool IsFailed;
+    private GameObject KeyHint;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class RhythmController : MonoBehaviour
         Rhythm4 = GameObject.Find("Rhythm4");
         Fail = GameObject.Find("Fail");
         Hint = GameObject.Find("Hint");
+        KeyHint = GameObject.Find("KeyHint");
     }
 
     void Start()
@@ -26,10 +28,15 @@ public class RhythmController : MonoBehaviour
         Fail.SetActive(false);
         Hint.SetActive(false);
         IsFailed = false;
+        KeyHint.SetActive(true);
     }
 
     void Update()
     {
+        if (KeyHint.activeSelf && Input.anyKeyDown)
+        {
+            KeyHint.SetActive(false);
+        }
         if (beatScrollerRe1.total == 5)
         {
             Rhythm1.SetActive(false);

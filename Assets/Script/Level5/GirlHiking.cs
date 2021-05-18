@@ -19,6 +19,8 @@ public class GirlHiking : MonoBehaviour
     private GameObject Rhythm2, Rhythm3, Rhythm4;
     private GameObject Fail;
     private GameObject Continue;
+    [SerializeField] AudioSource SuccessSound;
+    [SerializeField] AudioSource FailSound;
 
     void Awake()
     {
@@ -66,6 +68,8 @@ public class GirlHiking : MonoBehaviour
                 //女孩静止
                 rb.velocity = Vector2.zero;
                 IsMoving = false;
+                GirlStop();
+                FailSound.Play();
             }
             else
             {
@@ -120,6 +124,7 @@ public class GirlHiking : MonoBehaviour
         {
             point4 = 50f;
             Dialog.PrintDialog("Lv5Part4");
+            SuccessSound.Play();
             StartCoroutine(CheckSceneDone());
         }
     }
