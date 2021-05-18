@@ -20,9 +20,14 @@ public class KingControl : MonoBehaviour
 	//private bool isCanSpring;
     private float throwTimer;
     private bool isStartThrow;
-    public GameObject throwPos;
+    public static GameObject throwPos;
+    public static GameObject throwPos01;
+    public static GameObject throwPos02;
     public static GameObject throwItem;
+    public static GameObject throwItem01;
+    public static GameObject throwItem02;
     public int s1WinTimes;
+    private float dropPos;
 
 	private int posNum;
 	private int curNum;
@@ -71,6 +76,11 @@ public class KingControl : MonoBehaviour
     	playerAnim = GameObject.Find("PlayerGirl").GetComponent<Animator>();
         loseReasonText = GameObject.Find("Reason").GetComponent<Text>();
         throwItem = GameObject.Find("DropItem");
+        throwItem01 = GameObject.Find("DropItem01");
+        throwItem02 = GameObject.Find("DropItem02");
+        throwPos = GameObject.Find("DropPos");
+        throwPos01 = GameObject.Find("DropPos01");
+        throwPos02 = GameObject.Find("DropPos02");
     }
 
     void Start()
@@ -94,7 +104,11 @@ public class KingControl : MonoBehaviour
         isStartThrow = false;
         throwTimer = Random.Range(1, 2);
         throwPos.SetActive(false);
+        throwPos01.SetActive(false);
+        throwPos02.SetActive(false);
         throwItem.SetActive(false);
+        throwItem01.SetActive(false);
+        throwItem02.SetActive(false);
 
     	winningCount = 0;
     	sceneCount = 0;
@@ -261,6 +275,10 @@ public class KingControl : MonoBehaviour
             if (sceneCount == 1 && throwItem.activeSelf && DropingItem.isThrowed) {
                 throwItem.SetActive(false);
                 throwPos.SetActive(false);
+                throwItem01.SetActive(false);
+                throwPos01.SetActive(false);
+                throwItem02.SetActive(false);
+                throwPos02.SetActive(false);
             }
             if (GirlInGameMovement.isPlayFailUI) {
                 GameFailed();
@@ -321,22 +339,59 @@ public class KingControl : MonoBehaviour
                     //throwPos.GetComponent<Transform>().position = new Vector2(x, throwPos.GetComponent<Transform>().position.y);
                     //throwPos.SetActive(true);
                     // throwItem.GetComponent<Transform>().position = new Vector2(x, throwItem.GetComponent<Transform>().position.y);
-                    if (target.position.x <= 17.5f) {
-                        //Debug.Log("位置17.5f");
-                        throwPos.GetComponent<Transform>().position = new Vector2(17.5f, throwPos.GetComponent<Transform>().position.y);
-                        throwItem.GetComponent<Transform>().position = new Vector2(17.5f, throwItem.GetComponent<Transform>().position.y);
+                    //固定位置
+                    if (winningCount == 0) {
+                        dropPos = 25f;
+                        throwPos.GetComponent<Transform>().position = new Vector2(dropPos, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(dropPos, throwItem.GetComponent<Transform>().position.y);
+                        throwPos.SetActive(true);
+                    }
+                    else if (winningCount == 1) {
+                        dropPos = 20f;
+                        throwPos.GetComponent<Transform>().position = new Vector2(dropPos, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(dropPos, throwItem.GetComponent<Transform>().position.y);
+                        throwPos.SetActive(true);
+                    }
+                    // 玩家位置
+                    else if (winningCount == 2 || winningCount == 3) {
+                        if (target.position.x <= 17.5f) {
+                            dropPos = 17.5f;
+                            throwPos.GetComponent<Transform>().position = new Vector2(dropPos, throwPos.GetComponent<Transform>().position.y);
+                            throwItem.GetComponent<Transform>().position = new Vector2(dropPos, throwItem.GetComponent<Transform>().position.y);
+                        } 
+                        else if (target.position.x >= 29f) {
+                            dropPos = 29f;
+                            throwPos.GetComponent<Transform>().position = new Vector2(dropPos, throwPos.GetComponent<Transform>().position.y);
+                            throwItem.GetComponent<Transform>().position = new Vector2(dropPos, throwItem.GetComponent<Transform>().position.y);
+                        }
+                        else {
+                            Debug.Log("玩家位置");
+                            throwPos.GetComponent<Transform>().position = new Vector2(target.position.x, throwPos.GetComponent<Transform>().position.y);
+                            throwItem.GetComponent<Transform>().position = new Vector2(target.position.x, throwItem.GetComponent<Transform>().position.y);
+                        }
+                        throwPos.SetActive(true);
                     } 
-                    else if (target.position.x >= 29f) {
-                        //Debug.Log("位置29f");
-                        throwPos.GetComponent<Transform>().position = new Vector2(29f, throwPos.GetComponent<Transform>().position.y);
-                        throwItem.GetComponent<Transform>().position = new Vector2(29f, throwItem.GetComponent<Transform>().position.y);
+                    else if (winningCount == 4 || winningCount == 5) {
+                        dropPos = target.position.x;
+                        throwPos.GetComponent<Transform>().position = new Vector2(dropPos + 2f, throwPos.GetComponent<Transform>().position.y);
+                        throwPos01.GetComponent<Transform>().position = new Vector2(dropPos - 2f, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(dropPos + 2f, throwItem.GetComponent<Transform>().position.y);
+                        throwItem01.GetComponent<Transform>().position = new Vector2(dropPos - 2f, throwItem.GetComponent<Transform>().position.y);
+                        throwPos.SetActive(true);
+                        throwPos01.SetActive(true);
                     }
-                    else {
-                        Debug.Log("玩家位置");
-                        throwPos.GetComponent<Transform>().position = new Vector2(target.position.x, throwPos.GetComponent<Transform>().position.y);
-                        throwItem.GetComponent<Transform>().position = new Vector2(target.position.x, throwItem.GetComponent<Transform>().position.y);
+                    else if (winningCount == 6 || winningCount == 7) {
+                        dropPos = target.position.x;
+                        throwPos.GetComponent<Transform>().position = new Vector2(dropPos, throwPos.GetComponent<Transform>().position.y);
+                        throwPos01.GetComponent<Transform>().position = new Vector2(dropPos + 3f, throwPos.GetComponent<Transform>().position.y);
+                        throwPos02.GetComponent<Transform>().position = new Vector2(dropPos - 3f, throwPos.GetComponent<Transform>().position.y);
+                        throwItem.GetComponent<Transform>().position = new Vector2(dropPos, throwItem.GetComponent<Transform>().position.y);
+                        throwItem01.GetComponent<Transform>().position = new Vector2(dropPos + 3f, throwItem.GetComponent<Transform>().position.y);
+                        throwItem02.GetComponent<Transform>().position = new Vector2(dropPos - 3f, throwItem.GetComponent<Transform>().position.y);
+                        throwPos.SetActive(true);
+                        throwPos01.SetActive(true);
+                        throwPos02.SetActive(true);
                     }
-                    throwPos.SetActive(true);
                     kingAnim.SetBool("isThrow",true);
                     //Debug.Log("砸一下");
                     Invoke("KingDropItem",1.5f);
@@ -354,6 +409,10 @@ public class KingControl : MonoBehaviour
                 if (DropingItem.isThrowed) {
                     throwItem.SetActive(false);
                     throwPos.SetActive(false);
+                    throwItem01.SetActive(false);
+                    throwPos01.SetActive(false);
+                    throwItem02.SetActive(false);
+                    throwPos02.SetActive(false);
                     kingAnim.SetBool("isThrow",false);
                     throwTimer = Random.Range(1, 2);
                     winningCount ++;
@@ -367,6 +426,12 @@ public class KingControl : MonoBehaviour
     //drop动画
     void KingDropItem() {
         throwItem.SetActive(true);
+        if (winningCount == 4 || winningCount == 5) {
+            throwItem01.SetActive(true);
+        } else if (winningCount == 6 || winningCount == 7) {
+            throwItem01.SetActive(true);
+            throwItem02.SetActive(true);
+        }
     }
     //king动画
     void KingThrowed() {
@@ -521,7 +586,7 @@ public class KingControl : MonoBehaviour
         Debug.Log("kingtrace重置");
         kingAnim.SetBool("isWalking", true);
     	if (sceneCount == 1) {
-    		if (winningCount >= 3) {
+    		if (winningCount >= s1WinTimes) {
     			sceneCount = 2;
 	    		winningCount = 0;
     		} 
