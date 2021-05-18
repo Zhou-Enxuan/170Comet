@@ -39,6 +39,7 @@ public class GirlHiking : MonoBehaviour
 
     void Start()
     {
+        SoundManager.playBgm(8);
         OnHiking += Hiking;
         order = 1;
         Rhythm2.SetActive(false);

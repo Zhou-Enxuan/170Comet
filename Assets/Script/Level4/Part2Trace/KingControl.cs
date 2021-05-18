@@ -14,6 +14,7 @@ public class KingControl : MonoBehaviour
 	private float wait;
 	private bool isInvoke;
 
+    private bool isSEplayed;
 	//private float springTime = 1f;
 	//private Vector2 newtarget;
 	//private bool isCanSpring;
@@ -81,6 +82,7 @@ public class KingControl : MonoBehaviour
         isGameFailed = false;
         isToNextScene = false;
     	isInvoke = false;
+        isSEplayed = false;
     	curKingState = kingState.Stop;
     	turnWaitTime = 0.1f;
     	wait = turnWaitTime;
@@ -344,13 +346,21 @@ public class KingControl : MonoBehaviour
         } 
         else if (curKingState == kingState.Throwed) {
             // Debug.Log("准备dropitem");
-            if (throwItem.activeSelf && DropingItem.isThrowed) {
-                throwItem.SetActive(false);
-                throwPos.SetActive(false);
-                kingAnim.SetBool("isThrow",false);
-                throwTimer = Random.Range(1, 2);
-                winningCount ++;
-                curKingState = kingState.Throwing;
+            if (throwItem.activeSelf) {
+                if (DropingItem.isThrowTrig && !isSEplayed) {
+                    SoundManager.playSEOne("scepter",0.7f);
+                    isSEplayed = true;
+                }
+                if (DropingItem.isThrowed) {
+                    throwItem.SetActive(false);
+                    throwPos.SetActive(false);
+                    kingAnim.SetBool("isThrow",false);
+                    throwTimer = Random.Range(1, 2);
+                    winningCount ++;
+                    curKingState = kingState.Throwing;
+                }
+            } else {
+                isSEplayed = false;
             } 
         }
     }
