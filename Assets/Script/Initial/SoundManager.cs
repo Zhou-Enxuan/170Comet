@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip birdFlyOutSound;
     public static AudioClip paperSound;
     public static AudioClip scepterSound;
+    public static AudioClip stompSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +39,7 @@ public class SoundManager : MonoBehaviour
         birdFlyOutSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_BirdFlyOut");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
         scepterSound =  Resources.Load<AudioClip>("Sound/SoundEffect/A_Scepter");
+        stompSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_KingStomp");
     }
 
     // Update is called once per frame
@@ -104,6 +106,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "scepter":
                 audioSources[soundEffectSource].PlayOneShot(scepterSound, loud);
+                break;
+            case "stomp": 
+                audioSources[soundEffectSource].PlayOneShot(stompSound, loud);
                 break;
         }
     }

@@ -22,6 +22,7 @@ public class OpenWindow : MonoBehaviour
 
     void Start()
     {
+        SoundManager.playBgm(5);
         Anim.enabled = false;
         
     }

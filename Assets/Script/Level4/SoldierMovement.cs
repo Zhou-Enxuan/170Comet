@@ -34,6 +34,7 @@ public class SoldierMovement : MonoBehaviour
     public GameObject BlackNpC;
 
     private void Start(){
+        SoundManager.playBgm(5);
         SoldierAnimator = GetComponent<Animator>();
         GreenAnimator = GameObject.Find("GreenNpC").GetComponent<Animator>();
         BlackAnimator = GameObject.Find("BrownNpc").GetComponent<Animator>();
