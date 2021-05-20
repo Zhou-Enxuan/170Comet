@@ -42,17 +42,17 @@ public class SaveManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level4")
         {
-            GameManager.instance.updateLevelData(5);
+            GameManager.instance.updateLevelData(6);
             SaveSystem.SaveGame();
         }
         else if (SceneManager.GetActiveScene().name == "Level4Part2")
         {
-            GameManager.instance.updateLevelData(6);
+            GameManager.instance.updateLevelData(7);
             SaveSystem.SaveGame();
         }
         else if (SceneManager.GetActiveScene().name == "Level5")
         {
-            GameManager.instance.updateLevelData(7);
+            GameManager.instance.updateLevelData(8);
             SaveSystem.SaveGame();
         }
     }

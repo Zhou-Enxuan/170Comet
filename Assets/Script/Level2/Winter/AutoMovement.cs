@@ -29,9 +29,12 @@ public class AutoMovement : MonoBehaviour
 		isDialoged = false;
         //isPlaCanFly = true;
         GameManager.instance.stopMoving = false;
+        NpcController.isToStartTimeline = false;
     }
 
     void Update () {
+        Debug.Log(isAIMove);
+        Debug.Log(isDialoged);
 	    if (isAIMove){
             //如果玩家坐标和target坐标距离>误差值则继续自动移动
 		    if (Vector2.Distance(Player.position, TargetPos) > delta) {

@@ -74,11 +74,15 @@ public class SoldierMovement : MonoBehaviour
                     failUI.SetActive(true);     
                     Invoke("EndHint",0.7f);
                     isEnd = true;
-                } else {
-                    if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
-                        LevelLoader.instance.LoadLevel("Level4");
-                    }
                 }
+            }
+        }
+
+        if(isEnd)
+        {
+            if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space))
+            {
+                LevelLoader.instance.LoadLevel("Level4");
             }
         }
         

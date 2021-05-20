@@ -34,11 +34,12 @@ public class InGameMenu : MonoBehaviour
 		    	if (Input.GetKeyDown(KeyCode.Q)) {
 		    		Application.Quit();
 		    	}
-		   //  	else if (Input.GetKeyDown(KeyCode.B)){
-		   //  		SceneManager.LoadScene("Menu");
-					// GameMenu.SetActive(false);
-		   //  	}
-		    }
+                else if (Input.GetKeyDown(KeyCode.B))
+                {
+                    SceneManager.LoadScene("Menu");
+                    GameMenu.SetActive(false);
+                }
+            }
 		}
     }
 }
