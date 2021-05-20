@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FallRoom : MonoBehaviour
 {
     public static GameObject QMark;
     public static GameObject Glass;
+    public static GameObject CatchUI;
     public static bool isRoomStart = false;
     bool isDiaActive = false;
 	private GameObject Hint;
@@ -14,11 +16,13 @@ public class FallRoom : MonoBehaviour
 		QMark = GameObject.Find("GirlQMark");
 		Glass = GameObject.Find("Glass");
 		Hint = GameObject.Find("Hint");
+		CatchUI = GameObject.Find("Fail");
 	}
 
 	void Start() {
 		Hint.SetActive(false);
 		Glass.SetActive(false);
+		CatchUI.SetActive(false);
 		if (GameManager.instance.islv2FallGlassEnd) {
             isRoomStart = true;
 			QMark.SetActive(true);
@@ -29,7 +33,11 @@ public class FallRoom : MonoBehaviour
 	}
 
 	void Update(){
-
+		if (CatchUI.activeSelf && Hint.activeSelf) {
+			if (Input.GetKeyDown("space")) {
+				LevelLoader.instance.LoadLevel("Level3OpenWindow");
+			}
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D collision) {
@@ -60,6 +68,10 @@ public class FallRoom : MonoBehaviour
 	IEnumerator CheckDialogueDone()
     {
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
-		LevelLoader.instance.LoadLevel("Level3OpenWindow");
+		CatchUI.SetActive(true);
+		Invoke("EndHint", 0.7f);
+	}
+	void EndHint(){
+		Hint.SetActive(true);
 	}
 }

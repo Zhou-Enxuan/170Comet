@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        SoundManager.PlayTMBgm();
+        SoundManager.playBgm(0);
         if(GameManager.instance.playedLevel > 0)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
