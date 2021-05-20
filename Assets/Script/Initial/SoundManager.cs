@@ -11,14 +11,24 @@ public class SoundManager : MonoBehaviour
     public static AudioSource[] audioSources;
     public float audioSpeed;
     // 播放soundeffect的source number
-    public static int soundEffectSource = 9;
+    public static int soundEffectSource = 1;
    // bool isBGMplayed = false; //flip
     public static bool isChangVolume = false;
     public static int newBgm = 0;
-    public static int curBgm;
+    public static int curBgm = -1;
+    public static AudioClip MenuBgm;
+    public static AudioClip Lv1Bgm;
+    public static AudioClip Lv2P1Bgm;
+    public static AudioClip Lv2P102Bgm;
+    public static AudioClip Lv2P2Bgm;
+    public static AudioClip Lv2P3Bgm;
+    public static AudioClip Lv4P2Bgm;
+    public static AudioClip Lv4TraceBgm;
+    public static AudioClip Lv5Bgm;
     public static AudioClip birdFlyOutSound;
     public static AudioClip paperSound;
     public static AudioClip scepterSound;
+    public static AudioClip stompSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,25 +36,26 @@ public class SoundManager : MonoBehaviour
     //     RoomBGM = Resources.Load<AudioClip>("Sound/RoomBGM");
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
-        audioSources[0].clip = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
-        audioSources[1].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
-        audioSources[2].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
-        audioSources[3].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
-        audioSources[4].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
-        audioSources[5].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
-        audioSources[6].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
-        audioSources[7].clip = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
-        audioSources[8].clip = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
+        MenuBgm = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
+        Lv1Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
+        Lv2P1Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
+        Lv2P102Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
+        Lv2P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
+        Lv2P3Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
+        Lv4P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
+        Lv4TraceBgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
+        Lv5Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
         birdFlyOutSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_BirdFlyOut");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
         scepterSound =  Resources.Load<AudioClip>("Sound/SoundEffect/A_Scepter");
+        stompSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_KingStomp");
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isChangVolume) {
-            ChangVolume(newBgm);
+            ChangVolume(0);
         }
 
         // if (SceneManager.GetActiveScene().name == "Level1" && !isBGMplayed) {
@@ -85,10 +96,39 @@ public class SoundManager : MonoBehaviour
     public static void playBgm(int num){
         newBgm = num;
         if (newBgm != curBgm){
-            audioSources[curBgm].Stop();
-            audioSources[newBgm].volume = 0;
+            audioSources[0].Stop();
+            audioSources[0].volume = 0;
             isChangVolume = true;
-            audioSources[newBgm].Play();
+            switch (num) {
+                case 0:
+                    audioSources[0].clip = MenuBgm;
+                    break;
+                case 1:
+                    audioSources[0].clip = Lv1Bgm;
+                    break;
+                case 2:
+                    audioSources[0].clip = Lv2P1Bgm;
+                    break;
+                case 3:
+                    audioSources[0].clip = Lv2P102Bgm;
+                    break;
+                case 4:
+                    audioSources[0].clip = Lv2P2Bgm;
+                    break;
+                case 5:
+                    audioSources[0].clip = Lv2P3Bgm;
+                    break;
+                case 6:
+                    audioSources[0].clip = Lv4P2Bgm;
+                    break;
+                case 7:
+                    audioSources[0].clip = Lv4TraceBgm;
+                    break;
+                case 8:
+                    audioSources[0].clip = Lv5Bgm;
+                    break;
+            }
+            audioSources[0].Play();
             curBgm = num;
             GameManager.instance.bgmNum = num;
         }
@@ -104,6 +144,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "scepter":
                 audioSources[soundEffectSource].PlayOneShot(scepterSound, loud);
+                break;
+            case "stomp": 
+                audioSources[soundEffectSource].PlayOneShot(stompSound, loud);
                 break;
         }
     }

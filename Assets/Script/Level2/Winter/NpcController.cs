@@ -42,9 +42,13 @@ public class NpcController : MonoBehaviour
         SadFace = GameObject.Find("SadFace");
         NoticeMark = GameObject.Find("NoticeMark");
         VillagerTimeline = GameObject.Find("VillagerTimeline");
+        Horse = GameObject.Find("Horse");
         // RhythmGame = GameObject.Find("RhythmGame");
         // Flower = GameObject.Find("Flower");
-        Horse = GameObject.Find("Horse");
+        
+    }
+
+    void Start() {
         NoticeMark.SetActive(false);
         VillagerTimeline.SetActive(false);
         NpcTwoGroup.SetActive(false);

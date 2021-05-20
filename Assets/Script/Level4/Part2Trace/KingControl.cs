@@ -246,16 +246,27 @@ public class KingControl : MonoBehaviour
                         loseReasonText.text = "You were hurt by the jolt!";
                         GameFailed();
             		}
-            		//随机国王跺脚
-            		countTimer -= Time.deltaTime;
-            		if (countTimer <= 0) {
-            			curKingState = kingState.Stamping;
-            		} 
-            		else {
-            			stampTime = 1.5f;
-            			isShaked = true;
-            			curKingState = kingState.UnTracing;
-            		}
+
+                    if (curKingState == kingState.Stop) {
+                        this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(14f, this.transform.position.y), speed * Time.deltaTime);
+                        if (Vector2.Distance(this.transform.position, new Vector2(14f, this.transform.position.y)) < 0.1f) { 
+                            Dialog.PrintDialog("Lv4Part2Trace02");
+                            kingAnim.SetBool("isWalking", false);
+                            curKingState = kingState.Spring; 
+                        }
+                    }
+                    else if (!GameManager.instance.IsDialogShow()) {
+                		//随机国王跺脚
+                		countTimer -= Time.deltaTime;
+                		if (countTimer <= 0) {
+                			curKingState = kingState.Stamping;
+                		} 
+                		else {
+                			stampTime = 1.5f;
+                			isShaked = true;
+                			curKingState = kingState.UnTracing;
+                		}
+                    }
                 }
                 KingUnTrancingMethod();
                 KingStampingMethod();
@@ -322,6 +333,7 @@ public class KingControl : MonoBehaviour
                 loseReasonText.text = "You Got Hit!";
                 if (Vector2.Distance(this.transform.position, new Vector2(32.2f, this.transform.position.y)) < 0.1f) { 
                     this.transform.position = new Vector2(32.2f, this.transform.position.y);
+                    Dialog.PrintDialog("Lv4Part2Trace01");
                     kingAnim.SetBool("isWalking", false);
                     kingAnim.SetBool("isFaceR", false);
                     isStartThrow = true;
@@ -330,7 +342,7 @@ public class KingControl : MonoBehaviour
                     this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(32.2f, this.transform.position.y), speed * Time.deltaTime);
                 }
             }
-            else {
+            else if (isStartThrow && !GameManager.instance.IsDialogShow()) {
                 throwTimer -= Time.deltaTime;
                 if (throwTimer <= 0) {
                     //扔权杖动画
@@ -445,8 +457,7 @@ public class KingControl : MonoBehaviour
 
     //跺脚
     void KingStampingMethod() {
-    	if (curKingState == kingState.Stamping) {
-    		 Debug.Log("Stamping");
+    	if (curKingState == kingState.Stamping && !GameManager.instance.IsDialogShow()) {
     		if (isShaked) {
                 kingAnim.SetBool("isWalking", false);
                 kingAnim.SetBool("isStamping",true);
@@ -544,16 +555,17 @@ public class KingControl : MonoBehaviour
     		// }
     		// else 
     		// {
-	    		if (isMovingR) {
-	    			posNum = curNum + 1;
-	    		} else {
-	    			posNum = curNum;
-	    		}
+    		if (isMovingR) {
+    			posNum = curNum + 1;
+    		} else {
+    			posNum = curNum;
+    		}
 
-	    		this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(movePos[posNum].position.x, this.transform.position.y), speed * Time.deltaTime);
-		        if (Vector2.Distance(this.transform.position, new Vector2(movePos[posNum].position.x, this.transform.position.y)) < 0.1f) {
-		        	KingTurn();
-			    }
+            kingAnim.SetBool("isWalking", true);
+    		this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(movePos[posNum].position.x, this.transform.position.y), speed * Time.deltaTime);
+	        if (Vector2.Distance(this.transform.position, new Vector2(movePos[posNum].position.x, this.transform.position.y)) < 0.1f) {
+	        	KingTurn();
+		    }
     		//}	
     	}
     }
@@ -589,6 +601,7 @@ public class KingControl : MonoBehaviour
     		if (winningCount >= s1WinTimes) {
     			sceneCount = 2;
 	    		winningCount = 0;
+                curKingState = kingState.Stop;
     		} 
     	} 
     	else if (sceneCount == 2 && GirlInGameMovement.curGirlState == GirlInGameMovement.girlState.UnHiding && winningCount >=2) {
@@ -600,9 +613,6 @@ public class KingControl : MonoBehaviour
     		sceneCount = 1;
     		curKingState = kingState.Throwing;
         }
-    	else {
-    		curKingState = kingState.UnTracing;
-    	}
     	//重置invoke
     	isInvoke = false;
     }
@@ -671,6 +681,10 @@ public class KingControl : MonoBehaviour
 
     void EndHint() {
         Hint.SetActive(true);
+    }
+
+    void playStompSound() {
+        SoundManager.playSEOne("stomp",0.7f);
     }
 
     // //追踪

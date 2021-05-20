@@ -1,13 +1,13 @@
 Level1 Start
 Nightingale: Can you hear the people cheering outside? They're saying: Comet, Comet!
-Girl: A Comet? I’ve only heard of it through books. They say it’s the most beautiful star in the world...
+Girl: A Comet? I've only heard of it through books. They say it’s the most beautiful star in the world...
 Nightingale: Can you see it through the window? What does it look like?
 Girl: The sky is blocked by trees. I could only catch a glimpse of it. 
 Girl: I know! Let me draw it for you! I just need a pen and paper.
 ---
 Level1 End
 Nightingale: Wow!
-GIRL: The books say it’s a star with a trailing tail, but I don’t know if I drew it right.
+GIRL: The books say it's a star with a trailing tail, but I don't know if I drew it right.
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
@@ -19,7 +19,7 @@ Villager1
 Cowboy: Breaking news! The king is dead.
 ---
 Villager2
-Man with Mustache: It’s over! Everything is over! The war is coming! My life is over...
+Man with Mustache: It's over! Everything is over! The war is coming! My life is over...
 ---
 Villager3
 Boy with Green Hair: Hell no...
@@ -73,11 +73,17 @@ Girl: Thank You.
 Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
-Girl: ...4
-King: It seems that a little "mouse" sneaked in. Now leave me alone with the little "mouse".
+Girl: ...4?
+King: It seems that a little "mouse" sneaked in. No one trespasses into my palace!
 ---
 Lv4Part2Trace
 King: You'd better run faster!
+---
+Lv4Part2Trace01
+King: You can't escape from me!  I will let you feel the power of my scepter!
+---
+Lv4Part2Trace02
+King: Humph! It's not going to be that easy.
 ---
 Lv5Part1
 The First Dialog

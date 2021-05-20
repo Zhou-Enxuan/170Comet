@@ -35,5 +35,25 @@ public class SaveManager : MonoBehaviour
             GameManager.instance.updateLevelData(4);
             SaveSystem.SaveGame();
         }
+        else if (SceneManager.GetActiveScene().name == "Level3OpenWindow")
+        {
+            GameManager.instance.updateLevelData(5);
+            SaveSystem.SaveGame();
+        }
+        else if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            GameManager.instance.updateLevelData(5);
+            SaveSystem.SaveGame();
+        }
+        else if (SceneManager.GetActiveScene().name == "Level4Part2")
+        {
+            GameManager.instance.updateLevelData(6);
+            SaveSystem.SaveGame();
+        }
+        else if (SceneManager.GetActiveScene().name == "Level5")
+        {
+            GameManager.instance.updateLevelData(7);
+            SaveSystem.SaveGame();
+        }
     }
 }

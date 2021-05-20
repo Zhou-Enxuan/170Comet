@@ -52,73 +52,75 @@ public class GirlOutMovement : MonoBehaviour
     {
         if (GameManager.instance.stopMoving)
         {
+            GirlAnimator.SetFloat("Speed", 0);
             rb.velocity = Vector2.zero;
             HideHint.SetActive(false);
             LeaveHint.SetActive(false);
-        }else{
-        moveH = Input.GetAxisRaw("Horizontal");
-        GirlAnimator.SetFloat("Direaction", moveH);
-        GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
-
-        //Debug.Log("speed is " + Mathf.Abs(moveH));
-        //Debug.Log("direaction is " + moveH);
-
-        if(moveH < 0){
-            GirlAnimator.SetBool("FaceR", false);
-            //Debug.Log("FaceR is " + false);
-        }else if(moveH > 0){
-            GirlAnimator.SetBool("FaceR", true);
-            //Debug.Log("FaceR is " + true);
         }
+        else {
+            moveH = Input.GetAxisRaw("Horizontal");
+            GirlAnimator.SetFloat("Direaction", moveH);
+            GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
 
-        direction = new Vector2(moveH, 0);
-        rb.velocity = direction * moveSpeed;  
+            //Debug.Log("speed is " + Mathf.Abs(moveH));
+            //Debug.Log("direaction is " + moveH);
 
-        if(isHiding && IsinHideObj){
-            HideHint.SetActive(false);
-            LeaveHint.SetActive(true);
-        }else if(!isHiding && IsinHideObj){
-            HideHint.SetActive(true);
-            LeaveHint.SetActive(false);
-        }else{
-            HideHint.SetActive(false);
-            LeaveHint.SetActive(false);
-        }
-
-        if(IsinHideObj && Input.GetKeyDown("space") && !isHiding){
-            sprite.sortingOrder = -1;
-            isHiding = true;
-        }else if(IsinHideObj && Input.GetKeyDown("space") && isHiding){
-            sprite.sortingOrder = 0;
-            isHiding = false;
-        }
-
-        if(!IsinHideObj){
-            sprite.sortingOrder = 0;
-            isHiding = false;
-        }
-
-        if(Isindoor){
-            DoorHint.SetActive(true);
-        }else{
-            DoorHint.SetActive(false);
-        }
-
-        if(Isinhat && Input.GetKeyDown("space")){
-            Hat.SetActive(false);
-            isPickHat = true;
-            GirlAnimator.SetBool("IsPickHat", true);
-            //GirlAnimator.SetTrigger("PickTrigger");
-        }
-
-        if(Isindoor && Input.GetKeyDown("space")){
-            if (isPickHat) {
-                LevelLoader.instance.LoadLevel("Level4P2TL1");
+            if(moveH < 0){
+                GirlAnimator.SetBool("FaceR", false);
+                //Debug.Log("FaceR is " + false);
+            }else if(moveH > 0){
+                GirlAnimator.SetBool("FaceR", true);
+                //Debug.Log("FaceR is " + true);
             }
-            else {
-                LevelLoader.instance.LoadLevel("Level4P2TL2");
+
+            direction = new Vector2(moveH, 0);
+            rb.velocity = direction * moveSpeed;  
+
+            if(isHiding && IsinHideObj){
+                HideHint.SetActive(false);
+                LeaveHint.SetActive(true);
+            }else if(!isHiding && IsinHideObj){
+                HideHint.SetActive(true);
+                LeaveHint.SetActive(false);
+            }else{
+                HideHint.SetActive(false);
+                LeaveHint.SetActive(false);
             }
-        }
+
+            if(IsinHideObj && Input.GetKeyDown("space") && !isHiding){
+                sprite.sortingOrder = -1;
+                isHiding = true;
+            }else if(IsinHideObj && Input.GetKeyDown("space") && isHiding){
+                sprite.sortingOrder = 0;
+                isHiding = false;
+            }
+
+            if(!IsinHideObj){
+                sprite.sortingOrder = 0;
+                isHiding = false;
+            }
+
+            if(Isindoor){
+                DoorHint.SetActive(true);
+            }else{
+                DoorHint.SetActive(false);
+            }
+
+            if(Isinhat && Input.GetKeyDown("space")){
+                Hat.SetActive(false);
+                isPickHat = true;
+                GirlAnimator.SetBool("IsPickHat", true);
+                //GirlAnimator.SetTrigger("PickTrigger");
+            }
+
+            if(Isindoor && Input.GetKeyDown("space")){
+                if (isPickHat) {
+                    LevelLoader.instance.LoadLevel("Level4P2TL1");
+                }
+                else {
+                    LevelLoader.instance.LoadLevel("Level4P2TL2");
+                }
+            }
         }
         
 

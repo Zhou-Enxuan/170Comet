@@ -20,7 +20,6 @@ public static class SaveSystem
     public static PlayerData LoadGame()
     {
         string path = Application.persistentDataPath + "/game.fun";
-
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

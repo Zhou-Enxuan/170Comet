@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        SoundManager.PlayTMBgm();
+        SoundManager.playBgm(0);
         if(GameManager.instance.playedLevel > 0)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
@@ -141,6 +141,14 @@ public class MainMenu : MonoBehaviour
         {
             LevelLoader.instance.LoadLevel("Level2SummerRoom");
         }
+        else if(currentLevelPage == 5)
+        {
+            LevelLoader.instance.LoadLevel("Level3OpenWindow");
+        }
+        else if(currentLevelPage == 7)
+        {
+            LevelLoader.instance.LoadLevel("Level4Part2");
+        }
     }
 
     public void rightStart()
@@ -157,6 +165,14 @@ public class MainMenu : MonoBehaviour
         else if (currentLevelPage == 3)
         {
             LevelLoader.instance.LoadLevel("Level2Fall");
+        }
+        else if(currentLevelPage == 5)
+        {
+            LevelLoader.instance.LoadLevel("Level4");
+        }
+        else if(currentLevelPage == 7)
+        {
+            LevelLoader.instance.LoadLevel("Level5");
         }
     }
 
@@ -182,7 +198,16 @@ public class MainMenu : MonoBehaviour
             Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 2 Part 2";
             Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 2 Part 3";
         }
-
+        else if(currentLevelPage == 5)
+        {
+            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 3";
+            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 4 Part 1";
+        }
+        else if(currentLevelPage == 7)
+        {
+            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 4 Part 2";
+            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 5";
+        }
         if(currentLevelPage > GameManager.instance.playedLevel)
         {
             Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Credit";
