@@ -70,6 +70,11 @@ Girl: Where is him now?
 Man: Maybe in Palace.
 Girl: Thank You.
 ---
+Lv4Part1
+Girl:.............
+Villager:............
+Soldier:............
+---
 Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3

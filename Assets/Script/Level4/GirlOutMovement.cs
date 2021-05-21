@@ -45,6 +45,7 @@ public class GirlOutMovement : MonoBehaviour
         HideHint.SetActive(false);
         LeaveHint.SetActive(false);
         DoorHint.SetActive(false);
+        Dialog.PrintDialog("Lv4Part1");
     }
 
 
