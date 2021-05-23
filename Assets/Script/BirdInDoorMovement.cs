@@ -50,7 +50,7 @@ public class BirdInDoorMovement : MonoBehaviour
 
             if (Numdirection == 0)
             {
-                SWAnimation();
+                NDAnimation();
             }
             else if (Numdirection == 1)
             {
@@ -62,7 +62,7 @@ public class BirdInDoorMovement : MonoBehaviour
             }
             else if (Numdirection == 3)
             {
-                NDAnimation();
+                SWAnimation();
             }
             else if (Numdirection == 4)
             {
@@ -107,7 +107,7 @@ public class BirdInDoorMovement : MonoBehaviour
                 if (direction.y == -1 && direction.x == -1)
                 {
                     SWAnimation();
-                    Numdirection = 0;
+                    Numdirection = 3;
                 }
 
                 if (direction.y == -1 && direction.x == 1)
@@ -134,7 +134,7 @@ public class BirdInDoorMovement : MonoBehaviour
                 if (direction.y == 1)
                 {
                     NDAnimation();
-                    Numdirection = 3;
+                    Numdirection = 0;
                 }
 
 
@@ -146,13 +146,13 @@ public class BirdInDoorMovement : MonoBehaviour
 
                 if(direction.y == 0 && direction.x == 0){
                     if(Numdirection == 0){
-                        SWAnimation();
+                        NDAnimation();
                     }else if(Numdirection == 1){
                         NWDAnimation();
                     }else if(Numdirection == 2){
                         WAnimation();
                     }else if(Numdirection == 3){
-                        NDAnimation();
+                        SWAnimation();
                     }else if(Numdirection == 4){
                         SDAnimation();
                     }else if(Numdirection == 5){

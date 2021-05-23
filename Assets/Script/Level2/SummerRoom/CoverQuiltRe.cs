@@ -21,7 +21,8 @@ public class CoverQuiltRe : MonoBehaviour
     void Start()
     {
         //Player.GetComponent<QuiltCaller>().enabled = false;
-        Player.SetActive(false);
+        // Player.SetActive(false);
+        Player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
         Anim.enabled = true;
         OnQuiltMovement += CoveringQuilt;
     }
@@ -72,8 +73,8 @@ public class CoverQuiltRe : MonoBehaviour
         Anim.SetBool("End", true);
         KeyHint.SetActive(false);
         //Player.GetComponent<QuiltCaller>().enabled = true;
-        //Player.transform.position = new Vector2(-3.7f, 0.1f);
-        Player.SetActive(true);
+        // Player.transform.position = new Vector2(-3.7f, 0.1f);
+        // Player.SetActive(true);
         
         OnQuiltMovement -= CoveringQuilt;
     }

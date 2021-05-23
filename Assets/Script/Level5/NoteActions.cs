@@ -38,7 +38,7 @@ public class NoteActions : MonoBehaviour
         }
 
         //按空格得分--音符消失--音效
-        if (transform.position.x < (Button.transform.position.x + rt.rect.width/2) && transform.position.x > (Button.transform.position.x - rt.rect.width/2))
+        if (transform.position.x < (Button.transform.position.x + rt.rect.width) && transform.position.x > (Button.transform.position.x - rt.rect.width))
         {
             if(Input.GetKeyDown("space"))
             {
