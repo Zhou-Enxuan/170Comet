@@ -96,6 +96,14 @@ public class RhythmController : MonoBehaviour
                 StartCoroutine(WaitanimDone());
             }
         }
+
+        if (IsFailed)
+        {
+            Rhythm1.SetActive(false);
+            Rhythm2.SetActive(false);
+            Rhythm3.SetActive(false);
+            Rhythm4.SetActive(false);
+        }
     }
 
     IEnumerator WaitanimDone()
