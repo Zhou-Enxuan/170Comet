@@ -90,6 +90,9 @@ King: You can't escape from me!  I will let you feel the power of my scepter!
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
 ---
+Lv5Start
+Start
+---
 Lv5Part1
 The First Dialog
 ---

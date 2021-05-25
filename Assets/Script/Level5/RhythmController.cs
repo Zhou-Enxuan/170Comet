@@ -24,11 +24,11 @@ public class RhythmController : MonoBehaviour
 
     void Start()
     {
-        Rhythm1.SetActive(true);
+        //Rhythm1.SetActive(true);
         Fail.SetActive(false);
         Hint.SetActive(false);
         IsFailed = false;
-        KeyHint.SetActive(true);
+        // KeyHint.SetActive(false);
     }
 
     void Update()
