@@ -10,20 +10,22 @@ public class GirlHiking : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject Bird;
     [SerializeField] float Speed;
-    [SerializeField] private Transform Dia1, Dia2, Dia3, Dia4;
+    [SerializeField] private Transform StartPoint, Dia1, Dia2, Dia3, Dia4;
     [SerializeField] private Animator SkyAnim, MountainAnim;
-    private float point1, point2, point3, point4;
+    private float start, point1, point2, point3, point4;
     private Animator Anim;
     private bool IsMoving;
     private int order;
-    private GameObject Rhythm2, Rhythm3, Rhythm4;
+    private GameObject Rhythm1, Rhythm2, Rhythm3, Rhythm4;
     private GameObject Fail;
     private GameObject Continue;
     [SerializeField] AudioSource FailSound;
+    private GameObject KeyHint;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        start = StartPoint.position.x;
         point1 = Dia1.position.x;
         point2 = Dia2.position.x;
         point3 = Dia3.position.x;
@@ -31,22 +33,26 @@ public class GirlHiking : MonoBehaviour
         Anim = GetComponent<Animator>();
         IsMoving = true;
         Bird = GameObject.Find("Player2");
+        Rhythm1 = GameObject.Find("Rhythm1");
         Rhythm2 = GameObject.Find("Rhythm2");
         Rhythm3 = GameObject.Find("Rhythm3");
         Rhythm4 = GameObject.Find("Rhythm4");
         Fail = GameObject.Find("Fail");
         Continue = GameObject.Find("Continue");//临时
+        KeyHint = GameObject.Find("KeyHint");
     }
 
     void Start()
     {
         SoundManager.playBgm(8);
         OnHiking += Hiking;
-        order = 1;
+        order = 0;
+        Rhythm1.SetActive(false);
         Rhythm2.SetActive(false);
         Rhythm3.SetActive(false);
         Rhythm4.SetActive(false);
         Continue.SetActive(false);//临时
+        KeyHint.SetActive(false);
     }
 
     void Update()
@@ -72,7 +78,7 @@ public class GirlHiking : MonoBehaviour
             }
             else
             {
-                if (transform.position.x > point1 || transform.position.x > point2 || transform.position.x > point3 || transform.position.x > point4)
+                if (transform.position.x > start || transform.position.x > point1 || transform.position.x > point2 || transform.position.x > point3 || transform.position.x > point4)
                 {
                     //sky停止变色
                     SkyAnim.enabled = false;
@@ -97,8 +103,21 @@ public class GirlHiking : MonoBehaviour
 
     private void GirlStop()
     {
-        Anim.SetTrigger("Stop");
-        if (transform.position.x > point1)
+        if (transform.position.x <= start)
+        {
+            Anim.SetTrigger("Stop");
+        }else{
+            Anim.SetTrigger("Ready");
+        }
+        
+        if (transform.position.x > start)
+        {
+            start = 50f;
+            Dialog.PrintDialog("Lv5Start");
+            order = 0;
+            StartCoroutine(CheckDialogueDone());
+        }
+        else if (transform.position.x > point1)
         {
             point1 = 50f;
             Dialog.PrintDialog("Lv5Part1");
@@ -132,12 +151,19 @@ public class GirlHiking : MonoBehaviour
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
         Anim.SetTrigger("Move");
         IsMoving = true;
-        if (order == 1)
+        if (order == 0){
+            Rhythm1.SetActive(true);
+            KeyHint.SetActive(true);
+        }
+        else if (order == 1){
             Rhythm2.SetActive(true);
-        else if (order == 2)
+        }
+        else if (order == 2){
             Rhythm3.SetActive(true);
-        else if (order == 3)
+        }
+        else if (order == 3){
             Rhythm4.SetActive(true);
+        }
     }
 
     IEnumerator CheckSceneDone()
