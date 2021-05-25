@@ -9,16 +9,19 @@ public class GreenNpcMovement : MonoBehaviour
     private Animator GAnimator;
     public GameObject talkHint;
     public GameObject ClimbHint;
+    public GameObject Girl1;
     public Transform groundDe;
     public Transform girlDe;
     private bool moveingRight = true;
     private float timer = 0.0f;
     public float waitingTime = 0.2f;
     public bool ismoving = true;
-    private bool istouchingNPC = false;
     bool isDiaActive = false;
+    bool isDiaNeed = false;
+    public bool Istalk = false;
     public Animator PAnimator;
     private bool takeTrigger = false;
+    
 
     private void Start(){
         GAnimator = GetComponent<Animator>();
@@ -38,9 +41,17 @@ public class GreenNpcMovement : MonoBehaviour
             PAnimator.SetBool("TakeTrigger", true);
             StartCoroutine(WaitAnimDoneB());   
         }
+        
+        if(Istalk){
+            Debug.Log("talk");
+        }else{
+            
+        }
 
         if(ismoving && !isDiaActive){
             move();
+        }else if(Istalk){
+            MovetoTalk();
         }else{
             stop();
         }
@@ -81,18 +92,16 @@ public class GreenNpcMovement : MonoBehaviour
         
             
 
-        if(istouchingNPC && !isDiaActive){
-            if (Input.GetKeyDown(KeyCode.Space)){
-                isDiaActive = true;
-                talkHint.SetActive(false);
-                Dialog.PrintDialog("Lv3Part2");
-                GameManager.instance.stopMoving = true;
-                GAnimator.SetBool("DialogFlag", true);
-                PAnimator.SetBool("GiveTrigger", true);
-                StartCoroutine(WaitAnimDone());
-            }
+        if(Istalk && !isDiaActive && !isDiaNeed){
+            Debug.Log("in obj");
+            isDiaActive = true;
+            isDiaNeed = true;
+            talkHint.SetActive(false);
+            Dialog.PrintDialog("Lv3Part2");
+            GameManager.instance.stopMoving = true;
+            PAnimator.SetBool("GiveTrigger", true);
+            StartCoroutine(WaitAnimDone());
         }
-
     }
 
 
@@ -106,8 +115,20 @@ public class GreenNpcMovement : MonoBehaviour
         GAnimator.SetBool("DialogFlag", true);
     }
 
+    void MovetoTalk(){
+        Debug.Log("movetotalk");
+        if(transform.position.x <= 20.5f){
+            transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
+            GAnimator.SetBool("DialogFlag", true);
+            Debug.Log("stop");
+        }else{
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+    }
+
     IEnumerator WaitAnimDone(){
         yield return new WaitWhile(() => PAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
+        //transform.Translate(Vector2.left * speed * Time.deltaTime);
         PAnimator.SetBool("GiveTrigger", false);
         takeTrigger = true;
     }
@@ -115,25 +136,9 @@ public class GreenNpcMovement : MonoBehaviour
     IEnumerator WaitAnimDoneB(){
         yield return new WaitWhile(() => PAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1);
         PAnimator.SetBool("TakeTrigger", false);
+        GAnimator.SetBool("DialogFlag", false);
+        isDiaActive = false;
         takeTrigger = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            talkHint.SetActive(true);
-            istouchingNPC = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            talkHint.SetActive(false);
-            istouchingNPC = false;
-        }
     }
 
 }
