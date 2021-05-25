@@ -11,7 +11,7 @@ GIRL: The books say it's a star with a trailing tail, but I don't know if I drew
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
-Man with Mustache: Did you see? Those amazing stars dragged their long tails cross the sky.
+Man with Mustache: Did you see? Those amazing stars dragged their long tails across the sky.
 Boy with Green Hair: They were truly beautiful. We were lucky to see them!
 Man with Mustache: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
 ---
@@ -22,7 +22,7 @@ Villager2
 Man with Mustache: It's over! Everything is over! The war is coming! My life is over...
 ---
 Villager3
-Boy with Green Hair: Hell no...
+Boy with Green Hair: This can't be real...
 ---
 Lv2P1StandUp
 Man with Mustache: What a beautiful song! Thank you, now I feel much better.
@@ -59,15 +59,15 @@ Nightingale: If I could make a telescope for her as a gift...
 Nightingale: She would be very happy. 
 ---
 Lv2FallRoom
-Nightingale: I should be in a hurry to get a second piece of glass.
+Nightingale: I need to go get a second piece of glass.
 ---
 Lv3Part2
-Girl: Did you see a little bird with a piece of glasses? He is missing.
-Man: I did not remember...
-Man: Did you mean the one that got caught last night?
-Man: I heard he was stealing at another side of wall.
-Girl: Where is him now?
-Man: Maybe in Palace.
+Girl: Have you seen a little bird carrying a piece of glass like this one? I think he’s gone missing.
+Woman: I don’t remember seeing him…
+Woman: Could he be the one that got caught last night?
+Woman: I heard he was caught stealing on the other side of the wall.
+Girl: Where is he now?
+Woman: Maybe in the palace?
 Girl: Thank You.
 ---
 Lv4Part1
@@ -79,13 +79,13 @@ Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
 Girl: ...4?
-King: It seems that a little "mouse" sneaked in. No one trespasses into my palace!
+King: It seems like a little “mouse” has crawled into my palace. No matter the reason, trespassing will not be forgiven!
 ---
 Lv4Part2Trace
-King: You'd better run faster!
+King: You better run fast!
 ---
 Lv4Part2Trace01
-King: You can't escape from me!  I will let you feel the power of my scepter!
+King: You cannot escape me! With the power of my scepter, I shall reign over all!
 ---
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
@@ -109,10 +109,10 @@ Lv4P2TL101
 Soldier: Hey! You must be new here.
 ---
 Lv4P2TL102
-Soldier: Keep up with us, the king is going to parade soldiers himself. 
+Soldier: Get in line, the king is summoning us to his court.
 ---
 Lv4P2TL103
-Soldier: He won't tolerate a single mistake!
+Soldier: Mistakes will not be tolerated!
 ---
 Lv4P2TL201
 Soldier: How did you get in here?
