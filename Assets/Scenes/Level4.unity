@@ -156,11 +156,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -17.583174, y: 2.8231258}
-  - {x: -17.482994, y: -5.121849}
-  - {x: 22.339157, y: -5.121849}
+  - {x: -10.5581045, y: 2.7635756}
+  - {x: -10.517461, y: -6.0746603}
+  - {x: 22.10102, y: -5.955558}
   - {x: 22.315813, y: 2.7617333}
-  - {x: -17.556593, y: 2.7896419}
+  - {x: -10.471991, y: 2.7300887}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2267,7 +2267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626880363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -1}
+  m_LocalPosition: {x: 10.35, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2285,7 +2285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec20c988b20728748a424ee8e6ac86a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_min: 0
+  x_min: 5.2
   x_max: 18.3
   y_min: 0
   y_max: 0
@@ -2857,6 +2857,11 @@ PrefabInstance:
       propertyPath: Hat
       value: 
       objectReference: {fileID: 2117370777}
+    - target: {fileID: 7207442399097524546, guid: 3702b2c6b6f88264a8b3f58161c7208f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8601385365548598554, guid: 3702b2c6b6f88264a8b3f58161c7208f,
         type: 3}
       propertyPath: m_RootOrder

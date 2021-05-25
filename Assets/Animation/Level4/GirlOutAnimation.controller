@@ -481,7 +481,7 @@ AnimatorStateMachine:
     m_Position: {x: 1880, y: -1190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3831195363351669405}
-    m_Position: {x: 2160, y: -1160, z: 0}
+    m_Position: {x: 1570, y: -1560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6137763252855971061}
     m_Position: {x: -9673.469, y: -3675.6523, z: 0}
@@ -629,9 +629,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0.01
   - m_ConditionMode: 2
     m_ConditionEvent: GiveTrigger
     m_EventTreshold: 0
@@ -1422,14 +1419,14 @@ AnimatorState:
   m_PrefabAsset: {fileID: 0}
   m_Name: Girlgiveglass
   m_Speed: 1
-  m_CycleOffset: 0
+  m_CycleOffset: 1
   m_Transitions:
   - {fileID: -4793474971614333100}
   - {fileID: 4261358995348550918}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
+  m_WriteDefaultValues: 0
   m_Mirror: 0
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
@@ -1439,8 +1436,8 @@ AnimatorState:
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_CycleOffsetParameter: Speed
+  m_TimeParameter: Speed
 --- !u!1101 &3883420954309215052
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1506,9 +1503,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 4
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0.01
   - m_ConditionMode: 2
     m_ConditionEvent: GiveTrigger
     m_EventTreshold: 0

@@ -11,8 +11,10 @@ public class GirlMovement2 : MonoBehaviour
     private Animator GirlAnimator;
     private bool isnearWall;
     public GameObject ClimbHint;
+    public GameObject NPC;
     private bool FaceR;
     public bool passWall = false;
+    public bool isTalk = false;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
@@ -31,24 +33,24 @@ public class GirlMovement2 : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }else{
-        moveH = Input.GetAxisRaw("Horizontal");
-        GirlAnimator.SetFloat("Direaction", moveH);
-        GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
+            moveH = Input.GetAxisRaw("Horizontal");
+            GirlAnimator.SetFloat("Direaction", moveH);
+            GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
 
-        //Debug.Log("speed is " + Mathf.Abs(moveH));
-        //Debug.Log("direaction is " + moveH);
+            //Debug.Log("speed is " + Mathf.Abs(moveH));
+            //Debug.Log("direaction is " + moveH);
 
-        if(moveH < 0){
-            GirlAnimator.SetBool("FaceR", false);
-            //Debug.Log("FaceR is " + false);
-            FaceR = false;
-        }else if(moveH > 0){
-            GirlAnimator.SetBool("FaceR", true);
-            //Debug.Log("FaceR is " + true);
-            FaceR = true;
-        }
-        direction = new Vector2(moveH, 0);
-        rb.velocity = direction * moveSpeed;
+            if(moveH < 0){
+                GirlAnimator.SetBool("FaceR", false);
+                //Debug.Log("FaceR is " + false);
+                FaceR = false;
+            }else if(moveH > 0){
+                GirlAnimator.SetBool("FaceR", true);
+                //Debug.Log("FaceR is " + true);
+                FaceR = true;
+            }
+            direction = new Vector2(moveH, 0);
+            rb.velocity = direction * moveSpeed;
         }
 
         if(isnearWall && !passWall){
@@ -58,7 +60,6 @@ public class GirlMovement2 : MonoBehaviour
                 StartCoroutine(WaitAnimDone());
                 passWall = true;
             }
-
         }else{
             ClimbHint.SetActive(false);
         }
@@ -77,6 +78,7 @@ public class GirlMovement2 : MonoBehaviour
             isnearWall = true;
             Debug.Log("Wall");
         }
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -92,6 +94,11 @@ public class GirlMovement2 : MonoBehaviour
         if (collision.gameObject.name == "Boundery")
         {
             LevelLoader.instance.LoadLevel("Level4");
+        }else if (collision.gameObject.name == "TalkObj")
+        {
+            NPC.GetComponent<GreenNpcMovement>().Istalk = true;
+            Debug.Log("Talk");
         }
     }
+
 }
