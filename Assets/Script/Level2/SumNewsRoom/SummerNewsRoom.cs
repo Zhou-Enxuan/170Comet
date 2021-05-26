@@ -42,6 +42,7 @@ public class SummerNewsRoom : MonoBehaviour
 	        	isDiaActive = true;
 				GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 				GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
+				StartCoroutine(CheckDialogDone());
 		    }
 	    }
 	}
@@ -51,4 +52,12 @@ public class SummerNewsRoom : MonoBehaviour
 			Hint.SetActive(false);
 		}
 	}
+
+    IEnumerator CheckDialogDone()
+    {
+        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+        GameManager.instance.stopMoving = false;
+        LevelLoader.instance.LoadLevel("Level2Fall");
+
+    }
 }
