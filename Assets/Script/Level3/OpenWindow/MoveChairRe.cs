@@ -19,6 +19,7 @@ public class MoveChairRe : MonoBehaviour
     public bool touchChair;
     private GameObject SpaceHint;
     private bool collideChair;
+    private GameObject Table;
 
     void Awake() {
         Hint = GameObject.Find("Hint");
@@ -28,6 +29,7 @@ public class MoveChairRe : MonoBehaviour
         GirlAnim = Girl.GetComponent<Animator>();
         Window = GameObject.Find("Window");
         SpaceHint = GameObject.Find("SpaceHint");
+        Table = GameObject.Find("Table");
     }
 
     void Start()
@@ -87,8 +89,8 @@ public class MoveChairRe : MonoBehaviour
                 Chair.transform.position = new Vector2(1.45f, 1.0f);
             else if (Chair.GetComponent<Renderer>().bounds.Intersects(GameObject.Find("Bed").GetComponent<Renderer>().bounds))
                 Chair.transform.position = gameObject.transform.position;
-            // else if (other.name != "RoomEdge")
-                // Chair.transform.position = gameObject.transform.position;
+            else if (Chair.GetComponent<Renderer>().bounds.Intersects(Table.GetComponent<Renderer>().bounds))
+                Chair.transform.position = gameObject.transform.position;
             else
                 Chair.transform.position = this.gameObject.transform.position + new Vector3(H * 0.8f, V * 0.8f - 0.5f, 0f);
             

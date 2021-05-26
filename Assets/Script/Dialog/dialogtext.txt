@@ -54,8 +54,10 @@ Man with Mustache: Soldiers are coming. Let's get out of here!
 GreenSoldierTalk
 Soldier: It's not safe here. Stay away!
 ---
-Lv2FallStart
+Lv2FallStart1
 Nightingale: If I could make a telescope for her as a gift...
+---
+Lv2FallStart2
 Nightingale: She would be very happy. 
 ---
 Lv2FallRoom
