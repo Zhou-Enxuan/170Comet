@@ -39,14 +39,9 @@ public class GreenNpcMovement : MonoBehaviour
 
         if(takeTrigger && !GameManager.instance.IsDialogShow()){
             PAnimator.SetBool("TakeTrigger", true);
-            StartCoroutine(WaitAnimDoneB());   
+            StartCoroutine(WaitAnimDoneB());
         }
-        
-        if(Istalk){
-            Debug.Log("talk");
-        }else{
-            
-        }
+    
 
         if(ismoving && !isDiaActive){
             move();
