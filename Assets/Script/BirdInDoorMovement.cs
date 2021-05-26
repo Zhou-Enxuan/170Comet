@@ -22,6 +22,7 @@ public class BirdInDoorMovement : MonoBehaviour
 
     private void Start()
     {
+        Numdirection = 3;
         currentState = BirdsState.STATIC;
         if(SceneManager.GetActiveScene().name == "Level2SumWinRoom" && GameManager.instance.islv2SummerNewsEnd)
         {

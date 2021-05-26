@@ -17,8 +17,11 @@ public class PaletteControllerRe : MonoBehaviour
     private GameObject paper;
     private GameObject pen;
     private GameObject pen_paper;
-    private GameObject board;
-    private Animator boardAnim;
+    private GameObject board1;
+    private GameObject board2;
+    private GameObject board3;
+    private GameObject board4;
+    private GameObject board5;
     private GameObject LeaveTip;
     private Collider2D currentCollider;
     private int currentBoard = 0;
@@ -38,9 +41,12 @@ public class PaletteControllerRe : MonoBehaviour
         paper = GameObject.Find("BubblePaper");
         Rpen = GameObject.Find("Pen");
         Rpaper = GameObject.Find("Paper");
-        board = GameObject.Find("palette1");
+        board1 = GameObject.Find("board1");
+        board2 = GameObject.Find("board2");
+        board3 = GameObject.Find("board3");
+        board4 = GameObject.Find("board4");
+        board5 = GameObject.Find("board5");
         LeaveTip = GameObject.Find("LeaveTip");
-        boardAnim = board.GetComponent<Animator>();
         drawingSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_DrawingSound");
         penSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PenSound");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
@@ -55,7 +61,11 @@ public class PaletteControllerRe : MonoBehaviour
         pen_paper.SetActive(false);
         paper.SetActive(false);
         pen.SetActive(false);
-        board.SetActive(false);
+        board1.SetActive(false);
+        board2.SetActive(false);
+        board3.SetActive(false);
+        board4.SetActive(false);
+        board5.SetActive(false);
         PickUpHint.SetActive(false);
         audioSources = this.gameObject.GetComponents<AudioSource>();
     }
@@ -181,28 +191,100 @@ public class PaletteControllerRe : MonoBehaviour
 
     private void startDrawing()
     {
-        board.SetActive(true);
         GameManager.instance.stopMoving = true;
-        if (Input.GetKeyDown(KeyCode.Space) && boardAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        if (currentBoard == 0)
         {
-            boardAnim.SetInteger("current", ++currentBoard);
-            if (currentBoard > 4)
+            board1.SetActive(true);
+            PickUpHint.SetActive(false);
+            if (board1.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
             {
-                GameManager.instance.stopMoving = false;
-                OnCommand -= startDrawing;
-                PickUpHint.SetActive(false);
-                StartCoroutine(WaitanimDone());
-            }
-            else
-            {
-                audioSources[0].PlayOneShot(drawingSound, 0.3f);
+                PickUpHint.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PickUpHint.SetActive(false);
+                    audioSources[0].PlayOneShot(drawingSound, 0.3f);
+                    ++currentBoard;
+                }
             }
         }
+        else if (currentBoard == 1)
+        {
+            board2.SetActive(true);
+            PickUpHint.SetActive(false);
+            if (board2.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                PickUpHint.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PickUpHint.SetActive(false);
+                    audioSources[0].PlayOneShot(drawingSound, 0.3f);
+                    ++currentBoard;
+                }
+            }
+        }
+        else if (currentBoard == 2)
+        {
+            board3.SetActive(true);
+            PickUpHint.SetActive(false);
+            if (board3.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                PickUpHint.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PickUpHint.SetActive(false);
+                    audioSources[0].PlayOneShot(drawingSound, 0.3f);
+                    ++currentBoard;
+                }
+            }
+        }
+        else if (currentBoard == 3)
+        {
+            board4.SetActive(true);
+            PickUpHint.SetActive(false);
+            if (board4.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                PickUpHint.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PickUpHint.SetActive(false);
+                    audioSources[0].PlayOneShot(drawingSound, 0.3f);
+                    ++currentBoard;
+                }
+            }
+        }
+        else if (currentBoard == 4)
+        {
+            board5.SetActive(true);
+            PickUpHint.SetActive(false);
+            if (board5.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                PickUpHint.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    PickUpHint.SetActive(false);
+                    ++currentBoard;
+                }
+            }
+        }
+        else if (currentBoard > 4)
+        {
+            board1.SetActive(false);
+            board2.SetActive(false);
+            board3.SetActive(false);
+            board4.SetActive(false);
+            board5.GetComponent<Animator>().SetTrigger("End");
+            // GameManager.instance.stopMoving = false;
+            OnCommand -= startDrawing;
+            // PickUpHint.SetActive(false);
+            StartCoroutine(WaitanimDone());
+        }
+        
     }
 
     IEnumerator WaitanimDone()
     {
         yield return new WaitForSeconds(1f);
+        board5.SetActive(false);
         GameManager.instance.stopMoving = false;
         SceondDialog();
     }
