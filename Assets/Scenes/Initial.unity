@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66e137ea393348259549ce9ae28ed3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSceneName: Level3ClimbWall
+  StartSceneName: Menu
 --- !u!4 &865190517
 Transform:
   m_ObjectHideFlags: 0
