@@ -122,3 +122,21 @@ Soldier: How did you get in here?
 Lv4P2TL202
 Soldier: This is no place for a kid. Get out of here!
 ---
+GirlKingTL01
+King: Take off your hat!
+---
+GirlKingTL02
+King: Why are you here?
+---
+GirlKingTL03
+Girl: You took my friend!
+---
+GirlKingTL04
+Girl: This?
+---
+GirlKingTL05
+Girl: Let it go!
+---
+GirlKingTL06
+Girl: Hahaha... Your friend will stay here and sing to me forever.
+---
