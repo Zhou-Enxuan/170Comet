@@ -21,21 +21,21 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: c983094140cb34add81fb1d02205c2b2, type: 3}
-    - time: 0.125
+    - time: 0.2
       value: {fileID: 21300000, guid: 7f522d272967e40ddbaa33a626c15dc1, type: 3}
-    - time: 0.25
+    - time: 0.4
       value: {fileID: 21300000, guid: 6006b2fe127e44aa7b733607aa4fa7f8, type: 3}
-    - time: 0.375
+    - time: 0.6
       value: {fileID: 21300000, guid: 40baa68a05f4246b69fee6262b5e3d42, type: 3}
-    - time: 0.5
+    - time: 0.8
       value: {fileID: 21300000, guid: 7698f9b0be61643efabd687dfc0640a4, type: 3}
-    - time: 0.625
+    - time: 1
       value: {fileID: 21300000, guid: 0856252f01e334c89936f971c3a38fef, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 8
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -61,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75
+    m_StopTime: 1.2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,14 +81,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.8
     functionName: StandUpChangeSize
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.625
+  - time: 1
     functionName: StandedUp
     data: 
     objectReferenceParameter: {fileID: 0}

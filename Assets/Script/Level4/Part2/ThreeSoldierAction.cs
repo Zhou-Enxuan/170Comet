@@ -11,30 +11,38 @@ public class ThreeSoldierAction : MonoBehaviour
     private GameObject Drawing;
     private GameObject Girl;
 
+    //public static bool IsArrived;
+    public Transform EndPoint;
+    private float EndpointX;
 
     void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
         pointX = point.position.x;
         Drawing = GameObject.Find("Drawing");
-        Girl = GameObject.Find("PlayerGirl");
+        Girl = GameObject.Find("Player");
+        EndpointX = EndPoint.position.x;
     }
 
     void Start()
     {
+        //IsArrived = false;
         Destroy(point.gameObject);
         GetComponent<Animator>().SetBool("isWalking", true);
     }
 
     void Update()
     {
+        if (GameObject.Find("Soldier").GetComponent<Transform>().position.x >= EndpointX) {
+            GirlAction.IsArrived = true;
+        }
         Movement();
     }
 
     private void Movement()
     {
         // 画睁眼 - 不动敬礼
-        if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier || Girl.GetComponent<GirlAction>().IsArrived)
+        if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier || GirlAction.IsArrived)
         {
             rb.velocity = Vector2.zero;
             GetComponent<Animator>().SetBool("isWalking", false);
@@ -47,4 +55,8 @@ public class ThreeSoldierAction : MonoBehaviour
             GetComponent<Animator>().SetBool("isWalking", true);
         }
     }
+
+    // public void Actived() {
+    //     GameObject.Find("G_Soliders").SetActive(false);
+    // }
 }

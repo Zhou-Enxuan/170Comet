@@ -16,7 +16,7 @@ public class DrawingTrigger : MonoBehaviour
         num = Random.Range(0f, 4.2f);
         Soldier = GameObject.Find("Soldier");
         Hint = GameObject.Find("Hint");
-        Girl = GameObject.Find("PlayerGirl");
+        Girl = GameObject.Find("Player");
     }
 
     void Start()
@@ -27,7 +27,7 @@ public class DrawingTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Girl.GetComponent<GirlAction>().IsArrived)
+        if (GirlAction.IsArrived)
         {
             Anim.enabled = false;
             GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level4/HuangGongbg/paint00");

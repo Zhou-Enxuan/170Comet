@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class GirlAction : MonoBehaviour
@@ -13,32 +14,38 @@ public class GirlAction : MonoBehaviour
     private bool IsMoving;
     private GameObject Drawing;
     public bool IsCollidingSoldier;
-    public Transform EndPoint;
-    private float pointX;
-    public bool IsArrived;
+    //public Transform EndPoint;
+    //private float pointX;
+    public static bool IsArrived = false;
 
     public GameObject failUI;
     public GameObject restartHint;
     private bool isEnd;
     private bool Restart;
+    public GameObject gsoldier;
+    public static GameObject girlKingTimeLine;
 
     private void Awake()
     {
-
         SoundManager.playBgm(6);
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         Anim = GetComponent<Animator>();
         Hint = GameObject.Find("Hint");
         Drawing = GameObject.Find("Drawing");
-        pointX = EndPoint.position.x;
+        //pointX = EndPoint.position.x;
+        girlKingTimeLine = GameObject.Find("GirlKingTL");
+
     }
 
     void Start()
     {
+        TimelineGameManager.GetDirector(girlKingTimeLine.GetComponent<PlayableDirector>());
+        girlKingTimeLine.SetActive(false);
+        gsoldier.SetActive(false);
         IsMoving = true;
         IsCollidingSoldier = false;
-        Destroy(EndPoint.gameObject);
+        //Destroy(EndPoint.gameObject);
         IsArrived = false;
         failUI.SetActive(false);
         restartHint.SetActive(false);
@@ -56,6 +63,18 @@ public class GirlAction : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+            if (IsArrived && !GameManager.instance.IsDialogShow() && !girlKingTimeLine.activeSelf){
+                TimelineGameManager.isTimeline = true;
+                Destroy(GameObject.Find("G_Soliders"));
+                Anim.SetBool("isWalking",false);
+                gsoldier.SetActive(true);
+                girlKingTimeLine.SetActive(true);
+            }
+                
+            if(girlKingTimeLine.GetComponent<PlayableDirector>().enabled == false){
+                    LevelLoader.instance.LoadLevel("Level4P2TL3");
+            }
+
             if (Restart)
                 FailScreen("Level4Part2");
         }
@@ -70,14 +89,13 @@ public class GirlAction : MonoBehaviour
     private void GirlMovement()
     {
         // 到终点
-        if (transform.position.x > pointX)
+        if (IsArrived)
         {
-            //transform.localScale = new Vector3();
             IsCollidingSoldier = true;
             IsMoving = false;
-            IsArrived = true;
             Dialog.PrintDialog("Lv4Part2Follow");
-            StartCoroutine(CheckDialogueDone());
+            GameManager.instance.StorePlayerPos();
+            //StartCoroutine(CheckDialogueDone());
         }
 
         if (Input.GetKeyDown("space"))
@@ -91,14 +109,14 @@ public class GirlAction : MonoBehaviour
         // 继续行走
         if(IsMoving)
         {
-            Anim.enabled = true;
+            Anim.SetBool("isWalking",true);
             rb.velocity = new Vector2(Speed, rb.velocity.y);
         }
         //停止行走
         else
         {
-            Anim.enabled = false;
-            sprite.sprite = Resources.Load<Sprite>("Level4/GirlHat/A_GirlHatMove00");
+            Anim.SetBool("isWalking",false);
+           //sprite.sprite = Resources.Load<Sprite>("Level4/GirlHat/A_GirlHatMove00");
             rb.velocity = Vector2.zero;
         }
     }
@@ -116,7 +134,6 @@ public class GirlAction : MonoBehaviour
         {
             Debug.Log("Soldier2");
             IsCollidingSoldier = true; //撞了士兵
-            Anim.enabled = true;
             Anim.SetInteger("Fall", 1);
             StartCoroutine(WaitanimDone());
         }
@@ -124,7 +141,6 @@ public class GirlAction : MonoBehaviour
         {
             Debug.Log("Soldier3");
             IsCollidingSoldier = true;//撞了士兵
-            Anim.enabled = true;
             Anim.SetInteger("Fall", 2);
             StartCoroutine(WaitanimDone());
         }
@@ -153,4 +169,16 @@ public class GirlAction : MonoBehaviour
         restartHint.SetActive(true);
     }
 
+    public void Actived() {
+        Destroy(GameObject.Find("G_SoldierTL"));
+    }
+    public void changeSprite() {
+        Anim.SetTrigger("isTookOff");
+    }
+    public void kingGrab() {
+        GameObject.Find("King").GetComponent<Animator>().SetTrigger("isGrabed");
+    }
+    public void kingThrow() {
+        GameObject.Find("King").GetComponent<Animator>().SetTrigger("isThrowed");
+    }
 }
