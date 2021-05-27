@@ -147,7 +147,7 @@ public class MainMenu : MonoBehaviour
         }
         else if(currentLevelPage == 7)
         {
-            LevelLoader.instance.LoadLevel("Level4Part2");
+            LevelLoader.instance.LoadLevel("Level4P2TL3");
         }
     }
 
