@@ -39,7 +39,10 @@ public class LevelLoader : MonoBehaviour
             GameManager.instance.stopMoving = true;
         } else if (scene == "Level4Trace" && GameObject.Find("DialogBox") != null) {
             GameManager.instance.stopMoving = true;
-        } else {
+        } else if (scene == "Level2WinRhythm" && GameObject.Find("DialogBox") != null){
+            GameManager.instance.stopMoving = true;
+        }
+        else {
             GameManager.instance.stopMoving = false;
         }
         
