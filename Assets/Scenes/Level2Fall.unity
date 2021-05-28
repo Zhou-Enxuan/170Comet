@@ -421,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216209657}
   - component: {fileID: 216209656}
+  - component: {fileID: 216209655}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -428,6 +429,41 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!68 &216209655
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216209654}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.66, y: -0.6377059}
+  - {x: -1.5413666, y: 1.4989021}
+  - {x: -0.34401703, y: 0.9463768}
+  - {x: 0.032842636, y: 0.95913744}
+  - {x: 0.3150177, y: 0.83560205}
+  - {x: 0.30965424, y: 0.2493875}
+  - {x: 1.3611145, y: 0.12140834}
+  - {x: 1.6102295, y: -0.07586706}
+  - {x: 1.6902466, y: -0.55073047}
+  - {x: 1.4405022, y: -0.88514113}
+  - {x: 1.3728371, y: -1.016804}
+  - {x: 1.5796776, y: -1.3156233}
+  - {x: 1.3680134, y: -1.4686642}
+  - {x: -0.83033943, y: -1.4645293}
+  - {x: -1.6725291, y: -0.67884886}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!212 &216209656
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1759,6 +1795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169352308779425503, guid: 4c2b899410226c242a61adea1693641a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
