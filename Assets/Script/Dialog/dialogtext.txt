@@ -1,34 +1,47 @@
 Level1 Start
-Nightingale: Can you hear the people cheering outside? They're saying: Comet, Comet!
-Girl: A Comet? I've only heard of it through books. They say it’s the most beautiful star in the world...
-Nightingale: Can you see it through the window? What does it look like?
-Girl: The sky is blocked by trees. I could only catch a glimpse of it. 
-Girl: I know! Let me draw it for you! I just need a pen and paper.
+Nightingale: Can you hear the people cheering outside? 
+Nightingale: They're saying: Comet, Comet!
+Girl: A Comet?
+Girl: I've only heard of it through books.
+Girl: They say it’s the most beautiful star in the world...
+Nightingale: Can you see it through the window?
+Nightingale: What does it look like?
+Girl: The sky is blocked by trees.
+Girl: I could only catch a glimpse of it. 
+Girl: I know! Let me draw it for you! 
+Girl: I just need a pen and paper.
 ---
 Level1 End
 Nightingale: Wow!
-GIRL: The books say it's a star with a trailing tail, but I don't know if I drew it right.
+Girl: The books say it's a star with a trailing tail.
+Girl: But I don't know if I drew it right.
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
-Tom: Did you see? Those amazing stars dragged their long tails across the sky.
-Arthur: They were truly beautiful. We were lucky to see them!
-Tom: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
+Tom: Did you see?
+Tom: Those amazing stars dragged their long tails across the sky.
+Arthur: They were truly beautiful.
+Arthur: We were lucky to see them!
+Tom: I heard that if we go to the mountaintop.
+Tom: We can touch the comet and make a wish come true!
 ---
 Villager1
-Cowboy: Breaking News! The king... is dead.
+Cowboy: The king... 
+Cowboy: is dead.
 ---
 Villager2
 Tom: How...?
 ---
 Villager3
-Tom: We were just a few days away from signing the peace treaty! It can’t happen now that the king is dead!
+Tom: We were just a few days away from signing the peace treaty!
+Tom: It can’t happen now that the king is dead!
 ---
 Villager4
-Tom: It's over! Everything is over! The war is coming! My life is over...
+Tom: It's over! Everything is over!
+Tom: The war is coming! My life is over...
 ---
 Villager5
-Arhtur: This can't be real...
+Arthur: This can't be real...
 ---
 LV2P1AfterTL
 Nightingale: How sad...
@@ -45,7 +58,7 @@ Nightingale: No, nothing happened while I was in town.
 Nightingale: Though Tom and Arthur did see the comet the other day!
 Nightingale: Your drawing of the comet looks exactly like how they described it!
 Girl: So it is true! The comet is just like how it is in the book.
-Girl: When I get better
+Girl: When I get better.
 Girl: Let's go see the comet together!
 Nightingale: Yes!
 ---
@@ -62,7 +75,7 @@ Nightingale: No, nothing happened while I was in town.
 Nightingale: Though Tom and Arthur did see the comet the other day!
 Nightingale: Your drawing of the comet looks exactly like how they described it!
 Girl: So it is true! The comet is just like how it is in the book.
-Girl: When I get better
+Girl: When I get better,
 Girl: Let's go see the comet together!
 Nightingale: Yes!
 ---
@@ -95,8 +108,9 @@ Lv2FallRoom
 Nightingale: I need to go get a second piece of glass.
 ---
 Lv3Part2
-Girl: Have you seen a little bird carrying a piece of glass like this one? I think he's gone missing...
-Girl: He is my dearest friend
+Girl: Have you seen a little bird carrying a piece of glass like this one?
+Girl: I think he's gone missing...
+Girl: He is my dearest friend.
 Jenny: I don't remember seeing him…
 Jenny: But I heard that the king on the other side is residing in his palace.
 Jenny: Apparently he caught a nightingale, and is forcing the nightingale to sing against his will!
@@ -118,42 +132,46 @@ Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
 Girl: ...4?
-King: It seems like a little “mouse” has crawled into my palace. No matter the reason, trespassing will not be forgiven!
+King: It seems like a little “mouse” has crawled into my palace. 
+King: No matter the reason, trespassing will not be forgiven!
 ---
 Lv4Part2Trace
 King: You better run fast!
 ---
 Lv4Part2Trace01
-King: You cannot escape me! With the power of my scepter, I shall reign over all!
+King: You cannot escape me! 
+King: With the power of my scepter, I shall reign over all!
 ---
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
 ---
 Lv5Start
-Start
+Nightingale: We should go home. It's late.
+Girl: But comets only come once in many years.
+Girl: This could be our only chance.
 ---
 Lv5Part1
 Girl: What kind of wish do you want to make?
-Bird: I want to be with you forever,
-Bird: and I want you to get better!
+Nightingale: I want to be with you forever,
+Nightingale: and I want you to get better!
 Girl: ...
 Girl: If only such a wish could come true
 ---
 Lv5Part2
 Girl: I still remember the first time we met
 Girl: You looked like a little ball of fur
-Bird: I'm all grown up now!
-Bird: I can already take care of myself!
+Nightingale: I'm all grown up now!
+Nightingale: I can already take care of myself!
 ---
 Lv5Part3
-Bird: Are you okay?
-Bird: You look pale...
+Nightingale: Are you okay?
+Nightingale: You look pale...
 Girl: ...
 Girl: We need to keep going, we're almost there!
 Girl: I want to see the comet with you!
 ---
 Lv5Part4
-Bird: ...
+Nightingale: ...
 Girl: This may be the first time and last time
 Girl: We'll ever see the comet together.
 Girl: Thank you for always being with me
