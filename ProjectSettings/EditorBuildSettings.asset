@@ -87,6 +87,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4Trace.unity
     guid: bbb83e6ffd58e49fa955228744050425
   - enabled: 1
+    path: Assets/Scenes/Level4Part3.unity
+    guid: 30056bad396c44cc5ba6c77e30b496e6
+  - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: a36e46139b02145cfa95f8306ccb2378
   m_configObjects: {}
