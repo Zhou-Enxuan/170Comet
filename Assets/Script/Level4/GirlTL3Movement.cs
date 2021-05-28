@@ -8,7 +8,7 @@ public class GirlTL3Movement : MonoBehaviour
 {
 	private Rigidbody2D rb;
     private float moveH, moveV;
-    [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 3f;
     private Animator GirlAnimator;
     public GameObject qMark;
     public GameObject Hint;
@@ -19,10 +19,16 @@ public class GirlTL3Movement : MonoBehaviour
 
     private void Awake()
     {
+        SoundManager.playBgm(6);
         rb = GetComponent<Rigidbody2D>();
         GirlAnimator = GetComponent<Animator>();
         girlTimeline3 = GameObject.Find("GirlTimeline");
-        this.transform.position = GameManager.instance.PlayerPos;
+        if (GameManager.instance.PlayerPos != new Vector2(0,0)) {
+            this.transform.position = GameManager.instance.PlayerPos;
+        }
+        else {
+            this.transform.position = new Vector2(40f, -1.78f);
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -58,7 +64,7 @@ public class GirlTL3Movement : MonoBehaviour
 	        	if (this.transform.position.x >= 42.65f && this.transform.position.x <= 43.1f) {
 	        		Hint.SetActive(true);
 			        if (Hint.activeSelf && Input.GetKeyDown("space")) {
-			        	Debug.Log("可割绳子");
+			        	qMark.SetActive(false);
 			        	Hint.SetActive(false);
 			        	GirlAnimator.SetBool("isCut", true);
 			        	GameManager.instance.stopMoving = true;
@@ -85,7 +91,6 @@ public class GirlTL3Movement : MonoBehaviour
 				this.GetComponent<SpriteRenderer>().flipX = true;
 			}
 			else if (girlTimeline3.GetComponent<PlayableDirector>().enabled == false) {
-				Debug.Log("jieshu");
 				LevelLoader.instance.LoadLevel("Level4Trace");
 			}
     	}
