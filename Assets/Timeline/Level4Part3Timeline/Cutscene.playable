@@ -4417,7 +4417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     dialogueLine: Lv4Part3TL101
-    PressToPause: 0
+    PressToPause: 1
 --- !u!114 &9045886361730394798
 MonoBehaviour:
   m_ObjectHideFlags: 1
