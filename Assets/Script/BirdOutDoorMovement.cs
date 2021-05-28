@@ -39,7 +39,7 @@ public class BirdOutDoorMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate(){
+    private void Update(){
         IsPickFlower = GameObject.Find("GameManager").GetComponent<GameManager>().isLv2Flower;
         //碰撞到npcone的时候
         birdAnim.SetFloat("height", transform.position.y);
@@ -47,7 +47,6 @@ public class BirdOutDoorMovement : MonoBehaviour
         if (GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
 
-            Debug.Log("Stop PlayerMovement");
             birdAnim.SetBool("Stand", true);
         }
         else { //normal时

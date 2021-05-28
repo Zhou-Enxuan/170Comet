@@ -122,6 +122,7 @@ public class PaletteControllerRe : MonoBehaviour
                 else if(other.tag == "paper")
                 {
                     other.gameObject.SetActive(false);
+                    other.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level1/A_Paper");
                     audioSources[2].PlayOneShot(paperSound, 0.3f);
                     if (GetComponent<BirdInDoorMovement>().currentState == BirdInDoorMovement.BirdsState.PEN)
                     {

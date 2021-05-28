@@ -18,16 +18,22 @@ public class Lv2RhythmController : MonoBehaviour
         this.GetComponent<SpriteRenderer>().enabled = false;
         Player = GameObject.Find("Player");
         Player.GetComponent<Transform>().position = GameManager.instance.PlayerPos;
+        if (GameManager.instance.PlayerPos != new Vector2(1f, 1.86f)) {
+            GameManager.instance.StorePlayerLoc( new Vector2(1f, 1.86f));
+        }
         Flower = GameObject.Find("Flower");
         SadFace = GameObject.Find("SadFace");
         RhythmGame = GameObject.Find("RhythmGameUI");
         // Npc02OriPos = this.GetComponent<Transform>().position;
         // Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         npc02Pick = GameObject.Find("NpcTwoPick");
-        Flower.SetActive(false);
-        GameManager.instance.stopMoving = false;
     }
-    
+
+    void Start() {
+        Dialog.PrintDialog("LV2P1AfterTL");
+        Flower.SetActive(false);
+    }
+
     void Update()
     {
         if (!GameManager.instance.isLv2WinterEnd) {

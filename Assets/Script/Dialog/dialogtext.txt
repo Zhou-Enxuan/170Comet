@@ -1,55 +1,97 @@
 Level1 Start
-Nightingale: Can you hear the people cheering outside? They're saying: Comet, Comet!
-Girl: A Comet? I've only heard of it through books. They say it’s the most beautiful star in the world...
-Nightingale: Can you see it through the window? What does it look like?
-Girl: The sky is blocked by trees. I could only catch a glimpse of it. 
-Girl: I know! Let me draw it for you! I just need a pen and paper.
+Nightingale: Can you hear the people cheering outside? 
+Nightingale: They're saying: Comet, Comet!
+Esther: A Comet?
+Esther: I've only heard of it through books.
+Esther: They say it’s the most beautiful star in the world...
+Nightingale: Can you see it through the window?
+Nightingale: What does it look like?
+Esther: The sky is blocked by trees.
+Esther: I could only catch a glimpse of it. 
+Esther: I know! Let me draw it for you! 
+Esther: I just need a pen and paper.
 ---
 Level1 End
 Nightingale: Wow!
-GIRL: The books say it's a star with a trailing tail, but I don't know if I drew it right.
+Esther: The books say it's a star with a trailing tail.
+Esther: But I don't know if I drew it right.
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
-Man with Mustache: Did you see? Those amazing stars dragged their long tails across the sky.
-Boy with Green Hair: They were truly beautiful. We were lucky to see them!
-Man with Mustache: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
+Tom: Did you see?
+Tom: Those amazing stars dragged their long tails across the sky.
+Arthur: They were truly beautiful.
+Arthur: We were lucky to see them!
+Tom: I heard that if we go to the mountaintop.
+Tom: We can touch the comet and make a wish come true!
 ---
 Villager1
-Cowboy: Breaking news! The king is dead.
+Cowboy: The king... 
+Cowboy: is dead.
 ---
 Villager2
-Man with Mustache: It's over! Everything is over! The war is coming! My life is over...
+Tom: How...?
 ---
 Villager3
-Boy with Green Hair: This can't be real...
+Tom: We were just a few days away from signing the peace treaty!
+Tom: It can’t happen now that the king is dead!
+---
+Villager4
+Tom: It's over! Everything is over!
+Tom: The war is coming! My life is over...
+---
+Villager5
+Arthur: This can't be real...
+---
+LV2P1AfterTL
+Nightingale: How sad...
+Nightingale: Is there anything I can do to make him feel better?
 ---
 Lv2P1StandUp
-Man with Mustache: What a beautiful song! Thank you, now I feel much better.
-Man with Mustache: Take this flower. They are rare in winter!
+Tom: What a beautiful song! Thank you, now I feel much better.
+Tom: Take this flower. They are rare in winter!
 ---
 Lv2P2Room
-Nightingale: It was a shining comet that flew over last night.
-Girl: How can I see the comet?
-Nightingale: I don't know... But I'll find out for you!
+Esther: Did anything interesting happen while you were in town?
+Nightingale: ...
+Nightingale: No, nothing happened while I was in town.
+Nightingale: Though Tom and Arthur did see the comet the other day!
+Nightingale: Your drawing of the comet looks exactly like how they described it!
+Esther: So it is true! The comet is just like how it is in the book.
+Esther: When I get better.
+Esther: Let's go see the comet together!
+Nightingale: Yes!
+---
+Lv2P2NoFlower
+Esther: What's happening in town?
 ---
 Lv2P2Flower
-Nightingale: Here is a present for you! There was a shining comet flying in the sky last night.
-Girl: How can I see the comet?
-Nightingale: I don't know... But I'll find out for you!
+Nightingale: Here is a little flower for you!
+Nightingale: Tom gave it to me!
+Esther: Thank you!
+Esther: Did anything interesting happen while you were in town?
+Nightingale: ...
+Nightingale: No, nothing happened while I was in town.
+Nightingale: Though Tom and Arthur did see the comet the other day!
+Nightingale: Your drawing of the comet looks exactly like how they described it!
+Esther: So it is true! The comet is just like how it is in the book.
+Esther: When I get better,
+Esther: Let's go see the comet together!
+Nightingale: Yes!
 ---
 Lv2NewsRoom
 Nightingale: The newspaper says that a telescope can let anyone see the comet.
-Girl: Wow! That means we could see the comet at any time.
+Esther: Wow! That means we could see the comet at any time.
+Esther: I wonder when I will be able to see it.
 ---
 Npc01Wall
-Boy with Green Hair: This war is splitting our country apart... What should we do?
+Tom: This war is splitting our country apart... What should we do?
 ---
 Npc02Wall
-Man with Mustache: ... Shush！
+Arthur: ... Shush！
 ---
 Npc03Wall
-Man with Mustache: Soldiers are coming. Let's get out of here!
+Arthur: Soldiers are coming. Let's get out of here!
 ---
 GreenSoldierTalk
 Soldier: It's not safe here. Stay away!
@@ -59,53 +101,98 @@ Nightingale: If I could make a telescope for her as a gift...
 ---
 Lv2FallStart2
 Nightingale: She would be very happy. 
+Nightingale: I heard that the white building on the other side of town has glass windows that I can use.
+Nightingale: But I can't let the soldiers inside see me!
 ---
 Lv2FallRoom
 Nightingale: I need to go get a second piece of glass.
 ---
 Lv3Part2
-Girl: Have you seen a little bird carrying a piece of glass like this one? I think he’s gone missing.
-Woman: I don’t remember seeing him…
-Woman: Could he be the one that got caught last night?
-Woman: I heard he was caught stealing on the other side of the wall.
-Girl: Where is he now?
-Woman: Maybe in the palace?
-Girl: Thank You.
+Esther: Have you seen a little bird carrying a piece of glass like this one?
+Esther: I think he's gone missing...
+Esther: He is my dearest friend.
+Jenny: I don't remember seeing him…
+Jenny: But I heard that the king on the other side is residing in his palace.
+Jenny: Apparently he caught a nightingale, and is forcing the nightingale to sing against his will!
+Esther: ...
+Esther: Thank you!
 ---
 Lv4Part1
-Girl:.............
+Esther:.............
 Villager:............
 Soldier:............
+---
+Lv4P1TL01
+Tom and Arthur: Leave our country!
+---
+Lv4P1TL02
+Soldier: Don't be disrespectful to our land and king!
 ---
 Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
-Girl: ...4?
-King: It seems like a little “mouse” has crawled into my palace. No matter the reason, trespassing will not be forgiven!
+Esther: ...4?
+King: It seems like a little “mouse” has crawled into my palace. 
+King: No matter the reason, trespassing will not be forgiven!
 ---
 Lv4Part2Trace
 King: You better run fast!
 ---
 Lv4Part2Trace01
-King: You cannot escape me! With the power of my scepter, I shall reign over all!
+King: You cannot escape me! 
+King: With the power of my scepter, I shall reign over all!
 ---
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
 ---
+Lv4Part3TL101
+Tom: Are you okay?
+---
+Lv4Part3TL102
+Esther: ...
+---
+Lv4Part3TL103
+Tom: We will take back our land from that wretched king!
+---
+Lv4Part3TL2
+Esther: Are you hurt?
+Nightingale: I'm okay!
+Nightingale: How were you able to get out of bed?
+Esther: I'll be okay...
+Esther: Look, the comet is coming!
+Esther: Let's go see the comet together!
+---
 Lv5Start
-Start
+Nightingale: We should go home. It's late.
+Esther: But comets only come once in many years.
+Esther: This could be our only chance.
 ---
 Lv5Part1
-The First Dialog
+Esther: What kind of wish do you want to make?
+Nightingale: I want to be with you forever,
+Nightingale: and I want you to get better!
+Esther: ...
+Esther: If only such a wish could come true
 ---
 Lv5Part2
-The Second Dialog
+Esther: I still remember the first time we met
+Esther: You looked like a little ball of fur
+Nightingale: I'm all grown up now!
+Nightingale: I can already take care of myself!
 ---
 Lv5Part3
-The Third Dialog
+Nightingale: Are you okay?
+Nightingale: You look pale...
+Esther: ...
+Esther: We need to keep going, we're almost there!
+Esther: I want to see the comet with you!
 ---
 Lv5Part4
-The Last Dialog
+Nightingale: ...
+Esther: This may be the first time and last time
+Esther: We'll ever see the comet together.
+Esther: Thank you for always being with me
+Esther: Go. Live a full, and happy life.
 ---
 Lv4P2TL101
 Soldier: Hey! You must be new here.
@@ -126,17 +213,17 @@ GirlKingTL01
 King: Take off your hat!
 ---
 GirlKingTL02
-King: Why are you here?
+King: What are you doing here?
 ---
 GirlKingTL03
 Girl: You took my friend!
 ---
 GirlKingTL04
-Girl: This?
+Girl: You mean this?
 ---
 GirlKingTL05
-Girl: Let it go!
+Girl: Get out of there!
 ---
 GirlKingTL06
-Girl: Hahaha... Your friend will stay here and sing to me forever.
+King: Aha! Your friend is not going anywhere! Sing for me!
 ---

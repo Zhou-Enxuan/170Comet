@@ -18,28 +18,31 @@ public class InGameMenu : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (!GameManager.instance.stopMoving && !GameManager.instance.IsDialogShow()) {
-	        if(Input.GetKeyDown(KeyCode.Escape)){
-	        	Debug.Log("escape");
-		            if(!GameIsPaused){
-						GameMenu.SetActive(true);
-						GameIsPaused = true;
-					} else{
-						GameMenu.SetActive(false);
-						GameIsPaused = false;
-					}
-		    }  
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            if (!GameManager.instance.stopMoving && !GameManager.instance.IsDialogShow()) {
+                if (Input.GetKeyDown(KeyCode.Escape)) {
+                    Debug.Log("escape");
+                    if (!GameIsPaused) {
+                        GameMenu.SetActive(true);
+                        GameIsPaused = true;
+                    } else {
+                        GameMenu.SetActive(false);
+                        GameIsPaused = false;
+                    }
+                }
 
-		    if (GameMenu.activeSelf) {
-		    	if (Input.GetKeyDown(KeyCode.Q)) {
-		    		Application.Quit();
-		    	}
-                else if (Input.GetKeyDown(KeyCode.B))
-                {
-                    SceneManager.LoadScene("Menu");
-                    GameMenu.SetActive(false);
+                if (GameMenu.activeSelf) {
+                    if (Input.GetKeyDown(KeyCode.Q)) {
+                        Application.Quit();
+                    }
+                    else if (Input.GetKeyDown(KeyCode.B))
+                    {
+                        SceneManager.LoadScene("Menu");
+                        GameMenu.SetActive(false);
+                    }
                 }
             }
-		}
+        }
     }
 }
