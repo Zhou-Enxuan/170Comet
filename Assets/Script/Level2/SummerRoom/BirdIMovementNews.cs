@@ -20,7 +20,7 @@ public class BirdIMovementNews : MonoBehaviour
     private bool IsOnT = false;
     private bool IsOnM = false;
     private bool IsOnB = false;
-    
+    public bool isMove = false;
     
     
     private void Awake(){
@@ -33,6 +33,7 @@ public class BirdIMovementNews : MonoBehaviour
         MSpeed = MNews.GetComponent<Rigidbody2D>();
         BSpeed = BNews.GetComponent<Rigidbody2D>();
         PickUpHint = GameObject.Find("PickUpHint");
+        isMove = false;
     }
 
 
@@ -48,23 +49,41 @@ public class BirdIMovementNews : MonoBehaviour
 
         if(IsOnT){
             PickUpHint.SetActive(true);
-            if( Input.GetKey("space") && rb.velocity.magnitude > 0){
+
+            if (Input.GetKey("space") && rb.velocity.magnitude > 0)
+            {
                 TSpeed.velocity = rb.velocity;
                 Debug.Log("移动第一张报纸");
-            }else{
-                TSpeed.velocity = new Vector2(0,0);
+            }
+            else
+            {
+                TSpeed.velocity = new Vector2(0, 0);
             }
         }else if(IsOnM && TNews.activeSelf == false){
             PickUpHint.SetActive(true);
-            if( Input.GetKey("space") && rb.velocity.magnitude > 0){
+            if (Input.GetKeyDown("space"))
+            {
+                isMove = true;
+            }
+            if (Input.GetKey("space") && rb.velocity.magnitude > 0 && isMove)
+            {
                 MSpeed.velocity = rb.velocity;
                 Debug.Log("移动第二张报纸");
-            }else{
-                MSpeed.velocity = new Vector2(0,0);
             }
+            else
+            {
+                MSpeed.velocity = new Vector2(0, 0);
+            }
+      
         }else if(IsOnB && TNews.activeSelf == false && MNews.activeSelf == false){
+            if (Input.GetKeyDown("space"))
+            {
+                isMove = true;
+            }
+
             PickUpHint.SetActive(true);
-            if( Input.GetKey("space")){
+            if( Input.GetKey("space") && isMove)
+            {
                 BNews.SetActive(false);
             }
         }else{

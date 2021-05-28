@@ -5,9 +5,11 @@ using UnityEngine;
 public class DestoryT : MonoBehaviour
 {
     public GameObject TNews;
+    public bool isDestroy = false;
 
     private void Awake(){
         TNews = GameObject.Find("TNews");
+
     }
 
     // Start is called before the first frame update
