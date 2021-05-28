@@ -14,34 +14,34 @@ public class GirlInGameMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 3f;
     private Animator GirlAnimator;
-    private SpriteRenderer sprite;
-    private bool IsinHideObj;
+    // private SpriteRenderer sprite;
+    // private bool IsinHideObj;
     private bool isPickBird;
     public enum girlState {Hiding, UnHiding,CantControl};
     public static girlState curGirlState;
-    public static bool isGirlHiding;
+    // public static bool isGirlHiding;
     public static bool isPlayFailUI;
     private bool isBeDroped;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        // sprite = GetComponent<SpriteRenderer>();
         GirlAnimator = GetComponent<Animator>();
-        isGirlHiding = false;
-        IsinHideObj = false;
+        // isGirlHiding = false;
+        // IsinHideObj = false;
         isPickBird = false;
         isPlayFailUI = false;
         isBeDroped = false;
         curGirlState = girlState.UnHiding;
-        hideHint = GameObject.Find("HideHint");
-        leaveHint = GameObject.Find("LeaveHint");
+        // hideHint = GameObject.Find("HideHint");
+        // leaveHint = GameObject.Find("LeaveHint");
     }
 
     void Start()
     {
-        hideHint.SetActive(false);
-        leaveHint.SetActive(false);
+        // hideHint.SetActive(false);
+        // leaveHint.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -74,14 +74,14 @@ public class GirlInGameMovement : MonoBehaviour
 	        } 
             else {
                 GirlAnimator.SetFloat("Speed", 0f);
-                if (KingControl.isGameFailed) {
-                    if (hideHint.activeSelf) {
-                        hideHint.SetActive(false);
-                    } 
-                    if (leaveHint.activeSelf) {
-                        leaveHint.SetActive(false);
-                    }
-                }
+                // if (KingControl.isGameFailed) {
+                //     if (hideHint.activeSelf) {
+                //         hideHint.SetActive(false);
+                //     } 
+                //     if (leaveHint.activeSelf) {
+                //         leaveHint.SetActive(false);
+                //     }
+                // }
             }
         }
         else
@@ -103,55 +103,58 @@ public class GirlInGameMovement : MonoBehaviour
 	        direction = new Vector2(moveH, 0);
 	        rb.velocity = direction * moveSpeed; 
 
-	        ShowHint();
+            if (isPickBird && Input.GetKeyDown("space")) {
+                KingControl.birdItem.SetActive(false);
+            }
             GirlBeHurted();
     	}
     }
 
-    void ShowHint() {
-        if (IsinHideObj) {
-            if (curGirlState == girlState.UnHiding) {
-                hideHint.SetActive(true);
-                if (Input.GetKeyDown("space")) {
-                    if (isPickBird) {
-                        KingControl.birdItem.SetActive(false);
-                    } 
-                    else {
-                        sprite.sortingOrder = -2;
-                        curGirlState = girlState.Hiding;
-                        isGirlHiding = true;
-                    }
-                }
-            } 
-            else if (curGirlState == girlState.Hiding) {
-                hideHint.SetActive(false);
-                leaveHint.SetActive(true);
-                if (Input.GetKeyDown("space")) {
-                    if (isPickBird) {
-                        KingControl.birdItem.SetActive(false);
-                    } 
-                    else {
-                        sprite.sortingOrder = 0;
-                        curGirlState = girlState.UnHiding;
-                        IsinHideObj = false;
-                    }
-                }
-            }
-        } 
-        else if (!IsinHideObj) {
-            hideHint.SetActive(false);
-            leaveHint.SetActive(false);
-            sprite.sortingOrder = 0;
-            curGirlState = girlState.UnHiding;
-            if (isPickBird && Input.GetKeyDown("space")) {
-                KingControl.birdItem.SetActive(false);
-            }
-        } 
-    }
+    // void PickBird() {
+        // if (IsinHideObj) {
+        //     if (curGirlState == girlState.UnHiding) {
+        //         hideHint.SetActive(true);
+        //         if (Input.GetKeyDown("space")) {
+        //             if (isPickBird) {
+        //                 KingControl.birdItem.SetActive(false);
+        //             } 
+        //             else {
+        //                 sprite.sortingOrder = -2;
+        //                 curGirlState = girlState.Hiding;
+        //                 isGirlHiding = true;
+        //             }
+        //         }
+        //     } 
+        //     else if (curGirlState == girlState.Hiding) {
+        //         hideHint.SetActive(false);
+        //         leaveHint.SetActive(true);
+        //         if (Input.GetKeyDown("space")) {
+        //             if (isPickBird) {
+        //                 KingControl.birdItem.SetActive(false);
+        //             } 
+        //             else {
+        //                 sprite.sortingOrder = 0;
+        //                 curGirlState = girlState.UnHiding;
+        //                 IsinHideObj = false;
+        //             }
+        //         }
+        //     }
+        // } 
+        // else 
+        // if (!IsinHideObj) {
+            // hideHint.SetActive(false);
+            // leaveHint.SetActive(false);
+            // sprite.sortingOrder = 0;
+            //curGirlState = girlState.UnHiding;
+            // if (isPickBird && Input.GetKeyDown("space")) {
+            //     KingControl.birdItem.SetActive(false);
+            // }
+        //} 
+    //}
 
     void GirlBeHurted() {
         if (KingControl.throwItem.activeSelf && isBeDroped && curGirlState == girlState.UnHiding && DropingItem.isThrowTrig) {
-            Debug.Log("砸中！");
+            // Debug.Log("砸中！");
             KingControl.isGameFailed = true;
             GirlAnimator.SetTrigger("Losed");
             isBeDroped = false;
@@ -176,11 +179,11 @@ public class GirlInGameMovement : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hide")
-        {
-            //Debug.Log("hit box");
-            IsinHideObj = true;
-        }
+        // if (collision.gameObject.tag == "Hide")
+        // {
+        //     //Debug.Log("hit box");
+        //     IsinHideObj = true;
+        // }
         if (collision.gameObject.name == "Bird") {
         	isPickBird = true;
         }
@@ -208,11 +211,11 @@ public class GirlInGameMovement : MonoBehaviour
 
 	void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Hide")
-        {
-            //Debug.Log("miss hit box");
-            IsinHideObj = false;
-        }
+        // if (collision.gameObject.tag == "Hide")
+        // {
+        //     //Debug.Log("miss hit box");
+        //     IsinHideObj = false;
+        // }
 
         if (collision.gameObject.name == "Bird") {
         	isPickBird = false;
@@ -224,13 +227,15 @@ public class GirlInGameMovement : MonoBehaviour
 
     void BirdFallOut() {
         KingControl.birdItem.SetActive(true);
+        GirlAnimator.SetBool("WithBird", true);
+        GirlAnimator.SetBool("Falling", false);
     }
     void StandedUp() {
         GirlAnimator.SetBool("isStanded", true);
         GameManager.instance.stopMoving = false;
     }
     void StandUpChangeSize() {
-        Debug.Log("恢复判定框");
+        // Debug.Log("恢复判定框");
         this.GetComponent<BoxCollider2D>().offset = new Vector2(0f, 0);
         this.GetComponent<BoxCollider2D>().size = new Vector2(1, 1.6f);
     }
@@ -238,7 +243,7 @@ public class GirlInGameMovement : MonoBehaviour
         isPlayFailUI = true;
     }
     void ChangeColliderSize() {
-        Debug.Log("改判定框");
+        // Debug.Log("改判定框");
         GirlAnimator.SetBool("isStanded", false);
         this.GetComponent<BoxCollider2D>().offset = new Vector2(1.6f, 0);
         this.GetComponent<BoxCollider2D>().size = new Vector2(2, 1.6f);

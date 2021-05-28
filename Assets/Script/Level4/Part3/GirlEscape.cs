@@ -16,6 +16,7 @@ public class GirlEscape : MonoBehaviour
     void Start()
     {
         TimelineGameManager.GetDirector(TimeLine.GetComponent<PlayableDirector>());
+        TimelineGameManager.isTimeline = true;
     }
 
     // Update is called once per frame

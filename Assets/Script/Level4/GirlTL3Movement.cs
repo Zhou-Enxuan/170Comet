@@ -84,6 +84,7 @@ public class GirlTL3Movement : MonoBehaviour
 			fading.SetActive(true);
 			if (fading.GetComponent<Image>().color.a == 1 && !girlTimeline3.activeSelf) {
 				girlTimeline3.SetActive(true);
+                TimelineGameManager.isTimeline = true;
 				kingAnim.SetTrigger("isTimeline");
 				GirlAnimator.SetBool("isCut", false);
 				GirlAnimator.SetBool("FaceR", false);
