@@ -36,8 +36,9 @@ public class AutoMovement : MonoBehaviour
         Debug.Log(isAIMove);
         Debug.Log(isDialoged);
 	    if (isAIMove){
+            GameManager.instance.stopMoving = true;
             //如果玩家坐标和target坐标距离>误差值则继续自动移动
-		    if (Vector2.Distance(Player.position, TargetPos) > delta) {
+            if (Vector2.Distance(Player.position, TargetPos) > delta) {
 			    //Debug.Log(Player.position);
 			    //玩家自动移到固定点
     		    Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
