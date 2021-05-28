@@ -33,6 +33,7 @@ public class GirlQuestion : MonoBehaviour
         }
 		else {
 			QMark.SetActive(false);
+	        Dialog.PrintDialog("Lv2P2NoFlower");
 		}
 	}
 

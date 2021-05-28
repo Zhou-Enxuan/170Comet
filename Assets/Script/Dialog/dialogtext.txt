@@ -11,45 +11,74 @@ GIRL: The books say it's a star with a trailing tail, but I don't know if I drew
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
-Man with Mustache: Did you see? Those amazing stars dragged their long tails across the sky.
-Boy with Green Hair: They were truly beautiful. We were lucky to see them!
-Man with Mustache: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
+Tom: Did you see? Those amazing stars dragged their long tails across the sky.
+Arthur: They were truly beautiful. We were lucky to see them!
+Tom: I heard that if we go to the mountaintop, we can touch the comet and make a wish come true!
 ---
 Villager1
-Cowboy: Breaking news! The king is dead.
+Cowboy: Breaking News! The king... is dead.
 ---
 Villager2
-Man with Mustache: It's over! Everything is over! The war is coming! My life is over...
+Tom: How...?
 ---
 Villager3
-Boy with Green Hair: This can't be real...
+Tom: We were just a few days away from signing the peace treaty! It can’t happen now that the king is dead!
+---
+Villager4
+Tom: It's over! Everything is over! The war is coming! My life is over...
+---
+Villager5
+Arhtur: This can't be real...
+---
+LV2P1AfterTL
+Nightingale: How sad...
+Nightingale: Is there anything I can do to make him feel better?
 ---
 Lv2P1StandUp
-Man with Mustache: What a beautiful song! Thank you, now I feel much better.
-Man with Mustache: Take this flower. They are rare in winter!
+Tom: What a beautiful song! Thank you, now I feel much better.
+Tom: Take this flower. They are rare in winter!
 ---
 Lv2P2Room
-Nightingale: It was a shining comet that flew over last night.
-Girl: How can I see the comet?
-Nightingale: I don't know... But I'll find out for you!
+Girl: Did anything interesting happen while you were in town?
+Nightingale: ...
+Nightingale: No, nothing happened while I was in town.
+Nightingale: Though Tom and Arthur did see the comet the other day!
+Nightingale: Your drawing of the comet looks exactly like how they described it!
+Girl: So it is true! The comet is just like how it is in the book.
+Girl: When I get better
+Girl: Let's go see the comet together!
+Nightingale: Yes!
+---
+Lv2P2NoFlower
+Girl: What's happening in town?
 ---
 Lv2P2Flower
-Nightingale: Here is a present for you! There was a shining comet flying in the sky last night.
-Girl: How can I see the comet?
-Nightingale: I don't know... But I'll find out for you!
+Nightingale: Here is a little flower for you!
+Nightingale: Tom gave it to me!
+Girl: Thank you!
+Girl: Did anything interesting happen while you were in town?
+Nightingale: ...
+Nightingale: No, nothing happened while I was in town.
+Nightingale: Though Tom and Arthur did see the comet the other day!
+Nightingale: Your drawing of the comet looks exactly like how they described it!
+Girl: So it is true! The comet is just like how it is in the book.
+Girl: When I get better
+Girl: Let's go see the comet together!
+Nightingale: Yes!
 ---
 Lv2NewsRoom
 Nightingale: The newspaper says that a telescope can let anyone see the comet.
 Girl: Wow! That means we could see the comet at any time.
+Girl: I wonder when I will be able to see it.
 ---
 Npc01Wall
-Boy with Green Hair: This war is splitting our country apart... What should we do?
+Tom: This war is splitting our country apart... What should we do?
 ---
 Npc02Wall
-Man with Mustache: ... Shush！
+Arthur: ... Shush！
 ---
 Npc03Wall
-Man with Mustache: Soldiers are coming. Let's get out of here!
+Arthur: Soldiers are coming. Let's get out of here!
 ---
 GreenSoldierTalk
 Soldier: It's not safe here. Stay away!
@@ -59,23 +88,31 @@ Nightingale: If I could make a telescope for her as a gift...
 ---
 Lv2FallStart2
 Nightingale: She would be very happy. 
+Nightingale: I heard that the white building on the other side of town has glass windows that I can use.
+Nightingale: But I can't let the soldiers inside see me!
 ---
 Lv2FallRoom
 Nightingale: I need to go get a second piece of glass.
 ---
 Lv3Part2
-Girl: Have you seen a little bird carrying a piece of glass like this one? I think he’s gone missing.
-Woman: I don’t remember seeing him…
-Woman: Could he be the one that got caught last night?
-Woman: I heard he was caught stealing on the other side of the wall.
-Girl: Where is he now?
-Woman: Maybe in the palace?
-Girl: Thank You.
+Girl: Have you seen a little bird carrying a piece of glass like this one? I think he's gone missing...
+Girl: He is my dearest friend
+Jenny: I don't remember seeing him…
+Jenny: But I heard that the king on the other side is residing in his palace.
+Jenny: Apparently he caught a nightingale, and is forcing the nightingale to sing against his will!
+Girl: ...
+Girl: Thank you!
 ---
 Lv4Part1
 Girl:.............
 Villager:............
 Soldier:............
+---
+Lv4P1TL01
+Tom and Arthur: Leave our country!
+---
+Lv4P1TL02
+Soldier: Don't be disrespectful to our land and king!
 ---
 Lv4Part2Follow
 King: Now, count off one by one.
@@ -96,16 +133,31 @@ Lv5Start
 Start
 ---
 Lv5Part1
-The First Dialog
+Girl: What kind of wish do you want to make?
+Bird: I want to be with you forever,
+Bird: and I want you to get better!
+Girl: ...
+Girl: If only such a wish could come true
 ---
 Lv5Part2
-The Second Dialog
+Girl: I still remember the first time we met
+Girl: You looked like a little ball of fur
+Bird: I'm all grown up now!
+Bird: I can already take care of myself!
 ---
 Lv5Part3
-The Third Dialog
+Bird: Are you okay?
+Bird: You look pale...
+Girl: ...
+Girl: We need to keep going, we're almost there!
+Girl: I want to see the comet with you!
 ---
 Lv5Part4
-The Last Dialog
+Bird: ...
+Girl: This may be the first time and last time
+Girl: We'll ever see the comet together.
+Girl: Thank you for always being with me
+Girl: Go. Live a full, and happy life.
 ---
 Lv4P2TL101
 Soldier: Hey! You must be new here.
@@ -126,17 +178,17 @@ GirlKingTL01
 King: Take off your hat!
 ---
 GirlKingTL02
-King: Why are you here?
+King: What are you doing here?
 ---
 GirlKingTL03
 Girl: You took my friend!
 ---
 GirlKingTL04
-Girl: This?
+Girl: You mean this?
 ---
 GirlKingTL05
-Girl: Let it go!
+Girl: Get out of there!
 ---
 GirlKingTL06
-Girl: Hahaha... Your friend will stay here and sing to me forever.
+King: Aha! Your friend is not going anywhere! Sing for me!
 ---
