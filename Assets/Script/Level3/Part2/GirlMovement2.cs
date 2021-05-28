@@ -32,6 +32,7 @@ public class GirlMovement2 : MonoBehaviour
         if (GameManager.instance.stopMoving)
         {
             rb.velocity = Vector2.zero;
+            GirlAnimator.SetFloat("Speed", 0f);
         }else{
             moveH = Input.GetAxisRaw("Horizontal");
             GirlAnimator.SetFloat("Direaction", moveH);
@@ -76,7 +77,6 @@ public class GirlMovement2 : MonoBehaviour
         if (collision.gameObject.name == "Wall")
         {
             isnearWall = true;
-            Debug.Log("Wall");
         }
 
     }
@@ -97,7 +97,6 @@ public class GirlMovement2 : MonoBehaviour
         }else if (collision.gameObject.name == "TalkObj")
         {
             NPC.GetComponent<GreenNpcMovement>().Istalk = true;
-            Debug.Log("Talk");
         }
     }
 
