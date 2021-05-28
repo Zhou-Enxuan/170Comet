@@ -1,20 +1,20 @@
 Level1 Start
 Nightingale: Can you hear the people cheering outside? 
 Nightingale: They're saying: Comet, Comet!
-Girl: A Comet?
-Girl: I've only heard of it through books.
-Girl: They say it’s the most beautiful star in the world...
+Esther: A Comet?
+Esther: I've only heard of it through books.
+Esther: They say it’s the most beautiful star in the world...
 Nightingale: Can you see it through the window?
 Nightingale: What does it look like?
-Girl: The sky is blocked by trees.
-Girl: I could only catch a glimpse of it. 
-Girl: I know! Let me draw it for you! 
-Girl: I just need a pen and paper.
+Esther: The sky is blocked by trees.
+Esther: I could only catch a glimpse of it. 
+Esther: I know! Let me draw it for you! 
+Esther: I just need a pen and paper.
 ---
 Level1 End
 Nightingale: Wow!
-Girl: The books say it's a star with a trailing tail.
-Girl: But I don't know if I drew it right.
+Esther: The books say it's a star with a trailing tail.
+Esther: But I don't know if I drew it right.
 Nightingale: Don't worry, I'll go find pictures of the comet for you!
 ---
 Villager
@@ -52,37 +52,37 @@ Tom: What a beautiful song! Thank you, now I feel much better.
 Tom: Take this flower. They are rare in winter!
 ---
 Lv2P2Room
-Girl: Did anything interesting happen while you were in town?
+Esther: Did anything interesting happen while you were in town?
 Nightingale: ...
 Nightingale: No, nothing happened while I was in town.
 Nightingale: Though Tom and Arthur did see the comet the other day!
 Nightingale: Your drawing of the comet looks exactly like how they described it!
-Girl: So it is true! The comet is just like how it is in the book.
-Girl: When I get better.
-Girl: Let's go see the comet together!
+Esther: So it is true! The comet is just like how it is in the book.
+Esther: When I get better.
+Esther: Let's go see the comet together!
 Nightingale: Yes!
 ---
 Lv2P2NoFlower
-Girl: What's happening in town?
+Esther: What's happening in town?
 ---
 Lv2P2Flower
 Nightingale: Here is a little flower for you!
 Nightingale: Tom gave it to me!
-Girl: Thank you!
-Girl: Did anything interesting happen while you were in town?
+Esther: Thank you!
+Esther: Did anything interesting happen while you were in town?
 Nightingale: ...
 Nightingale: No, nothing happened while I was in town.
 Nightingale: Though Tom and Arthur did see the comet the other day!
 Nightingale: Your drawing of the comet looks exactly like how they described it!
-Girl: So it is true! The comet is just like how it is in the book.
-Girl: When I get better,
-Girl: Let's go see the comet together!
+Esther: So it is true! The comet is just like how it is in the book.
+Esther: When I get better,
+Esther: Let's go see the comet together!
 Nightingale: Yes!
 ---
 Lv2NewsRoom
 Nightingale: The newspaper says that a telescope can let anyone see the comet.
-Girl: Wow! That means we could see the comet at any time.
-Girl: I wonder when I will be able to see it.
+Esther: Wow! That means we could see the comet at any time.
+Esther: I wonder when I will be able to see it.
 ---
 Npc01Wall
 Tom: This war is splitting our country apart... What should we do?
@@ -108,17 +108,17 @@ Lv2FallRoom
 Nightingale: I need to go get a second piece of glass.
 ---
 Lv3Part2
-Girl: Have you seen a little bird carrying a piece of glass like this one?
-Girl: I think he's gone missing...
-Girl: He is my dearest friend.
+Esther: Have you seen a little bird carrying a piece of glass like this one?
+Esther: I think he's gone missing...
+Esther: He is my dearest friend.
 Jenny: I don't remember seeing him…
 Jenny: But I heard that the king on the other side is residing in his palace.
 Jenny: Apparently he caught a nightingale, and is forcing the nightingale to sing against his will!
-Girl: ...
-Girl: Thank you!
+Esther: ...
+Esther: Thank you!
 ---
 Lv4Part1
-Girl:.............
+Esther:.............
 Villager:............
 Soldier:............
 ---
@@ -131,7 +131,7 @@ Soldier: Don't be disrespectful to our land and king!
 Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
-Girl: ...4?
+Esther: ...4?
 King: It seems like a little “mouse” has crawled into my palace. 
 King: No matter the reason, trespassing will not be forgiven!
 ---
@@ -145,37 +145,54 @@ King: With the power of my scepter, I shall reign over all!
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
 ---
+Lv4Part3TL101
+Tom: Are you okay?
+---
+Lv4Part3TL102
+Esther: ...
+---
+Lv4Part3TL103
+Tom: We will take back our land from that wretched king!
+---
+Lv4Part3TL2
+Esther: Are you hurt?
+Nightingale: I'm okay!
+Nightingale: How were you able to get out of bed?
+Esther: I'll be okay...
+Esther: Look, the comet is coming!
+Esther: Let's go see the comet together!
+---
 Lv5Start
 Nightingale: We should go home. It's late.
-Girl: But comets only come once in many years.
-Girl: This could be our only chance.
+Esther: But comets only come once in many years.
+Esther: This could be our only chance.
 ---
 Lv5Part1
-Girl: What kind of wish do you want to make?
+Esther: What kind of wish do you want to make?
 Nightingale: I want to be with you forever,
 Nightingale: and I want you to get better!
-Girl: ...
-Girl: If only such a wish could come true
+Esther: ...
+Esther: If only such a wish could come true
 ---
 Lv5Part2
-Girl: I still remember the first time we met
-Girl: You looked like a little ball of fur
+Esther: I still remember the first time we met
+Esther: You looked like a little ball of fur
 Nightingale: I'm all grown up now!
 Nightingale: I can already take care of myself!
 ---
 Lv5Part3
 Nightingale: Are you okay?
 Nightingale: You look pale...
-Girl: ...
-Girl: We need to keep going, we're almost there!
-Girl: I want to see the comet with you!
+Esther: ...
+Esther: We need to keep going, we're almost there!
+Esther: I want to see the comet with you!
 ---
 Lv5Part4
 Nightingale: ...
-Girl: This may be the first time and last time
-Girl: We'll ever see the comet together.
-Girl: Thank you for always being with me
-Girl: Go. Live a full, and happy life.
+Esther: This may be the first time and last time
+Esther: We'll ever see the comet together.
+Esther: Thank you for always being with me
+Esther: Go. Live a full, and happy life.
 ---
 Lv4P2TL101
 Soldier: Hey! You must be new here.
