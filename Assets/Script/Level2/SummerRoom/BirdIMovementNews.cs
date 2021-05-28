@@ -45,6 +45,15 @@ public class BirdIMovementNews : MonoBehaviour
         direction = new Vector2(moveH, moveV);
         // Debug.Log(Input.GetAxisRaw("Vertical"));
         rb.velocity = direction * moveSpeed;
+
+        if(direction.x > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (direction.x < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
         // Debug.Log(rb.velocity);
 
         if(IsOnT){
