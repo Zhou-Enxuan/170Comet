@@ -48,6 +48,8 @@ public class SoldierMovement : MonoBehaviour
     {
         if(ismoving){
             move();
+        }else if(girl.GetComponent<GirlOutMovement>().isPickHat){
+            chase();
         }else{
             stop();
         }
@@ -86,23 +88,24 @@ public class SoldierMovement : MonoBehaviour
             }
         }
         
-
-        if(groundInfo.collider.name != "patrolObj"){
-            //Debug.Log(groundInfo.collider.name);
-            ismoving = false;
-            timer += Time.deltaTime;
-            if(timer > waitingTime){
-                if(moveingRight == true){
-                    transform.eulerAngles = new Vector3(0, -180, 0);
-                    moveingRight = false;
-                }else{
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    moveingRight = true;
-                    IsNpcMoving = false;
-                    NpcWalkBack = true;
+        if(!girl.GetComponent<GirlOutMovement>().isPickHat){
+            if(groundInfo.collider.name != "patrolObj"){
+                //Debug.Log(groundInfo.collider.name);
+                ismoving = false;
+                timer += Time.deltaTime;
+                if(timer > waitingTime){
+                    if(moveingRight == true){
+                        transform.eulerAngles = new Vector3(0, -180, 0);
+                        moveingRight = false;
+                    }else{
+                        transform.eulerAngles = new Vector3(0, 0, 0);
+                        moveingRight = true;
+                        IsNpcMoving = false;
+                        NpcWalkBack = true;
+                    }
+                    timer = 0f;
+                    ismoving = true;
                 }
-                timer = 0f;
-                ismoving = true;
             }
         }
 
@@ -114,6 +117,16 @@ public class SoldierMovement : MonoBehaviour
 
     void EndHint() {
         hint.SetActive(true);
+    }
+
+    void chase(){
+        if(!moveingRight){
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            moveingRight = true;
+        }else{
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
     }
 
     void stop(){
@@ -165,8 +178,6 @@ public class SoldierMovement : MonoBehaviour
             GreenAnimator.SetBool("ArgueFlag", true);
         }
         Hat.SetActive(true);
-
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
