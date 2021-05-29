@@ -26,19 +26,16 @@ Tom: I heard that if we go to the mountaintop.
 Tom: We can touch the comet and make a wish come true!
 ---
 Villager1
-Cowboy: The king... 
-Cowboy: is dead.
+Cowboy: The king... is dead.
 ---
 Villager2
 Tom: How...?
 ---
 Villager3
-Tom: We were just a few days away from signing the peace treaty!
-Tom: It can’t happen now that the king is dead!
+Tom: We were just a few days away from signing the peace treaty! It can’t happen now that the king is dead!
 ---
 Villager4
-Tom: It's over! Everything is over!
-Tom: The war is coming! My life is over...
+Tom: It's over! Everything is over! The war is coming! My life is over...
 ---
 Villager5
 Arthur: This can't be real...
