@@ -21,7 +21,6 @@ public class GreenNpcMovement : MonoBehaviour
     public bool Istalk = false;
     public Animator PAnimator;
     private bool takeTrigger = false;
-    private bool giveTrigger = false;
     
 
     private void Start(){
@@ -35,16 +34,21 @@ public class GreenNpcMovement : MonoBehaviour
     void Update()
     {
 
+        Debug.Log("now moving" + ismoving);
+
+
+        if(takeTrigger && !GameManager.instance.IsDialogShow()){
+            PAnimator.SetBool("TakeTrigger", true);
+            StartCoroutine(WaitAnimDoneB());
+        }
+    
 
         if(ismoving && !isDiaActive){
             move();
-            Debug.Log("move");
         }else if(Istalk){
             MovetoTalk();
-            Debug.Log("move to talk");
         }else{
             stop();
-            Debug.Log("stop");
         }
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDe.position, Vector2.down, distance);
@@ -56,33 +60,42 @@ public class GreenNpcMovement : MonoBehaviour
             girlInfo = Physics2D.Raycast(girlDe.position, Vector2.left, distance);
         }
 
-    
-        if(groundInfo.collider.name == "G_Background"){
-            if(moveingRight == true){
-                transform.eulerAngles = new Vector3(0, -180, 0);
-                moveingRight = false;
-                //Debug.Log("moveleft");
-            }else{
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                moveingRight = true;
-                //Debug.Log("moveright");
+        if(girlInfo.rigidbody == true){
+            if(girlInfo.rigidbody.name == "GirlDe"){
             }
         }
         
+
+
+        if(groundInfo.collider.name == "G_Background"){
+            Debug.Log(groundInfo.collider.name);
+            //Debug.Log("not in obj");
+            ismoving = false;
+                if(moveingRight == true){
+                    transform.eulerAngles = new Vector3(0, -180, 0);
+                    moveingRight = false;
+                    //Debug.Log("moveleft");
+                }else{
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    moveingRight = true;
+                    //Debug.Log("moveright");
+                }
+            ismoving = true;
+        }else{
+                //Debug.Log("in obj");
+        }
         
-        if(Istalk && !isDiaActive && !isDiaNeed && giveTrigger){
-            PAnimator.SetBool("GiveTrigger", true);
+            
+
+        if(Istalk && !isDiaActive && !isDiaNeed){
+            Debug.Log("in obj");
             isDiaActive = true;
             isDiaNeed = true;
             talkHint.SetActive(false);
             Dialog.PrintDialog("Lv3Part2");
             GameManager.instance.stopMoving = true;
+            PAnimator.SetBool("GiveTrigger", true);
             StartCoroutine(WaitAnimDone());
-        }
-
-        if(takeTrigger && !GameManager.instance.IsDialogShow()){
-            PAnimator.SetBool("TakeTrigger", true);
-            StartCoroutine(WaitAnimDoneB());
         }
     }
 
@@ -98,10 +111,11 @@ public class GreenNpcMovement : MonoBehaviour
     }
 
     void MovetoTalk(){
+        Debug.Log("movetotalk");
         if(transform.position.x <= 20.5f){
             transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
             GAnimator.SetBool("DialogFlag", true);
-            giveTrigger = true;
+            Debug.Log("stop");
         }else{
             transform.Translate(Vector2.right * speed * Time.deltaTime);
         }
@@ -120,7 +134,6 @@ public class GreenNpcMovement : MonoBehaviour
         GAnimator.SetBool("DialogFlag", false);
         isDiaActive = false;
         takeTrigger = false;
-        Istalk = false;
     }
 
 }
