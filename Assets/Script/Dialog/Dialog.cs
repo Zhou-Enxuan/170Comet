@@ -113,7 +113,9 @@ public class Dialog : MonoBehaviour
     }
 
     public static void HideDialog() {
-        GameManager.instance.stopMoving = false;
+        if (!TimelineGameManager.isTimeline) {
+            GameManager.instance.stopMoving = false;
+        }
         istalking = false;
         dialog.SetActive(false);
     }

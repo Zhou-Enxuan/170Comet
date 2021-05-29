@@ -32,6 +32,7 @@ public class GirlTimeLineMovement : MonoBehaviour
         }
         else
         {
+            Debug.Log("moving");
         	moveH = Input.GetAxisRaw("Horizontal");
 	       // GirlAnimator.SetFloat("Direaction", moveH);
 	        GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
