@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87525206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.34, y: 0.1, z: 0}
+  m_LocalPosition: {x: 6.64, y: 0.1, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -362,7 +362,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0611341, y: 0.045862675}
+  m_Offset: {x: 0.044386506, y: 0.045862675}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -373,7 +373,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8595815, y: 3.8531451}
+  m_Size: {x: 0.49114394, y: 3.8531451}
   m_EdgeRadius: 0
 --- !u!1 &196210130
 GameObject:
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 663418963}
   - component: {fileID: 663418964}
   - component: {fileID: 663418965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RedSoldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830071514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.82, y: 0.04, z: 0}
+  m_LocalPosition: {x: 14.21, y: 0.04, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1755,7 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500907220}
   - component: {fileID: 1500907221}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: girlDe
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -1837,7 +1837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501590640}
   - component: {fileID: 1501590641}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: groundDe
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}

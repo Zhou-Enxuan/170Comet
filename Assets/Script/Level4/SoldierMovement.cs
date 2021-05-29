@@ -69,6 +69,7 @@ public class SoldierMovement : MonoBehaviour
         }
 
         if(girlInfo.rigidbody == true && !girl.GetComponent<GirlOutMovement>().isHiding){
+            Debug.Log(girlInfo.rigidbody.name);
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 GameManager.instance.stopMoving = true;

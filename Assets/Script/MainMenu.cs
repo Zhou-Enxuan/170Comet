@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
     }
 
     private void startGameEvent() {
-        LevelLoader.instance.LoadLevel("Level1");
+        LevelLoader.instance.LoadLevel("OP");
     }
 
     public void continueGame()
