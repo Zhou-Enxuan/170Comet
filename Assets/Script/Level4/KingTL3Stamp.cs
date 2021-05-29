@@ -20,4 +20,7 @@ public class KingTL3Stamp : MonoBehaviour
         SoundManager.playSEOne("stomp",0.7f);
     }
 
+    void stompEnd() {
+        
+    }
 }
