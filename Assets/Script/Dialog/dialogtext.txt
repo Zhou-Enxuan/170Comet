@@ -150,13 +150,9 @@ King: With the power of my scepter, I shall reign over all!
 Lv4Part2Trace02
 King: Humph! It's not going to be that easy.
 ---
-Lv4Part3TL101
+Lv4Part3TL1
 Tom: Are you okay?
----
-Lv4Part3TL102
 Esther: ...
----
-Lv4Part3TL103
 Tom: We will take back our land from that wretched king!
 ---
 Lv4Part3TL2

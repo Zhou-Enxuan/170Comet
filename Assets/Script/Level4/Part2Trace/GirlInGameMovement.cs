@@ -205,7 +205,7 @@ public class GirlInGameMovement : MonoBehaviour
         else if (KingControl.isToNextScene && KingControl.sceneCount == 3 && collision.gameObject.name == "InvisibleWall01") {
         	GameManager.instance.stopMoving = true;
         	KingControl.nextHint.SetActive(false);
-            LevelLoader.instance.LoadLevel("Level5");
+            LevelLoader.instance.LoadLevel("Level4Part3");
         }
 	}
 
