@@ -42,7 +42,7 @@ public class ThreeSoldierAction : MonoBehaviour
     private void Movement()
     {
         // 画睁眼 - 不动敬礼
-        if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier || GirlAction.IsArrived)
+        if (Drawing.GetComponent<Animator>().enabled || Girl.GetComponent<GirlAction>().IsCollidingSoldier || GirlAction.IsArrived || StartDialog.IsStand)
         {
             rb.velocity = Vector2.zero;
             GetComponent<Animator>().SetBool("isWalking", false);

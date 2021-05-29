@@ -13,6 +13,7 @@ public class GamePlaySystemManager : MonoBehaviour
     public static bool isLevel1Mission2End = false; //返回房间对话情节->GirlQuestion.cs变值
     public int ispickPen = 0; //返回房间对话情节->GirlQuestion.cs变值
     public int ispickPaper = 0; //返回房间对话情节->GirlQuestion.cs变值
+    public static bool isLevel4Part2Failed = false;
 
     private bool isLevelExit1;
     private bool isPass;

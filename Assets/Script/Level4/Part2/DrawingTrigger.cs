@@ -68,7 +68,7 @@ public class DrawingTrigger : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Anim.enabled = false;
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level4/HuangGongbg/paint00");
-        Hint.SetActive(true);
+        // Hint.SetActive(true);
     }
 
     private void StopAnim()

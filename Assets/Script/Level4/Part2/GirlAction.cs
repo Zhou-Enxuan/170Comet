@@ -17,6 +17,8 @@ public class GirlAction : MonoBehaviour
     //public Transform EndPoint;
     //private float pointX;
     public static bool IsArrived = false;
+    private bool isFailDialog;
+    private GameObject KeyHint;
 
     public GameObject failUI;
     public GameObject restartHint;
@@ -35,6 +37,7 @@ public class GirlAction : MonoBehaviour
         Drawing = GameObject.Find("Drawing");
         //pointX = EndPoint.position.x;
         girlKingTimeLine = GameObject.Find("GirlKingTL");
+        KeyHint = GameObject.Find("KeyHint");
 
     }
 
@@ -51,11 +54,23 @@ public class GirlAction : MonoBehaviour
         restartHint.SetActive(false);
         isEnd = false;
         Restart = false;
+        isFailDialog = false;
+        if(GamePlaySystemManager.isLevel4Part2Failed)
+        {
+            this.gameObject.GetComponent<StartDialog>().enabled = false;
+            KeyHint.SetActive(true);
+        }else{
+            KeyHint.SetActive(false);
+        }
     }
 
 
     void Update() 
     {
+        if(!this.gameObject.GetComponent<StartDialog>().enabled && Input.anyKeyDown)
+        {
+            KeyHint.SetActive(false);
+        }
         if (!IsCollidingSoldier)
         {
             GirlMovement();
@@ -76,7 +91,9 @@ public class GirlAction : MonoBehaviour
             }
 
             if (Restart)
+            {
                 FailScreen("Level4Part2");
+            }
         }
         // if (Hint.activeSelf){
         //     if (Input.GetKeyDown("space"))
@@ -84,6 +101,14 @@ public class GirlAction : MonoBehaviour
         //         LevelLoader.instance.LoadLevel("Level4Part2");
         //     }
         // }
+    }
+
+    IEnumerator CheckDialog2Done()
+    {
+        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+        GamePlaySystemManager.isLevel4Part2Failed = true;
+        failUI.SetActive(true);     
+        Invoke("EndHint",0.7f);
     }
 
     private void GirlMovement()
@@ -98,17 +123,22 @@ public class GirlAction : MonoBehaviour
             //StartCoroutine(CheckDialogueDone());
         }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKey("space") && !this.gameObject.GetComponent<StartDialog>().enabled)
         {
             Hint.SetActive(false);
-            if (IsMoving)
-                IsMoving = false;
-            else
-                IsMoving = true;
+            IsMoving = false;
+            // if (IsMoving)
+            //     IsMoving = false;
+            // else
+            //     IsMoving = true;
+        }else if (Input.GetKeyUp("space")){
+            Hint.SetActive(false);
+            IsMoving = true;
         }
         // 继续行走
         if(IsMoving)
         {
+            Anim.enabled = true;
             Anim.SetBool("isWalking",true);
             rb.velocity = new Vector2(Speed, rb.velocity.y);
         }
@@ -150,13 +180,19 @@ public class GirlAction : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         Restart = true;
+        isFailDialog = true;
     }
 
     private void FailScreen(string screenname) {
-        if (!isEnd) {
-            failUI.SetActive(true);     
-            Invoke("EndHint",0.7f);
-            isEnd = true;
+        if (isFailDialog){
+            Dialog.PrintDialog("Lv4Part2Fail");
+            StartCoroutine(CheckDialog2Done());
+            isFailDialog = false;
+        // }
+        // if (!isEnd) {
+        //     failUI.SetActive(true);     
+        //     Invoke("EndHint",0.7f);
+        //     isEnd = true;
         } else {
             if (restartHint.activeSelf && Input.GetKeyDown("space")) {
                 Debug.Log("YES");
