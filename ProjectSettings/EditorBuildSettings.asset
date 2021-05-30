@@ -66,8 +66,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2BirdCaught.unity
     guid: b5631e97485d64e70b2d6cc9267c78aa
   - enabled: 1
+    path: Assets/Scenes/Level3MemoryTL.unity
+    guid: ad05106a3c44a47e18f71b6bc0431cfc
+  - enabled: 1
     path: Assets/Scenes/Level3OpenWindow.unity
     guid: a983ace96b14647059803a917a6144c9
+  - enabled: 1
+    path: Assets/Scenes/Level3EndTL.unity
+    guid: 84ef435de51694a6589fddf06fd06daf
   - enabled: 1
     path: Assets/Scenes/Level3Part2.unity
     guid: ae12abddee173f74b8566e15e7c0354d
