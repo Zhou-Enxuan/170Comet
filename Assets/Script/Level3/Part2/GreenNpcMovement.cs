@@ -171,6 +171,10 @@ public class GreenNpcMovement : MonoBehaviour
             //Debug.Log("stop");
         }
         else{
+            if (moveingRight) {
+                this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
+                moveingRight = false;
+            }
             this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(20.5f, this.transform.position.y), speed * Time.deltaTime);
         }
     }
