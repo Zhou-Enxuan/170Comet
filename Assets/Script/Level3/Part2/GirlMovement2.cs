@@ -94,11 +94,21 @@ public class GirlMovement2 : MonoBehaviour
         if (collision.gameObject.name == "Boundery")
         {
             LevelLoader.instance.LoadLevel("Level4");
-        }else if (collision.gameObject.name == "TalkObj")
+        }
+        else if (collision.gameObject.name == "TalkObj")
         {
             NPC.GetComponent<GreenNpcMovement>().Istalk = true;
             Debug.Log("Talk");
         }
     }
 
+    void TookGlassOut() {
+        GirlAnimator.SetBool("GiveTrigger", false);
+        GreenNpcMovement.takeTrigger = true;
+    }
+    void TookGlassBack() {
+        GreenNpcMovement.takeTrigger = false;
+        GirlAnimator.SetBool("TakeTrigger", false);
+        GameManager.instance.stopMoving = false;
+    }
 }
