@@ -62,16 +62,17 @@ public class OpenWindow : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             SpaceHint.SetActive(false);
-            Anim.SetBool("Open", true); 
-            StartCoroutine(WaitAnim2Done());
+            SceneManager.LoadScene("Level3EndTL");
+            // Anim.SetBool("Open", true); 
+            // StartCoroutine(WaitAnim2Done());
         }
     }
 
-    IEnumerator WaitAnim2Done()
-    {
-        yield return new WaitForSeconds(1f);
-        LevelLoader.instance.LoadLevel("Level3Part2");
-    }
+    // IEnumerator WaitAnim2Done()
+    // {
+    //     yield return new WaitForSeconds(1f);
+    //     LevelLoader.instance.LoadLevel("Level3Part2");
+    // }
 
  //    IEnumerator LoadLevel()
 	// {
@@ -87,6 +88,9 @@ public class OpenWindow : MonoBehaviour
         {
             OnPlayerAction += StandOnChair;
             SpaceHint.SetActive(true);
+        }else{
+            Chair.GetComponent<BoxCollider2D>().isTrigger = false;
+            Debug.Log(collision.name);
         }
     }
 
