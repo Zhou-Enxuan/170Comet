@@ -1,4 +1,4 @@
-Level1 Start
+Level1 Start1
 Nightingale: Can you hear the people cheering outside? 
 Nightingale: They're saying: Comet, Comet!
 Esther: A Comet?
@@ -9,6 +9,8 @@ Nightingale: What does it look like?
 Esther: The sky is blocked by trees.
 Esther: I could only catch a glimpse of it. 
 Esther: I know! Let me draw it for you! 
+---
+Level1 Start2
 Esther: I just need a pen and paper.
 ---
 Level1 End
