@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     private AudioSource[] audio;
     private AudioClip buttonSound;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -189,40 +190,41 @@ public class MainMenu : MonoBehaviour
 
         if (currentLevelPage == 1)
         {
-            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 1";
-            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 2 Part 1";
+            Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_01");
+            Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_02");
         }
 
         else if(currentLevelPage == 3)
         {
-            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 2 Part 2";
-            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 2 Part 3";
+            Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_03");
+            Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_04");
         }
         else if(currentLevelPage == 5)
         {
-            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 3";
-            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 4 Part 1";
+            Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_01");
+            Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_02");
         }
         else if(currentLevelPage == 7)
         {
-            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Level 4 Part 2";
-            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Level 5";
-        }
-        if(currentLevelPage > GameManager.instance.playedLevel)
-        {
-            Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Credit";
-            Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Credit";
-            Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(false);
-            Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(false);
+            Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_03");
+            Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_04");
             GameObject.Find("Next").GetComponent<Button>().interactable = false;
         }
-        else
-        {
-            Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(true);
-            Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(true);
-            GameObject.Find("Next").GetComponent<Button>().interactable = true;
+        //if(currentLevelPage > GameManager.instance.playedLevel)
+        //{
+            //Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Credit";
+            //Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Credit";
+            //Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(false);
+            //Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(false);
+            
+        //}
+        //else
+        //{
+        //    Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(true);
+        //    Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(true);
+        //    GameObject.Find("Next").GetComponent<Button>().interactable = true;
 
-        }
+        //}
 
         if (currentLevelPage == GameManager.instance.playedLevel)
         {
