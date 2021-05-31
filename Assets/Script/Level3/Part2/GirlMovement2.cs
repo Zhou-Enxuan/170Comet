@@ -10,20 +10,23 @@ public class GirlMovement2 : MonoBehaviour
     [SerializeField] private float moveSpeed = 1.0f;
     private Animator GirlAnimator;
     private bool isnearWall;
+    public static GameObject talkHint; 
     public GameObject ClimbHint;
     public GameObject NPC;
     private bool FaceR;
     public bool passWall = false;
-    public bool isTalk = false;
+    private bool isTotalk;
     // Start is called before the first frame update
     void Awake(){
         rb = GetComponent<Rigidbody2D>();
         GirlAnimator = GetComponent<Animator>();
+        talkHint = GameObject.Find("TalkHint");
     }
 
     void Start()
     {
-        
+        isTotalk = false;
+        talkHint.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,8 +34,10 @@ public class GirlMovement2 : MonoBehaviour
     {
         if (GameManager.instance.stopMoving)
         {
+            GirlAnimator.SetFloat("Speed", 0.0f);
             rb.velocity = Vector2.zero;
-        }else{
+        }
+        else{
             moveH = Input.GetAxisRaw("Horizontal");
             GirlAnimator.SetFloat("Direaction", moveH);
             GirlAnimator.SetFloat("Speed", Mathf.Abs(moveH));
@@ -62,6 +67,16 @@ public class GirlMovement2 : MonoBehaviour
             }
         }else{
             ClimbHint.SetActive(false);
+        }
+
+        // 和npc对话
+        if (talkHint.activeSelf && !GreenNpcMovement.Istalk) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                GreenNpcMovement.ismoving = false;
+                GreenNpcMovement.Istalk = true;
+                GameManager.instance.stopMoving = true; 
+                talkHint.SetActive(false);
+            }
         }
     }
 
@@ -95,10 +110,20 @@ public class GirlMovement2 : MonoBehaviour
         {
             LevelLoader.instance.LoadLevel("Level4");
         }
-        else if (collision.gameObject.name == "TalkObj")
+        else if (collision.gameObject.name == "GreenMan" && !GreenNpcMovement.Istalk && !GameManager.instance.IsDialogShow())
         {
-            NPC.GetComponent<GreenNpcMovement>().Istalk = true;
-            Debug.Log("Talk");
+            talkHint.SetActive(true);
+        }
+        // else if (collision.gameObject.name == "TalkObj")
+        // {
+        //     NPC.GetComponent<GreenNpcMovement>().Istalk = true;
+        //     Debug.Log("Talk");
+        // }
+    }
+    void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.name == "GreenMan" && !GreenNpcMovement.Istalk && !GameManager.instance.IsDialogShow())
+        {
+            talkHint.SetActive(false);
         }
     }
 
