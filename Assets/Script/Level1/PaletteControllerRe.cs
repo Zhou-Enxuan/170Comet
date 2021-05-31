@@ -10,7 +10,6 @@ public class PaletteControllerRe : MonoBehaviour
 
     public event Action<Collider2D> OnPlayerAction;
 
-    private GameObject QuestionMark;
     private GameObject PickUpHint;
     private GameObject Rpaper;
     private GameObject Rpen;
@@ -34,7 +33,6 @@ public class PaletteControllerRe : MonoBehaviour
 
     private void Awake()
     {
-        QuestionMark = GameObject.Find("GirlQMark");
         PickUpHint = GameObject.Find("PickUpHint");
         pen_paper = GameObject.Find("BubblePenPaper");
         pen = GameObject.Find("BubblePen");
@@ -55,7 +53,9 @@ public class PaletteControllerRe : MonoBehaviour
 
     void Start()
     {
-        OnPlayerAction += FirstDialog;
+        this.gameObject.GetComponent<BirdInDoorMovement>().Numdirection = 5;
+        OnPlayerAction += turnItemToGirl;
+        // OnPlayerAction += FirstDialog;
         OnPlayerAction += Itemcheck;
         LeaveTip.SetActive(false);
         pen_paper.SetActive(false);
@@ -77,28 +77,27 @@ public class PaletteControllerRe : MonoBehaviour
         OnCommand?.Invoke();
     }
 
-    private void FirstDialog(Collider2D other)
-    {
-        if (other.tag == "trigger")
-        {
-            PickUpHint.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PickUpHint.SetActive(false);
-                Dialog.PrintDialog("Level1 Start");
-                QuestionMark.SetActive(false);
-                StartCoroutine(ShowBubble());
-                OnPlayerAction -= FirstDialog;
-            }
-        }
-    }
+    // private void FirstDialog(Collider2D other)
+    // {
+    //     if (other.tag == "trigger")
+    //     {
+    //         PickUpHint.SetActive(true);
+    //         if (Input.GetKeyDown(KeyCode.Space))
+    //         {
+    //             PickUpHint.SetActive(false);
+    //             Dialog.PrintDialog("Level1 Start1");
+    //             StartCoroutine(ShowBubble());
+    //             OnPlayerAction -= FirstDialog;
+    //         }
+    //     }
+    // }
 
-    IEnumerator ShowBubble()
-    {
-        yield return new WaitWhile(GameManager.instance.IsDialogShow);
-        pen_paper.SetActive(true);
-        OnPlayerAction += turnItemToGirl;
-    }
+    // IEnumerator ShowBubble()
+    // {
+    //     yield return new WaitWhile(GameManager.instance.IsDialogShow);
+    //     pen_paper.SetActive(true);
+    //     OnPlayerAction += turnItemToGirl;
+    // }
 
     private void Itemcheck(Collider2D other)
     {

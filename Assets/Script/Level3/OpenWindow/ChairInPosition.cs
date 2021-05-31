@@ -18,6 +18,7 @@ public class ChairInPosition : MonoBehaviour
     void Start()
     {
         Window.GetComponent<OpenWindow>().enabled = false;
+        Window.GetComponent<Animator>().enabled = false;
     }
 
     void Update()
@@ -35,6 +36,7 @@ public class ChairInPosition : MonoBehaviour
             gameObject.SetActive(true);
             
             Window.GetComponent<OpenWindow>().enabled = true;
+            this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
             gameObject.GetComponent<ChairInPosition>().enabled = false;
         }
     }

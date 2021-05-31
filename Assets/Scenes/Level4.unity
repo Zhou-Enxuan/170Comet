@@ -159,8 +159,8 @@ EdgeCollider2D:
   - {x: -16.492605, y: 2.7275991}
   - {x: -16.55513, y: -5.660998}
   - {x: -17.279194, y: -5.930756}
-  - {x: 22.10102, y: -5.955558}
-  - {x: 22.315813, y: 2.7617333}
+  - {x: 18.287853, y: -5.7482657}
+  - {x: 18.336857, y: 2.5958993}
   - {x: -16.586327, y: 2.7660651}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87525206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.34, y: 0.1, z: 0}
+  m_LocalPosition: {x: 6.64, y: 0.1, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -362,7 +362,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0611341, y: 0.045862675}
+  m_Offset: {x: 0.044386506, y: 0.045862675}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -373,7 +373,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8595815, y: 3.8531451}
+  m_Size: {x: 0.49114394, y: 3.8531451}
   m_EdgeRadius: 0
 --- !u!1 &196210130
 GameObject:
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 336989425}
   - component: {fileID: 336989424}
   - component: {fileID: 336989423}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 663418963}
   - component: {fileID: 663418964}
   - component: {fileID: 663418965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RedSoldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,8 +1013,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  distance: 5
-  waitingTime: 2.5
+  distance: 4
+  waitingTime: 3.5
   groundDe: {fileID: 1501590640}
   girlDe: {fileID: 1500907220}
   ismoving: 1
@@ -1149,7 +1149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830071514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.82, y: 0.04, z: 0}
+  m_LocalPosition: {x: 14.21, y: 0.04, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1595,7 +1595,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010715723, y: -1.2588263}
+  m_Offset: {x: 0.25786948, y: -1.2588263}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1606,7 +1606,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.821432, y: 0.6823473}
+  m_Size: {x: 13.315741, y: 0.6823473}
   m_EdgeRadius: 0
 --- !u!212 &1299825975
 SpriteRenderer:
@@ -1755,7 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1500907220}
   - component: {fileID: 1500907221}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: girlDe
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -1837,7 +1837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501590640}
   - component: {fileID: 1501590641}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: groundDe
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x_min: 0.1
-  x_max: 18.3
+  x_max: 16.5
   y_min: 0
   y_max: 0
 --- !u!114 &1626880368
@@ -2863,6 +2863,21 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7207442399097524546, guid: 3702b2c6b6f88264a8b3f58161c7208f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207442399097524546, guid: 3702b2c6b6f88264a8b3f58161c7208f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217785678990283241, guid: 3702b2c6b6f88264a8b3f58161c7208f,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8217785678990283241, guid: 3702b2c6b6f88264a8b3f58161c7208f,
         type: 3}
       propertyPath: m_Sprite
@@ -2877,7 +2892,7 @@ PrefabInstance:
     - target: {fileID: 8601385365548598554, guid: 3702b2c6b6f88264a8b3f58161c7208f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.48
+      value: -3.011142
       objectReference: {fileID: 0}
     - target: {fileID: 8601385365548598554, guid: 3702b2c6b6f88264a8b3f58161c7208f,
         type: 3}

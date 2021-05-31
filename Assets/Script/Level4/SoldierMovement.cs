@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SoldierMovement : MonoBehaviour
 {
     public float speed = 3.0f;
-    public float distance = 5.0f;
+    public float distance = 4.0f;
 
     private bool moveingRight = true;
     public float waitingTime = 6.0f;
@@ -46,12 +46,17 @@ public class SoldierMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ismoving){
-            move();
-        }else if(girl.GetComponent<GirlOutMovement>().isPickHat){
-            chase();
+        if(!girl.GetComponent<GirlOutMovement>().isPickHat){
+            if(ismoving){
+                Debug.Log("move");
+                move();
+            }else{
+                Debug.Log("stop");
+                stop();
+            }
         }else{
-            stop();
+            Debug.Log("chase");
+            chase();
         }
 
         //Debug.Log(girl.GetComponent<GirlOutMovement>().isHiding);
@@ -69,6 +74,7 @@ public class SoldierMovement : MonoBehaviour
         }
 
         if(girlInfo.rigidbody == true && !girl.GetComponent<GirlOutMovement>().isHiding){
+            Debug.Log(girlInfo.rigidbody.name);
             if(girlInfo.rigidbody.name == "PlayerGirl"){
                 Debug.Log("Game over");
                 GameManager.instance.stopMoving = true;
@@ -120,13 +126,28 @@ public class SoldierMovement : MonoBehaviour
     }
 
     void chase(){
+        distance = 2.0f;
+        Debug.Log("chase");
+        SoldierAnimator.SetBool("HatDropflag", false);
+        SoldierAnimator.SetBool("Turnflag", false);
+
+        BlackAnimator.SetBool("Endgame", true);
+        GreenAnimator.SetBool("Endgame", true);
+        BlackNpC.transform.Translate(Vector2.left * speed * Time.deltaTime * 0);
+        GreenNpC.transform.Translate(Vector2.left * speed * Time.deltaTime * 0);
+
+
+
         if(!moveingRight){
+            Debug.Log("turn");
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             transform.eulerAngles = new Vector3(0, 0, 0);
             moveingRight = true;
         }else{
             transform.Translate(Vector2.right * speed * Time.deltaTime);
+            Debug.Log("keep go");
         }
+
     }
 
     void stop(){
