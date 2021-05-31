@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject Levels;
 
+    [SerializeField]
     private int currentLevelPage;
 
     private AudioSource[] audio;
@@ -63,7 +64,7 @@ public class MainMenu : MonoBehaviour
         audio[0].PlayOneShot(buttonSound, 0.1f);
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
         MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
-        ++currentLevelPage;
+        currentLevelPage = 1;
         updateLevelSelect();
     }
 
@@ -111,7 +112,6 @@ public class MainMenu : MonoBehaviour
         {
             MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
             MenuUI.transform.Find("LevelSelect").gameObject.SetActive(false);
-            --currentLevelPage;
         }
         else
         {
@@ -188,6 +188,15 @@ public class MainMenu : MonoBehaviour
     {
         Levels.transform.GetChild(1).gameObject.SetActive(true);
 
+        if(currentLevelPage + 2 > GameManager.instance.playedLevel)
+        {
+            GameObject.Find("Next").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            GameObject.Find("Next").GetComponent<Button>().interactable = true;
+        }
+
         if (currentLevelPage == 1)
         {
             Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_01");
@@ -208,7 +217,6 @@ public class MainMenu : MonoBehaviour
         {
             Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_03");
             Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_04");
-            GameObject.Find("Next").GetComponent<Button>().interactable = false;
         }
         //if(currentLevelPage > GameManager.instance.playedLevel)
         //{
