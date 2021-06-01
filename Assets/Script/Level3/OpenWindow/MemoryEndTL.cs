@@ -27,14 +27,16 @@ public class MemoryEndTL : MonoBehaviour
     public void LV3EndTimeline()
     {
         TimelineGameManager.isTimeline = false;
-        LevelLoader.instance.LoadLevel("Level3Part2");
+        // TimeLine.GetComponent<PlayableDirector>().enabled = false;
+        Dialog.PrintDialog("Lv3EndTL");
+        StartCoroutine(CheckDialogDone());
         // TimeLine.GetComponent<PlayableDirector>().enabled = false;
         // StartCoroutine(StartNextLevel());
     }
 
-    IEnumerator StartNextLevel()
+    IEnumerator CheckDialogDone()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitWhile(GameManager.instance.IsDialogShow);
         LevelLoader.instance.LoadLevel("Level3Part2");
     }
 }
