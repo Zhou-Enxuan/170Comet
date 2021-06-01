@@ -120,7 +120,7 @@ Lv3EndTL
 Soldier: Where is the bird hiding?
 ---
 Lv3Part2R
-Esther: I must find the little bird
+Esther: I must find the little bird.
 ---
 Lv3Part2
 Esther: Have you seen a little bird carrying a piece of glass like this one?
