@@ -14,6 +14,6 @@
      }
      void LoadScene(VideoPlayer vp)
      {
-          SceneManager.LoadScene( SceneName );
+          LevelLoader.instance.LoadLevel( SceneName );
       }
   }

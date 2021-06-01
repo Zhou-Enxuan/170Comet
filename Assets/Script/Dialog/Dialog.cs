@@ -116,6 +116,7 @@ public class Dialog : MonoBehaviour
         if (!TimelineGameManager.isTimeline) {
             GameManager.instance.stopMoving = false;
         }
+        dialogText.text = "";
         istalking = false;
         dialog.SetActive(false);
     }

@@ -5,21 +5,16 @@ using UnityEngine;
 public class GreenNpcMovement : MonoBehaviour
 {
     public float speed = 3.0f;
-    public float distance = 5.0f;
     private Animator GAnimator;
-    // public GameObject talkHint;
     public GameObject ClimbHint;
     public GameObject player;
-    // public Transform groundDe;
-    // public Transform girlDe;
-    private bool moveingRight = false;
     private float timer = 0.0f;
     public float waitingTime = 0.2f;
+    private bool moveingRight;
     public static bool ismoving;
     public static bool Istalk;
     public Animator PAnimator;
-    public static bool takeTrigger = false;
- 
+    public static bool takeTrigger;
     public Transform[] movePos;
     private int posNum;
     private float turnWaitTime;
@@ -28,9 +23,9 @@ public class GreenNpcMovement : MonoBehaviour
 
     private void Start(){
         GAnimator = GetComponent<Animator>();
-        //talkHint.SetActive(false);
         ClimbHint.SetActive(false);
-
+        moveingRight = false;
+        takeTrigger = false;
         turnWaitTime = 0.1f;
         wait = turnWaitTime;
         Istalk = false;
@@ -62,15 +57,14 @@ public class GreenNpcMovement : MonoBehaviour
                     PAnimator.SetBool("GiveTrigger", true);
                 } else if (!isFirstTalk && !GameManager.instance.IsDialogShow()){
                     Dialog.PrintDialog("Lv3Part202");
-                    Istalk = false;
                 }
+                Istalk = false;
             }
         }
 
         //结束对话，收玻璃
         if (takeTrigger && !GameManager.instance.IsDialogShow()) {
             Debug.Log("收回");
-            Istalk = false;
             GameManager.instance.stopMoving = true;
             PAnimator.SetBool("TakeTrigger", true);
             // StartCoroutine(WaitAnimDoneB());
@@ -174,12 +168,7 @@ public class GreenNpcMovement : MonoBehaviour
             }
         }    
     }
-
-    // void stop(){
-    //     transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
-    //     GAnimator.SetBool("DialogFlag", true);
-    // }
-
+    
     void MovetoTalk(){
         // 有距离
         if (player.transform.position.x >= this.transform.position.x + 1.5f || player.transform.position.x <= this.transform.position.x - 1.5f ) {
