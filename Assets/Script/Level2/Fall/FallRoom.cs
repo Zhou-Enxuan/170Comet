@@ -50,7 +50,7 @@ public class FallRoom : MonoBehaviour
 	        	GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 	        	Glass.SetActive(true);
 	        	isDiaActive = true;
-				StartCoroutine(CheckDialogueDone());
+				//StartCoroutine(CheckDialogueDone());
 				//GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 				//GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 		    }
@@ -67,7 +67,7 @@ public class FallRoom : MonoBehaviour
 
 	IEnumerator CheckDialogueDone()
     {
-        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+    yield return new WaitWhile(GameManager.instance.IsDialogShow);
 		LevelLoader.instance.LoadLevel("Level3MemoryTL");
 		// CatchUI.SetActive(true);
 		// Invoke("EndHint", 0.7f);
