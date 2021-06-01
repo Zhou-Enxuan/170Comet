@@ -18,7 +18,7 @@ public class Lv2End : MonoBehaviour
     IEnumerator CheckDialogDone()
     {
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
-        LevelLoader.instance.LoadLevel("Level3MemoryTL");
+        LevelLoader.instance.LoadLevel("Level3MemoryTL");//ppt3
     }
 
     void Update()
