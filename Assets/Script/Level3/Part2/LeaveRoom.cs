@@ -21,10 +21,13 @@ public class LeaveRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.IsDialogShow()){
+            GameManager.instance.stopMoving = true;
+        }else{
+            GameManager.instance.stopMoving = false;
+        }
 
-
-
-        if(IsinDoor && Input.GetKeyDown("space")){
+        if(IsinDoor && Input.GetKeyDown("space") && !GameManager.instance.stopMoving){
             LevelLoader.instance.LoadLevel("Level3ClimbWall");
         }
     }
@@ -35,6 +38,7 @@ public class LeaveRoom : MonoBehaviour
         {
             IsinDoor = true;
             LeaveHint.SetActive(true);
+            Dialog.PrintDialog("Lv3Part2R");
         }
     }
 

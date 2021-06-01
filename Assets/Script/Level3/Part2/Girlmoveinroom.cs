@@ -41,6 +41,7 @@ public class Girlmoveinroom : MonoBehaviour
             rb.velocity = Vector2.zero;
             GirlAnim.SetFloat("x", 0);
             GirlAnim.SetFloat("y", 0);
+            GirlAnim.enabled = false;
         }
         else
         {
@@ -48,6 +49,7 @@ public class Girlmoveinroom : MonoBehaviour
             GirlAnim.SetFloat("y", moveV);
             if (moveH == 0 && moveV == 0)
             {
+                Debug.Log("stop");
                 rb.velocity = Vector2.zero;
                 GirlAnim.enabled = false;
                     if (tempX == -1)

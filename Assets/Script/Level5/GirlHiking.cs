@@ -171,7 +171,7 @@ public class GirlHiking : MonoBehaviour
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
         Debug.Log("The End");
         Anim.enabled = false;
-        Continue.SetActive(true);//临时
+        LevelLoader.instance.LoadLevel("Ending");
         GameManager.instance.stopMoving = true;//临时
     }
 }
