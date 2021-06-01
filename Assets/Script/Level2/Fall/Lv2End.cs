@@ -11,14 +11,14 @@ public class Lv2End : MonoBehaviour
 
     void Start()
     {
-        Dialog.PrintDialog("Lv3Start");
+        Dialog.PrintDialog("Lv2End");
         StartCoroutine(CheckDialogDone());
     }
 
     IEnumerator CheckDialogDone()
     {
         yield return new WaitWhile(GameManager.instance.IsDialogShow);
-        AccessNextLevel();
+        LevelLoader.instance.LoadLevel("Level3MemoryTL");
     }
 
     void Update()
@@ -26,11 +26,4 @@ public class Lv2End : MonoBehaviour
         
     }
 
-    private void AccessNextLevel()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            LevelLoader.instance.LoadLevel("Level3MemoryTL");
-        }
-    }
 }

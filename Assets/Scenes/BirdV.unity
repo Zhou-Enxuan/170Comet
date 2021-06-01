@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VideoPlayer: {fileID: 1412236962}
-  SceneName: Level3OpenWindow
+  SceneName: Level2End
 --- !u!4 &328521111
 Transform:
   m_ObjectHideFlags: 0
