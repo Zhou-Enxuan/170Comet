@@ -11,7 +11,6 @@ public class GirlMovement2 : MonoBehaviour
     private Animator GirlAnimator;
     private bool isnearWall;
     public static GameObject talkHint; 
-    public GameObject ClimbHint;
     public GameObject NPC;
     private bool FaceR;
     public bool passWall = false;
@@ -58,16 +57,16 @@ public class GirlMovement2 : MonoBehaviour
             rb.velocity = direction * moveSpeed;
         }
 
-        if(isnearWall && !passWall){
-            ClimbHint.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space) && FaceR){
-                GirlAnimator.SetBool("ClimbTrigger", true);
-                StartCoroutine(WaitAnimDone());
-                passWall = true;
-            }
-        }else{
-            ClimbHint.SetActive(false);
-        }
+        // if(isnearWall && !passWall){
+        //     ClimbHint.SetActive(true);
+        //     if (Input.GetKeyDown(KeyCode.Space) && FaceR){
+        //         GirlAnimator.SetBool("ClimbTrigger", true);
+        //         StartCoroutine(WaitAnimDone());
+        //         passWall = true;
+        //     }
+        // }else{
+        //     ClimbHint.SetActive(false);
+        // }
 
         // 和npc对话
         if (talkHint.activeSelf && !GreenNpcMovement.Istalk) {
@@ -86,23 +85,23 @@ public class GirlMovement2 : MonoBehaviour
         transform.position = new Vector3(24.6f, -1.69f, -0.6602975f);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Wall")
-        {
-            isnearWall = true;
-            Debug.Log("Wall");
-        }
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.name == "Wall")
+    //     {
+    //         isnearWall = true;
+    //         Debug.Log("Wall");
+    //     }
 
-    }
+    // }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Wall")
-        {
-            isnearWall = false;
-        }
-    }
+    // void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.name == "Wall")
+    //     {
+    //         isnearWall = false;
+    //     }
+    // }
     
     void OnTriggerEnter2D(Collider2D collision)
     {

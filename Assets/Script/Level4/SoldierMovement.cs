@@ -28,18 +28,29 @@ public class SoldierMovement : MonoBehaviour
     private bool IsNpcMoving = false;
     private bool NpcWalkBack = false;
 
+    public static GameObject HideHint;
+    public static GameObject LeaveHint;
+    public static GameObject DoorHint;
     public GameObject hint;
     public GameObject failUI;
     public GameObject GreenNpC;
     public GameObject BlackNpC;
 
-    private void Start(){
-        SoundManager.playBgm(5);
+    void Awake() {
         SoldierAnimator = GetComponent<Animator>();
         GreenAnimator = GameObject.Find("GreenNpC").GetComponent<Animator>();
         BlackAnimator = GameObject.Find("BrownNpc").GetComponent<Animator>();
+        HideHint = GameObject.Find("HideHint");
+        LeaveHint = GameObject.Find("LeaveHint");
+        DoorHint = GameObject.Find("DoorHint");
+    }
+
+    void Start() {
         hint.SetActive(false);
         failUI.SetActive(false);
+        HideHint.SetActive(false);
+        LeaveHint.SetActive(false);
+        DoorHint.SetActive(false);
     }
 
 

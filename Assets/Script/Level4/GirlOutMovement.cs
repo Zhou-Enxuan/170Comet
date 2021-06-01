@@ -15,9 +15,9 @@ public class GirlOutMovement : MonoBehaviour
     private bool IsinHideObj;
     private bool Isinhat;
     private bool Isindoor;
-    private GameObject HideHint;
-    private GameObject LeaveHint;
-    private GameObject DoorHint;
+    // private GameObject HideHint;
+    // private GameObject LeaveHint;
+    // private GameObject DoorHint;
     private SpriteRenderer sprite;
     public bool isHiding;
     public GameObject Hat;
@@ -29,23 +29,22 @@ public class GirlOutMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         GirlAnimator = GetComponent<Animator>();
-        tempX = 0;
-        tempY = 0;
-        IsinHideObj = false;
-        HideHint = GameObject.Find("HideHint");
-        LeaveHint = GameObject.Find("LeaveHint");
-        DoorHint = GameObject.Find("DoorHint");
+        // HideHint = GameObject.Find("HideHint");
+        // LeaveHint = GameObject.Find("LeaveHint");
+        // DoorHint = GameObject.Find("DoorHint");
         sprite = GetComponent<SpriteRenderer>();
-        isHiding = false;
-        isPickHat = false;
     }
 
     void Start()
     {
-        HideHint.SetActive(false);
-        LeaveHint.SetActive(false);
-        DoorHint.SetActive(false);
-        Dialog.PrintDialog("Lv4Part1");
+        tempX = 0;
+        tempY = 0;
+        IsinHideObj = false;
+        isHiding = false;
+        isPickHat = false;
+        // HideHint.SetActive(false);
+        // LeaveHint.SetActive(false);
+        // DoorHint.SetActive(false);
     }
 
 
@@ -55,8 +54,10 @@ public class GirlOutMovement : MonoBehaviour
         {
             GirlAnimator.SetFloat("Speed", 0);
             rb.velocity = Vector2.zero;
-            HideHint.SetActive(false);
-            LeaveHint.SetActive(false);
+            if (SceneManager.GetActiveScene().name == "Level4") {
+                SoldierMovement.HideHint.SetActive(false);
+                SoldierMovement.LeaveHint.SetActive(false);
+            }
         }
         else {
             moveH = Input.GetAxisRaw("Horizontal");
@@ -77,53 +78,54 @@ public class GirlOutMovement : MonoBehaviour
             direction = new Vector2(moveH, 0);
             rb.velocity = direction * moveSpeed;  
 
-            if(isHiding && IsinHideObj){
-                HideHint.SetActive(false);
-                LeaveHint.SetActive(true);
-            }else if(!isHiding && IsinHideObj){
-                HideHint.SetActive(true);
-                LeaveHint.SetActive(false);
-            }else{
-                HideHint.SetActive(false);
-                LeaveHint.SetActive(false);
-            }
-
-            if(IsinHideObj && Input.GetKeyDown("space") && !isHiding){
-                sprite.sortingOrder = -1;
-                isHiding = true;
-            }else if(IsinHideObj && Input.GetKeyDown("space") && isHiding){
-                sprite.sortingOrder = 0;
-                isHiding = false;
-            }
-
-            if(!IsinHideObj){
-                sprite.sortingOrder = 0;
-                isHiding = false;
-            }
-
-            if(Isindoor){
-                DoorHint.SetActive(true);
-            }else{
-                DoorHint.SetActive(false);
-            }
-
-            if(Isinhat && Input.GetKeyDown("space")){
-                Hat.SetActive(false);
-                isPickHat = true;
-                GirlAnimator.SetBool("IsPickHat", true);
-                //GirlAnimator.SetTrigger("PickTrigger");
-            }
-
-            if(Isindoor && Input.GetKeyDown("space")){
-                if (isPickHat) {
-                    LevelLoader.instance.LoadLevel("Level4P2TL1");
+            if (SceneManager.GetActiveScene().name == "Level4") {
+                if(isHiding && IsinHideObj){
+                    SoldierMovement.HideHint.SetActive(false);
+                    SoldierMovement.LeaveHint.SetActive(true);
+                }else if(!isHiding && IsinHideObj){
+                    SoldierMovement.HideHint.SetActive(true);
+                    SoldierMovement.LeaveHint.SetActive(false);
+                }else{
+                    SoldierMovement.HideHint.SetActive(false);
+                    SoldierMovement.LeaveHint.SetActive(false);
                 }
-                else {
-                    LevelLoader.instance.LoadLevel("Level4P2TL2");
+
+                if(IsinHideObj && Input.GetKeyDown("space") && !isHiding){
+                    sprite.sortingOrder = -1;
+                    isHiding = true;
+                }else if(IsinHideObj && Input.GetKeyDown("space") && isHiding){
+                    sprite.sortingOrder = 0;
+                    isHiding = false;
+                }
+
+                if(!IsinHideObj){
+                    sprite.sortingOrder = 0;
+                    isHiding = false;
+                }
+
+                if(Isindoor){
+                    SoldierMovement.DoorHint.SetActive(true);
+                }else{
+                    SoldierMovement.DoorHint.SetActive(false);
+                }
+
+                if(Isinhat && Input.GetKeyDown("space")){
+                    Hat.SetActive(false);
+                    isPickHat = true;
+                    GirlAnimator.SetBool("IsPickHat", true);
+                    //GirlAnimator.SetTrigger("PickTrigger");
+                }
+
+                if(Isindoor && Input.GetKeyDown("space")){
+                    if (isPickHat) {
+                        LevelLoader.instance.LoadLevel("Level4P2TL1");
+                    }
+                    else {
+                        LevelLoader.instance.LoadLevel("Level4P2TL2");
+                    }
                 }
             }
         }
-        
 
     }
 
@@ -145,6 +147,13 @@ public class GirlOutMovement : MonoBehaviour
         {
             //Debug.Log("miss hit box");
             Isindoor = true;
+        }
+
+        if (collision.gameObject.name == "TLActivePos") {
+            GameManager.instance.stopMoving = true;
+            TimelineGameManager.isTimeline = true;
+            Level4Timeline.girlWatchTL.SetActive(true);
+            Destroy(GameObject.Find("TLActivePos"));
         }
     }
 
