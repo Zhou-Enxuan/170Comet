@@ -133,37 +133,37 @@ public class Dialog : MonoBehaviour
         Color newColor;
         switch (name) {
             case "Esther":
-                ColorUtility.TryParseHtmlString ("#00A8FF", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#CCFFF4", out newColor);
+                dialogText.color = newColor;
                 break;
             case "Nightingale":
-                ColorUtility.TryParseHtmlString ("#E5FF00", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#EDF2C2", out newColor);
+                dialogText.color = newColor;
                 break;
             case "Tom":
-                ColorUtility.TryParseHtmlString ("#13FF00", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#F3D59A", out newColor);
+                dialogText.color = newColor;
                 // nameText.color = new Color(255f,112f,0f,255f);
                 break;
             case "Arthur":
-                ColorUtility.TryParseHtmlString ("#FF7C00", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#CCFFD2", out newColor);
+                dialogText.color = newColor;
                 break;
             case "Cowboy":
-                ColorUtility.TryParseHtmlString ("#FFB350", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#F2D6A1", out newColor);
+                dialogText.color = newColor;
                 break;
             case "Jenny":
-                ColorUtility.TryParseHtmlString ("#AE62FF", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#D4CBD7", out newColor);
+                dialogText.color = newColor;
                 break;
             case "Soldier":
-                ColorUtility.TryParseHtmlString ("#FF8488", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#FFD3D3", out newColor);
+                dialogText.color = newColor;
                 break;
             case "King":
-                ColorUtility.TryParseHtmlString ("#FF0000", out newColor);
-                nameText.color = newColor;
+                ColorUtility.TryParseHtmlString ("#FF6262", out newColor);
+                dialogText.color = newColor;
                 break;
         }
     }
