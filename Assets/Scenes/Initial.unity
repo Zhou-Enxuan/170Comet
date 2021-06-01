@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66e137ea393348259549ce9ae28ed3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSceneName: Menu
+  StartSceneName: Level3OpenWindow
 --- !u!4 &865190517
 Transform:
   m_ObjectHideFlags: 0
@@ -1268,6 +1268,7 @@ GameObject:
   - component: {fileID: 1519196946}
   - component: {fileID: 1519196948}
   - component: {fileID: 1519196947}
+  - component: {fileID: 1519196949}
   m_Layer: 2
   m_Name: Image
   m_TagString: Untagged
@@ -1284,7 +1285,7 @@ RectTransform:
   m_GameObject: {fileID: 1519196945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 1348744365}
   m_RootOrder: 2
@@ -1292,7 +1293,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 530, y: -40}
-  m_SizeDelta: {x: 130, y: 50}
+  m_SizeDelta: {x: 168, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519196947
 MonoBehaviour:
@@ -1332,6 +1333,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519196945}
   m_CullTransparentMesh: 0
+--- !u!114 &1519196949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519196945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f665af49737d4fda8b27c8206e0b6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonImage: {fileID: 21300000, guid: 9ce6c884b3d1a43919f561dc1dc96612, type: 3}
+  PressedImage: {fileID: 21300000, guid: c6d4e193264d34c64a77198ee152cc2c, type: 3}
 --- !u!1 &1705879520
 GameObject:
   m_ObjectHideFlags: 0
