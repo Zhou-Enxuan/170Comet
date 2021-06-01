@@ -11,30 +11,28 @@ public class SummerNewsRoom : MonoBehaviour
     public static bool isRoomStart = false;
     bool isDiaActive = false;
 	private GameObject Hint;
+    bool isActive;
 
 	void Awake() {
 		Hint = GameObject.Find("Hint");
 		QMark = GameObject.Find("GirlQMark");
+	}
+
+	void Start() {
+		isActive = false;
+		Hint.SetActive(false);
 		if (GameManager.instance.islv2SummerNewsEnd) {
             isRoomStart = true;
 			QMark.SetActive(true);
         }
 		else {
+			Dialog.PrintDialog("Lv2WithoutNews");
 			QMark.SetActive(false);
 		}
 	}
 
-	void Start() {
-		Hint.SetActive(false);
-	}
-
 	void Update(){
-
-	}
-
-	void OnTriggerStay2D(Collider2D collision) {
-		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
-			Hint.SetActive(true);
+		if (isActive && Hint.activeSelf) {
 			if (Input.GetKeyDown("space")) {
 				Hint.SetActive(false);
 	        	QMark.SetActive(false);
@@ -44,6 +42,14 @@ public class SummerNewsRoom : MonoBehaviour
 				GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 				StartCoroutine(CheckDialogDone());
 		    }
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D collision) {
+		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
+			Hint.SetActive(true);
+			isActive = true;
+			isActive = false;
 	    }
 	}
 

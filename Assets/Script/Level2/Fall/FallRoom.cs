@@ -30,6 +30,7 @@ public class FallRoom : MonoBehaviour
 			QMark.SetActive(true);
         }
 		else {
+			Dialog.PrintDialog("Lv2WithoutNews");
 			QMark.SetActive(false);
 		}
 	}

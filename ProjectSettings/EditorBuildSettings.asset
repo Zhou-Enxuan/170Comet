@@ -66,6 +66,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2BirdCaught.unity
     guid: b5631e97485d64e70b2d6cc9267c78aa
   - enabled: 1
+    path: Assets/Scenes/BirdV.unity
+    guid: f62b8004fd83cd048b9f33384da60534
+  - enabled: 1
     path: Assets/Scenes/Level3MemoryTL.unity
     guid: ad05106a3c44a47e18f71b6bc0431cfc
   - enabled: 1
