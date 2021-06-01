@@ -3,7 +3,7 @@ Nightingale: Can you hear the people cheering outside?
 Nightingale: They're saying: Comet, Comet!
 Esther: A Comet?
 Esther: I've only heard of it through books.
-Esther: They say it’s the most beautiful star in the world...
+Esther: They say it's the most beautiful star in the world...
 Nightingale: Can you see it through the window?
 Nightingale: What does it look like?
 Esther: The sky is blocked by trees.
@@ -34,7 +34,7 @@ Villager2
 Tom: How...?
 ---
 Villager3
-Tom: We were just a few days away from signing the peace treaty! It can’t happen now that the king is dead!
+Tom: We were just a few days away from signing the peace treaty! It can't happen now that the king is dead!
 ---
 Villager4
 Tom: It's over! Everything is over! The war is coming! My life is over...
@@ -119,20 +119,15 @@ Esther: Thank you!
 Lv3Part202
 Jenny: It's getting colder...
 ---
-Lv4Part1
-Esther:.............
-Villager:............
-Soldier:............
----
 Lv4P1TL01
-Tom and Arthur: Leave our country!
+Tom: Leave our country!
 ---
 Lv4P1TL02
 Soldier: Don't be disrespectful to our land and king!
 ---
 Lv4Part2Start
 Soldier: I heard that our king is about to draft many new soldiers...
-Soldier: I don’t want war...
+Soldier: I don't want war...
 ---
 Lv4Part2Fail
 Soldier: Someone broke into the palace!
@@ -142,7 +137,7 @@ Lv4Part2Follow
 King: Now, count off one by one.
 Soldiers: 1, 2, 3
 Esther: ...4?
-King: It seems like a little “mouse” has crawled into my palace. 
+King: It seems like a little "mouse" has crawled into my palace. 
 King: No matter the reason, trespassing will not be forgiven!
 ---
 Lv4Part2Trace
@@ -222,13 +217,13 @@ GirlKingTL02
 King: What are you doing here?
 ---
 GirlKingTL03
-Girl: You took my friend!
+Esther: You took my friend!
 ---
 GirlKingTL04
-Girl: You mean this?
+Esther: You mean this?
 ---
 GirlKingTL05
-Girl: Get out of there!
+Esther: Get out of there!
 ---
 GirlKingTL06
 King: Aha! Your friend is not going anywhere! Sing for me!

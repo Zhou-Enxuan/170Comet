@@ -8,6 +8,7 @@ using System;
 public class Dialog : MonoBehaviour
 {
     public static Text dialogText;
+    public static Text nameText;
     public static GameObject dialog;
     public TextAsset textFile;
 
@@ -27,12 +28,17 @@ public class Dialog : MonoBehaviour
     void Awake() {
         //print("start" + textFile.text);
         var linetext = textFile.text.Split('\n');
-        index = 2;
         foreach (var line in linetext) {
             AllTextlist.Add(line);
         }
         dialog = GameObject.Find("DialogBox");
         dialogText = GameObject.Find("DialogText").GetComponent<Text>();
+        nameText  = GameObject.Find("NameText").GetComponent<Text>();
+        
+    }
+
+    void Start() {
+        index = 2;
         dialog.SetActive(false);
         isTyping = false;
         istalking = false;
@@ -74,7 +80,7 @@ public class Dialog : MonoBehaviour
                 dialogText.text = "";
                 return false;
             }
-            Line = CurrentTextlist[index].Replace("=", "\n");
+            GetNameText(index);
             startTyping = true;
             index ++;
             return true;
@@ -106,12 +112,61 @@ public class Dialog : MonoBehaviour
                 j++;
             }
         //}
-        Line = CurrentTextlist[1];
+        GetNameText(1);
         startTyping = true;
         dialog.SetActive(true);
         //print("Set dialog active, index: " + index + ", list length: " + textlist2.Count);
     }
 
+    public static void GetNameText(int index) {
+        Line = CurrentTextlist[index];
+        if (Line.Contains(": ")) {
+            var charNameString = Line.Split(": "[0]);
+            string charName = charNameString[0];
+            Line = Line.Replace(charName + ": ", "");
+            nameText.text = charName;
+            ChangeNameColor(charName);
+        }
+    }
+
+    public static void ChangeNameColor(string name) {        
+        Color newColor;
+        switch (name) {
+            case "Esther":
+                ColorUtility.TryParseHtmlString ("#00A8FF", out newColor);
+                nameText.color = newColor;
+                break;
+            case "Nightingale":
+                ColorUtility.TryParseHtmlString ("#E5FF00", out newColor);
+                nameText.color = newColor;
+                break;
+            case "Tom":
+                ColorUtility.TryParseHtmlString ("#13FF00", out newColor);
+                nameText.color = newColor;
+                // nameText.color = new Color(255f,112f,0f,255f);
+                break;
+            case "Arthur":
+                ColorUtility.TryParseHtmlString ("#FF7C00", out newColor);
+                nameText.color = newColor;
+                break;
+            case "Cowboy":
+                ColorUtility.TryParseHtmlString ("#FFB350", out newColor);
+                nameText.color = newColor;
+                break;
+            case "Jenny":
+                ColorUtility.TryParseHtmlString ("#AE62FF", out newColor);
+                nameText.color = newColor;
+                break;
+            case "Soldier":
+                ColorUtility.TryParseHtmlString ("#FF8488", out newColor);
+                nameText.color = newColor;
+                break;
+            case "King":
+                ColorUtility.TryParseHtmlString ("#FF0000", out newColor);
+                nameText.color = newColor;
+                break;
+        }
+    }
     public static void HideDialog() {
         if (!TimelineGameManager.isTimeline) {
             GameManager.instance.stopMoving = false;
