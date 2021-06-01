@@ -22,10 +22,10 @@ public class Lv2FallRoomWindow : MonoBehaviour
                 SceneName = "Level2FallLose";
         		GameManager.instance.StorePlayerLoc(new Vector2(1.5f,1.5f));
             }
-            // else {
+            else {
             // 	// 小鸟被抓ppt
             //     SceneName = "Level3OpenWindow";
-            // }
+            }
             GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;

@@ -83,6 +83,9 @@ Nightingale: The newspaper says that a telescope can let anyone see the comet.
 Esther: Wow! That means we could see the comet at any time.
 Esther: I wonder when I will be able to see it.
 ---
+Lv2WithoutNews
+Esther: When will we see the real comet?
+---
 Npc01Wall
 Tom: This war is splitting our country apart... What should we do?
 ---
