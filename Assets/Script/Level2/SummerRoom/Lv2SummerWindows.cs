@@ -29,6 +29,7 @@ public class Lv2SummerWindows : MonoBehaviour
             //Debug.Log("FlyingOut");
             GameManager.instance.stopMoving = true;
             StartCoroutine(waitFlyAnimOver(SceneName));
+            LeaveHint.SetActive(false);
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
