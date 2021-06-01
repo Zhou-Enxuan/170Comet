@@ -63,18 +63,21 @@ public class Dialog : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "OP"){
             StartCoroutine(AutoPass());
             SpaceLogo.SetActive(false);
-        }else if(Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
-            if(isTyping) {
-                StopAllCoroutines(); 
-                dialogText.text = "";
-                dialogText.text = Line;
-                isTyping = false;
-            }else if (!NextPage()) {
-                dialogText.text = "";
-                HideDialog();
-            }
         }
-        
+        else {
+            SpaceLogo.SetActive(true);           
+            if(Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
+                if(isTyping) {
+                    StopAllCoroutines(); 
+                    dialogText.text = "";
+                    dialogText.text = Line;
+                    isTyping = false;
+                }else if (!NextPage()) {
+                    dialogText.text = "";
+                    HideDialog();
+                }
+            }
+        } 
     }
 
      IEnumerator AutoPass(){
