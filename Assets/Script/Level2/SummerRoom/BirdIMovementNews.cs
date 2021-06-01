@@ -21,6 +21,7 @@ public class BirdIMovementNews : MonoBehaviour
     private bool IsOnM = false;
     private bool IsOnB = false;
     public bool isMove = false;
+    public bool isEnded = false;
     
     
     private void Awake(){
@@ -39,12 +40,17 @@ public class BirdIMovementNews : MonoBehaviour
 
     private void Update(){
 
-        moveH = Input.GetAxisRaw("Horizontal");
-        // Debug.Log(Input.GetAxisRaw("Horizontal"));
-        moveV = Input.GetAxisRaw("Vertical");
-        direction = new Vector2(moveH, moveV);
-        // Debug.Log(Input.GetAxisRaw("Vertical"));
-        rb.velocity = direction * moveSpeed;
+        if(isEnded){
+            rb.velocity = Vector2.zero;
+        }else{
+
+            moveH = Input.GetAxisRaw("Horizontal");
+            // Debug.Log(Input.GetAxisRaw("Horizontal"));
+            moveV = Input.GetAxisRaw("Vertical");
+            direction = new Vector2(moveH, moveV);
+            // Debug.Log(Input.GetAxisRaw("Vertical"));
+            rb.velocity = direction * moveSpeed;
+        }
 
         if(direction.x > 0)
         {
@@ -101,6 +107,7 @@ public class BirdIMovementNews : MonoBehaviour
 
         if(BNews.activeSelf == false){
             LevelLoader.instance.LoadLevel("Level2SummerWin");
+            isEnded = true;
             GameManager.instance.NewsEnd();
         }
 
