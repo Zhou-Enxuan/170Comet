@@ -28,6 +28,7 @@ public class Lv2SWRoomWindow : MonoBehaviour
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
             StartCoroutine(waitFlyAnimOver(SceneName));
+            LeaveTip.SetActive(false);
         }
     }
     void OnTriggerEnter2D(Collider2D other) {

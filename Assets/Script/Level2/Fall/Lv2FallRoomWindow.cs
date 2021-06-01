@@ -29,8 +29,8 @@ public class Lv2FallRoomWindow : MonoBehaviour
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
-            LeaveTip.SetActive(false);
             StartCoroutine(waitFlyAnimOver(SceneName));
+            LeaveTip.SetActive(false);
         }
     }
     void OnTriggerEnter2D(Collider2D other) {
