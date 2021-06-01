@@ -10,6 +10,7 @@ public class FallRoom : MonoBehaviour
     // public static GameObject CatchUI;
     public static bool isRoomStart = false;
     bool isDiaActive = false;
+    bool isActive;
 	private GameObject Hint;
 
 	void Awake() {
@@ -20,6 +21,7 @@ public class FallRoom : MonoBehaviour
 	}
 
 	void Start() {
+		isActive = false;
 		Hint.SetActive(false);
 		Glass.SetActive(false);
 		// CatchUI.SetActive(false);
@@ -38,11 +40,7 @@ public class FallRoom : MonoBehaviour
 		// 		LevelLoader.instance.LoadLevel("Level3OpenWindow");
 		// 	}
 		// }
-	}
-
-	void OnTriggerStay2D(Collider2D collision) {
-		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
-			Hint.SetActive(true);
+		if (isActive && Hint.activeSelf) {
 			if (Input.GetKeyDown("space")) {
 				Hint.SetActive(false);
 	        	QMark.SetActive(false);
@@ -54,6 +52,13 @@ public class FallRoom : MonoBehaviour
 				//GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
 				//GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 		    }
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D collision) {
+		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
+			Hint.SetActive(true);
+			isActive = true;
 	    }
 	}
 
@@ -62,6 +67,7 @@ public class FallRoom : MonoBehaviour
 		if (collision.tag == "Player" && Hint.activeSelf)
 		{
 			Hint.SetActive(false);
+			isActive = false;
 		}
 	}
 

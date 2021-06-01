@@ -23,7 +23,6 @@ public class Lv2FallRoomWindow : MonoBehaviour
         		GameManager.instance.StorePlayerLoc(new Vector2(1.5f,1.5f));
             }
             else {
-             	// 小鸟被抓ppt
                  SceneName = "BirdV";
             }
             GameObject.Find("Player").GetComponent<BirdInDoorMovement>().Numdirection = 0;
