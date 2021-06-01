@@ -73,7 +73,7 @@ public class FallRoom : MonoBehaviour
 
 	IEnumerator CheckDialogueDone()
     {
-        yield return new WaitWhile(GameManager.instance.IsDialogShow);
+    yield return new WaitWhile(GameManager.instance.IsDialogShow);
 		LevelLoader.instance.LoadLevel("Level3MemoryTL");
 		// CatchUI.SetActive(true);
 		// Invoke("EndHint", 0.7f);
