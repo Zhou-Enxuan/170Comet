@@ -210,6 +210,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.2410232
       objectReference: {fileID: 0}
+    - target: {fileID: 1644871741800459861, guid: 01a944cdac5966a429a46054daa68ce1,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -702,6 +707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TNews: {fileID: 0}
+  isDestroy: 0
 --- !u!1 &1021692751
 GameObject:
   m_ObjectHideFlags: 0

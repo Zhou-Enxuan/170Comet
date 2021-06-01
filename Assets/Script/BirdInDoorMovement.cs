@@ -9,7 +9,7 @@ public class BirdInDoorMovement : MonoBehaviour
     private float moveH, moveV;
     private Vector2 direction;
     private SpriteRenderer sprite;
-    [SerializeField] private float moveSpeed = 1.0f;
+    [SerializeField] private float moveSpeed = 3.0f;
     public enum BirdsState { PEN, PAPER, NEWS, STATIC, FLOWER, GLASSES}
     public BirdsState currentState;
     public int Numdirection = 0;

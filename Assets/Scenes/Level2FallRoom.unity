@@ -1294,6 +1294,11 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.52
       objectReference: {fileID: 0}
+    - target: {fileID: 4096682470178701800, guid: ad8a8c69051404d4c88db64dfea013e7,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8c69051404d4c88db64dfea013e7, type: 3}
 --- !u!1 &1859933664
