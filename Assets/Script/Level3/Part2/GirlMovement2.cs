@@ -107,7 +107,7 @@ public class GirlMovement2 : MonoBehaviour
     {
         if (collision.gameObject.name == "Boundery")
         {
-            LevelLoader.instance.LoadLevel("Level4");
+            LevelLoader.instance.LoadLevel("Level4StartTL");
         }
         else if (collision.gameObject.name == "GreenMan" && !GreenNpcMovement.Istalk && !GameManager.instance.IsDialogShow())
         {

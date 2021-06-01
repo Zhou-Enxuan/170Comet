@@ -70,10 +70,6 @@ public class SoldierMovement : MonoBehaviour
             chase();
         }
 
-        //Debug.Log(girl.GetComponent<GirlOutMovement>().isHiding);
-
-        //LayerMask mask = LayerMask.GetMask("Box1");
-
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDe.position, Vector2.down, distance);
         RaycastHit2D girlInfo = Physics2D.Raycast(girlDe.position, Vector2.right, distance);
 
