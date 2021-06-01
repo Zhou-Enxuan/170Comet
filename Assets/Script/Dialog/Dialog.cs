@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Dialog : MonoBehaviour
 {
@@ -57,17 +58,33 @@ public class Dialog : MonoBehaviour
             isTimeline = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
-        	if (isTyping) {
+        if(SceneManager.GetActiveScene().name == "OP"){
+            StartCoroutine(AutoPass());
+        }else if(Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
+            if(isTyping) {
                 StopAllCoroutines(); 
                 dialogText.text = "";
                 dialogText.text = Line;
                 isTyping = false;
-            } 
-            else if (!NextPage()) {
+            }else if (!NextPage()) {
                 dialogText.text = "";
                 HideDialog();
             }
+        }
+        
+    }
+
+     IEnumerator AutoPass(){
+      yield return new WaitForSeconds(1);
+      //my code here after 3 seconds
+      if(isTyping) {
+                StopAllCoroutines(); 
+                dialogText.text = "";
+                dialogText.text = Line;
+                isTyping = false;
+        }else if (!NextPage()) {
+                dialogText.text = "";
+                HideDialog();
         }
     }
 

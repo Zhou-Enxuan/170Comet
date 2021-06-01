@@ -1,3 +1,7 @@
+OP
+Villager: Comet, Comet!
+Villager: Legend has it that wishes made to comets can make dreams come true
+---
 Level1 Start1
 Nightingale: Can you hear the people cheering outside? 
 Nightingale: They're saying: Comet, Comet!
@@ -109,14 +113,8 @@ Nightingale: But I can't let the soldiers inside see me!
 Lv2FallRoom
 Nightingale: I need to go get a second piece of glass.
 ---
-Lv2End
-Esther: He hasn’t come home yet...
----
-Lv3EndTL
-Soldier: Where is the bird hiding?
----
 Lv3Part2R
-Esther: I must find the little bird.
+I must find the little bird.
 ---
 Lv3Part2
 Esther: Have you seen a little bird carrying a piece of glass like this one?

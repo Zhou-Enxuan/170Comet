@@ -8,6 +8,7 @@ public class GirlLeavebed : MonoBehaviour
     private GameObject Girl;
     private GameObject Hint;
     private GameObject SpaceHint;
+    public float _timeHeld = 0.0f;
 
     void Awake() {
         Anim = GetComponent<Animator>();
@@ -24,8 +25,17 @@ public class GirlLeavebed : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+             _timeHeld = 0f;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+         _timeHeld += Time.deltaTime;
+        }
+        
+        if(_timeHeld >= 2.0f){
             SpaceHint.SetActive(false);
             Anim.enabled = true;
             StartCoroutine(WaitAnimDone());
