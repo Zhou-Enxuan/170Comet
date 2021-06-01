@@ -49,13 +49,13 @@ public class SummerNewsRoom : MonoBehaviour
 		if(isRoomStart && collision.tag == "Player" && !isDiaActive) {
 			Hint.SetActive(true);
 			isActive = true;
-			isActive = false;
 	    }
 	}
 
 	void OnTriggerExit2D(Collider2D collision) {
 		if (collision.tag == "Player" && Hint.activeSelf) {
 			Hint.SetActive(false);
+			isActive = false;
 		}
 	}
 

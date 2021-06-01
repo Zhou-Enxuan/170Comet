@@ -10,7 +10,12 @@
       public string SceneName ;     
      void Start() 
      {
-          VideoPlayer.loopPointReached += LoadScene;
+        if (SceneManager.GetActiveScene().name == "OP") {
+          SoundManager.playBgm(9);
+        } else if (SceneManager.GetActiveScene().name == "Ending") {
+          SoundManager.playBgm(10);
+        }  
+        VideoPlayer.loopPointReached += LoadScene;
      }
      void LoadScene(VideoPlayer vp)
      {
