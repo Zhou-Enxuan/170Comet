@@ -12,6 +12,7 @@ public class Dialog : MonoBehaviour
     public static Text nameText;
     public static GameObject dialog;
     public TextAsset textFile;
+    public static GameObject SpaceLogo;
 
     public static int index;
     public static List<string> AllTextlist = new List<string>();
@@ -35,6 +36,7 @@ public class Dialog : MonoBehaviour
         dialog = GameObject.Find("DialogBox");
         dialogText = GameObject.Find("DialogText").GetComponent<Text>();
         nameText  = GameObject.Find("NameText").GetComponent<Text>();
+        SpaceLogo = GameObject.Find("Image");
         
     }
 
@@ -60,6 +62,7 @@ public class Dialog : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "OP"){
             StartCoroutine(AutoPass());
+            SpaceLogo.SetActive(false);
         }else if(Input.GetKeyDown(KeyCode.Space) && !isTimeline) {
             if(isTyping) {
                 StopAllCoroutines(); 
