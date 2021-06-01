@@ -20,7 +20,7 @@ public class Lv2FallRoomWindow : MonoBehaviour
         if (LeaveTip.activeSelf && Input.GetKeyDown("space")) {
             if (!GameManager.instance.islv2FallGlassEnd) {
                 SceneName = "Level2FallLose";
-        		GameManager.instance.StorePlayerLoc(new Vector2(1.5f,1.5f));
+        		//GameManager.instance.StorePlayerLoc(new Vector2(1.5f,1.5f));
             }
             else {
                  SceneName = "BirdV";
@@ -29,6 +29,7 @@ public class Lv2FallRoomWindow : MonoBehaviour
             GameObject.Find("Player").transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameObject.Find("Player").GetComponent<Animator>().enabled = true;
             GameManager.instance.stopMoving = true;
+            LeaveTip.SetActive(false);
             StartCoroutine(waitFlyAnimOver(SceneName));
         }
     }
