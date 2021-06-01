@@ -25,7 +25,7 @@
     }
 
     void FixedUpdate(){
-      if(VideoPlayer.time == 14.0 && NeedPrint){
+      if(VideoPlayer.time == 14.0 && NeedPrint && SceneManager.GetActiveScene().name == "OP"){
         Dialog.PrintDialog("OP");
         NeedPrint = false;
       }

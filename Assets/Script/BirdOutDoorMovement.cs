@@ -8,7 +8,8 @@ public class BirdOutDoorMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float moveH, moveV;
     private Animator birdAnim;
-    [SerializeField] private float moveSpeed = 3.0f;
+    //[SerializeField] private float moveSpeed = 3.0f;
+    public static float moveSpeed = 4.0f;
     private bool IsPickFlower = false;
     private float moveHPrev;
 

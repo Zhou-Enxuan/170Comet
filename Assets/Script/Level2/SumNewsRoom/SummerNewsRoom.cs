@@ -11,16 +11,19 @@ public class SummerNewsRoom : MonoBehaviour
     public static bool isRoomStart = false;
     bool isDiaActive = false;
 	private GameObject Hint;
+	private GameObject girlWNews;
     bool isActive;
 
 	void Awake() {
 		Hint = GameObject.Find("Hint");
 		QMark = GameObject.Find("GirlQMark");
+		girlWNews = GameObject.Find("GirlGetNews");
 	}
 
 	void Start() {
 		isActive = false;
 		Hint.SetActive(false);
+		girlWNews.SetActive(false);
 		if (GameManager.instance.islv2SummerNewsEnd) {
             isRoomStart = true;
 			QMark.SetActive(true);
@@ -39,7 +42,8 @@ public class SummerNewsRoom : MonoBehaviour
 	        	Dialog.PrintDialog("Lv2NewsRoom");
 	        	isDiaActive = true;
 				GameObject.Find("Player").GetComponent<BirdInDoorMovement>().currentState = BirdInDoorMovement.BirdsState.STATIC;
-				GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
+				girlWNews.SetActive(true);
+				//GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Level2/BedlWithNews");
 				StartCoroutine(CheckDialogDone());
 		    }
 		}

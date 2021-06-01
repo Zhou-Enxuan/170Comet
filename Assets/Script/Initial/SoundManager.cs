@@ -88,16 +88,21 @@ public class SoundManager : MonoBehaviour
     //     isChangVolume = true;
     //     audioSources[i].Play();
     //     isBGMplayed = !isBGMplayed;
+    // // }
+    // public static void PlayTMBgm() {
+    //     audioSources[0].volume = 0;
+    //     isChangVolume = true;
+    //     audioSources[0].Play();
+    //     curBgm = 0;
+    //     Debug.Log("play music");
     // }
-    public static void PlayTMBgm() {
-        audioSources[0].volume = 0;
-        isChangVolume = true;
-        audioSources[0].Play();
-        curBgm = 0;
-        Debug.Log("play music");
-    }
 
     public static void playBgm(int num){
+        if (SceneManager.GetActiveScene().name == "OP" || SceneManager.GetActiveScene().name == "Ending") {
+            audioSources[0].loop = false;
+        } else {
+            audioSources[0].loop = true;
+        }
         newBgm = num;
         if (newBgm != curBgm){
             audioSources[0].Stop();
