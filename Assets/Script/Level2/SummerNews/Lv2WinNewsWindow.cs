@@ -29,7 +29,12 @@ public class Lv2WinNewsWindow : MonoBehaviour
 		// 	LeaveTip.SetActive(true);
 		// }
 		if (other.tag.CompareTo("Player") == 0) {
-			LevelLoader.instance.LoadLevel("Level2SumWinRoom");
+			if (GameManager.instance.islv2SummerNewsEnd) {
+				LevelLoader.instance.LoadLevel("Level2SumWinRoom");
+			}else {
+				LevelLoader.instance.LoadLevel("Level2WaitingRoom");
+			}
+			
 		}
 	}
 }

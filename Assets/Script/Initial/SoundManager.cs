@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
     public static int curBgm = -1;
     public static AudioClip MenuBgm;
     public static AudioClip Lv1Bgm;
+    public static AudioClip opBgm;
     public static AudioClip Lv2P1Bgm;
     public static AudioClip Lv2P102Bgm;
     public static AudioClip Lv2P2Bgm;
@@ -25,6 +26,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip Lv4P2Bgm;
     public static AudioClip Lv4TraceBgm;
     public static AudioClip Lv5Bgm;
+    public static AudioClip endingBgm;
     public static AudioClip birdFlyOutSound;
     public static AudioClip paperSound;
     public static AudioClip scepterSound;
@@ -37,6 +39,7 @@ public class SoundManager : MonoBehaviour
     //     Level2BGM = Resources.Load<AudioClip>("Sound/Level2MusicConcept");
         audioSources = this.gameObject.GetComponents<AudioSource>();
         MenuBgm = Resources.Load<AudioClip>("Sound/BGM/A_TitleMenu");
+        opBgm = Resources.Load<AudioClip>("Sound/BGM/A_OPBgm");
         Lv1Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv1RoomBGM");
         Lv2P1Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2BefoHorse");
         Lv2P102Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
@@ -45,6 +48,7 @@ public class SoundManager : MonoBehaviour
         Lv4P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
         Lv4TraceBgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
         Lv5Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
+        endingBgm = Resources.Load<AudioClip>("Sound/BGM/A_EndingBGM");
         birdFlyOutSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_BirdFlyOut");
         paperSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_PaperSound");
         scepterSound =  Resources.Load<AudioClip>("Sound/SoundEffect/A_Scepter");
@@ -84,16 +88,21 @@ public class SoundManager : MonoBehaviour
     //     isChangVolume = true;
     //     audioSources[i].Play();
     //     isBGMplayed = !isBGMplayed;
+    // // }
+    // public static void PlayTMBgm() {
+    //     audioSources[0].volume = 0;
+    //     isChangVolume = true;
+    //     audioSources[0].Play();
+    //     curBgm = 0;
+    //     Debug.Log("play music");
     // }
-    public static void PlayTMBgm() {
-        audioSources[0].volume = 0;
-        isChangVolume = true;
-        audioSources[0].Play();
-        curBgm = 0;
-        Debug.Log("play music");
-    }
 
     public static void playBgm(int num){
+        if (SceneManager.GetActiveScene().name == "OP" || SceneManager.GetActiveScene().name == "Ending") {
+            audioSources[0].loop = false;
+        } else {
+            audioSources[0].loop = true;
+        }
         newBgm = num;
         if (newBgm != curBgm){
             audioSources[0].Stop();
@@ -126,6 +135,12 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 8:
                     audioSources[0].clip = Lv5Bgm;
+                    break;
+                case 9:
+                    audioSources[0].clip = opBgm;
+                    break;
+                case 10: 
+                    audioSources[0].clip = endingBgm;
                     break;
             }
             audioSources[0].Play();

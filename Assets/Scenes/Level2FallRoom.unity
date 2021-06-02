@@ -772,11 +772,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.0402477, y: -0.527078}
+  - {x: -1.2088367, y: -0.5823929}
   - {x: 0.26303232, y: 0.54743856}
-  - {x: 1.0713769, y: 0.11472583}
-  - {x: -0.3178181, y: -0.9548344}
-  - {x: -1.096694, y: -0.5332133}
+  - {x: 1.2686234, y: -0.006007567}
+  - {x: -0.2577717, y: -1.0962932}
+  - {x: -1.2222008, y: -0.5907139}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -1293,6 +1293,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096682470178701800, guid: ad8a8c69051404d4c88db64dfea013e7,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8c69051404d4c88db64dfea013e7, type: 3}

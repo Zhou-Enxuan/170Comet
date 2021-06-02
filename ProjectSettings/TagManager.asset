@@ -19,6 +19,7 @@ TagManager:
   - Hat
   - Door
   - DropItem
+  - point
   layers:
   - Default
   - TransparentFX

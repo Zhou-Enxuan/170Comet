@@ -5,53 +5,63 @@ using UnityEngine;
 public class GreenNpcMovement : MonoBehaviour
 {
     public float speed = 3.0f;
-    public float distance = 5.0f;
     private Animator GAnimator;
-    public GameObject talkHint;
     public GameObject ClimbHint;
-    public GameObject Girl1;
-    // public Transform groundDe;
-    // public Transform girlDe;
-    private bool moveingRight = false;
+    public GameObject player;
     private float timer = 0.0f;
     public float waitingTime = 0.2f;
-    public bool ismoving = true;
-    bool isDiaActive = false;
-    bool isDiaNeed = false;
-    public bool Istalk = false;
+    private bool moveingRight;
+    public static bool ismoving;
+    public static bool Istalk;
     public Animator PAnimator;
-    public static bool takeTrigger = false;
-
+    public static bool takeTrigger;
     public Transform[] movePos;
     private int posNum;
     private float turnWaitTime;
     private float wait;
+    private bool isFirstTalk;
 
     private void Start(){
         GAnimator = GetComponent<Animator>();
-        talkHint.SetActive(false);
         ClimbHint.SetActive(false);
-
+        moveingRight = false;
+        takeTrigger = false;
         turnWaitTime = 0.1f;
         wait = turnWaitTime;
+        Istalk = false;
+        ismoving = true;
+        isFirstTalk = true;
     }
 
     // Update is called once per frame
     void Update() {
 
-        if (ismoving && !GameManager.instance.IsDialogShow()) {
-            move();
-            if (Istalk) {
-                talkHint.SetActive(false);
-                Dialog.PrintDialog("Lv3Part2");
-                GameManager.instance.stopMoving = true;
-                PAnimator.SetBool("GiveTrigger", true);
-                //StartCoroutine(WaitAnimDone());
-                ismoving = false;
+        //if (ismoving && !GameManager.instance.IsDialogShow()) {
+        if (ismoving) {
+           move();
+            // if (Istalk) {
+            //     Dialog.PrintDialog("Lv3Part2");
+            //     // GameManager.instance.stopMoving = true;
+            //     PAnimator.SetBool("GiveTrigger", true);
+            //     //StartCoroutine(WaitAnimDone());
+            //     ismoving = false;
+            // }
+        } else if (Istalk) {
+            if (!GAnimator.GetBool("DialogFlag")) {
+                MovetoTalk();
+            } 
+            else {
+                if (isFirstTalk && !GameManager.instance.IsDialogShow()) {
+                    isFirstTalk = false;
+                    Dialog.PrintDialog("Lv3Part2");
+                    PAnimator.SetBool("GiveTrigger", true);
+                } else if (!isFirstTalk && !GameManager.instance.IsDialogShow()){
+                    Dialog.PrintDialog("Lv3Part202");
+                }
+                Istalk = false;
             }
-        } else {
-            MovetoTalk();
         }
+
         //结束对话，收玻璃
         if (takeTrigger && !GameManager.instance.IsDialogShow()) {
             Debug.Log("收回");
@@ -158,25 +168,53 @@ public class GreenNpcMovement : MonoBehaviour
             }
         }    
     }
-
-    // void stop(){
-    //     transform.Translate(Vector2.right * speed * Time.deltaTime * 0);
-    //     GAnimator.SetBool("DialogFlag", true);
-    // }
-
+    
     void MovetoTalk(){
-        //Debug.Log("movetotalk");
-        if (transform.position.x <= 20.5f) {
-            GAnimator.SetBool("DialogFlag", true);
-            //Debug.Log("stop");
+        // 有距离
+        if (player.transform.position.x >= this.transform.position.x + 1.5f || player.transform.position.x <= this.transform.position.x - 1.5f ) {
+            Debug.Log("判定转身once");
+            //npc向右走，位置大于玩家位置
+            //if (!GAnimator.GetBool("DialogFlag")) {
+                if (moveingRight && this.transform.position.x > player.transform.position.x) {
+                    PAnimator.SetBool("FaceR", true);
+                    this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
+                    moveingRight = false;
+                } 
+                else if (moveingRight && this.transform.position.x < player.transform.position.x) {
+                    PAnimator.SetBool("FaceR", false);
+                }
+                else if (!moveingRight && this.transform.position.x > player.transform.position.x) {
+                    PAnimator.SetBool("FaceR", true);
+                }
+                else if (!moveingRight && this.transform.position.x < player.transform.position.x) {
+                    PAnimator.SetBool("FaceR", false);
+                    this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
+                    moveingRight = true;
+                }
+                GAnimator.SetBool("DialogFlag", true);
+            //}
         }
-        else{
+        // 走两步 拉开距离
+        else {
             if (moveingRight) {
-                this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
-                moveingRight = false;
+                this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x + 2f, this.transform.position.y), speed * Time.deltaTime);
             }
-            this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(20.5f, this.transform.position.y), speed * Time.deltaTime);
+            else {
+               this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(player.transform.position.x - 2f, this.transform.position.y), speed * Time.deltaTime); 
+            }
         }
+        //Debug.Log("movetotalk");
+        // if (transform.position.x <= 20.5f) {
+        //     GAnimator.SetBool("DialogFlag", true);
+        //     //Debug.Log("stop");
+        // }
+        // else{
+        //     if (moveingRight) {
+        //         this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
+        //         moveingRight = false;
+        //     }
+        //     this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(20.5f, this.transform.position.y), speed * Time.deltaTime);
+        // }
     }
     // 掏出玻璃
     IEnumerator WaitAnimDone(){

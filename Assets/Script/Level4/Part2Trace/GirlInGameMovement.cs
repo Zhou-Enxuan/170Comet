@@ -242,10 +242,17 @@ public class GirlInGameMovement : MonoBehaviour
     void PlayFailUI() {
         isPlayFailUI = true;
     }
-    void ChangeColliderSize() {
+    void ChangeColliderRightSize() {
         // Debug.Log("改判定框");
         GirlAnimator.SetBool("isStanded", false);
         this.GetComponent<BoxCollider2D>().offset = new Vector2(1.6f, 0);
+        this.GetComponent<BoxCollider2D>().size = new Vector2(2, 1.6f);
+    }
+
+    void ChangeColliderLeftSize() {
+        // Debug.Log("改判定框");
+        GirlAnimator.SetBool("isStanded", false);
+        this.GetComponent<BoxCollider2D>().offset = new Vector2(-1.6f, 0);
         this.GetComponent<BoxCollider2D>().size = new Vector2(2, 1.6f);
     }
 }

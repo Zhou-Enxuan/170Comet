@@ -26,20 +26,30 @@ public class SoldierMovement : MonoBehaviour
     private bool NPCMoveBack = false;
     private bool moveFlag = false;
     private bool IsNpcMoving = false;
-    private bool NpcWalkBack = false;
 
+    public static GameObject HideHint;
+    public static GameObject LeaveHint;
+    public static GameObject DoorHint;
     public GameObject hint;
     public GameObject failUI;
     public GameObject GreenNpC;
     public GameObject BlackNpC;
 
-    private void Start(){
-        SoundManager.playBgm(5);
+    void Awake() {
         SoldierAnimator = GetComponent<Animator>();
         GreenAnimator = GameObject.Find("GreenNpC").GetComponent<Animator>();
         BlackAnimator = GameObject.Find("BrownNpc").GetComponent<Animator>();
+        HideHint = GameObject.Find("HideHint");
+        LeaveHint = GameObject.Find("LeaveHint");
+        DoorHint = GameObject.Find("DoorHint");
+    }
+
+    void Start() {
         hint.SetActive(false);
         failUI.SetActive(false);
+        HideHint.SetActive(false);
+        LeaveHint.SetActive(false);
+        DoorHint.SetActive(false);
     }
 
 
@@ -48,35 +58,30 @@ public class SoldierMovement : MonoBehaviour
     {
         if(!girl.GetComponent<GirlOutMovement>().isPickHat){
             if(ismoving){
-                Debug.Log("move");
+                //Debug.Log("move");
                 move();
             }else{
-                Debug.Log("stop");
+                //Debug.Log("stop");
                 stop();
             }
         }else{
-            Debug.Log("chase");
+            //Debug.Log("chase");
             chase();
         }
-
-        //Debug.Log(girl.GetComponent<GirlOutMovement>().isHiding);
-
-        //LayerMask mask = LayerMask.GetMask("Box1");
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDe.position, Vector2.down, distance);
         RaycastHit2D girlInfo = Physics2D.Raycast(girlDe.position, Vector2.right, distance);
 
         if(moveingRight == true){
             girlInfo = Physics2D.Raycast(girlDe.position, Vector2.right, distance);
-            NPCMoveBack = true;
         }else{
             girlInfo = Physics2D.Raycast(girlDe.position, Vector2.left, distance);
         }
 
         if(girlInfo.rigidbody == true && !girl.GetComponent<GirlOutMovement>().isHiding){
-            Debug.Log(girlInfo.rigidbody.name);
+            //Debug.Log(girlInfo.rigidbody.name);
             if(girlInfo.rigidbody.name == "PlayerGirl"){
-                Debug.Log("Game over");
+                //Debug.Log("Game over");
                 GameManager.instance.stopMoving = true;
                 if (!isEnd) {
                     failUI.SetActive(true);     
@@ -107,7 +112,6 @@ public class SoldierMovement : MonoBehaviour
                         transform.eulerAngles = new Vector3(0, 0, 0);
                         moveingRight = true;
                         IsNpcMoving = false;
-                        NpcWalkBack = true;
                     }
                     timer = 0f;
                     ismoving = true;
@@ -127,7 +131,7 @@ public class SoldierMovement : MonoBehaviour
 
     void chase(){
         distance = 2.0f;
-        Debug.Log("chase");
+        //Debug.Log("chase");
         SoldierAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
 
@@ -139,13 +143,13 @@ public class SoldierMovement : MonoBehaviour
 
 
         if(!moveingRight){
-            Debug.Log("turn");
+            //Debug.Log("turn");
             transform.Translate(Vector2.right * speed * Time.deltaTime);
             transform.eulerAngles = new Vector3(0, 0, 0);
             moveingRight = true;
         }else{
             transform.Translate(Vector2.right * speed * Time.deltaTime);
-            Debug.Log("keep go");
+            //Debug.Log("keep go");
         }
 
     }
@@ -177,27 +181,22 @@ public class SoldierMovement : MonoBehaviour
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         SoldierAnimator.SetBool("HatDropflag", false);
         SoldierAnimator.SetBool("Turnflag", false);
-
         BlackAnimator.SetBool("HatDropflag", false);
 
         //当触碰到树的时候，npc向左走，到A停下
         if(IsNpcMoving){//向左走
-            BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
-            BlackAnimator.SetBool("WalkFlag", true);
-            GreenAnimator.SetBool("WalkFlag", true);
+            if(!moveingRight){
+                BlackNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+                GreenNpC.transform.Translate(Vector2.left * 0.5f * Time.deltaTime);
+            }
+            else if(NPCMoveBack && moveingRight){
+                BlackNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+                GreenNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
+            }else if(!NPCMoveBack){
+
+            }
         }
 
-        if(moveingRight && NpcWalkBack){//向右走
-            BlackNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
-            GreenNpC.transform.Translate(Vector2.right * 0.75f * Time.deltaTime);
-            BlackAnimator.SetBool("WalkBack", true);
-            GreenAnimator.SetBool("WalkBack", true);
-        }else{
-            BlackAnimator.SetBool("WalkBack", false);
-            GreenAnimator.SetBool("WalkBack", false);
-            GreenAnimator.SetBool("ArgueFlag", true);
-        }
         Hat.SetActive(true);
     }
 
@@ -207,10 +206,20 @@ public class SoldierMovement : MonoBehaviour
         {
             Debug.Log(" go");
             IsNpcMoving = true;
+            GreenAnimator.SetBool("WalkFlag", true);
+            BlackAnimator.SetBool("WalkFlag", true);
         }else if(collision.gameObject.tag == "Hide" && moveingRight){
-            Debug.Log(" stop");
+            Debug.Log(" go");
+            IsNpcMoving = true;
+            NPCMoveBack = true;
+            GreenAnimator.SetBool("WalkBack", true);
+            BlackAnimator.SetBool("WalkBack", true);
+        }else if(collision.gameObject.name == "Point" && moveingRight){
             IsNpcMoving = false;
-            NpcWalkBack = false;
+            NPCMoveBack = false;
+            BlackAnimator.SetBool("WalkBack", false);
+            GreenAnimator.SetBool("ArgueFlag", true);
+            GreenAnimator.SetBool("WalkBack", false);
         }
 
     }

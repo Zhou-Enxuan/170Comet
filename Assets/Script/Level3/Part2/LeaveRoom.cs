@@ -7,6 +7,7 @@ public class LeaveRoom : MonoBehaviour
 {
     private bool IsinDoor = false;
     private GameObject LeaveHint;
+    private bool IsDialog = true;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,10 +22,13 @@ public class LeaveRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.IsDialogShow()){
+            GameManager.instance.stopMoving = true;
+        }else{
+            GameManager.instance.stopMoving = false;
+        }
 
-
-
-        if(IsinDoor && Input.GetKeyDown("space")){
+        if(IsinDoor && !GameManager.instance.stopMoving){
             LevelLoader.instance.LoadLevel("Level3ClimbWall");
         }
     }
@@ -34,7 +38,11 @@ public class LeaveRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             IsinDoor = true;
-            LeaveHint.SetActive(true);
+            //LeaveHint.SetActive(true);
+            if(IsDialog){
+                Dialog.PrintDialog("Lv3Part2R");
+                IsDialog = false;
+            }
         }
     }
 
@@ -43,7 +51,7 @@ public class LeaveRoom : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             IsinDoor = false;
-            LeaveHint.SetActive(false);
+            //LeaveHint.SetActive(false);
         }
     }
 }

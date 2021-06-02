@@ -169,7 +169,7 @@ public class MainMenu : MonoBehaviour
         }
         else if(currentLevelPage == 5)
         {
-            LevelLoader.instance.LoadLevel("Level4");
+            LevelLoader.instance.LoadLevel("Level4StartTL");
         }
         else if(currentLevelPage == 7)
         {
