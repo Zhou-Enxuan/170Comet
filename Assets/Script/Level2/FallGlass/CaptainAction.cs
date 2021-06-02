@@ -20,7 +20,7 @@ public class CaptainAction : MonoBehaviour
 	private bool isKnockable; //玻璃是否可以被敲
 	private bool isGameStart;	//游戏开始
 	private bool isKnockedGlass; //是否敲过玻璃了
-	private int glassNum = 0;
+	private int glassNum;
 	private int sucCount;
 	private int failCount;
 	enum failState {CHANGED, UNCHANGE};
@@ -29,13 +29,28 @@ public class CaptainAction : MonoBehaviour
     private AudioClip whistleSound;
     private AudioClip glassSound;
     private AudioClip glassBreakSound;
- 	private bool isSoundPlay = false;
+ 	private bool isSoundPlay;
+ 	private bool isFirstHint;
 
     // Start is called before the first frame update
     void Awake()
     {
     	captainAnim = this.GetComponent<Animator>();
     	birdAnim = player.GetComponent<Animator>();
+    	audioSources = this.gameObject.GetComponents<AudioSource>();
+		glassSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassSound");
+		whistleSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_CaptianWhistle");
+		glassBreakSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassBreak");
+		audioSources[0].clip = glassSound;
+		audioSources[1].clip = whistleSound;
+		audioSources[2].clip = glassBreakSound;
+    
+    	Invoke("StartWhistle", 3f);
+    }
+
+    void Start() { 
+    	glassNum = 0;
+    	isSoundPlay = false;
     	isSoldierRun = false;
     	isSoldierTrace = false;
     	isKnockable = false;
@@ -47,15 +62,7 @@ public class CaptainAction : MonoBehaviour
     	failUI.SetActive(false);
     	questionMark.SetActive(false);
     	hint.SetActive(false);
-    	audioSources = this.gameObject.GetComponents<AudioSource>();
-		glassSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassSound");
-		whistleSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_CaptianWhistle");
-		glassBreakSound = Resources.Load<AudioClip>("Sound/SoundEffect/A_GlassBreak");
-		audioSources[0].clip = glassSound;
-		audioSources[1].clip = whistleSound;
-		audioSources[2].clip = glassBreakSound;
-    
-    	Invoke("StartWhistle", 3f);
+    	isFirstHint = true;
     }
 
     // Update is called once per frame
@@ -89,7 +96,10 @@ public class CaptainAction : MonoBehaviour
 						}
 		        		isKnockable = true;
 		        		captainAnim.SetBool("isWhistle",true);
-			        	hint.SetActive(true);
+		        		if (isFirstHint) {
+			        		hint.SetActive(true);
+			        		isFirstHint = false;
+		        		}
 			        	// Debug.Log("可以敲");
 		        	}
 		        }
@@ -137,7 +147,7 @@ public class CaptainAction : MonoBehaviour
         }
         else if (failCount > 2){
         	if (hint.activeSelf && Input.GetKeyDown(KeyCode.Space)) {
-        		LevelLoader.instance.LoadLevel("Level2FallLose");
+        		LevelLoader.instance.LoadLevel("Level2Fall");
         	}
         }
         if (sucCount == 5){

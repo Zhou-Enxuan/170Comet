@@ -51,12 +51,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2SumWinRoom.unity
     guid: dddd70348c241423a9210a39893bfc1d
   - enabled: 1
+    path: Assets/Scenes/Level2FallWaitingRoom.unity
+    guid: e590227078dbc4341979e12b35072d33
+  - enabled: 1
     path: Assets/Scenes/Level2Fall.unity
     guid: 724f44fbd7cf1465592b38259d6daa2d
   - enabled: 1
     path: Assets/Scenes/Level2FallGlass.unity
     guid: 8ba7b4410dd294d5b9e76fc940b13ca1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2FallLose.unity
     guid: 6e3bbb9520cc2487f9fe99a3f8c1caa3
   - enabled: 1

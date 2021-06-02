@@ -71,6 +71,7 @@ public class QuiltCaller : MonoBehaviour
             SpaceHint.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space)) 
             {
+                SpaceHint.SetActive(false);
                 GirlQMark.SetActive(false);
                 KeyHint.SetActive(true);
                 GameManager.instance.stopMoving = true;
