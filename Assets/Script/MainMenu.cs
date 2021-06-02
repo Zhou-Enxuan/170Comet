@@ -32,11 +32,13 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         SoundManager.playBgm(0);
         if(GameManager.instance.playedLevel > 0)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
-            GameObject.Find("Delete Button").GetComponent<Button>().interactable = true;
+            MenuUI.transform.Find("SettingMenu").Find("Delete Button").GetComponent<Button>().interactable = true;
         }
 
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
@@ -56,6 +58,8 @@ public class MainMenu : MonoBehaviour
     }
 
     private void startGameEvent() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         LevelLoader.instance.LoadLevel("OP");
     }
 
@@ -66,6 +70,20 @@ public class MainMenu : MonoBehaviour
         MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
         currentLevelPage = 1;
         updateLevelSelect();
+    }
+
+    public void Setting()
+    {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
+        MenuUI.transform.Find("SettingMenu").gameObject.SetActive(true);
+
+    }
+
+    public void SettingBack()
+    {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
+        MenuUI.transform.Find("SettingMenu").gameObject.SetActive(false);
+
     }
 
     public void DeleteGame()
@@ -137,7 +155,9 @@ public class MainMenu : MonoBehaviour
     }
 
     private void leftStartEvent() {
-        if(currentLevelPage == 1)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if (currentLevelPage == 1)
         {
             LevelLoader.instance.LoadLevel("Level1");
         }
@@ -162,6 +182,8 @@ public class MainMenu : MonoBehaviour
     }
 
     private void rightStartEvent() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         if (currentLevelPage == 1)
         {
             LevelLoader.instance.LoadLevel("Level2Winter");

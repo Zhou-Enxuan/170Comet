@@ -26,9 +26,13 @@ public class InGameMenu : MonoBehaviour
                     if (!GameIsPaused) {
                         GameMenu.SetActive(true);
                         GameIsPaused = true;
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
                     } else {
                         GameMenu.SetActive(false);
                         GameIsPaused = false;
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false;
                     }
                 }
 
