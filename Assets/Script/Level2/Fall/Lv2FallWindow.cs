@@ -17,7 +17,7 @@ public class Lv2FallWindow : MonoBehaviour
     }
      void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag.CompareTo("Player") == 0) {
-			LevelLoader.instance.LoadLevel("Level2WaitingRoom");
+			LevelLoader.instance.LoadLevel("Level2FallWaitingRoom");
 		}
 	}
 }

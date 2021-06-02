@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Lv2End : MonoBehaviour
 {
-
-    void Awake()
-    {
-    }
+    bool isDialogShow;
 
     void Start()
     {
-        Dialog.PrintDialog("Lv2End");
-        StartCoroutine(CheckDialogDone());
+        isDialogShow = false;
     }
 
     IEnumerator CheckDialogDone()
@@ -23,7 +19,11 @@ public class Lv2End : MonoBehaviour
 
     void Update()
     {
-        
+        if (GameObject.Find("Loading") == null && !isDialogShow) {
+            Dialog.PrintDialog("Lv2End");
+            StartCoroutine(CheckDialogDone());
+            isDialogShow = true;
+        }
     }
 
 }
