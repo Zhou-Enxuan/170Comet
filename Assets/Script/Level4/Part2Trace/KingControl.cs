@@ -271,25 +271,25 @@ public class KingControl : MonoBehaviour
                 GameManager.instance.stopMoving = true;
                 //Debug.Log("跺脚animation + 女孩跌倒animation");
                 //小鸟没有掉出，找位置
-                if (!playerAnim.GetBool("FaceR") && target.position.x <= movePos[curNum+1].position.x + 3f) {
+                if (!playerAnim.GetBool("FaceR") && target.position.x <= movePos[curNum+1].position.x + 3.3f) {
                     //女孩到左边尽头，转身，小鸟要朝右边掉
                     playerAnim.SetBool("FaceR", true);
                     playerAnim.SetBool("Falling", true);
                     birdPos.position =  new Vector2(target.position.x + 3.5f, birdPos.position.y);
                     //birdItem.SetActive(true);
                 }
-                else if (!playerAnim.GetBool("FaceR") && target.position.x > movePos[curNum+1].position.x + 3f) {
+                else if (!playerAnim.GetBool("FaceR") && target.position.x > movePos[curNum+1].position.x + 3.3f) {
                     playerAnim.SetBool("Falling", true);
                     birdPos.position =  new Vector2(target.position.x - 3.5f, birdPos.position.y);
                     //birdItem.SetActive(true);
                 }
-                else if(playerAnim.GetBool("FaceR") && target.position.x >= movePos[curNum].position.x - 3f) {
+                else if(playerAnim.GetBool("FaceR") && target.position.x >= movePos[curNum].position.x - 3.3f) {
                     playerAnim.SetBool("FaceR", false);
                     playerAnim.SetBool("Falling", true);
                     birdPos.position =  new Vector2(target.position.x - 3.5f, birdPos.position.y);
                     //birdItem.SetActive(true);
                 }
-                else if (playerAnim.GetBool("FaceR") && target.position.x < movePos[curNum].position.x - 3f) {
+                else if (playerAnim.GetBool("FaceR") && target.position.x < movePos[curNum].position.x - 3.3f) {
                     playerAnim.SetBool("Falling", true);
                     birdPos.position =  new Vector2(target.position.x + 3.5f, birdPos.position.y);
                     //birdItem.SetActive(true);

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaitingRoomWindow : MonoBehaviour
+public class FallWaitingRoomWindow : MonoBehaviour
 {
     public static GameObject LeaveTip;
-    string SceneName; 
+    string SceneName;
 
     void Awake()
     {
@@ -21,9 +21,7 @@ public class WaitingRoomWindow : MonoBehaviour
     void Update()
     {
         if (LeaveTip.activeSelf && Input.GetKeyDown("space")) {
-            if (!GameManager.instance.islv2SummerNewsEnd) {
-                SceneName = "Level2Summer";
-            }else if (!GameManager.instance.islv2FallGlassEnd) {
+            if (!GameManager.instance.islv2FallGlassEnd) {
                 SceneName = "Level2Fall";
             }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WrongRoom : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class WrongRoom : MonoBehaviour
     void Start()
     {
         Hint.SetActive(false);
-        if (!GameManager.instance.islv2SummerNewsEnd || !GameManager.instance.islv2FallGlassEnd) {
-            Dialog.PrintDialog("Lv2WithoutNews");//没拿报纸
+        if (SceneManager.GetActiveScene().name == "Level2WaitingRoom" && !GameManager.instance.islv2SummerNewsEnd) {
+            Dialog.PrintDialog("Lv2WithoutNews");
+        }
+        else if (SceneManager.GetActiveScene().name == "Level2FallWaitingRoom" && !GameManager.instance.islv2FallGlassEnd ) {
+            Dialog.PrintDialog("Lv2WithoutNews");
         }
     }
 
