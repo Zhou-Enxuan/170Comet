@@ -52,7 +52,7 @@ Nightingale: Is there anything I can do to make him feel better?
 ---
 Lv2P1StandUp
 Tom: What a beautiful song! Thank you, now I feel much better.
-Tom: Take this flower. They are rare in winter!
+Tom: Take this flower. This flower blooms only in winter!
 ---
 Lv2P2Room
 Esther: Did anything interesting happen while you were in town?
