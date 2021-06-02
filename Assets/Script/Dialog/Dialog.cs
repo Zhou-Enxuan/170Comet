@@ -81,7 +81,7 @@ public class Dialog : MonoBehaviour
     }
 
      IEnumerator AutoPass(){
-      yield return new WaitForSeconds(2);
+      yield return new WaitForSeconds(3);
       //my code here after 3 seconds
       if(isTyping) {
                 StopAllCoroutines(); 
