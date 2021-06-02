@@ -240,9 +240,29 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void test()
+    public void Book_Button()
     {
-        MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
-        MenuUI.transform.Find("TitleButton").gameObject.SetActive(false);
+        if (GameManager.instance.playedLevel > 0)
+        {
+            audio[0].PlayOneShot(buttonSound, 0.1f);
+            MenuUI.transform.Find("Buttons").gameObject.SetActive(true);
+            MenuUI.transform.Find("TitleButton").gameObject.SetActive(false);
+        }
+        else
+        {
+            CallBack = Book_Intro_Event;
+            StartCoroutine(ButtonSound());
+        }
+    }
+
+    public void Book_Intro_Event()
+    {
+        MenuUI.transform.Find("Book_Intro").gameObject.SetActive(true);
+        StartCoroutine(Book_Intro_fase());
+    }
+    IEnumerator Book_Intro_fase()
+    {
+        yield return new WaitForSeconds(2.5f);
+        startGameEvent();
     }
 }
