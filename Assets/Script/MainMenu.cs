@@ -77,10 +77,13 @@ public class MainMenu : MonoBehaviour
     public void Credit()
     {
         audio[0].PlayOneShot(buttonSound, 0.1f);
-        MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
-        MenuUI.transform.Find("LevelSelect").gameObject.SetActive(true);
-        currentLevelPage = GameManager.instance.playedLevel + 2;
-        updateLevelSelect();
+        MenuUI.transform.Find("Credit").gameObject.SetActive(true);
+    }
+
+    public void Credit_back()
+    {
+        audio[0].PlayOneShot(buttonSound, 0.1f);
+        MenuUI.transform.Find("Credit").gameObject.SetActive(false);
     }
 
     public void QuitGame()
