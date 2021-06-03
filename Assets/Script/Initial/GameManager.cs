@@ -37,7 +37,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButton(0))
+        {
+            Cursor.SetCursor(Resources.Load<Texture2D>("UI/Mouse_2"),Vector2.zero,CursorMode.Auto);
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            Cursor.SetCursor(Resources.Load<Texture2D>("UI/Mouse_1"), Vector2.zero, CursorMode.Auto);
+        }
     }
     
     public void StorePlayerPos() {
