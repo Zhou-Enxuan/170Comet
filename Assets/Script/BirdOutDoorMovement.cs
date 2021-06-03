@@ -48,7 +48,10 @@ public class BirdOutDoorMovement : MonoBehaviour
         if (GameManager.instance.stopMoving) {
             rb.velocity = Vector2.zero;
 
-            birdAnim.SetBool("Stand", true);
+            if (!AutoMovement.isAIMove)
+            {
+                birdAnim.SetBool("Stand", true);
+            }
         }
         else { //normal时
             moveH = Input.GetAxisRaw("Horizontal");

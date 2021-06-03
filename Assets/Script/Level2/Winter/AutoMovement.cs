@@ -36,6 +36,8 @@ public class AutoMovement : MonoBehaviour
         Debug.Log(isAIMove);
         Debug.Log(isDialoged);
 	    if (isAIMove){
+            Player.GetComponent<Animator>().SetFloat("height", Player.position.y);
+            Player.GetComponent<Animator>().SetBool("Stand", false);
             GameManager.instance.stopMoving = true;
             //如果玩家坐标和target坐标距离>误差值则继续自动移动
             if (Vector2.Distance(Player.position, TargetPos) > delta) {
@@ -44,6 +46,7 @@ public class AutoMovement : MonoBehaviour
     		    Player.position =  Vector2.MoveTowards(Player.position, TargetPos, Time.deltaTime * speed); 
     		    GameObject.Find("Main Camera").GetComponent<CameraSystem>().y_min = -2f;
     	    } else {
+                Player.GetComponent<Animator>().SetBool("Stand", true);
                 Player.position = TargetPos;
                 Direction.y = -4.3f;
                 //zoom in z
@@ -87,7 +90,6 @@ public class AutoMovement : MonoBehaviour
 	    if (other.tag.CompareTo("Player") == 0) {
 		    isAIMove = true;
             GameManager.instance.stopMoving = true;
-            Player.GetComponent<Animator>().SetFloat("horizontal", 0);
             GameObject.Find("QuestionMark").GetComponent<SpriteRenderer>().enabled = false;
             if (Player.position.x > TargetPos.x){
                 Direction.x = -1;
