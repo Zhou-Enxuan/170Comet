@@ -11,7 +11,7 @@ public class BeatScrollerRe : MonoBehaviour
     public int total;//总分
     // public bool win;
     private GameObject Rhythm;
-    private Vector3 origin;//位置
+    public Vector3 origin;//位置
     public bool Reset;
     // private GameObject BackGround;
     // [SerializeField] RectTransform BGrt;
@@ -24,7 +24,21 @@ public class BeatScrollerRe : MonoBehaviour
 
     void Start() 
     {
+        Debug.Log(Screen.currentResolution.width + " x " + Screen.currentResolution.height);
         origin = transform.position;
+        float widthScaler = 1920 / 16;
+        beatTempo /= 1280 / 16;
+        beatTempo *= widthScaler;
+        //float screenOffset = Mathf.Abs(1280 - 1920);
+        //if (1920 > 1280)
+        //{
+        //    transform.position += new Vector3(screenOffset, 0f, 0f);
+        //}
+        //else
+        //{
+        //    transform.position += new Vector3(screenOffset, 0f, 0f);
+        //}
+
     }
 
     void Update() 
