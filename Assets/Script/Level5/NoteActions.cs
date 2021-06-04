@@ -26,7 +26,7 @@ public class NoteActions : MonoBehaviour
     void Start()
     {
         IsPlayed = false;
-        screenOffset = Mathf.Abs(1280 - 1920);
+        screenOffset = Mathf.Abs(1280 - Screen.currentResolution.width);
     }
 
     void Update()
