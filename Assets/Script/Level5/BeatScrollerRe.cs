@@ -26,7 +26,7 @@ public class BeatScrollerRe : MonoBehaviour
     {
         Debug.Log(Screen.currentResolution.width + " x " + Screen.currentResolution.height);
         origin = transform.position;
-        float widthScaler = 1920 / 16;
+        float widthScaler = Screen.currentResolution.width / 16;
         beatTempo /= 1280 / 16;
         beatTempo *= widthScaler;
         //float screenOffset = Mathf.Abs(1280 - 1920);
