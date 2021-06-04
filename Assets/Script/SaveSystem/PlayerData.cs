@@ -9,10 +9,14 @@ public class PlayerData
 
     public int playedLevel;
 
-    public PlayerData(int _playerLevel, int _playedLevel)
+    public string levelname;
+
+    public PlayerData(int _playerLevel, int _playedLevel, string _levelname)
     {
         playerLevel = _playerLevel;
 
         playedLevel = _playedLevel;
+
+        levelname = _levelname;
     }
 }

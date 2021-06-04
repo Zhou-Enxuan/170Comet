@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 public static class SaveSystem
 {
@@ -11,7 +12,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + "/game.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(GameManager.instance.playerLevel, GameManager.instance.playedLevel);
+        PlayerData data = new PlayerData(GameManager.instance.playerLevel, GameManager.instance.playedLevel, SceneManager.GetActiveScene().name);
 
         formatter.Serialize(stream, data);
         stream.Close();
