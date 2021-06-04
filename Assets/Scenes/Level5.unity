@@ -3201,6 +3201,11 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 446811632974400136, guid: a0c182bb9a27646a890ae433399d3ee8,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 446811632974400138, guid: a0c182bb9a27646a890ae433399d3ee8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3305,6 +3310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446811633288886823, guid: a0c182bb9a27646a890ae433399d3ee8,
+        type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 446811633424825948, guid: a0c182bb9a27646a890ae433399d3ee8,
         type: 3}
