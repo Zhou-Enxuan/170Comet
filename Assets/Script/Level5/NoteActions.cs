@@ -14,21 +14,24 @@ public class NoteActions : MonoBehaviour
     public bool IsPlayed;//CHECK each note only hit ONCE
     private GameObject BackGround;
     [SerializeField] RectTransform BGrt;
+    public float screenOffset;
 
     void Awake()
     {
         Button = GameObject.Find("ControlButton");
         BackGround = GameObject.Find("Background");
+        
     }
 
     void Start()
     {
         IsPlayed = false;
+        screenOffset = Mathf.Abs(1280 - 1920);
     }
 
     void Update()
     {
-        if (transform.position.x < (BackGround.transform.position.x + BGrt.rect.width/2) && transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2))
+        if (transform.position.x < ((BackGround.transform.position.x + BGrt.rect.width/2) + (screenOffset/4)) && (transform.position.x > (BackGround.transform.position.x - BGrt.rect.width/2) - (screenOffset/4)))
         {
             if (!IsPlayed)
                 GetComponent<Image>().enabled = true;
@@ -38,7 +41,7 @@ public class NoteActions : MonoBehaviour
         }
 
         //按空格得分--音符消失--音效
-        if (transform.position.x < (Button.transform.position.x + rt.rect.width) && transform.position.x > (Button.transform.position.x - rt.rect.width))
+        if (transform.position.x < ((Button.transform.position.x + rt.rect.width) + (screenOffset / 4)) && transform.position.x > ((Button.transform.position.x - rt.rect.width - (screenOffset / 4))))
         {
             if(Input.GetKeyDown("space"))
             {
