@@ -16,6 +16,7 @@ public class Initial : MonoBehaviour
             thisData = SaveSystem.LoadGame();
             GameManager.instance.playerLevel = thisData.playerLevel;
             GameManager.instance.playedLevel = thisData.playedLevel;
+            GameManager.instance.continueLevel = thisData.levelname;
         }
     }
     void Update()

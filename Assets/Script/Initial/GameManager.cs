@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int playedLevel = -1;
     public int bgmNum = 0;
 
+    public string continueLevel = "OP";
+
     // Start is called before the first frame update
     private void Awake() {
         isLv2Npc = false;

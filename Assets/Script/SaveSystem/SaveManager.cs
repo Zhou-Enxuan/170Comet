@@ -14,7 +14,7 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Level1")
+        if(SceneManager.GetActiveScene().name == "OP")
         {
             GameManager.instance.updateLevelData(1);
             SaveSystem.SaveGame();

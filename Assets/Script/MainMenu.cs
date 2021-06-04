@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour
     private void startGameEvent() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        LevelLoader.instance.LoadLevel("OP");
+        LevelLoader.instance.LoadLevel(GameManager.instance.continueLevel);
     }
 
     public void continueGame()
@@ -159,7 +159,7 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = false;
         if (currentLevelPage == 1)
         {
-            LevelLoader.instance.LoadLevel("Level1");
+            LevelLoader.instance.LoadLevel("OP");
         }
         else if(currentLevelPage == 3)
         {
@@ -243,21 +243,6 @@ public class MainMenu : MonoBehaviour
             Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_03");
             Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_04");
         }
-        //if(currentLevelPage > GameManager.instance.playedLevel)
-        //{
-            //Levels.transform.GetChild(0).Find("Text").GetComponent<Text>().text = "Credit";
-            //Levels.transform.GetChild(1).Find("Text").GetComponent<Text>().text = "Credit";
-            //Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(false);
-            //Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(false);
-            
-        //}
-        //else
-        //{
-        //    Levels.transform.GetChild(0).Find("Button").gameObject.SetActive(true);
-        //    Levels.transform.GetChild(1).Find("Button").gameObject.SetActive(true);
-        //    GameObject.Find("Next").GetComponent<Button>().interactable = true;
-
-        //}
 
         if (currentLevelPage == GameManager.instance.playedLevel)
         {
