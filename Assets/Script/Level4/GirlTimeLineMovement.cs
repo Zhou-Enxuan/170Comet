@@ -66,7 +66,7 @@ public class GirlTimeLineMovement : MonoBehaviour
     	GirlAnimator.SetTrigger("Catched");
     }
 
-    public void Failed() {
+    public void PlayFailUI() {
         isPlayFailUI = true;
     }
 }
