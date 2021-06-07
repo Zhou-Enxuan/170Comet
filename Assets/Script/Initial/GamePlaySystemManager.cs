@@ -14,6 +14,7 @@ public class GamePlaySystemManager : MonoBehaviour
     public int ispickPen = 0; //返回房间对话情节->GirlQuestion.cs变值
     public int ispickPaper = 0; //返回房间对话情节->GirlQuestion.cs变值
     public static bool isLevel4Part2Failed = false;
+    public static bool isRhythmFailed = false; //开头有无对话->Lv2RhythmController.cs变值
 
     private bool isLevelExit1;
     private bool isPass;

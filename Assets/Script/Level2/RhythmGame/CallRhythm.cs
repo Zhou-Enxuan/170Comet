@@ -5,7 +5,7 @@ using UnityEngine;
 public class CallRhythm : MonoBehaviour
 {
     [SerializeField] GameObject Rhythm;
-    [SerializeField] BeatScrollerRe beatScrollerRe;
+    [SerializeField] BeatScroller BeatScroller;
     [SerializeField] BirdOutDoorMovement birdOutDoorMovement;
     [SerializeField] bool IsInFace = false;
     public bool IsGameEnded;
@@ -16,7 +16,7 @@ public class CallRhythm : MonoBehaviour
 
     void Awake() 
     {
-        Rhythm = GameObject.Find("RhythmGameUI");
+        Rhythm = GameObject.Find("RhythmGame");
         SpaceHint = GameObject.Find("SpaceHint");
         RhythmHint = GameObject.Find("RhythmHint");
         Fail = GameObject.Find("Fail");
@@ -35,6 +35,10 @@ public class CallRhythm : MonoBehaviour
 
     void Update()
     {
+        if (Rhythm.activeSelf)
+        {
+            GameManager.instance.stopMoving = true;
+        }
         if (IsInFace)
         {
             if (Input.GetKeyDown("space"))
@@ -43,18 +47,20 @@ public class CallRhythm : MonoBehaviour
                 SpaceHint.SetActive(false);
                 
                 Rhythm.SetActive(true);
+                Rhythm.transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, transform.position.y, 0f);
                 RhythmHint.SetActive(true);
-                beatScrollerRe.score = 0;
-                beatScrollerRe.total = 0;
+                BeatScroller.score = 0;
+                BeatScroller.total = 0;
                 IsInFace = false;
             }
         }
 
-        if (beatScrollerRe.Reset)
+        if (BeatScroller.Reset)
+        if (BeatScroller.total == 5)
         {
             Rhythm.SetActive(false);
             RhythmHint.SetActive(false);
-            if (beatScrollerRe.score >= 4)
+            if (BeatScroller.score >= 4)
             {
                 IsGameEnded = true;
             }
@@ -62,7 +68,7 @@ public class CallRhythm : MonoBehaviour
             {
                 Fail.SetActive(true);
                 StartCoroutine(WaitanimDone());
-                
+                GamePlaySystemManager.isRhythmFailed = true;
             }
             
         }else{
@@ -76,11 +82,15 @@ public class CallRhythm : MonoBehaviour
         
         if (Input.GetKeyDown("space"))
         {
-            Fail.SetActive(false);
-            Hint.SetActive(false);
-            GameManager.instance.stopMoving = false;
-            beatScrollerRe.Reset = false;
-
+            // Fail.SetActive(false);
+            // Hint.SetActive(false);
+            // GameManager.instance.stopMoving = false;
+            // BeatScroller.Reset = false;
+            // BeatScroller.score = 0;
+            // BeatScroller.total = 0;
+            // RhythmReset.ResetNote = true;
+            // RhythmReset.ResetButton = true;
+            LevelLoader.instance.LoadLevel("Level2WinRhythm");
         }else{
             Hint.SetActive(true);
         }
