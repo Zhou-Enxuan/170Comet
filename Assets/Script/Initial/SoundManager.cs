@@ -23,6 +23,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip Lv2P102Bgm;
     public static AudioClip Lv2P2Bgm;
     public static AudioClip Lv2P3Bgm;
+    public static AudioClip Lv2EndBgm;
     public static AudioClip Lv4P2Bgm;
     public static AudioClip Lv4TraceBgm;
     public static AudioClip Lv5Bgm;
@@ -45,6 +46,7 @@ public class SoundManager : MonoBehaviour
         Lv2P102Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2AfterHorse");
         Lv2P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
         Lv2P3Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
+        Lv2EndBgm = Resources.Load<AudioClip>("Sound/BGM/A_MemoryBgm");
         Lv4P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
         Lv4TraceBgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
         Lv5Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
@@ -141,6 +143,9 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 10: 
                     audioSources[0].clip = endingBgm;
+                    break;
+                case 11:
+                    audioSources[0].clip = Lv2EndBgm;
                     break;
             }
             audioSources[0].Play();
