@@ -13,9 +13,11 @@
     {
       if (SceneManager.GetActiveScene().name == "OP") {
         SoundManager.playBgm(9);
-      }else if (SceneManager.GetActiveScene().name == "Ending") {
+      } else if (SceneManager.GetActiveScene().name == "Ending") {
         SoundManager.playBgm(10);
-      }  
+      }  else if (SceneManager.GetActiveScene().name == "BirdV") {
+        SoundManager.playBgm(11);
+      }
       VideoPlayer.loopPointReached += LoadScene;
     }
      
