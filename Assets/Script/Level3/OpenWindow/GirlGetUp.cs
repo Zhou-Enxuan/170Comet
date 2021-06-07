@@ -12,7 +12,7 @@ public class GirlGetUp : MonoBehaviour
     private GameObject SpaceHint;
 
     void Awake() {
-        SoundManager.playBgm(11);
+        SoundManager.playBgm(12);
         Anim = GetComponent<Animator>();
         Girl = GameObject.Find("Girl");
         Chair = GameObject.Find("Chair");

@@ -24,6 +24,7 @@ public class SoundManager : MonoBehaviour
     public static AudioClip Lv2P2Bgm;
     public static AudioClip Lv2P3Bgm;
     public static AudioClip Lv2EndBgm;
+    public static AudioClip Lv3Bgm;
     public static AudioClip Lv4P2Bgm;
     public static AudioClip Lv4TraceBgm;
     public static AudioClip Lv5Bgm;
@@ -47,6 +48,7 @@ public class SoundManager : MonoBehaviour
         Lv2P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv2RoomBGM");
         Lv2P3Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv3TownBGM");
         Lv2EndBgm = Resources.Load<AudioClip>("Sound/BGM/A_MemoryBgm");
+        Lv3Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv3MemoryBgm");
         Lv4P2Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Part2");
         Lv4TraceBgm = Resources.Load<AudioClip>("Sound/BGM/A_Lv4Trace");
         Lv5Bgm = Resources.Load<AudioClip>("Sound/BGM/A_Level5BGM");
@@ -100,7 +102,7 @@ public class SoundManager : MonoBehaviour
     // }
 
     public static void playBgm(int num){
-        if (SceneManager.GetActiveScene().name == "OP" || SceneManager.GetActiveScene().name == "Ending") {
+        if (SceneManager.GetActiveScene().name == "OP" || SceneManager.GetActiveScene().name == "BirdV" || SceneManager.GetActiveScene().name == "Ending") {
             audioSources[0].loop = false;
         } else {
             audioSources[0].loop = true;
@@ -146,6 +148,9 @@ public class SoundManager : MonoBehaviour
                     break;
                 case 11:
                     audioSources[0].clip = Lv2EndBgm;
+                    break;
+                case 12:
+                    audioSources[0].clip = Lv3Bgm;
                     break;
             }
             audioSources[0].Play();
