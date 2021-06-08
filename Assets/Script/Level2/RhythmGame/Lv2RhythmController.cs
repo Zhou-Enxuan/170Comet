@@ -23,14 +23,18 @@ public class Lv2RhythmController : MonoBehaviour
         }
         Flower = GameObject.Find("Flower");
         SadFace = GameObject.Find("SadFace");
-        RhythmGame = GameObject.Find("RhythmGameUI");
+        RhythmGame = GameObject.Find("RhythmGame");
         // Npc02OriPos = this.GetComponent<Transform>().position;
         // Npc02TransPos = GameObject.Find("NpcTwoPick").GetComponent<Transform>().position;
         npc02Pick = GameObject.Find("NpcTwoPick");
     }
 
     void Start() {
-        Dialog.PrintDialog("LV2P1AfterTL");
+        if (!GamePlaySystemManager.isRhythmFailed) {
+            Dialog.PrintDialog("LV2P1AfterTL");
+        }else{
+            Player.transform.position = GameObject.Find("SadFace").transform.position;
+        }
         Flower.SetActive(false);
     }
 
@@ -40,7 +44,7 @@ public class Lv2RhythmController : MonoBehaviour
             //没完成音游
             if (!SadFace.GetComponent<CallRhythm>().IsGameEnded) {
                 NpcTransPos(true);
-                Debug.Log("对话后摔倒");
+                // Debug.Log("对话后摔倒");
             }
             // 完成音游 拿出花 结束情节2
             else {

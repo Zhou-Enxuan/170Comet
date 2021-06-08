@@ -60,6 +60,15 @@ public class GirlHiking : MonoBehaviour
         OnHiking?.Invoke();
     }
 
+    void LateUpdate()
+    {
+        float x = transform.position.x;
+        float y = transform.position.y + 2f;
+        
+        // GameObject.Find("RhythmGames").transform.position = new Vector3(x, y, 0f);
+        
+    }
+
     private void Hiking()
     {
         if(IsMoving)

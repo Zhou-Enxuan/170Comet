@@ -5,7 +5,7 @@ using UnityEngine;
 public class RhythmController : MonoBehaviour
 {
     private GameObject Rhythm1, Rhythm2, Rhythm3, Rhythm4;
-    [SerializeField] BeatScrollerRe beatScrollerRe1, beatScrollerRe2, beatScrollerRe3, beatScrollerRe4;
+    [SerializeField] BeatScroller BeatScroller1, BeatScroller2, BeatScroller3, BeatScroller4;
     private GameObject Fail;
     private GameObject Hint;
     public bool IsFailed;
@@ -37,10 +37,10 @@ public class RhythmController : MonoBehaviour
         {
             KeyHint.SetActive(false);
         }
-        if (beatScrollerRe1.total == 5)
+        if (BeatScroller1.total == 5)
         {
             Rhythm1.SetActive(false);
-            if (beatScrollerRe1.score >= 4)
+            if (BeatScroller1.score >= 4)
             {
                 // IsGameEnded = true;
             }
@@ -52,10 +52,10 @@ public class RhythmController : MonoBehaviour
             }
         }
 
-        if (beatScrollerRe2.total == 5)
+        if (BeatScroller2.total == 5)
         {
             Rhythm2.SetActive(false);
-            if (beatScrollerRe2.score >= 4)
+            if (BeatScroller2.score >= 4)
             {
                 // IsGameEnded = true;
             }
@@ -67,10 +67,10 @@ public class RhythmController : MonoBehaviour
             }
         }
 
-        if (beatScrollerRe3.total == 5)
+        if (BeatScroller3.total == 5)
         {
             Rhythm3.SetActive(false);
-            if (beatScrollerRe3.score >= 4)
+            if (BeatScroller3.score >= 4)
             {
                 // IsGameEnded = true;
             }
@@ -82,10 +82,10 @@ public class RhythmController : MonoBehaviour
             }
         }
 
-        if (beatScrollerRe4.total == 5)
+        if (BeatScroller4.total == 5)
         {
             Rhythm4.SetActive(false);
-            if (beatScrollerRe4.score >= 4)
+            if (BeatScroller4.score >= 4)
             {
                 // IsGameEnded = true;
             }
