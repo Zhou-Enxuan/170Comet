@@ -15,7 +15,7 @@ public class Level4Timeline : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SoundManager.playBgm(5);
+        SoundManager.playBgm(12);
         // //this.GetComponent<SoldierMovement>().enabled = false;
         this.GetComponent<Animator>().SetBool("isTimeline", true);
         TimelineGameManager.isTimeline = false;
