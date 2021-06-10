@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
     private GameObject Levels;
 
     [SerializeField]
+    private GameObject complete_img;
+
+    [SerializeField]
     private int currentLevelPage;
 
     private AudioSource[] audio;
@@ -38,6 +41,11 @@ public class MainMenu : MonoBehaviour
         if(GameManager.instance.playedLevel > 0)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
+        }
+
+        if(GameManager.instance.playedLevel >= 9)
+        {
+            GameObject.Find("Start Button").SetActive(false);
             MenuUI.transform.Find("SettingMenu").Find("Delete Button").GetComponent<Button>().interactable = true;
         }
 
@@ -89,7 +97,7 @@ public class MainMenu : MonoBehaviour
     public void DeleteGame()
     {
         audio[0].PlayOneShot(buttonSound, 0.1f);
-        MenuUI.transform.Find("Confirm").gameObject.SetActive(true);
+        MenuUI.transform.Find("SettingMenu").Find("Confirm").gameObject.SetActive(true);
     }
 
     public void Credit()
@@ -114,16 +122,17 @@ public class MainMenu : MonoBehaviour
     {
         audio[0].PlayOneShot(buttonSound, 0.1f);
         SaveSystem.DeleteGame();
-        GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
-        GameObject.Find("Delete Button").GetComponent<Button>().interactable = false;
-        MenuUI.transform.Find("Confirm").gameObject.SetActive(false);
-
+        GameManager.instance.playerLevel = 0;
+        GameManager.instance.playedLevel = 0;
+        GameManager.instance.continueLevel = "OP";
+        MenuUI.transform.Find("SettingMenu").Find("Confirm").gameObject.SetActive(true);
+        LevelLoader.instance.LoadLevel("Menu");
     }
 
     public void confirmDeleteX()
     {
         audio[0].PlayOneShot(buttonSound, 0.1f);
-        MenuUI.transform.Find("Confirm").gameObject.SetActive(false);
+        MenuUI.transform.Find("SettingMenu").Find("Confirm").gameObject.SetActive(true);
     }
 
     public void prevPage()
@@ -242,6 +251,15 @@ public class MainMenu : MonoBehaviour
         {
             Levels.transform.GetChild(0).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_03");
             Levels.transform.GetChild(1).GetComponent<Button>().image.sprite = Resources.Load<Sprite>("MenuUI/book_04");
+        }
+
+        if(currentLevelPage == 9)
+        {
+            complete_img.SetActive(true);
+        }
+        else
+        {
+            complete_img.SetActive(false);
         }
 
         if (currentLevelPage == GameManager.instance.playedLevel)

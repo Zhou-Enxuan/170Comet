@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VideoPlayer: {fileID: 979633135}
   SceneName: Menu
+  NeedPrint: 1
 --- !u!4 &1582437826
 Transform:
   m_ObjectHideFlags: 0

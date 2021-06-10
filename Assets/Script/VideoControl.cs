@@ -23,7 +23,12 @@
      
     void LoadScene(VideoPlayer vp)
     {
-      LevelLoader.instance.LoadLevel(SceneName);
+        if (SceneManager.GetActiveScene().name == "Ending")
+        {
+            GameManager.instance.updateLevelData(9);
+            SaveSystem.SaveGame();
+        }
+        LevelLoader.instance.LoadLevel(SceneName);
     }
 
     void FixedUpdate(){
