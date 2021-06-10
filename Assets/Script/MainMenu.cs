@@ -19,6 +19,9 @@ public class MainMenu : MonoBehaviour
     private GameObject complete_img;
 
     [SerializeField]
+    private GameObject deleteButton;
+
+    [SerializeField]
     private int currentLevelPage;
 
     private AudioSource[] audio;
@@ -46,7 +49,7 @@ public class MainMenu : MonoBehaviour
         if(GameManager.instance.playedLevel >= 9)
         {
             GameObject.Find("Start Button").SetActive(false);
-            MenuUI.transform.Find("SettingMenu").Find("Delete Button").GetComponent<Button>().interactable = true;
+            deleteButton.SetActive(true);
         }
 
         MenuUI.transform.Find("Buttons").gameObject.SetActive(false);
